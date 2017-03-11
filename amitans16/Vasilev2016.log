@@ -1,0 +1,330 @@
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.5.30)  26 JUL 2016 16:17
+entering extended mode
+**Vasilev2016.tex
+("C:\Users\haska_000\Desktop\Albena(Amitans)\full text\Vasilev2016.tex"
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
+abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
+croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
+lician, german, german-x-2013-05-26, greek, gujarati, hindi, hungarian, iceland
+ic, indonesian, interlingua, irish, italian, kannada, kurmanji, latin, latvian,
+ lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerman, n
+german-x-2013-05-26, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
+ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
+an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
+ishmax, welsh, loaded.
+("C:\Users\haska_000\Desktop\Albena(Amitans)\full text\aip-cp.cls"
+Document Class: aip-cp 2014/12/10 v1.0 Standard LaTeX document class for AIP Co
+nference Proceedings
+(C:\Users\haska_000\AppData\Roaming\MiKTeX\2.9\tex\latex\txfonts\txfonts.sty
+Package: txfonts 2008/01/22 v3.2.1
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 21.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/txr/m/n on input line 21.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/txr/m/n on input line 21.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/txr/m/n --> OT1/txr/bx/n on input line 22.
+\symitalic=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `italic' in version `bold'
+(Font)                  OT1/txr/m/it --> OT1/txr/bx/it on input line 26.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 29.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> OT1/txr/bx/n on input line 29.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/txr/bx/n on input line 29.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 30.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> OT1/txr/m/it on input line 30.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> OT1/txr/m/it on input line 30.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/txr/m/it --> OT1/txr/bx/it on input line 31.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 40.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> OT1/txss/m/n on input line 40.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> OT1/txss/m/n on input line 40.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/txss/m/n --> OT1/txss/b/n on input line 41.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 50.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> OT1/txtt/m/n on input line 50.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> OT1/txtt/m/n on input line 50.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/txtt/m/n --> OT1/txtt/b/n on input line 51.
+LaTeX Font Info:    Redeclaring symbol font `letters' on input line 58.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> OML/txmi/m/it on input line 58.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> OML/txmi/m/it on input line 58.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/txmi/m/it --> OML/txmi/bx/it on input line 59.
+\symlettersA=\mathgroup5
+LaTeX Font Info:    Overwriting symbol font `lettersA' in version `bold'
+(Font)                  U/txmia/m/it --> U/txmia/bx/it on input line 67.
+LaTeX Font Info:    Redeclaring symbol font `symbols' on input line 77.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> OMS/txsy/m/n on input line 77.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> OMS/txsy/m/n on input line 77.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/txsy/m/n --> OMS/txsy/bx/n on input line 78.
+\symAMSa=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `AMSa' in version `bold'
+(Font)                  U/txsya/m/n --> U/txsya/bx/n on input line 94.
+\symAMSb=\mathgroup7
+LaTeX Font Info:    Overwriting symbol font `AMSb' in version `bold'
+(Font)                  U/txsyb/m/n --> U/txsyb/bx/n on input line 103.
+\symsymbolsC=\mathgroup8
+LaTeX Font Info:    Overwriting symbol font `symbolsC' in version `bold'
+(Font)                  U/txsyc/m/n --> U/txsyc/bx/n on input line 113.
+LaTeX Font Info:    Redeclaring symbol font `largesymbols' on input line 120.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/txex/m/n on input line 120.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/txex/m/n on input line 120.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/txex/m/n --> OMX/txex/bx/n on input line 121.
+\symlargesymbolsA=\mathgroup9
+LaTeX Font Info:    Overwriting symbol font `largesymbolsA' in version `bold'
+(Font)                  U/txexa/m/n --> U/txexa/bx/n on input line 129.
+LaTeX Info: Redefining \not on input line 1043.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count79
+))
+\Gin@req@height=\dimen102
+\Gin@req@width=\dimen103
+)
+\c@authorcount=\count80
+\eadrcount=\count81
+\c@affn=\count82
+\c@cornote=\count83
+\tempcount=\count84
+\tempacount=\count85
+\c@part=\count86
+\c@section=\count87
+\c@subsection=\count88
+\c@subsubsection=\count89
+\c@paragraph=\count90
+\c@subparagraph=\count91
+\c@figure=\count92
+\c@table=\count93
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen104
+\float@captionwidth=\dimen105
+\float@box=\box26
+)
+(C:\Users\haska_000\AppData\Roaming\MiKTeX\2.9\tex\latex\natbib\natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip43
+\bibsep=\skip44
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count94
+)
+(C:\Users\haska_000\AppData\Roaming\MiKTeX\2.9\tex\latex\rotating\rotating.sty
+Package: rotating 2009/03/28 v2.16a rotated objects in LaTeX
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty"
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\c@r@tfl@t=\count95
+\rotFPtop=\skip45
+\rotFPbot=\skip46
+\rot@float@box=\box27
+\rot@mess@toks=\toks15
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\bm.sty"
+Package: bm 2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
+\symboldoperators=\mathgroup10
+\symboldletters=\mathgroup11
+\symboldsymbols=\mathgroup12
+\symboldlargesymbols=\mathgroup13
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 138.
+LaTeX Info: Redefining \bm on input line 204.
+)
+("C:\Users\haska_000\Desktop\Albena(Amitans)\full text\Vasilev2016.aux")
+LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 10.
+LaTeX Font Info:    Try loading font information for OML+txmi on input line 10.
+
+
+(C:\Users\haska_000\AppData\Roaming\MiKTeX\2.9\tex\latex\txfonts\omltxmi.fd
+File: omltxmi.fd 2000/12/15 v3.1
+)
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 10.
+LaTeX Font Info:    Try loading font information for OMS+txsy on input line 10.
+
+
+(C:\Users\haska_000\AppData\Roaming\MiKTeX\2.9\tex\latex\txfonts\omstxsy.fd
+File: omstxsy.fd 2000/12/15 v3.1
+)
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 10.
+LaTeX Font Info:    Try loading font information for OMX+txex on input line 10.
+
+
+(C:\Users\haska_000\AppData\Roaming\MiKTeX\2.9\tex\latex\txfonts\omxtxex.fd
+File: omxtxex.fd 2000/12/15 v3.1
+)
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for U/txexa/m/n on input line 10.
+LaTeX Font Info:    Try loading font information for U+txexa on input line 10.
+
+(C:\Users\haska_000\AppData\Roaming\MiKTeX\2.9\tex\latex\txfonts\utxexa.fd
+File: utxexa.fd 2000/12/15 v3.1
+)
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Try loading font information for OT1+txr on input line 10.
+
+(C:\Users\haska_000\AppData\Roaming\MiKTeX\2.9\tex\latex\txfonts\ot1txr.fd
+File: ot1txr.fd 2000/12/15 v3.1
+)
+(C:\Users\haska_000\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count96
+\scratchdimen=\dimen106
+\scratchbox=\box28
+\nofMPsegments=\count97
+\nofMParguments=\count98
+\everyMPshowfont=\toks16
+\MPscratchCnt=\count99
+\MPscratchDim=\dimen107
+\MPnumerator=\count100
+\makeMPintoPDFobject=\count101
+\everyMPtoPDFconversion=\toks17
+)
+\c@tabnotecount=\count102
+LaTeX Font Info:    Calculating math sizes for size <14> on input line 26.
+LaTeX Font Info:    Try loading font information for U+txmia on input line 26.
+ (C:\Users\haska_000\AppData\Roaming\MiKTeX\2.9\tex\latex\txfonts\utxmia.fd
+File: utxmia.fd 2000/12/15 v3.1
+)
+LaTeX Font Info:    Try loading font information for U+txsya on input line 26.
+
+(C:\Users\haska_000\AppData\Roaming\MiKTeX\2.9\tex\latex\txfonts\utxsya.fd
+File: utxsya.fd 2000/12/15 v3.1
+)
+LaTeX Font Info:    Try loading font information for U+txsyb on input line 26.
+
+(C:\Users\haska_000\AppData\Roaming\MiKTeX\2.9\tex\latex\txfonts\utxsyb.fd
+File: utxsyb.fd 2000/12/15 v3.1
+)
+LaTeX Font Info:    Try loading font information for U+txsyc on input line 26.
+
+(C:\Users\haska_000\AppData\Roaming\MiKTeX\2.9\tex\latex\txfonts\utxsyc.fd
+File: utxsyc.fd 2000/12/15 v3.1
+)
+[1{C:/Users/haska_000/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+[2] [3] <geo_cartogramm.jpg, id=21, 642.4803pt x 626.21954pt>
+File: geo_cartogramm.jpg Graphic file (type jpg)
+
+<use geo_cartogramm.jpg>
+Package pdftex.def Info: geo_cartogramm.jpg used on input line 223.
+(pdftex.def)             Requested size: 200.0pt x 194.93825pt.
+ <geo_axial.jpg, id=22, 574.90785pt x 357.7365pt>
+File: geo_axial.jpg Graphic file (type jpg)
+
+<use geo_axial.jpg>
+Package pdftex.def Info: geo_axial.jpg used on input line 228.
+(pdftex.def)             Requested size: 200.0pt x 124.44543pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+Missing character: There is no Ð in font txr!
+Missing character: There is no ¸ in font txr!
+[4 <C:/Users/haska_000/Desktop/Albena(Amitans)/full text/geo_cartogramm.jpg>]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[5 <C:/Users/haska_000/Desktop/Albena(Amitans)/full text/geo_axial.jpg>]
+<ro1.png, id=29, 222.33063pt x 205.76875pt>
+File: ro1.png Graphic file (type png)
+ <use ro1.png>
+Package pdftex.def Info: ro1.png used on input line 357.
+(pdftex.def)             Requested size: 200.0pt x 185.10223pt.
+
+<ro2.png, id=30, 222.33063pt x 205.76875pt>
+File: ro2.png Graphic file (type png)
+ <use ro2.png>
+Package pdftex.def Info: ro2.png used on input line 358.
+(pdftex.def)             Requested size: 200.0pt x 185.10223pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[6] <power.png, id=34, 832.3095pt x 535.0389pt>
+File: power.png Graphic file (type png)
+ <use power.png>
+Package pdftex.def Info: power.png used on input line 372.
+(pdftex.def)             Requested size: 300.0pt x 192.8506pt.
+ [7 <C:/Users/haska_000/Desktop/Albena(Amitans)/full text/ro1.png> <C:/Users/ha
+ska_000/Desktop/Albena(Amitans)/full text/ro2.png> <C:/Users/haska_000/Desktop/
+Albena(Amitans)/full text/power.png (PNG copy)>]
+Missing character: There is no Ã in font txr!
+Missing character: There is no º in font txr!
+ [8]
+("C:\Users\haska_000\Desktop\Albena(Amitans)\full text\Vasilev2016.aux")
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 2644 strings out of 493921
+ 33345 string characters out of 3147270
+ 83787 words of memory out of 3000000
+ 5897 multiletter control sequences out of 15000+200000
+ 60773 words of font info for 147 fonts, out of 3000000 for 9000
+ 841 hyphenation exceptions out of 8191
+ 34i,11n,28p,809b,280s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Users/haska_
+000/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/txfonts/rtxbmi.pfb><C:/Users/
+haska_000/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/txfonts/rtxmi.pfb><C:/U
+sers/haska_000/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/txfonts/rtxr.pfb><
+C:/Users/haska_000/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/txfonts/txex.p
+fb><C:/Users/haska_000/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/txfonts/tx
+sy.pfb><C:/Users/haska_000/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/txfont
+s/txsyc.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/P
+rogram Files/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Program Files/MiK
+TeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
+e1/urw/times/utmri8a.pfb>
+Output written on Vasilev2016.pdf (8 pages, 1092566 bytes).
+PDF statistics:
+ 75 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+
