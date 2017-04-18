@@ -1,0 +1,62 @@
+\begin{thebibliography}{1}
+\bibitem{hebert}
+A.~Hebert.
+\newblock Application of a dual variational formulation to finite element
+  reactor calculations.
+\newblock {\em Annals of Nuclear Energy}, 20:823--845, 1993.
+
+\bibitem{chao}
+Y.A. Chao and Y.A. Shatilla.
+\newblock Conformal mapping and hexagonal nodal methods-ii: Implementation in
+  the anc-h code.
+\newblock {\em Nuclear Science and Engineering}, 121:210--225, 1995.
+
+\bibitem{quarteroni}
+A.~Quarteroni and A.~Valli.
+\newblock {\em Numerical Approximation of Partial Differential Equations}.
+\newblock Springer Series in Computational Mathematics. Springer, 2008.
+
+
+\bibitem{fenics}
+A. Logg, K.A. Mardal, G. Wells.
+\newblock {\em Automated Solution of Differential Equations by the Finite
+  Element Method: The FEniCS Book}.
+\newblock Lecture Notes in Computational Science and Engineering. Springer,
+  2012.
+
+\bibitem{slepc}
+C. Campos, J.E. Roman, E.~Romero, A. Tomas.
+\newblock {\em SLEPc Users Manual}, 2013.
+
+\bibitem{gmsh}
+C. Geuzaine, J.F. Remacle.
+\newblock {\em Gmsh Reference Manual}, 2014.
+
+\bibitem{klimov}
+А.Н. Климов.
+\newblock {\em Ядерная физика и ядерные реакторы}.
+\newblock Атомиздат, 1971.
+
+\bibitem{stacey}
+W.M. Stacey.
+\newblock {\em Nuclear Reactor Physics}.
+\newblock John Wiley \& Sons, 2007.
+
+\bibitem{ganev}
+И.Х. Ганев, Н.А. Доллежаль.
+\newblock {\em Физика и расчет реактора}.
+\newblock Энергоиздат, 1981.
+
+\bibitem{marchuk}
+Г.И. Марчук, В.И. Лебедев.
+\newblock {\em Численные методы в теории переноса
+  нейтронов}.
+\newblock Атомиздат, 1981.
+
+\bibitem{gonzalez}
+S.~Gonzalez-Pintor, G.~Verdu, and D.~Ginestar.
+\newblock Approximation of the neutron diffusion equation on hexagonal
+  geometries.
+\newblock New York, 2009.
+
+\end{thebibliography}
