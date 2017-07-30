@@ -1,0 +1,748 @@
+% $Header: /home/vedranm/bitbucket/beamer/solutions/conference-talks/conference-ornate-20min.en.tex,v 90e850259b8b 2007/01/28 20:48:30 tantau $
+
+\documentclass[10pt,pdf,hyperref={unicode}]{beamer}
+\usepackage{graphicx}
+\graphicspath{{./figs/}}
+
+% This file is a solution template for:
+
+% - Talk at a conference/colloquium.
+% - Talk length is about 20min.
+% - Style is ornate.
+
+
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+  % or ...
+
+  \setbeamercovered{transparent}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english,russian]{babel}
+% or whatever
+
+\usepackage[cp1251]{inputenc}
+% or whatever
+
+%\usepackage{times}
+%\usepackage{mathptmx}
+
+\usepackage[T2A]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{verbatim}
+\usepackage{color}
+\usepackage{bm}
+
+\title[] % (optional, use only with long paper titles)
+{Численное моделирование нестационарных задач диффузии нейтронов}
+
+%\subtitle
+%{Include Only If Paper Has a Subtitle}
+
+\author[] % (optional, use only with lots of authors)
+{А.В. Аввакумов \inst{1} \and П.Н. Вабищевич \inst{2} \and \\ \underline{А.О. Васильев \inst{2, 3}} \and В.Ф. Стрижов \inst{2}}
+% - Give the names in the same order as the appear in the paper.
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+
+\institute[\inst{1}] % (optional, but mostly needed)
+{
+\inst{1} Научно-исследовательский центр <<Курчатовский институт>>, Москва
+\\
+\inst{2} Институт проблем безопасного развития атомной энергетики РАН, Москва
+\\ 
+\inst{3} Северо-Восточный федеральный университет им. М.К. Аммосова, Якутск
+}
+
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+
+\date[СКТеММ-2016, 27 июня -- 1 июля, 2016, Москва] % (optional, should be abbreviation of conference name)
+{СКТеММ-2016, 27 июня -- 1 июля 2016, Москва}
+% - Either use conference name or its abbreviation.
+% - Not really informative to the audience, more for people (including
+%   yourself) who are reading the slides online
+
+\subject{Theoretical Computer Science}
+% This is only inserted into the PDF information catalog. Can be left
+% out. 
+
+% Папка с рисунками
+\newcommand{\grad}{\mathop{\rm grad}\nolimits}
+\renewcommand{\div}{\mathop{\rm div}\nolimits}
+\newcommand{\const}{\mathop{\rm const}\nolimits}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+{
+  \begin{frame}<beamer>
+    \tableofcontents
+  \end{frame}
+}
+
+\section{Введение}
+\begin{frame}{Введение}
+\begin{itemize}
+\item
+Уравнение переноса нейтронов
+\item
+Многогрупповое диффузионное приближение
+\item
+Нодальные методы, МКЭ
+\item
+Спектральные характеристики
+\item
+Регулярный режим
+
+\end{itemize}
+\end{frame}
+
+\section{Математическая модель}
+\subsection{Многогрупповое диффузионное приближение}
+\begin{frame}{Многогрупповое диффузионное приближение}
+Динамика нейтронного потока рассматривается в ограниченной выпуклой 2D или 3D области  $\Omega$ с границей $\partial \Omega$. Перенос нейтронов описывается системой уравнений:
+\[
+\begin{split}
+ \frac{1}{v_g} \frac{\partial \phi_g}{\partial t} - & \nabla \cdot D_g \nabla \phi_g + \Sigma_{rg} \phi_g 
+ - \sum_{g\neq g'=1}^{G} \Sigma_{s,g'\rightarrow g} \phi_{g'} = \\
+ =  & \ (1-\beta) \chi_g \sum_{g'=1}^{G} \nu \Sigma_{fg'} \phi_{g'} + \widetilde{\chi}_g \sum_{m=1}^{M} \lambda_m c_m , \quad 
+ g = 1,2, ..., G .
+\end{split}
+\]
+Здесь $\phi_g$ -- поток нейтронов,
+$v_g$ -- эффективная скорость,\\
+$D_g$ -- коэффициент диффузии, 
+$\Sigma_{rg}$ -- сечение увода,\\
+$\Sigma_{s,g'\rightarrow g}$ -- сечение рассеяния,
+$\nu\Sigma_{fg}$ -- сечение генерации,\\
+$\beta$ -- эффективная доля запаздывающих нейтронов (ЗН),\\ 
+$\chi_g$, $\widetilde{\chi}_g$  -- спектры МН и ЗН, 
+$c_m$ -- плотность источников ЗН,\\  
+$\lambda_m$ -- постоянная распада источников ЗН.
+\end{frame}
+
+\begin{frame}{Запаздывающие нейтроны}
+Плотность источников запаздывающих нейтронов описывается уравнениями:
+\[
+ \frac{\partial c_m}{\partial t} + \lambda_m c_m = \beta_m \sum_{g=1}^{G} \nu \Sigma_{fg} \phi_g,
+ \quad m = 1,2, ..., M, 
+\]
+где $\beta_m$ --- доля запаздывающих нейтронов  $m$ типа, причем:
+\[
+ \beta = \sum_{m=1}^{M} \beta_m .
+\] 
+
+\end{frame}
+
+\begin{frame}{Без учета запаздывающих нейтронов}
+Без учета запаздывающих нейтронов можно ограничиться задачей для нейтронного потока:
+\[
+\begin{split}
+ \frac{1}{v_g} \frac{\partial \phi_g}{\partial t} - & \nabla \cdot D_g \nabla \phi_g + \Sigma_{rg} \phi_g 
+ - \sum_{g\neq g'=1}^{G} \Sigma_{s,g'\rightarrow g} \phi_{g'} = \\
+ =  & ((1-\beta)\chi_g + \beta\widetilde{\chi}_g) \sum_{g'=1}^{G} \nu \Sigma_{fg'} \phi_{g'} , \quad 
+ g = 1,2, ..., G .
+\end{split}
+\]
+\end{frame}
+
+\begin{frame}{Начальные и граничные условия}
+На границе области $\partial \Omega$ ставятся условия альбедного типа:
+\[
+ D_g\frac{\partial \phi_g}{\partial n} + \gamma_g \phi_g = 0, \quad 
+ \quad g = 1,2, ..., G ,
+\]
+где $n$ -- внешняя нормаль к границе $\partial \Omega$, $\gamma_g$ -- групповой альбедный параметр.
+\vfill
+
+Рассматривается краевая задача с граничными условиями альбедного типа, и начальными условиями:
+\[
+\phi_g(\bm x,0) = \phi_g^0(\bm x), 
+\quad  g = 1,2, ..., G ,
+\quad   c_m(\bm x,0) = c_m^0(\bm x), 
+\quad  m = 1,2, ..., M .
+\]
+\end{frame}
+
+\subsection{Операторная формулировка}
+\begin{frame}{Операторная формулировка}
+Обозначения
+\[
+\begin{split}
+\bm \phi = &\ \{\phi_1, \phi_2, ..., \phi_G\},
+\bm c = \{c_1, c_2, ..., c_M\} \\
+V = &\ (v_{g g'}), \quad v_{g g'} = \delta_{g g'} v_g^{-1}, 
+\\
+D = &\ (d_{g g'}), \quad d_{g g'} = - \delta_{g g'} \nabla \cdot D_g \nabla, 
+\\
+S = &\ (s_{g g'}), \quad  s_{g g'} = \delta_{g g'} \Sigma_{rg} - \Sigma_{s,g'\rightarrow g}, 
+\\
+R = &\ (r_{g g'}), \quad  r_{g g'} = (1-\beta)\chi_g \nu \Sigma_{fg'}, 
+\\
+\widetilde{R} = &\ (\widetilde{r}_{gg'}), \quad \widetilde{r}_{gg'} = ((1-\beta)\chi_g + \beta\widetilde{\chi}_g)\nu\Sigma_{fg'},
+\\
+B = &\ (b_{g m}), \quad b_{g m} = \widetilde{\chi}_g \lambda_m, 
+\\
+\Lambda = &\ (\lambda_{m m'}), \quad  \lambda_{m m'} = \lambda_m \delta_{m m'}, 
+\\
+Q = &\ (q_{mg}), \quad  q_{mg} = \beta_m \nu \Sigma_{fg},
+\\
+g, g' = &\ 1,2, ..., G, \quad m, m' = 1,2, ....,M,  
+\end{split}
+\]
+где
+\[
+ \delta_{g g'} = \left \{ 
+ \begin{matrix}
+ 1, & g = g', \\
+ 0, & g \neq  g'.
+ \end{matrix}
+ \right . 
+\]
+\end{frame}
+
+\begin{frame}{Операторная формулировка}
+С учетом введенных обозначений система уравнений с учетом запаздывающих нейтронов записывается в следующем виде:
+\[
+\begin{split}
+V \frac{d \bm \phi}{d t} + (D+S) \bm \phi &= R \bm \phi + B\bm c,
+\\
+\frac{d \bm c}{d t} + \Lambda \bm c &= Q \bm \phi. 
+\end{split}
+\]
+Без учета запаздывающих нейтронов:
+\[
+ V \frac{d \bm \phi}{d t} + (D+S) \bm \phi = \widetilde{R} \bm \phi.
+\]
+Рассматривается задача Коши при следующих начальных и граничных условиях:
+\begin{eqnarray*}
+\bm \phi(0) = \bm \phi^0, \quad  \bm c(0) = \bm c^0,
+\qquad
+D\frac{d \bm\phi}{d n} + L \bm \phi = 0,
+\end{eqnarray*}  
+где $L = (l_{g g'}), \quad l_{g g'} = \delta_{g g'} \gamma_g$.
+\end{frame}
+
+
+\subsection{Спектральные задачи}
+\begin{frame}{Спектральные задачи}
+С учетом запаздывающих нейтронов она формулируется в виде:
+\[
+\begin{split}
+(D+S) \bm \varphi  &= \mu  (R \bm \varphi + B \bm s),\\
+\Lambda \bm s &= \mu Q \bm \varphi .
+\end{split}
+\]
+Аналогично, без учета запаздывающих нейтронов:
+\[
+\begin{split}
+(D+S) \bm \varphi  &= \mu \widetilde{R} \bm \varphi.\\
+\end{split}
+\]
+Минимальное собственное значение:
+\[
+ k = \frac{1}{\mu^{(1)}}  
+\] 
+есть эффективный коэффициент размножения.
+Значение $k = \mu^{(1)} = 1$ связывается с критическим состоянием реактора, соответствующая
+собственная функция $\bm \varphi^{(1)}(\bm x)$ есть стационарное решение уравнения.
+\end{frame}
+
+\begin{frame}{Регулярный режим}
+Более приемлемая спектральная характеристика связана с $\alpha$-спектральной задачей.
+С учетом запаздывающих нейтронов она имеет вид
+\[
+\begin{split}
+ (D+S - R) \bm \varphi  -  B \bm s & = \mu V \bm \varphi , \\
+ \Lambda \bm s - Q \bm \varphi & =  \mu   \bm s .
+\end{split} 
+\]
+Без учета запаздывающих нейтронов имеем
+\[
+(D + S - \widetilde{R})\bm \varphi  =  \mu V \bm \varphi.
+\]
+Главное собственное значение
+\[ 
+ \alpha = \mu^{(1)}
+\]
+называется $\alpha$--собственным значением (период реактора). \\
+С собственным значением $\alpha$ 
+можно связать асимптотическое поведение
+решения задачи Коши  при больших временах. 
+В этом регулярном режиме поведение реактора описывается функцией $e^{-\alpha t} \bm\varphi^{(1)}(\bm x)$, 
+то есть поведение решения определяется только первой гармоникой. 
+\end{frame}
+
+\section{Дискретизация}
+\subsection{Аппроксимация по времени}
+\begin{frame}{Аппроксимация по времени}
+Определим сетку
+$\omega = \{ t^n=n \tau, \quad n = 0,1,...,N, \quad \tau N = T \}$ и используем обозначения $\bm\phi^n = \bm\phi(\bm{x}, t^n)$, $\bm c^n = \bm c(\bm{x}, t^n)$.\\
+
+Используется численно-аналитический метод:
+\[
+  \frac{\partial e^{\lambda_m t}  c_m}{\partial t} = \beta_m  e^{\lambda_m t} \sum_{g=1}^{G} \nu \Sigma_{fg} \phi_g,
+ \quad m = 1,2, ..., M .
+\] 
+Интегрирование от $t^{n}$ до $t^{n+1}$ дает:
+\begin{eqnarray*}
+c_m^{n+1} = e^{-\lambda_m\tau} c_m^n + \beta_m \int_{t_n}^{t_{n+1}}e^{\lambda_m (t-t^{n+1})} \sum_{g=1}^{G} \nu \Sigma_{fg} \phi_g d t,
+ \quad m = 1,2, ..., M.
+\end{eqnarray*}
+\end{frame}
+
+\begin{frame}{Без учета запаздывающих нейтронов}
+Чисто неявная схема:
+\[
+V\frac{\bm\phi^{n+1}-\bm\phi^n}{\tau}+(D+S)\bm\phi^{n+1} = \widetilde{R} \bm\phi^{n+1}.
+\]
+Явно-неявная схема:
+\[
+V\frac{\bm\phi^{n+1}-\bm\phi^n}{\tau}+(D+S)\bm\phi^{n+1} = \widetilde{R} \bm\phi^{n}.
+\]
+Схема Кранка-Николсон:
+\[
+V\frac{\bm\phi^{n+1}-\bm\phi^n}{\tau}+(D+S)\frac{\bm\phi^{n+1} + \bm\phi^{n}}{2} = \widetilde{R} \frac{\bm\phi^{n+1} + \bm\phi^{n}}{2}.
+\]
+\end{frame}
+
+\begin{frame}{С учетом запаздывающих нейтронов}
+Чисто неявная схема:
+\[
+\begin{split}
+V \frac{\bm\phi^{n+1}-\bm\phi^n}{\tau}+(D+S) 
+\bm \phi^{n+1} &= R \bm \phi^{n+1} + B\bm c^{n+1},
+\\
+\bm{c}^{n+1} & = \widetilde{\Lambda}\bm{c}^{n} + \tau Q \bm{\phi}^{n+1},
+\end{split}
+\]
+где
+\[
+\widetilde{\Lambda} = (\widetilde{\lambda}_{mm'}), \quad \widetilde{\lambda}_{mm'} = \delta_{mm'} e^{-\lambda_m\tau},
+ \quad m, m' = 1,2, ....,M .
+\]
+Явно-неявная схема:
+\[
+\begin{split}
+V \frac{\bm{\phi}^{n+1} - \bm{\phi}^{n}}{\tau}+(D+S)\bm{\phi}^{n+1} &= R\bm{\phi}^{n} + B\bm{c}^{n+1} , \\
+\bm{c}^{n+1} & = \widetilde{\Lambda}\bm{c}^{n} + \tau \widetilde{Q} \bm{\phi}^{n},
+\end{split}
+\]
+где 
+\[
+\widetilde{Q} = (\widetilde{q}_{mg}), \quad \widetilde{q}_{mg}=e^{-\lambda_m\tau}\beta_m\nu\Sigma_{fg}, 
+ \quad g = 1,2, ..., G,
+ \quad m = 1,2, ....,M .
+\]
+\end{frame}
+
+\subsection{Метод конечных элементов}
+\begin{frame}{Метод конечных элементов}
+%\begin{footnotesize}
+Пусть $H^1(\Omega)$ -- пространство Соболева, $v \in H^1$ таких, 
+что $v^2$ и  $\vert\nabla v\vert^2$ имеют конечный интеграл в $\Omega$. Для  $\bm v = \{v_1, v_2, ..., v_d\}$ определим аналогично $V^d = [H^1(\Omega)]^d$.  
+Обозначения для тестовых функций $\bm \xi  = \{\xi_1, \xi_2, ..., \xi_G\}$,
+$\bm \zeta  = \{\zeta_1, \zeta_2, ..., \zeta_M\}$.\\ 
+Вариационная постановка: найти $\bm \phi \in V^D, \ \bm c \in V^M$, для которых имеет место:
+\[
+\begin{split}
+\int_\Omega \left (V \frac{\bm\phi^{n+1}-\bm\phi^n}{\tau} + S
+\bm \phi^{n+1} \right )\bm \xi  d\bm x 
++ \int_{\Omega} \sum_{g=1}^{G} D_G \nabla \phi^{n+1}_g \nabla  \xi_g d\bm x + \\
++ \int_{\partial \Omega} \sum_{g=1}^{G} \gamma_g \phi^{n+1}_g \xi_g d\bm x
+= \int_\Omega R \bm \phi^{n+1}\bm \xi d\bm x + \int_\Omega B\bm c^{n+1}\bm \xi d\bm x,
+\\
+\int_\Omega \bm{c}^{n+1}\bm \zeta d\bm x = \int_\Omega \widetilde{\Lambda}\bm{c}^{n}\bm \zeta  d\bm x + \int_\Omega \tau Q \bm{\phi}^{n+1}\bm \zeta  d\bm x
+\end{split}
+\]
+при всех $\bm \xi  \in V^D, \ \bm \zeta  \in V^M$.
+%\end{footnotesize}
+\end{frame}
+
+\section{Модельная задача}
+\subsection{ВВЭР-1000}
+\begin{frame}{ВВЭР-1000 без отражателя}
+\begin{columns}[t] %выравнивание сверху
+\column{0.5\textwidth}
+\begin{block}{Геометрия}
+\includegraphics[width=1\linewidth] {2.png}
+\end{block}
+\column{0.5\textwidth}
+\begin{block}{Параметры}
+Число треугольников на кассету $\kappa$ варьируется от 6 до 96:
+\includegraphics[width=0.34\linewidth] {3-1.png}
+\includegraphics[width=0.34\linewidth] {3-2.png}\includegraphics[width=0.34\linewidth] {3-3.png} \\
+Используются Лагранжевые КЭ порядка $p =
+1, 2, 3$:
+\includegraphics[width=1\linewidth] {1.png} \\
+\end{block}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Программное обеспечение}
+\includegraphics[width=1\linewidth] {slepc.jpg}
+\\
+\includegraphics[width=1\linewidth] {fenics.png}
+\end{frame}
+
+\subsection{Результаты решения спектральной задачи}
+\begin{frame}{Результаты решения $\alpha$-спектральной задачи (без учета запаздывающих нейтронов)}
+\begin{table}[H]
+\caption{Собственные значения $\alpha_i = \mu^{(i)}, \ i = 1,2, ..., 5$}
+\label{t-2}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$\kappa$ & $p$ & $\alpha_1$ &  $\alpha_2, \alpha_3$ &  $\alpha_4, \alpha_5$ \\ 
+\hline
+   & 1 & -105.032 & 159.802 $\pm$ 0.025510$i$  & 659.109 $\pm$ 0.034667$i$  \\
+6  & 2 & -139.090 & 115.793 $\pm$ 0.029186$i$  & 591.782 $\pm$ 0.034667$i$  \\
+   & 3 & -140.223 & 114.035 $\pm$ 0.033814$i$  & 588.762 $\pm$ 0.069025$i$  \\
+\hline
+   & 1 & -130.422 & 126.984 $\pm$ 0.034409$i$  & 608.734 $\pm$ 0.070724$i$  \\
+24 & 2 & -140.187 & 114.089 $\pm$ 0.033512$i$  & 588.849 $\pm$ 0.068555$i$  \\
+   & 3 & -140.281 & 113.887 $\pm$ 0.033604$i$  & 588.415 $\pm$ 0.068695$i$  \\
+\hline
+   & 1 & -137.704 & 117.345 $\pm$ 0.033823$i$  & 593.818 $\pm$ 0.069254$i$  \\
+96 & 2 & -140.284 & 113.886 $\pm$ 0.033599$i$  & 588.419 $\pm$ 0.068687$i$  \\
+   & 3 & -140.308 & 113.842 $\pm$ 0.033603$i$  & 588.336 $\pm$ 0.068690$i$  \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+\end{frame}
+
+\begin{frame}{Результаты решения $\alpha$-спектральной задачи (с учетом запаздывающих нейтронов)}
+\begin{table}[H]
+\caption{Собственные значения $\alpha_i = \mu^{(i)}, \ i = 1,2, ..., 5$}
+\label{t-3}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$\kappa$ & $p$ & $\alpha_1$ &  $\alpha_2, \alpha_3$ &  $\alpha_4, \alpha_5$ \\ 
+\hline
+   & 1 & -0.22557 & 0.04241 $\pm$ 3.08808e-06$i$  & 0.06588 $\pm$ 4.80448e-07$i$  \\
+6  & 2 & -2.10154 & 0.03592 $\pm$ 4.96474e-06$i$  & 0.06452 $\pm$ 1.21320e-06$i$  \\
+   & 3 & -2.47975 & 0.03561 $\pm$ 5.83719e-06$i$  &  0.06445 $\pm$ 1.41869e-06$i$  \\
+\hline
+   & 1 & -0.82680 & 0.03777 $\pm$ 5.37884e-06$i$  & 0.06489 $\pm$ 1.37315e-06$i$  \\
+24 & 2 & -2.46601 & 0.03562 $\pm$ 5.78277e-06$i$  & 0.06445 $\pm$ 1.40897e-06$i$  \\
+   & 3 & -2.50294 & 0.03559 $\pm$ 5.80783e-06$i$  & 0.06444 $\pm$ 1.41341e-06$i$  \\
+\hline
+   & 1 & -1.74998 & 0.03619 $\pm$ 5.69002e-06$i$  & 0.06456 $\pm$ 1.40299e-06$i$  \\
+96 & 2 & -2.50375 & 0.03559 $\pm$ 5.80693e-06$i$  & 0.06444 $\pm$ 1.41324e-06$i$  \\
+   & 3 & -2.51280 & 0.03558 $\pm$ 5.80954e-06$i$  & 0.06444 $\pm$ 1.41362e-06$i$  \\
+\hline
+
+\end{tabular}
+\end{center}
+\end{table}
+\end{frame}
+
+\subsection{Выход на регулярный режим}
+\begin{frame}{Выход на регулярный режим}
+Начальные условия для всех схем:
+\[ 
+\phi_1^0 = 1.0, \quad \phi_2^0 = 0.25
+\]
+при  $k=24$, $p=2$. Пусть $T=5\times 10^{-3}$ и рассмотрим решение   чисто неявной схемы при $\tau = 1 \times 10^{-5}$ как квазиточное решение. \\
+Выход на регулярный режим будем контролировать с помощью оценки близости отнормированного решения нестационарной задачи и главной собственной функции $\bm \phi$. Для первой группы положим:
+\[
+ \eta(t) = \|\overline{\phi}_1(t) - \overline{\varphi}_1\|, 
+ \quad  \overline{\phi}_1(t) = \frac{\phi_1(t)}{\|\phi_1(t)\|} ,
+ \quad  \overline{\varphi}_1 = \frac{\varphi_1}{\|\varphi_1\|} .
+\] 
+Установление темпа динамического развития оценивается величиной:
+\[
+\theta(t) = \frac{1}{\sqrt{2} \norm{\alpha}} \left ( 
+\norm{\frac{1}{\phi_1(t)}\frac{\partial\phi_1(t)}{\partial t} - \alpha}^2 +
+\norm{\frac{1}{\phi_2(t)}\frac{\partial\phi_2(t)}{\partial t} - \alpha}^2 \right )^{1/2}.
+\]
+\end{frame}
+
+\begin{frame}{Без учета ЗН, $\eta(t)$(слева) и $\theta(t)$(справа)}
+\begin{figure}[H]
+  \begin{center}
+\begin{minipage}{0.49\linewidth}
+\center{\includegraphics[width=1\linewidth]{10-1.png}} \\
+\end{minipage}
+\hfill
+\begin{minipage}{0.49\linewidth}
+\center{\includegraphics[width=1\linewidth]{10-2.png}} \\
+\end{minipage}
+\caption{Чисто неявная схема}
+\label{fig:10}
+  \end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Без учета ЗН, $\eta(t)$(слева) и $\theta(t)$(справа)}
+\begin{figure}[H]
+  \begin{center}
+\begin{minipage}{0.49\linewidth}
+\center{\includegraphics[width=1\linewidth]{11-1.png}} \\
+\end{minipage}
+\hfill
+\begin{minipage}{0.49\linewidth}
+\center{\includegraphics[width=1\linewidth]{11-2.png}} \\
+\end{minipage}
+\caption{Явно-неявная схема}
+\label{fig:11}
+  \end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Без учета ЗН, $\eta(t)$(слева) и $\theta(t)$(справа)}
+\begin{figure}[H]
+  \begin{center}
+\begin{minipage}{0.49\linewidth}
+\center{\includegraphics[width=1\linewidth]{12-1.png}} \\
+\end{minipage}
+\hfill
+\begin{minipage}{0.49\linewidth}
+\center{\includegraphics[width=1\linewidth]{12-2.png}} \\
+\end{minipage}
+\caption{Схема Кранка-Николсон}
+\label{fig:12}
+  \end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}{C учетом ЗН, $\eta(t)$(слева) и $\theta(t)$(справа)}
+\begin{figure}[H]
+  \begin{center}
+\begin{minipage}{0.49\linewidth}
+\center{\includegraphics[width=1\linewidth]{15-1.png}} \\
+\end{minipage}
+\hfill
+\begin{minipage}{0.49\linewidth}
+\center{\includegraphics[width=1\linewidth]{15-2.png}} \\
+\end{minipage}
+\caption{Чисто неявная схема}
+\label{fig:10}
+  \end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}{С учетом ЗН, $\eta(t)$(слева) и $\theta(t)$(справа)}
+\begin{figure}[H]
+  \begin{center}
+\begin{minipage}{0.49\linewidth}
+\center{\includegraphics[width=1\linewidth]{16-1.png}} \\
+\end{minipage}
+\hfill
+\begin{minipage}{0.49\linewidth}
+\center{\includegraphics[width=1\linewidth]{16-2.png}} \\
+\end{minipage}
+\caption{Явно-неявная схема}
+\label{fig:11}
+  \end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Эволюция, $t=0.0001$}
+\begin{center}
+\includegraphics[width=0.75\linewidth] {13-1.png} 
+\end{center}
+\end{frame}
+\begin{frame}{Эволюция, $t=0.0004$}
+\begin{center}
+\includegraphics[width=0.75\linewidth] {13-2.png} 
+\end{center}
+\end{frame}
+\begin{frame}{Эволюция, $t=0.0016$}
+\begin{center}
+\includegraphics[width=0.75\linewidth] {13-3.png} 
+\end{center}
+\end{frame}
+\begin{frame}{Эволюция, $t=0.0064$}
+\begin{center}
+\includegraphics[width=0.75\linewidth] {13-4.png} 
+\end{center}
+\end{frame}
+
+%\subsection{AER-2 benchmark}
+%\begin{frame}{Short description}
+%\begin{itemize}
+%\item
+%A three-dimensional hexagonal dynamic benchmark describing the ejection of a peripheral control rod in a VVER-440 core with neutron kinetics and simple adiabatic Doppler feedback. The initially critical reactor experiences a power excursion without any reactor scram.  The power of the reactor is limited by the continuous accumulation of heat in the fuel.
+%\item
+%Comparison of 3-three dimensional neutron kinetic codes for a rod ejection accident with a simple Doppler feedback mechanism which is the most important feedback mechanism for this type of transients. The assumption of adiabatic fuel temperature heating do not require a detailed thermohydraulic model in the neutron kinetic code. 
+%\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{Geometry}
+%\begin{footnotesize}
+%\begin{minipage}{0.5 \textwidth}
+%\begin{center}
+%\includegraphics[width=\textwidth]{geo_cartogramm.jpg}
+%\\
+%Core map.
+%\\
+%We simulate ejection of emergency control rod (solid red).
+%\end{center}
+%\end{minipage} 
+%\begin{minipage}{0.48 \textwidth}
+%\begin{center}
+%\includegraphics[width=\textwidth]{geo_axial.jpg}
+%\\
+%Cross-section.
+%\end{center}
+%\end{minipage}
+%\end{footnotesize}
+%\end{frame}
+%
+%\begin{frame}{Adiabatic feedback}
+%The adiabatic feedback is described by the following dependence for the fission cross section of the second neutron energy group on fuel temperature:
+%\begin{eqnarray*}
+%\Sigma_{f2} = \Sigma_{f2}^0 \left[ 1 + \gamma (\sqrt{T_f} - \sqrt{T_{f0}})\right].
+%\end{eqnarray*}
+%It is assumed that the value of the Doppler constant $\gamma$ and the reference temperature   is independent from the type of fuel.
+%\\ 
+%The fuel temperature in the adiabatic heat is determined by solving the following heat balance equation:
+%\begin{eqnarray*}
+%\rho_f C_{pf} \frac{\partial T_f}{\partial t} = q_v,
+%\end{eqnarray*}
+%where $\rho_f$ -- density of fuel, $C_{pf}$ -- heat capacity of fuel, $q_v$ -- specific energy of the fuel.
+%\end{frame}
+%
+%\begin{frame}{Scenario}
+%\begin{itemize}
+%\item
+%The transient is initiated by the ejection of the emergency rod in 0.16 s at hot zero power. The constant speed of 12.5 m/s is assumed. The initial reactor power is 1.375 kW. 
+%\item
+%The feedback mechanism is based on the adiabatic increase of fuel temperature from the initial value of 260 °C. No heat is removed from the fuel. The transient is simulated up to t = 2 s.
+%
+%\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{Available codes}
+%\begin{itemize}
+%\item
+%The first results of the calculation for AER-2 benchmark were obtained by DYN3D, KIKO3D, HEXTRAN and BIPR-8 codes in the period from 1993 to 1996. These results can be considered obsolete because in later computations with improved calculation methods, the results significantly changed. For example, by comparing the results obtained by KIKO3D and KIKO3DMG or DYN3D and DYN3D(HEXNEM2) codes.
+%\item
+%For AER-2 benchmark there is still no "reference" solution.
+%%Although the results of the calculations on small grids on Codes CRONOS and MAG, received 12 years ago, not officially declared as a "reference" \ solutions, they can be used for comparative analysis of stationary energy fields at the initial time and at the time of full ejection of the emergency control rods.
+%Although the computational results obtained using CRONOS and MAG codes on coarse meshes, received 12 years ago, are not officially declared as a "reference" \ solutions, they can be used for comparative analysis of stationary state at the initial time and at the time of full ejection of the emergency control rod.
+%For the dynamic part of the benchmark, we have to use cross-verification of the various codes for comparative analysis.
+%
+%\end{itemize}
+%\end{frame}
+%
+%\subsection{Computational results for stationary state}
+%\begin{frame}{Computational results for stationary state}
+%\begin{footnotesize}
+%The effectiveness of extracted control rods  is determined by the following formula:
+%\begin{eqnarray*}
+%\rho_{CR} = 1 - \frac{K_{in}}{K_{out}},
+%\end{eqnarray*}
+%where $K_{in}$ and $K_{out}$ -- multiplication factors
+%in the initial state and after removal of control rods.
+%Value $\rho_{CR}$ is a determining factor in reactor power change in the transition process with ejection control rod.
+%\begin{table}
+%\begin{tabular}{|l|c|c|c|c|}
+%\hline
+%Code / per assembly x NZ x p & $K_{in}$ & $K_{out}$ &  $\rho_{CR}$, \% &  $\epsilon_{CR}$, \% \\ 
+%\hline
+%\textcolor{red}{CRONOS} / (extrapolation)& 0.997840 & 1.008460 & 1.0532 & -- \\
+%\hline 
+%KIKO3D / NZ=10 			& 0.999994 & 1.009926 & 0.9834 & -6.6 \\
+%\hline 
+%DYN3D / NZ=10 			& 0.999941 & 1.009792 & 0.9755 & -7.4 \\
+%\hline
+%БИПР8 / NZ=10 			& 0.998442 & 1.008673 & 1.0143 & -3.7 \\
+%\hline
+%HEXTRAN / NZ=10			& 0.999020 & 1.009181 & 1.0069 & -4.4 \\
+%\hline
+%\textcolor{green}{SKETCH-N} / 6x10			& 0.998169 & 1.008530 & 1.0273 & -2.5 \\
+%\hline
+%\textcolor{green}{KIKO3DMG} / 384x25		& 0.997990 & 1.008601 & 1.0521 & -0.1 \\
+%\hline 
+%\textcolor{green}{SOCRAT-MIRT} / 6x40      & 0.998289 & 1.008726 & 1.0347 & -1.8 \\
+%\hline
+%\textcolor{blue}{our results} / 6x10x2    & 0.997451 & 1.008249 & 1.0709 & 1.7 \\
+%\hline
+%\textcolor{blue}{our results} / 6x20x2    & 0.997701 & 1.008387 & 1.0597 & 0.6 \\
+%\hline
+%\textcolor{blue}{our results} / 6x40x2    & 0.997813 & 1.008453 & 1.0550 & 0.2 \\
+%\hline
+%
+%\end{tabular}
+%\end{table}
+%\end{footnotesize}
+%\end{frame}
+%
+%\begin{frame}{$\rho_{CR}$ versus mesh}
+%\begin{center}
+%\includegraphics[width=0.85\linewidth] {ro.png}\\
+%Numerical results for different order of finite element.
+%\end{center}
+%\end{frame}
+%
+%\subsection{Computational results for transitional state}
+%\begin{frame}{Power versus time}
+%\includegraphics[width=0.85\linewidth] {power6.png}
+%\\
+%Numerical results for different meshes.
+%\end{frame}
+%
+%\begin{frame}{Computational results for transitional state}
+%\begin{minipage}{0.49 \textwidth}
+%\begin{center}
+%\includegraphics[width=\textwidth]{power0.png}
+%\\ 
+%Computational results obtain with various codes.
+%\end{center}
+%\end{minipage} 
+%\begin{minipage}{0.49 \textwidth}
+%\begin{center}
+%\includegraphics[width=\textwidth]{power.png}
+%\\
+%Our code (results for 24x20x2)
+%\phantom{123123123123}
+%\end{center}
+%\end{minipage}
+%\end{frame}
+
+\section{Заключение}
+\begin{frame}{Заключение}
+\begin{footnotesize}
+\begin{itemize}
+\item
+Рассмотрена нестационарная задача диффузии нейтронов в ядерном реакторе при использовании многогруппового приближения. 
+Выделена $\alpha$-спектральная задача, которая характеризует
+динамическое нейтронное поле ядерного реактора  на асимптотической стадии при больших временах -- регулярный режим.
+\item
+Контроль точности приближенного решения проводиться на последовательности сгущающихся сеток с использованием конечных элементов различной степени.
+\item
+Рассмотрена нестационарная задача диффузии нейтронов с выходом на регулярный режим в двух случаях: с учетом ЗН и без учета ЗН. 
+\item
+Тестовые расчеты выполнены в двумерном приближении для ядерного реактора ВВВЭР-1000 без отражателя с использованием двухгруппового диффузионного приближения. Установлена хорошая отделимость собственных значений в $\alpha$-спектральной задаче с учетом и без учета ЗН. 
+\item
+Наблюдается хорошая сходимость нестационарной задачи при уменьшении шага по времени для чисто неявной схемы. Явно-неявная схема сходится намного хуже,  чем чисто неявная схема. Схема Кранка-Николсон хоть и имеет второй порядок аппроксимации, практически непригодна для моделирования регулярного режима ядерного реактора. 
+
+\end{itemize}
+\end{footnotesize}
+
+\end{frame}
+
+\begin{frame}{Благодарность}
+Работа выполнена при финансовой поддержке РФФИ (проект 16-08-01215).
+\linebreak
+\vfill
+Спасибо за внимание! 
+Вопросы?
+\end{frame}
+\end{document}
