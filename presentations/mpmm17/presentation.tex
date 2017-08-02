@@ -171,12 +171,20 @@ V \frac{d \bm \phi}{d t} + (D+S) \bm \phi = R \bm \phi + B\bm c,
 \\
 \frac{d \bm c}{d t} + \Lambda \bm c = Q \bm \phi. 
 \end{eqnarray*}  
+<<<<<<< HEAD
 The Cauchy problem is solved under the following boundary and initial conditions:
 \begin{eqnarray*}
 D\frac{d \bm\phi}{d n} + L \bm \phi = 0, \quad
 \bm \phi(0) = \bm \phi^0, \quad  \bm c(0) = \bm c^0,
 \end{eqnarray*}  
 where $L = (l_{g g'}), \quad l_{g g'} = \delta_{g g'} \gamma_g, \quad \bm \phi^0 = \{ \phi_1^0,  \phi_2^0, ...,  \phi_G^0 \}, \quad
+=======
+The Cauchy problem is solved under the following initial conditions:
+\begin{eqnarray*}
+\bm \phi(0) = \bm \phi^0, \quad  \bm c(0) = \bm c^0,
+\end{eqnarray*}  
+where $\bm \phi^0 = \{ \phi_1^0,  \phi_2^0, ...,  \phi_G^0 \}, \quad
+>>>>>>> 40465cb92bcef1ba4655d1db00c39dff93a204d9
 \bm c^0 = \{ c_1^0,  c_2^0, ...,  c_M^0 \}$.
 \end{footnotesize}
 \end{frame}
@@ -331,8 +339,22 @@ This representation is not very suitable for practical use with modal approximat
 
 \subsection{Time scale processes}
 \begin{frame}{Time scale processes}
+<<<<<<< HEAD
 The initial condition includes two components  $\bm u_h^s (\bm x) = (\bm \phi_h^s (\bm x), \bm c_h^s (\bm x))$.
 Dynamic behaviour of these components is due to different time-scale processes. Delayed neutrons source determines \textbf{slow processes}, when  $\bm c(\bm x,t)$ changes slightly with the reactor state change. In contrast, neutron flux $\bm \phi(\bm x,t)$ determines \textbf{fast processes} when the reactor state changes. By virtue of this separation of dynamic processes, we model the slow phase of the dynamics of the reactor with modal approximation and orientate ourselves on the approximate prediction of the initial state for delayed neutrons, only the function  $\bm c_h^s (\bm x)$ is approximated. The approximation  $\bm \phi_h^s (\bm x)$ is not of interest to us; we do not model a fast phase of the state change.
+=======
+The initial condition includes two components  
+\[
+\bm u_h^s (\bm x) = (\bm \phi_h^s (\bm x), \bm c_h^s (\bm x)).
+\]
+Dynamic behaviour of these components is due to different time-scale processes. 
+\vspace{1em}
+
+Delayed neutrons source determines \textbf{slow processes}, when  $\bm c(\bm x,t)$ changes slightly with the reactor state change. In contrast, neutron flux $\bm \phi(\bm x,t)$ determines \textbf{fast processes} when the reactor state changes. 
+\vspace{1em}
+
+By virtue of this separation of dynamic processes, we model the slow phase of the dynamics of the reactor with modal approximation and orientate ourselves on the approximate prediction of the initial state for delayed neutrons, only the function  $\bm c_h^s (\bm x)$ is approximated. The approximation  $\bm \phi_h^s (\bm x)$ is not of interest to us, we do not model a fast phase of the state change.
+>>>>>>> 40465cb92bcef1ba4655d1db00c39dff93a204d9
 \end{frame}
 
 \subsection{Adjoint spectral problem}
@@ -382,9 +404,15 @@ The dynamics of the VVER-1000 reactor during the transition from the supercritic
 \includegraphics[width=1\linewidth]{geo.png}
 \column{0.5\textwidth}
 \begin{itemize}
+<<<<<<< HEAD
 \item two-dimensional and two-group approximation
 \item one groups of delayed neutrons
 \item the number of triangles per cassette $\kappa$ varies from 6 to 96
+=======
+\item two-dimensional
+\item two group instantaneous and one group of delayed neutrons
+\item triangles per cassette $\kappa$ varies from 6 to 96
+>>>>>>> 40465cb92bcef1ba4655d1db00c39dff93a204d9
 \item order of finite elements $p$ varies from 1 to 3
 \item two types of perturbation
 \end{itemize}
