@@ -27,7 +27,7 @@
 
 \author[] % (optional, use only with lots of authors)
 {Alexander Avvakumov \inst{1} \and Valery Strizhov \inst{2} \\ 
-\and Petr Vabishchevich \inst{2,3} \and \underline{Alexander Vasilev \inst{3}}}
+\and Petr Vabishchevich \inst{2,3} \and \underline{Aleksandr Vasilev \inst{3}}}
 % - Give the names in the same order as the appear in the paper.
 % - Use the \inst{?} command only if the authors have different
 %   affiliation.
@@ -44,7 +44,7 @@
 % - Use the \inst command only if there are several affiliations.
 % - Keep it simple, no one is interested in your street address.
 
-\date[July 31- August 3, 2017] % (optional, should be abbreviation of conference name)
+\date[August 3, 2017] % (optional, should be abbreviation of conference name)
 {\small Multiscale Methods and Large-scale Scientific Computing\\
 July 31- August 3, 2017, Yakutsk}
 % - Either use conference name or its abbreviation.
@@ -75,23 +75,36 @@ July 31- August 3, 2017, Yakutsk}
 
 \section{Introduction}
 \begin{frame}{Introduction}
-\begin{footnotesize}
+
+\begin{minipage}{0.44\linewidth}
 \begin{itemize}
 \item
-Quasistatic method. 
-In this case, an approximate solution is represented as a product of two functions: one of which depends on the time and is related to the amplitude, the second (shape function) describes the spatial distribution. The shape function is often associated with the fundamental eigenfunction of certain eigenvalue problems for neutron diffusion equations. 
+Neutron trasnport
 \item
-When using the quasistatic method, the problem is significantly simplified, thus, it is doubtful to obtain good accuracy for an approximate solution, in particular, in dynamic regimes with a complex redistribution of the neutron flux. For this reason, the more general approach of the modal method has been successfully developed.
-In this case, the solution is represented in the form of a sum of several dominant eigenvalues with time-dependent coefficients.
+Spectral problems
+%Nonstationary processes can naturally be described on the basis of the approximate solution expansion in time-eigenvalue of  $\alpha$-eigenvalue problem.
+%We deal with an unbound system of equations for the coefficients. It should also be noted that the eigenvalues are complex for both   $\lambda$- and 
+%$\alpha$-eigenvalue problem. To set the initial state, this leads to the need to solve the appropriate adjoint spectral problems.
 \item
-Nonstationary processes can naturally be described on the basis of the approximate solution expansion in time-eigenvalue of  $\alpha$-eigenvalue problem.
-We deal with an unbound system of equations for the coefficients. It should also be noted that the eigenvalues are complex for both   $\lambda$- and 
-$\alpha$-eigenvalue problem. To set the initial state, this leads to the need to solve the appropriate adjoint spectral problems.
+Quasistatic method
+%In this case, an approximate solution is represented as a product of two functions: one of which depends on the time and is related to the amplitude, the second (shape function) describes the spatial distribution. The shape function is often associated with the fundamental eigenfunction of certain eigenvalue problems for neutron diffusion equations. 
 \item
-In this paper, we formulate a general strategy for the approximate solution of nonstationary problems of neutron transport in nuclear reactors, which is oriented to fast real-time calculations using the State Change Modal (SCM) method. 
+Modal method
+%When using the quasistatic method, the problem is significantly simplified, thus, it is doubtful to obtain good accuracy for an approximate solution, in particular, in dynamic regimes with a complex redistribution of the neutron flux. For this reason, the more general approach of the modal method has been successfully developed.
+%In this case, the solution is represented in the form of a sum of several dominant eigenvalues with time-dependent coefficients.
 
 \end{itemize}
-\end{footnotesize}
+\end{minipage}
+\begin{minipage}{0.55\linewidth}
+\includegraphics[width=1\linewidth]{reactor.png}
+\end{minipage}
+
+\vspace{2em}
+
+\begin{small}
+In this paper, we formulate a general strategy for the approximate solution of nonstationary problems of neutron transport in nuclear reactors, which is oriented to fast real-time calculations using the State Change Modal (SCM) method. 
+\end{small}
+
 \end{frame}
 
 \section{Multigroup diffusion approximation}
@@ -127,6 +140,7 @@ where $\beta_m$ is is a fraction of delayed neutrons of $m$ type, and
 
 \subsection{Initial and boundary conditions}
 \begin{frame}{Initial and boundary conditions}
+\begin{minipage}{0.6\linewidth}
 The albedo-type conditions are set at the boundary $\partial \Omega$ of the area $\Omega$:
 \begin{eqnarray*}
  D_g\frac{\partial \phi_g}{\partial n} + \gamma_g \phi_g = 0, \quad 
@@ -139,10 +153,13 @@ We consider boundary problem with the initial condition:
 \begin{eqnarray*}
  \phi_g(\bm x,0) = \phi_g^0(\bm x), 
   \quad  g = 1,2, ..., G ,
- \quad   c_m(\bm x,0) = c_m^0(\bm x), 
+ \\   c_m(\bm x,0) = c_m^0(\bm x), 
   \quad  m = 1,2, ..., M .
 \end{eqnarray*}
-
+\end{minipage}
+\begin{minipage}{0.39\linewidth}
+\includegraphics[width=1\linewidth]{core.png}
+\end{minipage}
 \end{frame}
 
 \subsection{Operator formulation}
