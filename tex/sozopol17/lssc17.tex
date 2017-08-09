@@ -40,7 +40,14 @@ $^{a)}$Corresponding author: \url{haska87@gmail.com}}
 \maketitle
 
 \begin{abstract}
-The objective is to analyze the neutron diffusion benchmark developed by Atomic Energy Research for the verification of best-estimate neutronics codes. The 3D benchmark of Schulz models a VVER-1000 core in steady state. The assemblies are homogeneous, represented by given two-group diffusion theory parameters. There are seven material compositions including four enrichments, burnable absorber, control rods and reflector. The finite element method on triangular calculation grids is used to solve the three-dimensional neutron problem. The software has been developed using the engineering and scientific calculation library FEniCS. The matrix spectral problem is solved using a scalable and flexible toolkit SLEPc. The solution accuracy of the benchmark is analyzed by condensing calculation grid and varying degree of finite elements.
+The objective is to analyze the neutron diffusion benchmark developed by the Atomic Energy Research community for verification of best-estimate neutronics codes. 
+The 3D benchmark of Schulz models a VVER-1000 core in steady state. 
+The assemblies are homogeneous, represented by given diffusion theory parameters. 
+There are seven material compositions including four enrichments, burnable absorber, control rods and a reflector. 
+The finite element method on tetrahedron computational grids is used to solve the three-dimensional neutron problem. 
+The software has been developed using the engineering and scientific library FEniCS. 
+The matrix spectral problem is solved using a scalable and flexible toolkit SLEPc. 
+The solution accuracy of the benchmark is analyzed by condensing the computational grid and varying the degree of the finite elements.
 \end{abstract}
 
 %\keywords{Neutron diffusion equation, multi-group approximation, space-time kinetic, spectral problem.}
@@ -48,15 +55,17 @@ The objective is to analyze the neutron diffusion benchmark developed by Atomic 
 
 \section{Introduction}
 The physical processes in a nuclear reactor \cite{duderstadt1976nuclear}
-depend on distribution of neutron flux, whose mathematical description is based on the neutron-transport equation \cite{hetrick1971dynamics,stacey2007}. 
-The general view of this equation is integrally-differential one, and the required distribution of neutrons flux depends on time, energy, spatial and angular variables. As a rule, the simplified forms of the neutron transport equation are used for practical calculations of nuclear reactors. The equation system that is known as a multigroup diffusion approach is mostly used for reactor analysis \cite{marchuk1986numerical,lewis1993computational} and is applied in most engineering calculation codes.
+depend on the distribution of the neutron flux, whose mathematical description is based on the neutron-transport equation \cite{hetrick1971dynamics,stacey2007}. 
+The equation, describing the process is of integro-differential form and the required distribution of neutrons flux depends on time, energy, spatial and angular variables. As a rule, simplified forms of the neutron transport equation are used for practical computations of nuclear reactors. The system of equations obtained by the multigroup diffusion approach is often used for reactor analysis \cite{marchuk1986numerical,lewis1993computational} and is applied in most engineering calculation codes.
 %sutton1996diffusion,cho2005fundamentals
 
-The processes in a nuclear reactor are essentially non-stationary. The stationary state of neutron flux, which is related to the critical state of the reactor, is characterised by local balancing of neutron absorption and birth intensities. This boundary state is usually described by solution of a spectral problem (Lambda Modes problem, $\lambda$-eigenvalue problem) provided that the fundamental eigenvalue (maximal eigenvalue) that is called k-effective of the reactor core, is equal to unity. In this case, the stationary neutron field is a corresponding eigenfunction. Calculations of k-effective of the reactor on the basis of the spectral Lambda Modes problem solution are obligatory for developing a new design of reactor installation.
+The processes in a nuclear reactor are essentially non-stationary. The stationary state of neutron flux, which is related to the critical state of the reactor, is characterised by local balance between the neutron generation and absorption. This boundary state is usually described by the solution of a spectral problem (Lambda Modes problem, $\lambda$-eigenvalue problem) provided that the fundamental eigenvalue (the maximal eigenvalue) that is called k-effective of the reactor core, is equal to unity. In this case, the stationary neutron flux is a corresponding eigenfunction. Computations of k-effective of the reactor using the Lambda Modes problem are obligatory for reactor design calculations.
 
-\section{Problem statement}
+To verify neutron diffusion codes several benchmark problems have been developed. This work is focused on the solution of the 3D benchmark problem of a VVER-1000 core in steady state. Convergence of the benchmark solution is under investigation.
 
-Let's consider modelling neutron flux in a multi-group diffusion approximation. Neutron flux dynamics is considered within limited 2D or 3D domain  $\Omega$ ($\bm x = \{x_1, ..., x_d\} \in \Omega, \ d = 2,3$) with a convex boundary $\partial \Omega$. Neutron transport is described by the set of equations without taking into account delayed neutron source:
+\section{Problem description}
+
+Let's consider modelling neutron flux in a multi-group diffusion approximation. Neutron flux dynamics is considered within a bounded 2D or 3D domain  $\Omega$ ($\bm x = \{x_1, ..., x_d\} \in \Omega, \ d = 2,3$) with a convex boundary $\partial \Omega$. The neutron transport is described by the following set of equations without taking into account delayed neutron sources:
  \begin{equation}\label{1}
 \begin{split}
  \frac{1}{v_g} \frac{\partial \phi_g}{\partial t} - & \nabla \cdot D_g \nabla \phi_g + \Sigma_{rg} \phi_g 
@@ -65,26 +74,26 @@ Let's consider modelling neutron flux in a multi-group diffusion approximation. 
  g = 1,2, ..., G .
 \end{split}
 \end{equation} 
-Here $\phi_g(\bm x,t)$ --- neutron flux of $g$ group at point $\bm x$ and time $t$,
-$G$ --- number of groups,
-$v_g$ --- effective velocity of neutrons in the group $g$,
-$D_g(\bm x)$ --- diffusion coefficient, $\Sigma_{rg}(\bm x,t)$ --- removal cross-section,
-$\Sigma_{s,g'\rightarrow g}(\bm x,t)$ --- scattering cross-section from group $g'$ to group $g$,
-$\beta$ --- effective fraction of delayed neutrons, $\chi_g$, $\widetilde{\chi}_g$  --- spectra of instantaneous and delayed neutrons, 
-$\nu\Sigma_{fg}(\bm x,t)$ --- generation cross-section of group $g$.
-The albedo-type conditions are set at the boundary $\partial \Omega$:
+Here $\phi_g(\bm x,t)$ is the neutron flux of group $g$ at point $\bm x$ and time $t$,
+$G$ is the number of groups,
+$v_g$ is the effective velocity of neutrons in the group $g$,
+$D_g(\bm x)$ is the diffusion coefficient, $\Sigma_{rg}(\bm x,t)$ is the removal cross-section,
+$\Sigma_{s,g'\rightarrow g}(\bm x,t)$ is the scattering cross-section from group $g'$ to group $g$,
+$\beta$ is the effective fraction of delayed neutrons, $\chi_g$, $\widetilde{\chi}_g$  is the spectra of instantaneous and delayed neutrons, 
+$\nu\Sigma_{fg}(\bm x,t)$ is the generation cross-section of group $g$.
+The conditions so-called albedo-type are set at the boundary $\partial \Omega$:
 \begin{equation}\label{2}
  D_g\frac{\partial \phi_g}{\partial n} + \gamma_g \phi_g = 0, \quad 
  \quad g = 1,2, ..., G ,
 \end{equation}
 where $n$ is the outer normal to the boundary $\partial \Omega$.
-Let's consider the problem for equation (\ref{1}) with boundary conditions (\ref{2}), and initial conditions:
+Let's consider problem (\ref{1}) with boundary conditions (\ref{2}) and initial conditions
 \begin{equation}\label{3}
  \phi_g(\bm x,0) = \phi_g^0(\bm x), 
   \quad  g = 1,2, ..., G .
 \end{equation} 
 
-Let's write the boundary problem (\ref{1}), (\ref{2}), (\ref{3}) in operator notation. 
+We write the boundary problem (\ref{1}), (\ref{2}), (\ref{3}) in operator notation. 
 We define the vector $\bm \phi = \{\phi_1, \phi_2, ..., \phi_G\}$ and the matrices
 \[
  V = (v_{g g'}),
@@ -114,30 +123,30 @@ where
  \end{matrix}
  \right . 
 \] 
-is the Kronecker delta. We shall use the set of vectors $\bm \phi$,  whose components satisfy the boundary conditions
-(\ref{3}). Using introduced definitions, the system of equations (\ref{1}) can be written in the form of the first-order evolutionary equation:
+is the Kronecker delta. Consider the set of vectors $\bm \phi$,  whose components satisfy the boundary conditions
+(\ref{3}). Using the above introduced definitions, the system of equations (\ref{1}) takes in the form of the first-order evolutionary equation
 \begin{equation}\label{4}
  V \frac{d \bm \phi}{d t} + (D+S) \bm \phi = R \bm \phi .
 \end{equation}  
-The Cauchy problem is solved for (\ref{4}), when
+We solve the Cauchy problem for (\ref{4}), when
 \begin{equation}\label{5}
  \bm \phi(0) = \bm \phi^0,
 \end{equation} 
 where $\bm \phi^0 = \{ \phi_1^0,  \phi_2^0, ...,  \phi_G^0 \}$.
 
-To characterize the dynamic processes in a nuclear reactor, which are described by Cauchy problem (\ref{4}), (\ref{5}), solutions of some spectral problems  \cite{publicAnnnals2017}. Let's consider the solution of the spectral problem, called Lambda Modes problem:
+To characterize the dynamic processes in a nuclear reactor, which are described by the Cauchy problem (\ref{4}), (\ref{5}), solutions of some spectral problems (see \cite{publicAnnnals2017}). Let's consider the solution of the spectral problem, called Lambda Modes problem:
 \begin{equation}\label{6}
  (D+S) \bm \varphi  = \lambda^{(k)} R \bm \varphi .
 \end{equation} 
-This problem (\ref{6}) is known as the Lambda modes problem for a given configuration of the reactor core.
-The minimal eigenvalue is used for characterisation of neutron field, thus 
+Problem (\ref{6}) is known as the Lambda modes problem for a given configuration of the reactor core.
+The minimal eigenvalue is used for characterisation of neutron flux, thus 
 \[
  k = \frac{1}{\lambda^{(k)}_1}  
 \] 
-is the effective multiplication factor.
+is the effective multiplication factor (see \cite{stacey2007}).
 
 \section{AER Benchmark}
-The 3D benchmark of Schulz \cite{schulz1996} models a VVER-1000 core in steady state. The assemblies are homogeneous, represented by given two-group diffusion theory parameters. There are seven material compositions including four enrichments, burnable absorber, control rods and reflector. The core height is 355 cm, covered with axial and radial reflectors. The nodes are large, with assembly lattice pitch of 24.1 cm. Figure \ref{fig:1} shows the radial and axial geometry models.  Diffusion neutronics constants in the common notations
+The 3D benchmark, Schulz \cite{schulz1996}, models a VVER-1000 core in a steady state. The assemblies are homogeneous, represented by given two-group diffusion theory (see more \cite{duderstadt1976nuclear}, \cite{stacey2007}) parameters. There are seven material compositions including four enrichments, burnable absorber, control rods and reflector. The core height is 355 cm, covered with axial and radial reflectors. The nodes are large, with assembly lattice pitch of 24.1 cm. Figure \ref{fig:1} shows the radial and axial model geometry.  Diffusion neutronics constants in the common notations
 are given in Table \ref{t-1}. 
 
 %\begin{figure}[htp]
@@ -166,13 +175,13 @@ are given in Table \ref{t-1}.
 \center{\includegraphics[width=1\linewidth] {2.png}}\\
 \end{minipage}
 \hfill
-\caption{Radial and axial geometry model.}
+\caption{Radial and axial geometry of the model.}
 \label{fig:1}
   \end{center}
 \end{figure}
 
 
-\begin{table}[htp]
+\begin{table}[h]
 \caption{Diffusion neutronics constants.}
 \label{t-1}
 \begin{center}
@@ -213,7 +222,7 @@ Material & Group & \multicolumn{1}{c}{$D$} & \multicolumn{1}{c}{$\Sigma_r$} & \m
 \end{table}
 
 \section{Computional results}
-In the framework of used two-group model, the spectral problem (\ref{6}) can be written as:
+In the framework of a two-group model, the spectral problem (\ref{6}) can be written as:
 \begin{equation}\label{7}
 \begin{split}
  - \nabla \cdot D_1 \nabla \varphi_1 & + \Sigma_{r1} \varphi_1  
@@ -224,38 +233,41 @@ In the framework of used two-group model, the spectral problem (\ref{6}) can be 
 \end{equation}
 The boundary conditions (\ref{2}) are used at $\gamma_g = 0.5, \ g = 1,2$.
 
-To obtain approximate solutions we use the finite element methods \cite{brenner} 
-with a tetrahedron calculational mesh. The software has been developed using the engineering and scientific calculation library FEniCS \cite{logg2012automated}. The SLEPc package \cite{slepc} has been used for numerical solution of the spectral problems:
+To obtain approximate solutions we use the finite element method \cite{brenner} 
+with a tetrahedron computatinal of discretization mesh. The software has been developed using the engineering and scientific calculation library FEniCS \cite{logg2012automated}. The SLEPc package \cite{slepc} has been used for the numerical solution of the spectral problems
 \begin{equation}\label{8}
 A\bm{x} = \lambda B \bm{x}.
 \end{equation}
-Used Krylov-Schur algorithm with an accuracy of $10^{-15}$. In the calculations the following parameters were varied:
+Used Krylov-Schur algorithm with an accuracy of $10^{-15}$. In the computations the following parameters are varied:
 \begin{itemize}\itemsep1pt \parskip0pt \parsep0pt
-\item $\kappa$ is the number of tetrahedrons per one assembly; 
-\item $z$ is the number of tetrahedrons in height; 
-\item $p$ is order of finite element.
+\item the number of tetrahedrons per one assembly $\kappa$; 
+\item the number of tetrahedrons in height $z$; 
+\item order of finite element $p$.
 \end{itemize}
-The number of tetrahedrons per one assembly $\kappa$  varies from 6 to 96 and $z$ varies from 12 to 48. In Figure \ref{fig:2} shows discretization of assembly at $\kappa=6$ and $z=12$, $\kappa=24$ and $z=24$, $\kappa=96$ and $z=48$, respectively. The standard Lagrangian finite elements of degree $p=1,2,3$ are used.
+The number of tetrahedrons per one assembly $\kappa$  varies from 6 to 96 and per height $z$ varies from 12 to 48. 
+%Figure \ref{fig:2} shows the discretization of the assembly at $\kappa=6$ and $z=12$, $\kappa=24$ and $z=24$, $\kappa=96$ and $z=48$, respectively. 
 
-\begin{figure}[htp]
-  \begin{center}
-    \includegraphics[width=0.65\linewidth] {3.png}
-	\caption{Different types of discretization of assembly.}
-	\label{fig:2}
-  \end{center}
-\end{figure}
+The standard Lagrangian finite elements of degree $p=1,2,3$ are used.
+
+%\begin{figure}[h]
+%  \begin{center}
+%    \includegraphics[width=0.35\linewidth] {3.png}
+%	\caption{Different types of discretization of assembly.}
+%	\label{fig:2}
+%  \end{center}
+%\end{figure}
 
 The following parameters were calculated:
 \begin{itemize}\itemsep1pt \parskip0pt \parsep0pt
-\item $k$ is effective multiplication factor;
-\item $P$ is power distribution  per assembly with the normalization of the mean value of the core:
+\item the effective multiplication factor $k$;
+\item the power distribution  $P$ per assembly with the normalization of the mean value of the core:
 \begin{equation}\label{9}
 P = a(\Sigma_{f1} \varphi_1 + \Sigma_{f2} \varphi_2),
 \end{equation}
 where $a$ is normalization coefficient by a given value of the integral power.
 \end{itemize}
 
-Comparison of the results was carried out with the results of calculations performed by diffusion program CRONOS \cite{cronos}. The extrapolated finite-element solution of of the second-order CRONOS results is recommended as the reference solution ($k_{ref} = 1.049526$) of the Schulz benchmark. 
+The results are compared with those, obtained using the diffusion program CRONOS \cite{cronos}. The extrapolated finite-element solution of the second-order CRONOS results is recommended as the reference solution ($k_{ref} = 1.049526$) of the Schulz benchmark. 
 
 %CRONOS is a reactor code of CEA which uses finite elements and nodal methods for homogenized diffusion and transport calculations.
 %The deviations between the CRONOS finest and extrapolated 3D solution, which characterize the accuracy of the recommended solution are given in Table 3.
@@ -269,23 +281,25 @@ Let's consider the following variations in the calculated parameters:
 \]
 where $P_i^{ref}$ --- «reference» value of power per assembly $i$ ($i = 1,...,N_e$).
 \item by deviations $\varepsilon_i$ calculated integral deviation:
-\begin{itemize}\itemsep1pt \parskip0pt \parsep0pt
-\item the root mean deviation RMS:
+%\begin{itemize}\itemsep1pt \parskip0pt \parsep0pt
+%\item the root mean deviation RMS:
 \[
-\mathrm{RMS} = \sqrt{\frac{1}{N_e}\sum_{i=1}^{N_e} \varepsilon_i^2},
-\]
-\item the mean absolute deviation AVR:
-\[
-\mathrm{AVR} = \frac{1}{N_e}\sum_{i=1}^{N_e} \left\vert \varepsilon_i\right\vert,
-\]
-\item the maximum modulus deviation MAX:
-\[
+\begin{split}
+\mathrm{RMS} = \sqrt{\frac{1}{N_e}\sum_{i=1}^{N_e} \varepsilon_i^2}, \quad
+%\]
+%\item the mean absolute deviation AVR:
+%\[
+\mathrm{AVR} = \frac{1}{N_e}\sum_{i=1}^{N_e} \left\vert \varepsilon_i\right\vert, \quad
+%\]
+%\item the maximum modulus deviation MAX:
+%\[
 \mathrm{MAX} = \underset{i}{\max}\left\vert\varepsilon_i\right\vert.
+\end{split}
 \]
-\end{itemize}
+%\end{itemize}
 \end{itemize}
 
-Results of the solution of $\lambda$-spectral problem (\ref{6}) for the main eigenvalue $k_1 $ using different grids and finite elements are given in Table. \ref{t-2}. Here $N$ is  the size of the matrices $A,B$ (\ref{8}). These data demonstrate the convergence of the computed eigenvalues with thickening of the grid $\kappa$, $z$ and with increasing the degree $p$. Comparison of the reference solutions with the result of the solution at the parameters $p=2, \kappa=6, z=24$ (in table \ref{t-2} highlighted in green) is shown in Figure \ref{fig:3}.
+Results of the solution of $\lambda$-spectral problem (\ref{6}) for the main eigenvalue $k_1 $ using different grids and finite elements are given in Table. \ref{t-2}. Here $N$ is  the size of the matrices $A,B$ (\ref{8}). These data demonstrate the convergence of the computed eigenvalues with thickening of the grid $\kappa$, $z$ and with increasing the degree $p$. Comparison of the reference solutions with the result of the solution at the parameters $p=2, \kappa=6, z=24$ (in Table \ref{t-2} highlighted in green) is shown in Figure \ref{fig:3}.
 
 
 Table \ref{t-3} shows the results obtained for the next three eigenvalues for different meshes.
@@ -440,6 +454,9 @@ horizontal for $k_4$
 \label{fig:4}
   \end{center}
 \end{figure}
+
+\section{Summary}
+In this paper we have performed computational analysis of the 3D neutron diffusion benchmark of a VVER-1000 core. The software has been developed using the engineering and scientic library FEniCS and the matrix spectral problem is solved using the SLEPc package. The number of tetrahedrons per assembly $\kappa$ varies from 6 to 96; the number of tetrahedrons in height $z$ varies from 12 to 48. The finite elements of degree $p$ = 1, 2, 3 are used. The results are compared with the extrapolated finite-element solution of the second-order CRONOS results recommended as the reference solution. An excellent agreement of the results was obtained for the maximum values of the parameters ($\kappa$=96, $z$=48 and $p$=3). There are deviations in the results at the rounding error level. In the practice of engineering calculations it is sufficient to use the following parameters: $\kappa$=6, $z$=24 and $p$=2. The results can be useful for the diffusion codes intercomparison.
 
 \section{Acknowledgements}
 The research was supported by the Government of the Russian Federation (project 14.Y26.31.0013).
