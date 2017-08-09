@@ -1,0 +1,1196 @@
+
+\alphafootnotes
+
+\chapterauthor{Захаров П.Е.\footnotemark}
+
+\chapter{FEniCS} 
+ 
+\footnotetext[1]{Центр вычислительных технологий Северо-Восточного федерального университета, г.Якутск}
+
+\arabicfootnotes
+
+
+Для численного моделирования физических процессов, которые описываются дифференциальными уравнениями в частных производных, существуют множество вычислительных пакетов различного уровня абстракции. Одним из них является вычислительный пакет \texttt{FEniCS}\footnote{\texttt{http://fenicsproject.org/}}. Основным достоинством \texttt{FEniCS}-а является простая формулировка вариационного уравнения, близкая к математических обозначениям. Вариационную задачу получаем из дифференциального уравнения в частных производных. 
+
+
+\section{General information}
+
+\texttt{FEniCS} -- инструмент для решения краевых задач, описываемых дифференциальными уравнениями в частных производных, методом конечных элементов.
+
+
+\subsection{Описание}
+
+Решение задач с помощью \texttt{FEniCS} состоит из следующих шагов:
+
+\begin{enumerate}
+\item Определение дифференциального уравнения в частных производных, задание граничных условий и представление в вариационной формулировке;
+\item Выбор конечных элементов, определение сеточной задачи, запись уравнения в \texttt{UFL}-формате, генерация \texttt{C++} классов из \texttt{UFL}-файлов, реализация численного решения;
+\item Проведение экспериментов, вывод промежуточных значений, вычисление производных значений, визуализация результатов.
+\end{enumerate}
+
+Кроме автоматического решения линейной и нелинейной вариационной задачи, к основным особенностям вычислительного пакета \texttt{FEniCS} выделяются:
+
+\begin{itemize}
+\item Автоматическая контроль ошибок и адаптивность, возможность задания функционала, которая должна минимизироваться с определенной точностью;
+\item Расширяемая библиотека метода конечных элементов: кроме стандартных конечных элементов, таких как лагранжевы, поддерживаются разрывные методы галеркина, векторные элементы и специальные типы такие как Crouzeix-Raviart;
+\item Высокопроизводительная линейная алгебра, несколько вариантов реализации линейной алгебры, такие как \texttt{PETSc}\footnote{\texttt{http://www.mcs.anl.gov/petsc/}}, \texttt{Trilinos/Epetra}\footnote{\texttt{http://trilinos.sandia.gov/packages/epetra/}}, \texttt{uBLAS}\footnote{\texttt{http://www.boost.org/doc/libs/release/libs/numeric/ublas/doc/index.htm}} и \texttt{MTL4}\footnote{\texttt{http://www.simunova.com/de/node/24}}, параллельные вычисления поддерживаются пакетами \texttt{PETSc} и \texttt{Trilinos/Epetra};
+\item Поддержка расчетов на одно-, двух- и трехмерных областях, адаптивные сетки;
+\item Обработка результатов, возможность визуализации сетки, функций и полученных результатов, поддержка широко используемого формата \texttt{VTK}\footnote{\texttt{http://www.vtk.org/}};
+\item Возможность использования языков программирования \texttt{Python} и \texttt{C++}, подобные интерфейсы классов и функций для обоих языков;
+\item Подробная документация и большое количество примеров, детальное описание алгоритмов и реализации пакета;
+\item Простая установка на большинство известных платформ.
+\end{itemize}
+
+
+\subsection{Установка}
+
+Компоненты \texttt{FEniCS} могут быть установлены на \texttt{Linux}, \texttt{Windows} и \texttt{Mac OS X} платформы. Установочные файлы и исходники проекта могут быть скачаны с официального сайта пакета. На сайте дается детальные описания как установить на ту или иную платформу. Хотя \texttt{FEniCS} доступен для нескольких платформ и операционных систем, рекомендуется устанавливать на \texttt{Ubuntu Linux}\footnote{\texttt{http://www.ubuntu.com/}}, поскольку это самый простой и надежный вариант. На платформах \texttt{Windows} или \texttt{Mac OS X} некоторые компоненты \texttt{FEniCS} для проведения научных вычислений могут быть не доступны или установлены с большим количеством требуемых программ. \texttt{FEniCS} на \texttt{Ununtu} можно установить с репозитория через команду:
+
+\begin{Verbatim}[frame=leftline]
+$ sudo apt-get install fenics
+\end{Verbatim}
+
+Для редактирования исходных файлов реализации численного решения можно использовать консольный текстовый редактор или же интегрированную среду разработки такую как \texttt{Eclipse}\footnote{\texttt{http://www.eclipse.org/}}.
+
+
+
+
+\section{Test problem}
+
+Для демонстрации основных возможностей пакета \texttt{FEniCS} будем рассматривать модельную задачу. Сперва определим дифференциальное уравнение в частных производных и зададим граничные условия для получения краевой задачи. Далее сформулируем вариационную задачу для решения методом конечных элементов.
+
+
+\subsection{Дифференциальное уравнение}
+
+Рассмотрим простейший пример, уравнение Пуассона в области $\Omega$:
+
+\begin{equation}
+	\label{eq:poisson}
+	- \Delta u = f,
+\end{equation}
+
+где $u$ -- искомая функция, $f$ -- заданная функция, $\Delta$ -- оператор Лапласа. Уравнение (\ref{eq:poisson}) дополняем граничным условием Дирихле:
+
+\begin{equation}
+	\label{eq:poisson-bc}
+	u(\bm{x}) = g(\bm{x}), \quad \bm{x} \in \partial \Omega.
+\end{equation}
+
+Система уравнений (\ref{eq:poisson}, \ref{eq:poisson-bc}) представляет собой краевую задачу, которая должна быть численно решена с помощью пакета \texttt{FEniCS}.
+
+Для простоты выберем двухмерную область с координатами $x_1$ и $x_2$.
+
+\subsection{Вариационная формулировка}
+
+Поскольку \texttt{FEniCS} для решения дифференциальной задачи использует метод конечных элементов, дифференциальное уравнение нужно представить в вариационной формулировке. Основным способом перевода дифференциальной задачи в вариационную является:
+
+\begin{enumerate}
+\item умножение уравнения на некую функцию $v$,
+\item интегрирование полученного уравнения по области $\Omega$,
+\item замена производных второго порядка через интегрирование по частям.
+\end{enumerate}
+
+Функция $v$ в терминах конечных элементов называется \textit{тестовой функцией} (\texttt{test function}), а искомая функция $u$ -- \textit{триальной функцией} (\texttt{trial function}).
+
+В нашем случае мы умножаем уравнение Пуассона на $v$ и интегрируем по области $\Omega$:
+
+\begin{equation}
+	\label{eq:poisson-integral}
+	- \int_\Omega v \Delta u \; d\bm{x} = 
+	\int_\Omega f v \; d\bm{x}.
+\end{equation}
+
+Далее заменяем оператор Лапласа с помощью интегрирования по частям и используем формулу Гаусса-Остроградского для перехода в поверхностный интеграл:
+
+\begin{equation}
+	\label{eq:laplace-integral}
+	- \int_\Omega v \Delta u \; d\bm{x} = 
+	\int_\Omega \nabla u \nabla v \; d\bm{x} -
+	\int_{\partial \Omega} v \frac{\partial u}{\partial \bm{n}} \; ds,
+\end{equation}
+
+где $\partial u / \partial \bm{n}$ -- производная по внешней нормали границы $\partial \Omega$. Тестовая функция необходима для того, чтобы избавиться от интеграла по поверхности. Поэтому берем такую тестовую функцию, которая на границе $\partial \Omega$ равняется нулю $v = 0$. Тогда из (\ref{eq:poisson-integral}) и (\ref{eq:laplace-integral}) получаем следующее уравнение:
+
+\begin{equation}
+	\label{eq:poisson-variation}
+	\int_\Omega \nabla u \nabla v \; d\bm{x} =
+	\int_\Omega f v \; d\bm{x}.
+\end{equation}
+
+Уравнение (\ref{eq:poisson-variation}) называется \textit{слабой формой} первоначальной краевой задачи (\ref{eq:poisson}, \ref{eq:poisson-bc}). Полученная вариационная задача формулируется следующим образом: нужно найти такую функцию $u \in V$, которая удовлетворяет уравнению:
+
+\begin{equation}
+	\label{eq:poisson-variation-problem}
+	\int_\Omega \nabla u \nabla v \; d\bm{x} =
+	\int_\Omega f v \; d\bm{x}, \quad \forall v \in \hat{V},
+\end{equation}
+
+где $V$ -- пространство триальных функций, а $\hat{V}$ -- пространство тестовых функций:
+
+\begin{equation}
+	\label{eq:functions-spaces}
+	\begin{split}
+		V & = \{ u(\bm{x}) \in H^1(\Omega): \; u(\bm{x}) = g(\bm{x}), \; \bm{x} \in \partial \Omega \}, \\
+		\hat{V} & = \{ v(\bm{x}) \in H^1(\Omega): \; v(\bm{x}) = 0, \; \bm{x} \in \partial \Omega \}.
+	\end{split}
+\end{equation}
+
+$H^1(\Omega)$ -- пространство Соболева содержащий функции $v$, такие что $v^2$ и $|\nabla v|^2$ конечно интегрируемы в области $\Omega$. 
+
+
+
+
+\section{Finite-element discretisation}
+
+Для решения вариационной задачи используется метод конечных элементов. Преимуществами метода конечных элементов является возможность определения произвольной области и сгущения сетки в наиболее интересных подобластях. После аппроксимации вариационной задачи получаем систему линейных алгебраических уравнений, решение которой реализована в пакетах линейной алгебры.
+
+
+\subsection{Аппроксимация}
+
+В методе конечных элементов приближенное решение дифференциального уравнения находится как линейная комбинация известных простых функций:
+
+\begin{equation}
+	\label{eq:trial-approximation}
+	u(\bm{x}) = \sum_{i=1}^N y_i \phi_i(\bm{x}),
+\end{equation}
+
+где $\bm{y}$ -- вектор степеней свободы (неизвестные, которые нужно вычислить). Выбираем дискретное пространство триальных функций $V_h \subset V$, базис которого будет равняться множеству функций $\{\phi_i\}_{i=1}^N$. Так же определяем дискретное пространство для тестовых функций $\hat{V}_h \subset \hat{V}$ с базисом $\{\hat{\phi}_i\}_{i=1}^N$, тогда тестовая функция будет выражаться следующим образом: 
+
+\begin{equation}
+	\label{eq:test-approximation}
+	v(\bm{x}) = \sum_{i=1}^N \hat{y}_i \hat{\phi}_i(\bm{x}),
+\end{equation}
+
+Дискретная вариационная задача формулируется следующим образом: нужно найти $u(\bm{x}) \in V_h \subset V$ такой, что:
+
+\begin{equation}
+	\label{eq:poisson-variation-discrete}
+	\int_\Omega \nabla u \nabla v \; d\bm{x} =
+	\int_\Omega f v \; d\bm{x}, \quad \forall v(\bm{x}) \in \hat{V}_h \subset \hat{V}.
+\end{equation}
+
+Поскольку вариационная задача заключается в нахождении триальной функции удовлетворяющей уравнению (\ref{eq:poisson-variation-discrete}) для любой тестовой функции, значит приближение (\ref{eq:trial-approximation}) должна удовлетворять всем базисным функциям пространства тестовых функций:
+
+\begin{equation}
+	\label{eq:poisson-approximation}
+	\sum_{j=1}^N y_j \int_\Omega \nabla \phi_i, \nabla \hat{\phi}_i \; d\bm{x} =
+	\int_\Omega f \hat{\phi}_i \; d\bm{x}, \quad i = 1, 2, \dots, N.
+\end{equation}
+
+Таким образом исходная задача сводится к решению системы линейных алгебраических уравнений (СЛАУ):
+
+\begin{equation}
+	\label{eq:slae}
+	A \bm{y} = \bm{b},
+\end{equation}
+
+где
+
+\begin{equation}
+	\label{eq:slae-matrix-rhs}
+	\begin{split}
+	A_{ij} & = \int_\Omega \nabla \phi_j \nabla \hat{\phi_i} \; d\bm{x}, \\
+	b_i    & = \int_\Omega f \hat{\phi}_i \; d\bm{x}.
+	\end{split}
+\end{equation}
+
+Уравнение \ref{eq:poisson-variation-discrete} в более общем виде записывается так:
+
+\begin{equation}
+	\label{eq:notation}
+	a(u,v) = L(v).
+\end{equation}
+
+В нашей задаче:
+
+\begin{equation}
+	\label{eq:notation-poisson}
+	\begin{split}
+		a(u,v) & = \int_\Omega \nabla u \nabla v \; d\bm{x}, \\
+		L(v)   & = \int_\Omega f v \; d\bm{x},
+	\end{split}
+\end{equation}
+
+где $a(u,v)$ -- называется \textit{билинейной формой}, а $L(v)$ -- \textit{линейной формой}. В программном пакете \texttt{FEniCS} построение СЛАУ и решение реализовано, поэтому остается записать вариационную задачу и выбрать конечные элементы.
+
+
+\subsection{Конечные элементы}
+
+Далее для решения СЛАУ, определяется пространства для триальных и тестовых функций  $V, \hat{V}$. Для этого сперва поделим область, в котором ищем решение, на конечное множество не пересекающихся ячеек (подобласти) $\Omega_h = \{\omega\}$:
+
+\begin{equation}
+	\label{eq:mesh}
+	\bigcup \limits_{\omega \in \Omega_h} \omega = \Omega.
+\end{equation}	
+
+Множество $\Omega_h$ представляет собой сетку для области $\Omega$. Ячейки обычно для простоты бывают многоугольниками, такими как: отрезок, треугольник, четырехугольники, тетраэдры или гексаэдры. Но ячейки могут быть и другой формы, скажем, частично кривыми для учета границы области. Для большинства задач треугольники или тетраэдры наиболее подходящие формы для ячеек.
+
+Для каждой ячейки $\omega$ определяем локальное пространство $\mathcal{V}$, которое определяет триальную функцию $v$, только в своей ячейке. Тогда пространство $V_h$ в области $\Omega$ определяется множеством локальных пространств $\mathcal{V}$ триальных функций. 
+Ячейка $\omega$ вместе с локальным пространством $\mathcal{V}$ и правилами определения функций в $\mathcal{V}$ называется \textit{конечным элементом}. Тем самым, конечный элемент определяется:
+\begin{itemize}
+\item ячейкой $\omega$ -- подобласть $\Omega$,
+\item пространством функций $\mathcal{V}$ с базисом $\{\phi\}_{i=1}^n$,
+\item степенью свободы -- количество узлов ячейки, которые определяют численное решение.
+\end{itemize}
+
+Среди существующих стандартных конечных элементов отметим лагранжевые, в также разрывные лагранжевые элементы.
+
+	
+
+
+\section{Program}
+
+Для реализации численного решения с помощью \texttt{FEniCS} нужно сделать следующие шаги:
+
+\begin{enumerate}
+\item Записать вариационную задачу в \texttt{UFL}-файлы (\texttt{Unified Form Language} -- это унифицированный язык форм для дискретизации вариационных задач);
+\item Сгенерировать \texttt{C++} классы из \texttt{UFL}-файлов;
+\item Написать классы для задания граничных условий и дополнительных функций;
+\item Определить сетку области;
+\item Составить систему;
+\item Подготовить код обработки результатов;
+\item Скомпилировать и собрать программу;
+\item Провести численные эксперименты с различными параметрами.
+\end{enumerate}
+
+
+
+\subsection{Реализация UFL}
+
+Рассматриваемая задача Пуассона решается в области $\Omega$ с правой частью $f(\bm{x})$ и граничным условием $g(\bm{x})$. Для проверки корректности реализованного решения будем решать задачу с известным точным решением. Пусть точное решение будет
+
+\begin{equation}
+	\label{eq:poisson-exact}
+	u(x_1, x_2) = e^{-x_1-2 x_2}.
+\end{equation}
+
+Тогда правая часть и граничное условие соответственно будут выражаться следующими образом:
+
+\begin{equation}
+	\label{eq:poisson-rhs-bc}
+	\begin{split}
+		f(x_1, x_2) & = -5 e^{-x_1-2 x_2}, \\
+		g(x_1, x_2) & = e^{-x_1-2 x_2}.
+	\end{split}
+\end{equation}
+
+Область, в котором будем находить численное решение, выберем простую квадратную с единичными сторонами:
+
+\begin{equation}
+	\label{eq:domain-2d}
+	\Omega = \left( \bm{x} \; | \; \bm{x} = (x_1, x_2), \; 0 \leq x_i \leq1, \; i = 1, 2 \right),
+\end{equation}
+
+После того как заданы данные дифференциальной задачи, определим данные конечных элементов. \texttt{FEniCS} для решения вариационной задачи использует специальный формат записи \texttt{UFL}. Компонент \texttt{UFL} является одним из основных в программном комплексе \texttt{FEniCS}. С помощью \texttt{UFL} можно достаточно просто определить пространства конечных элементов и выразить дифференциальную задачу в слабой форме в обозначениях близких к математическим обозначениям. Основными преимуществами \texttt{UFL} является:
+
+\begin{itemize}
+\item возможность описания нелинейных дифференциальных уравнений,
+\item автоматическое дифференцирование выражений,
+\item быстрая компиляция сложных уравнений.
+\end{itemize}
+
+Напишем рассматриваемую вариационную задачу (\ref{eq:poisson-variation}) в формате \texttt{UFL} и сохраним в файле \texttt{Poisson.ufl}:
+
+\begin{lstlisting}
+# Конечный элемент
+cell = triangle
+element = FiniteElement("Lagrange", cell, 1)
+
+# Функции
+u = TrialFunction(element)
+v = TestFunction(element)
+f = Coefficient(element)
+
+# Билинейная и линейная форма
+a = inner(grad(u), grad(v))*dx
+L = f*v*dx
+\end{lstlisting}
+
+Разберем более детально каждую строке \texttt{UFL}-файла. Сперва определяется форма ячейки, общий формат записи выбора формы такая:
+
+\begin{lstlisting}
+cell = Cell(shapestring)
+\end{lstlisting}
+
+где \Verb^shapestring^ -- строка, которая может принимать следующие значения: \Verb^interval^, \Verb^triangle^, \Verb^tetrahedron^, \Verb^quadrilateral^ или \Verb^hexahedron^. Все эти формы предопределены и могут быть сразу присвоены без вызова объекта \Verb^Cell(...)^. В нашем примере используется треугольная форма для конечного элемента:
+
+\begin{lstlisting}
+cell = triangle
+\end{lstlisting}
+
+После определения формы, задается конечный элемент. В \texttt{FEniCS}-е имеются уже реализованные конечные элементы, например: \Verb^Lagrange^ (короткая запись \Verb^CG^) представляющий собой непрерывные кусочно-гладкие полиномиальные функции, \Verb^Discontinuous Lagrange^ (короткая запись \Verb^DG^) представляющий собой разрывные кусочно-гладкие полиномиальные функции и множество других, которые можно найти в руководстве \texttt{FEniCS}-а.
+
+Рассмотрим пример записи разных конечных элементов:
+
+\begin{lstlisting}
+cell = triangle
+
+P = FiniteElement("Lagrange", cell, 1)
+V = VectorElement("Lagrange", cell, 2)
+T = TensorElement("DG", cell, 0, symmetry=True)
+
+TH = V*P
+ME = MixedElement(T, V, P)
+\end{lstlisting}
+
+Кроме скалярных элементов \Verb^P^, могут быть заданы векорные \Verb^V^, тензорные \Verb^T^ и комбинированные 
+\Verb^TH^ элементы. Также можно задавать более сложные комбинированные элементы \Verb^ME^, которые могут состоять больше двух элементов. В нашей задаче задана только одна скалярная неизвестная $u$, которая описывается лагранжевым конечным элементов первого порядка, т.е. полиномом первого порядка:
+
+\begin{lstlisting}
+element = FiniteElement("Lagrange", cell, 1)
+\end{lstlisting}
+
+После выбора конечного элемента, определяются тестовые и триальные функции, также определяются дополнительные функции---коэффициенты решаемого уравнения:
+
+\begin{lstlisting}
+u = TrialFunction(element)
+v = TestFunction(element)
+f = Coefficient(element)
+\end{lstlisting}
+
+Кроме вышеописанных функций можно определять коэффициенты, которые заданы для каждой ячейки:
+
+\begin{lstlisting}
+c = Constant(cell)
+v = VectorConstant(cell)
+M = TensorConstant(cell)
+\end{lstlisting}
+
+Коэффициенты могут быть скалярными \Verb^c^, векторными \Verb^v^ или же тензорными \Verb^M^. В рассматриваемой задаче Пуассона коэффициенты отсутствуют, но в реальных физических задачах без коэффициентов не обойтись.
+
+Далее в \texttt{UFL}файле задается билинейная и линейная форма вариационной задачи:
+
+\begin{lstlisting}
+a = inner(grad(u), grad(v))*dx
+L = f*v*dx
+\end{lstlisting}
+
+Как видно, в \texttt{UFL}-файле можно писать алгебраические и дифференциальные операторы. Можно использовать элементарные алгебраические операторы, такие как: \Verb^+^, \Verb^-^, \Verb^*^, \Verb^/^. Оператор произведения \Verb^*^ корректна для двух скаляров, скаляра и тензора, матрицы и вектора, и двух матриц. Для остальных случаев для более ясности применяются операторы: \Verb^dot(a,b)^, \Verb^inner(a,b)^, \Verb^outer(a,b)^. Более подробный список и описания дается в руководстве FEniCS. Оператор \Verb^inner(a,b)^ -- скалярное произведение между векторами, матрицами и тензорами. Множитель \Verb^dx^ представляет собой интеграл по области $\int_\Omega (\cdot)\; d\bm{x}$.
+
+Далее из \texttt{UFL}-файла генерируются \texttt{C++} классы, в которых определены необходимые методы (например: методы описывающие билинейную и линейную форму) для дальнейшего решения задачи. Генерация классов выполняется с помощью команды \verb^ffc^ -- \texttt{FEniCS Form Compiler}. В нашем примере нужно выполнить следующую команду:
+
+\begin{Verbatim}[frame=leftline]
+$ ffc -l dolfin -f split poisson.ufl
+\end{Verbatim}
+
+Флаг \verb^-l dolfin^ означает, что генерация выполняется из языка формата записи \texttt{dolfin}, а флаг \verb^-f split^ -- объявления и реализации классов генерируются в отдельных файлах. Более подробное описание команды \verb^ffc^ можно посмотреть запустив команду:
+
+\begin{Verbatim}[frame=leftline]
+$ man ffc
+\end{Verbatim}
+
+После запуска команды генерации, в текущей директории появятся два файла: \texttt{Poisson.h} -- заголовочный файл с объявлениями классов и \texttt{Poisson.cpp} -- файл с реализацией классов. 
+
+\subsection{Реализация C++}
+
+Напишем основной код реализации численного счета задачи Пуассона в файл texttt{main.cpp}:
+
+\begin{lstlisting}
+// Используем dolfin для счета
+#include <dolfin.h>
+// Включаем сгенерированные классы
+#include "Poisson.h"
+
+// Работаем в пространстве dolfin
+using namespace dolfin;
+
+// Функция f(x1, x2)
+class FExpression : public Expression {
+	void eval(Array<double>& values, const Array<double>& x) const {
+		values[0] = -5 * exp(-x[0] - 2 * x[1]);
+	}
+};
+
+// Граничное условие g(x1, x2)
+class DirichletValue : public Expression {
+	void eval(Array<double>& values, const Array<double>& x) const {
+		values[0] = exp(-x[0] - 2 * x[1]);
+	}
+};
+
+// Граница области
+class DirichletBoundary : public SubDomain {
+	bool inside(const Array<double>& x, bool on_boundary) const {
+		return on_boundary;
+	}
+};
+
+int main() {
+	// Создаем единичную квадратную секту
+	UnitSquare mesh(32, 32);
+	
+	// Создаем перенные для пространства функций,
+	// билинейной и линейной форм
+	Poisson::FunctionSpace V(mesh);
+	Poisson::BilinearForm a(V, V);
+	Poisson::LinearForm L(V);
+
+	// Задаем функцию f(x1, x2)
+	FExpression f;
+	L.f = f;
+
+	// Связываем граничное значение с границей
+	DirichletValue g;
+	DirichletBoundary Gamma;
+	DirichletBC bc(V, g, Gamma);
+
+	// Создаем множество граничных условий
+	std::vector<const BoundaryCondition*> bcs;
+	bcs.push_back(&bc);
+
+	// Определяем переменную для неизвестной и решаем уравнение
+	Function u(V);
+	solve(a == L, u, bcs);
+
+	// Выводим график полученного результата
+	plot(u);
+
+	// Сохраняем результат в файле в формате VTK
+	File file("Solution.pvd");
+	file << u;
+
+	return 0;
+}
+\end{lstlisting}
+
+В приведенном исходном коде достаточно подробно даются комментарии к блокам, поэтому более детально будем разбирать только некоторые участки кода. Как видно для определения функции $f(x_1,x_2)$ и $g(x_1,x_2)$ используются классы унаследованне из \Verb^Expression^. Класс \Verb^Expression^ предназначен для определения пользователем своих функций. Функция описывается через переопределенние метода:
+
+\begin{lstlisting}
+void eval(Array<double>& values, const Array<double>& x) const
+\end{lstlisting}
+
+где первый параметр \Verb^values^ -- переменная, в котором записывается результат выполнения функции, второй параметр \Verb^x^ -- координаты точки, в котором вычисляется функция. Результат метода \Verb^eval(...)^ может быть скаляром, вектором или матрицей, в зависимости через какой конструктор был создан объект. В нашем примере используются только функции со скалярными значениями, поэтому используется конструктор без параметров:
+
+\begin{lstlisting}
+	FExpression f;
+	...
+	DirichletValue g;
+\end{lstlisting}
+
+
+Для указания области, в котором используется граничное значание \Verb^DirichletValue^ создали класс \Verb^DirichletBoundary^, унаследованный от \Verb^SubDomain^. Класс \Verb^SubDomain^ предназначен для выделения подобласти из глобальной области. В нашем примере область действия граничного значения является границей области, что очень просто определить. Для этого переопределяем метод:
+
+\begin{lstlisting}
+bool inside(const Array<double>& x, bool on_boundary) const
+\end{lstlisting}
+
+где параметр \Verb^x^ -- координата точки, \Verb^on_boundary^ -- флаг, которая принимает \Verb^true^ если точка лежит на границе области. Результат метода \Verb^inside(...)^ булевое значение, которое истинна для точек лежащих в подобласти.
+
+В реальных физических моделях граничные условия состоят из нескольных подобластей и разного рода условий, поэтому для вычисления вариационной задачи граничное условия задаются как множество условий:
+
+\begin{lstlisting}
+std::vector<const BoundaryCondition*> bcs;
+\end{lstlisting}
+
+Для решения линейной вариационной задачи вызывается функция:
+
+\begin{lstlisting}
+solve(a == L, u, bcs);
+\end{lstlisting}
+
+где \Verb^a == L^ -- вариационное уравнение, заданное через билинейную и линейную форму соответсвенно, \Verb^u^ -- функция-неизвестная, \Verb^bcs^ -- множество граничных условий. Имеются разные варианты функции \Verb^solve(...)^, которые принимают различные аргументы. Например можно решить уравнение без указания граничных условий или указав только одно граничное условие. В рассматриваемом примере только одно граничное условие и можно было не создавать объект-вектор \Verb^bcs^, а просто вызвать:
+
+\begin{lstlisting}
+solve(a == L, u, bc);
+\end{lstlisting}
+
+Но для демонстации возможности задания множества граничных условий был исользован другой вариант. Более подробный список определений функции \Verb^solve(...)^ можете посмотреть в документации.
+
+Про визуализацию, запись в файл и вычисление функционала подробно рассмотрим в следующем разделе. 
+
+
+\subsection{Компиляция}
+
+Реализованная программа состоит из 3-х файлов: \texttt{Poisson.h}, \texttt{Poisson.cpp} и \texttt{main.cpp}. Теперь нужно скомпилировать файлы с исходным кодом и собрать в исполняемый файл с помощью команды \verb^make^. Перед этим необходимо сгененрировать \texttt{Makefile} через утилиту \verb^cmake^\footnote{\texttt{http://www.cmake.org/}}. Команда \verb^cmake^ использует специальный текстовый файл \texttt{CMakeLists.txt}, который должен находиться в директории указанной в параметрах команды. Файл \texttt{CMakeLists.txt} для компиляции и сборки примера программы:
+
+\begin{Verbatim}
+# Требуемая минимальная версия CMake 2.8
+set(CMAKE_CXX_COMPILER "/usr/bin/g++")
+cmake_minimum_required(VERSION 2.8)
+
+# Название проекта
+project(demo_poisson)
+
+# Задание поведения CMake
+cmake_policy(SET CMP0004 OLD)
+
+# Поиск конфигурации DOLFIN 
+# (dolfin-config.cmake должен быть в DOLFIN_CMAKE_CONFIG_PATH)
+find_package(dolfin)
+
+# Типы сборки
+if (NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE "RelWithDebInfo" CACHE STRING
+    "Choose the type of build, options are: 
+	Debug MinSizeRel Release RelWithDebInfo." FORCE)
+endif()
+
+# Определения DOLFIN для компилятра
+add_definitions(${DOLFIN_CXX_DEFINITIONS})
+
+# Специальные флаги DOLFIN для компилятора 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${DOLFIN_CXX_FLAGS}")
+
+# Директории заголовочных файлов
+include_directories(${DOLFIN_INCLUDE_DIRS} 
+		    ${DOLFIN_3RD_PARTY_INCLUDE_DIRS})
+
+# Выполняемый файл с исходными кодами
+add_executable(demo_poisson main.cpp 
+               Poisson.cpp)
+
+# Включаемые библиотеки
+target_link_libraries(demo_poisson ${DOLFIN_LIBRARIES} 
+		      ${DOLFIN_3RD_PARTY_LIBRARIES})
+\end{Verbatim}
+
+Для добавления в программу дополнительных файлов с кодом нужно прописать названия \texttt{*.cpp} в строке с текстом \verb^add_executable(...)^. Для генерации \texttt{Makefile} переходим в директорию с файлами программы и \texttt{CMakeLists.txt}, далее запускаем команду:
+
+\begin{Verbatim}[frame=leftline]
+$ cmake ./
+\end{Verbatim}
+
+Для сборки исполняемого файла выполняем команду:
+
+\begin{Verbatim}[frame=leftline]
+$ make
+\end{Verbatim}
+
+После выполнения этой команды должна создаться исполняемый файл \texttt{demo\_poisson}. Для выполнения счета запускаем этот файл:
+
+\begin{Verbatim}[frame=leftline]
+$ ./demo_poisson
+\end{Verbatim}
+
+\section{Results processing}
+
+\begin{figure}
+\includegraphics[scale=0.5]{Graphics/FEniCS/poisson-solution.png} 
+\caption{Результат решения тестовой задачи Пуассона}
+\label{fig:poisson-solution}
+\end{figure}
+
+После выполнения счета мы получим окно с визуализацией решения задачи, который приведен на рис. \ref{fig:poisson-solution}. Для решения прикладных задач моделирования основным показателем результатов не всегда является хорошая визуализация. Основное внимание в таких задачах направлено на вычисления некоторо произодного функционала, зависящий от решения дифференциального уравнения. 
+
+Для демонстрации возможностей визуализации и вычисления функционала немного усложним первоночальную программу.
+
+\subsection{Визуализация}
+
+Как видно из результатов выполнения программы в пакете \texttt{FEniCS} есть встроенные функции простейшей визуализации объектов \Verb^Function^. Визуализировать можно не только объекты класса \Verb^Function^, но и объекты других классов: \Verb^Mesh^, \Verb^Expression^ и \Verb^MeshFunction^. 
+
+Посмотрим какая сетка была создана в нашей программе. Для этого добавим в программу вызов функции визуализации:
+
+\begin{lstlisting}
+	plot(mesh);
+\end{lstlisting}
+
+После новой компиляции и выполнения программы сперва появится окно с графиком сетки области (см. рис. \ref{fig:poisson-mesh}).
+
+\begin{figure}
+\includegraphics[scale=0.5]{Graphics/FEniCS/poisson-mesh.png} 
+\caption{Сетка единничной области размерностью 16 на 16 узлов}
+\label{fig:poisson-mesh}
+\end{figure}
+
+Посмотрим как выглядит точное решение наше задачи. Для этого сперва определим класс точного решения:
+
+\begin{lstlisting}
+// Точное решение
+class ExactSolution : public Expression {
+	void eval(Array<double>& values, const Array<double>& x) const {
+		values[0] = exp(-x[0] - 2 * x[1]);
+	}
+};
+\end{lstlisting}
+
+Далее нужно создать объект класса \Verb^ExactSolution^ и вызвать функцию \Verb^plot(...)^:
+
+\begin{lstlisting}
+	ExactSolution exact;
+	plot(exact, mesh);
+\end{lstlisting}
+
+Для вычисления функций-выражений нужно указывать в параметрах сетку, в узлах которой вычисляются значения.
+
+Встроенную функцию визуализации можно использовать только для первоначальной обработки результатов. Для получения более сложных графиков, таких как срезы, линий уровней или потока нужно использовать внешние визуализаторы. Результаты счета сохраняются в файлах в формате \texttt{VTK}:
+
+\begin{lstlisting}
+	File file("Solution.pvd");
+	file << u;
+\end{lstlisting}
+
+Для визуализации файлов с форматом \texttt{VTK} можно использовать  \texttt{ParaView}\footnote{\texttt{http://www.paraview.org/}} или \texttt{VisIt}\footnote{\texttt{https://wci.llnl.gov/codes/visit/home.html}}. На рис. \ref{fig:poisson-solution-paraview} показана визуализация файла \texttt{Solution.pvd} с помощью \texttt{ParaView}.
+
+\begin{figure}
+\includegraphics[scale=0.5]{Graphics/FEniCS/poisson-solution-paraview.png} 
+\caption{Визуализация решения задачи Пуассона на \texttt{ParaView} с применением фильтра линий уровней}
+\label{fig:poisson-solution-paraview}
+\end{figure}
+
+
+\subsection{Вычисление функционала}
+
+Из полученных результатов мы видим, что полученнй численнй ответ похож на точное решение. Убедимся, что результат достаточно точен. Для этого вычислим норму погрешности в пространстве $L_2(\Omega)$:
+
+\begin{equation}
+\label{eq:error-norm}
+||e|| = (e, e)^{1/2}, \quad
+(e, e) =  \int_\Omega e(\bm{x})^2 \; d\bm{x},  \quad
+e(\bm{x}) =  u(\bm{x}) - u_{exact}(\bm{x}),
+\end{equation}
+
+где $u_{exact}(\bm{x})$ -- точное решение.
+
+Норму погрешности вычисляем как квадратный корень функционала от резултата численного счета и точного решения: 
+
+\begin{equation}
+\label{eq:error-functional}
+||e|| = F(u, u_{exact})^{1/2}, \quad
+F(u, u_{exact}) = \int_\Omega \left(u(\bm{x})-u_{exact}(\bm{x})\right)^2 \; d\bm{x}
+\end{equation}
+
+Для вычисления функционала погрешности нужно создать отдельный \texttt{UFL}-файл, назавем \texttt{Error.ufl}:
+
+\begin{lstlisting}
+# Конечный элемент
+cell = triangle
+element = FiniteElement("Lagrange", cell, 1)
+
+# Численное и точное решение
+u = Coefficient(element)
+exact = Coefficient(element)
+
+# Функционал погрешности
+M = (u - exact)**2*dx
+\end{lstlisting}
+
+Нужно отметить, что для определения функционала нужно использовать обозначение \Verb^M^, а для определения вариационной задачи -- \Verb^a^ и \Verb^L^.
+
+Далее генерируем заголовочный и исходный файл с определением классов для функционала погрешности:
+
+\begin{Verbatim}[frame=leftline]
+$ ffc -l dolfin -f split Error.ufl
+\end{Verbatim}
+
+после чего появятся файлы \texttt{Error.h} и \texttt{Error.cpp}. Ранее мы уже определяли класс для точного решения \Verb^ExactSolution^. Осталось добавить заголовочный файл \texttt{Error.h} в \texttt{main.cpp}:
+
+\begin{lstlisting}
+#include "Error.h"
+\end{lstlisting}
+
+и после объявления переменной для точного решения добавить следующий блок кода:
+
+\begin{lstlisting}
+	// Функционал погрешности
+	Error::Functional error(mesh);
+	error.u = u;
+	error.exact = exact;	
+	double error_norm = sqrt(assemble(error));
+	// Вывод нормы погрешности в лог	
+	info("Error norm = %G", error_norm);	
+\end{lstlisting}
+
+Перед компиляцией необходимо указать \texttt{Error.cpp} в \texttt{CMakeLists.txt}:
+
+\begin{Verbatim}
+add_executable(demo_poisson main.cpp 
+               Poisson.cpp
+               Error.cpp)
+\end{Verbatim}
+
+После выполнения программы в консоли выведется следующее сообщение:
+
+\begin{Verbatim}[frame=leftline]
+Error norm = 0.000181744
+\end{Verbatim}
+
+Функция \Verb^info(...)^ предназначена для вывода информации в систему вывода сообщений. Кроме этой функции для вывода сообщений и отладки истользовуются функции: \Verb^warning()^, \Verb^error()^, \Verb^log(...)^ и т.п. Для определения уровня вывода сообщений используется функция \Verb^set_log_level(level)^, где \Verb^level^ -- целочисленный параметр, который может быть задан через глобальные определения из табл. \ref{tab:log-levels}. 
+
+\begin{table} 
+  \caption{Уровни вывода сообщений в \texttt{FEniCS}}
+\begin{tabular}{ll}
+   \hline
+   \textbf{Название} & \textbf{Значение}  \\
+   \hline
+   \verb^ERROR^ & 40 \\
+   \verb^WARNING^ & 30 \\
+   \verb^INFO^ & 20 \\
+   \verb^PROGRESS^ & 16 \\
+   \verb^DBG^ или \verb^DEBUG^ & 10 \\
+   \hline
+\end{tabular}
+\label{tab:log-levels} 
+\end{table}
+
+Более подробное описание всех функций доступно на сайте пакета. 
+
+
+
+
+\section{Other problems}
+
+Рассматриваются вопросы выбора различных решателей и предобуславливателей. Обозначается возможность \texttt{FEniCS}-а для решения нелинейных задач и рассматривается решение нестационарной задачи.
+
+
+\subsection{Линейные решатели}
+
+С помощью функции \Verb^solve(...)^ можно решить вариационную задачу не определяя СЛАУ напрямую, т.е. \texttt{FEniCS} автоматически строит и решает систему. Для изменения параметров линейного решателя нужно передать дополнительный аргумент при вызове функции \Verb^solve(...)^. Дополнительный аргумент должен быть объектом класса \Verb^Parameters^. По-умолчанию СЛАУ решается с помощью метода Гаусса, но у прямого метода сложность алгоритма намного больше чем у итерационных методов. Для некоторых задач оптимальнее использовать итерационные методы подпространства Крылова. 
+
+Для тестового примера решения задачи Пуассона подходящим будем метод сопряженных градиентов (\Verb^cg^), поскольку матрица системы получается симметричной и положительно определенной. Определим объект для параметров и зададим линейный решатель с предобуславливателем:
+
+\begin{lstlisting}
+	Parameters params("MyParameters");
+	params.add("linear_solver","cg");
+	params.add("preconditioner","ilu");
+\end{lstlisting}
+
+Список всех линейных решателей приведен в табл. \ref{tab:solvers}.
+
+\begin{table} 
+  \caption{Линейные решатели доступные в \texttt{FEniCS}}
+\begin{tabular}{ll}
+   \hline
+   \textbf{Название} & \textbf{Метод}  \\
+   \hline
+   \verb^lu^ & метод Гаусса \\
+   \verb^cholesky^ & факторизация Холецкого \\
+   \verb^cg^ & метод сопряженных градиентов \\
+   \verb^gmres^ & метод обобщенных минимальных невязок \\
+   \verb^bicgstab^ & стабилизированный метод бисопряженных градиентов \\
+   \verb^minres^ & метод минимальных невязок \\
+   \verb^tfqmr^ & метод квази-минимальных невязок без транспонирования \\
+   \verb^richardson^ & метод Ричардсона \\
+   \hline
+\end{tabular}
+\label{tab:solvers} 
+\end{table}
+
+Для предобуславливания можно использовать методы указанные в табл. \ref{tab:pc}
+
+\begin{table} 
+  \caption{Предобуславливатели доступные в \texttt{FEniCS}}
+\begin{tabular}{ll}
+   \hline
+   \textbf{Название} & \textbf{Метод}  \\
+   \hline
+   \verb^none^ & без предобуславливания \\
+   \verb^ilu^ & неполная LU факторизация \\
+   \verb^icc^ & неполная факторизация Холецкого \\
+   \verb^jacobi^ & итерация Якоби \\
+   \verb^bjacobi^ & итерация блочной Якоби \\
+   \verb^sor^ & метод релаксации \\
+   \verb^amg^ & многосеточный метод \\
+   \verb^additive_schwarz^ & аддитивный метод Шварца \\
+   \verb^hypre_amg^ & многосеточным метод Hypre \\
+   \verb^hypre_euclid^ & параллельная неполная LU факторизация Hypre  \\
+   \verb^hypre_parasails^ & параллельное приближенное обращение Hypre \\
+   \verb^ml_amg^ & многоуровневый многосеточный метод \\
+   \hline
+\end{tabular}
+\label{tab:pc} 
+\end{table}
+
+Кроме определения линейного решателя и предобуславливателя, можно задавать другие параметры:
+
+\begin{lstlisting}
+	params.add("relative_tolerance", 1.0e-6);
+	params.add("absolute_tolerance", 1.0e-15);
+	params.add("divergence_limit", 1.0e4);
+	params.add("maximum_iterations", 10000);
+	params.add("error_on_nonconvergence", true);
+	params.add("nonzero_initial_guess", false);
+\end{lstlisting}
+
+Если задать уровень вывода сообщения равной \Verb^DBG^, в консоли выведется какой метод и предобуславливатель используется для решения СЛАУ, также количество выполненных итераций:
+
+\begin{Verbatim}[frame=leftline]
+...
+PETSc Krylov solver (gmres, ilu) converged in 15 iterations.
+...
+\end{Verbatim}
+
+
+\subsection{Нелинейные задачи}
+
+Рассмотрим решение с помощью \texttt{FEniCS} нелинейного дифференциального уравнения. Пример для реализации возьмем нелинейное уравнение Пуассона:
+
+\begin{equation}
+	\label{eq:nonlin-poisson}
+	-\nabla (q(u) \nabla u) = f.
+\end{equation}
+
+Для проверки корректности реализованного решения, возьмем область и такие $q(u)$, $f$ и граничное условие, чтобы $u$ имел простое точное решение. Пусть область $\Omega$ единичный $d$-мерный гиперкуб, т.е. $[0,1]^d$, $q(u) = (1+u)^m$, $f = 0$, $u = 0$ при $x_1 = 0$, $u = 1$ при $x_1 = 1$, и $\partial u / \partial \bm{n} = 0$ на всех дргих границах $x_i=0$ и $x_i=1$, $i=2,3,...,d$. Тогда точное решение равняется
+
+\begin{equation}
+	\label{eq:nonlin-poisson-exact}
+	u(x_1,...,x_d) = \left( \left( 2^{m+1} - 1 \right) x_1 + 1 \right)^{1/(m+1)} - 1.
+\end{equation}
+	
+Вариационная формулировка нашей нелинейной задачи будет: найти такой $u \in V$, что:
+
+\begin{equation}
+	\label{eq:nonlin-variation}
+	F(u,v) = 0 \quad \forall v \in \hat{V},
+\end{equation}
+
+где
+
+\begin{equation}
+	\label{eq:nonlin-poisson-variation}
+	F(u,v) = \int_\Omega q(u) \nabla u \nabla v \; d\bm{x},
+\end{equation}
+
+и
+
+\begin{equation}
+	\label{eq:nonlin-poisson-spaces}
+	\begin{split}
+		V & = \{ u(\bm{x}) \in H^1(\Omega): \quad u(\bm{x}) = 0, \; x_1 = 0, \quad u(\bm{x}) = 1, \; x_1 = 1 \}, \\
+		\hat{V} & = \{ v(\bm{x}) \in H^1(\Omega): \quad v(\bm{x}) = 0, \; x_1=0, \quad v(\bm{x}) = 0, \; x_1=1 \}.
+	\end{split}	
+\end{equation}
+
+С помощью пакета \texttt{FEniCS} нелинейное уравнение можно решить несколькими способами. Можно решить вручную, организовав итерации линеаризации, или же просто определить нелинейную задачу, которую \texttt{FEniCS} сам линеаризует и решит. Второй подход проще для реализации, но первый дает возможность большего управления процессом решения. 
+
+В нашем примере рассмотрим автоматическое решение нелинейной задачи. \texttt{FEniCS} нелинейную вариационную задачу \ref{eq:nonlin-variation} решает методом Ньютона. Тогда необходимо задать Якобиан и правую часть:
+
+\begin{equation}
+	\label{eq:newton}
+	\begin{split}
+		J = & \frac{\partial F}{\partial u}, \\
+		\phi = & F
+	\end{split}
+\end{equation}
+
+\texttt{UFL}-файл будет следующим образом:
+
+\begin{lstlisting}
+# Функция-коэффициент
+m = 2
+def q(u):
+	return (1+u)**m
+
+# Конечные элементы
+cell = triangle
+element = FiniteElement("Lagrange", cell, 1)
+
+# Коэффициенты
+f  = Coefficient(element)
+u  = Coefficient(element)
+v  = TestFunction(element)
+
+# Линейная форма
+F  = inner(q(u)*grad(u), grad(v))*dx - f*v*dx
+
+du = TrialFunction(element)
+
+# Якобиан
+J  = derivative(F, u, du)
+\end{lstlisting}
+
+Коэффициент $q(u)$ в \texttt{UFL}-файле определяется как функция в \texttt{Python}. \texttt{FEniCS} автоматически вычисляет производную по направлению, реализован в функции \Verb^derivative(...)^. Для вычисления нормы погрешности используется \texttt{Error.ufl}, который был создан для примера вычисления функционала. Генерируем \texttt{C++} классы из \texttt{UFL}-файлов и реализуем основной код в файле \texttt{main.cpp}:
+
+\begin{lstlisting}
+// Используем dolfin для счета
+#include <dolfin.h>
+// Включаем сгенерированные классы
+#include "Poisson.h"
+#include "Error.h"
+
+const double m = 2;
+
+// Работаем в пространстве dolfin
+using namespace dolfin;
+
+// Функция f(x1, x2)
+class FExpression : public Expression {
+	void eval(Array<double>& values, const Array<double>& x) const {
+		values[0] = 0;
+	}
+};
+
+// Граничное условие g(x1, x2)
+class DirichletValue : public Expression {
+	void eval(Array<double>& values, const Array<double>& x) const {
+		if (x[0] == 0)
+			values[0] = 0;
+		else if (x[0] == 1)
+			values[0] = 1;
+	}
+};
+
+// Граница области
+class DirichletBoundary : public SubDomain {
+	bool inside(const Array<double>& x, bool on_boundary) const {
+		return on_boundary &&
+		       (std::abs(x[0] - 0.0) < DOLFIN_EPS || 
+		        std::abs(x[0] - 1.0) < DOLFIN_EPS);
+	}
+};
+
+// Точное решение
+class ExactSolution : public Expression {
+	void eval(Array<double>& values, const Array<double>& x) const {
+		values[0] = pow((pow(2, m + 1) - 1) * x[0] + 1, 1.0/(m+1)) - 1;
+	}
+};
+
+int main() {
+	// Создаем единичную квадратную секту
+	UnitSquare mesh(16, 16);
+
+	// Создаем перенную для пространства функций
+	Poisson::FunctionSpace V(mesh);
+
+	// Связываем граничное значение с границей
+	DirichletValue g;
+	DirichletBoundary Gamma;
+	DirichletBC bc(V, g, Gamma);
+
+	FExpression f;
+	Function u(V);
+
+	Poisson::LinearForm F(V);
+	F.u = u; F.f = f;
+
+	Poisson::JacobianForm J(V, V);
+	J.u = u;
+
+	solve(F == 0, u, bc, J);
+
+	// Выводим график полученного результата
+	plot(u);
+
+	// Переменная для точного решения
+	ExactSolution exact;
+	
+	// Функционал погрешности
+	Error::Functional error(mesh);
+	error.u = u;
+	error.exact = exact;	
+	double error_norm = sqrt(assemble(error));
+	// Вывод нормы погрешности в лог	
+	info("Error norm = %G", error_norm);	
+
+	// Сохраняем результат в файле в формате VTK
+	File file("Solution.pvd");
+	file << u;
+
+	return 0;
+}
+\end{lstlisting}
+
+\begin{figure}
+\includegraphics[scale=0.5]{Graphics/FEniCS/nonlin-poisson.png} 
+\caption{Результат решения нелинейной задачи Пуассона}
+\label{fig:nonlin-poisson}
+\end{figure}
+
+Компилируем и делаем сборку через команду \Verb^make^. После запуска программы в терминале выведется информация о выполненных Ньютоновских итерациях и норма погрешности. График решения нелинейной задачи Пуассона выведется в окне (см. рис. \ref{fig:nonlin-poisson}).
+
+
+
+\subsection{Нестационарные задачи}
+
+Рассмотрим решение нестационарной дифференциальной задачи с помощью пакета \texttt{FEniCS}. Для простоты пусть нестационарная задача будет 
+задачей диффузией. Система будет состоять их параболического уравнения, граничного условия и начального распределения:
+
+\begin{equation}
+	\label{eq:parabolic}
+	\begin{split}
+		\frac{\partial u}{\partial t} & = \Delta u + f, \quad \bm{x} \in \Omega, \quad 0 < t < T, \\
+		u & = g, \quad \bm{x} \in \partial \Omega, \quad 0 < t < T, \\
+		u & = u^0, \quad \bm{x} \in \Omega, \quad t = 0,
+	\end{split}
+\end{equation}
+
+где $u$ -- неизвестная зависящая от координаты и времени, т.е. $u = u (\bm{x}, t)$. Начальное распределение зависит только от координаты $u^0 = u^0(\bm{x})$.
+
+Для решения нестационарной задачи с помощью конечных элементов во-первых нужно дискретизировать уравнение по времени методом конечных разностей. Далее получаем последовательность стационарных задач, решение которых зависит от предыдущего временного слоя. Полученные стационарные задачи решаются как вариационные задачи. 
+
+Временной интервал разделяется на временные слои с определенным временным шагом $T = \sum_{k=0}^{N} \tau^k$. Рассмотрим простейший случай дискретизации по времени, неявную двухслойную схему. Дискретизация по времени для $k + 1$-го временного слоя для нашей задачи будет:
+
+\begin{equation}
+	\label{eq:parabolic-time-disc}
+	\frac{u^{k+1} - u^k}{\tau^k} = \Delta u^{k+1} + f^{k+1}.
+\end{equation}
+
+Вариационная задача для $k+1$-го слоя примет вид:
+
+\begin{equation}
+	\label{eq:parabolic-variation}
+	\begin{split}
+		a(u^{k+1}, v) & = \int_\Omega (u^{k+1} v + \tau^k \nabla u^{k+1} \nabla v) \; d\bm{x}, \\
+		L(v)    & = \int_\Omega (u^k + \tau^k f^{k+1}) v \; d\bm{x}.
+	\end{split}
+\end{equation}
+
+Для проверки правильности численного решения будем рассматривать задачу в двухмерной область с точным решением. Пусть
+
+\begin{equation}
+	\label{eq:parabolic-exact}
+	u(x_1, x_2, t) = e^{-x_1 - 2 x_2 - t},
+\end{equation}
+
+тогда
+
+\begin{equation}
+	\label{eq:parabolic-params}
+	\begin{split}
+		f(x_1, x_2, t) & = -6e^{-x_1 - 2 x_2 - t}, \\
+		g(x_1, x_2, t) & = e^{-x_1 - 2 x_2 - t}.
+	\end{split}
+\end{equation}
+
+\texttt{UFL}-файл вариационной задачи назовем \texttt{Parabolic.ufl}:
+
+\begin{lstlisting}
+# Кончный элемент
+cell = triangle
+element = FiniteElement("Lagrange", cell, 1)
+
+# Функции
+u = TrialFunction(element)
+u0 = Coefficient(element)
+v = TestFunction(element)
+f = Coefficient(element)
+dt = Constant(triangle)
+
+# Билинейная и линейная форма
+a = (u*v + dt*inner(grad(u), grad(v)))*dx
+L = (u0 + dt*f)*v*dx
+\end{lstlisting}
+
+Решение задачи будем находить в единичной области для временного интервала $0 < t < 1$ с шагом $\tau = 0.1$. Основной код с выполнением итераций по времени реализуем в \texttt{main.cpp}:
+
+\begin{lstlisting}
+// Используем dolfin для счета
+#include <dolfin.h>
+// Включаем сгенерированные классы
+#include "Parabolic.h"
+#include "Error.h"
+
+// Работаем в пространстве dolfin
+using namespace dolfin;
+
+// Функция f(x1, x2, t)
+class FExpression : public Expression {
+public:
+	FExpression(double& t) : Expression(), t(t) {
+	}
+
+	void eval(Array<double>& values, const Array<double>& x) const {
+		values[0] = -6 * exp(-x[0] - 2 * x[1] - t);
+	}
+
+private:
+	double& t;
+};
+
+// Граничное условие g(x1, x2, t)
+class DirichletValue : public Expression {
+public:
+	DirichletValue(double& t) : Expression(), t(t) {
+	}
+
+	void eval(Array<double>& values, const Array<double>& x) const {
+		values[0] = exp(-x[0] - 2 * x[1] - t);
+	}
+private:
+	double& t;
+};
+
+// Граница области
+class DirichletBoundary : public SubDomain {
+	bool inside(const Array<double>& x, bool on_boundary) const {
+		return on_boundary;
+	}
+};
+
+// Точное решение
+class ExactSolution : public Expression {
+public:
+	ExactSolution(double& t) : Expression(), t(t) {
+	}
+
+	void eval(Array<double>& values, const Array<double>& x) const {
+		values[0] = exp(-x[0] - 2 * x[1] - t);
+	}
+private:
+	double& t;
+};
+
+int main() {
+	// Создаем единичную квадратную секту
+	// и задаем переменные для временной сетки 
+	UnitSquare mesh(16, 16);
+	double t = 0;
+	double tau = 0.1;
+	double T = 1;
+
+	// Функции
+	Parabolic::FunctionSpace V(mesh);
+	Function u(V);
+	Function u0(V);
+	FExpression f(t);
+	Constant dt(tau);
+	ExactSolution exact(t);
+
+	// Связываем граничное значение с границей
+	DirichletValue g(t);
+	DirichletBoundary Gamma;
+	DirichletBC bc(V, g, Gamma);
+
+	// Вариационная задача
+	Parabolic::BilinearForm a(V, V);
+	a.dt = dt;	
+	Parabolic::LinearForm L(V);
+	L.dt = dt; L.f = f; L.u0 = u0;
+
+	// Погрешность
+	Error::Functional error(mesh);
+	error.u = u;
+	error.exact = exact;	
+
+	// Матрица и правая часть СЛАУ
+	Matrix A;
+	assemble(A, a);
+	Vector b;
+
+	// Сохраняем результат в файле в формате VTK
+	File file("Solution.pvd");
+
+	while (t <= T) {
+		t += tau;
+		begin("Computing time %G", t);
+		// вычисляем правую часть
+		assemble(b, L);
+		// учитываем граничное условие
+		bc.apply(A, b);
+		// решаем СЛАУ
+		solve(A, *u.vector(), b);
+	
+		// вычисляем норму погрешности		
+		double error_norm = sqrt(assemble(error));
+		info("Error norm = %G", error_norm);	
+
+		// сохраняем в файл и переходим на следующий слой
+		file << u;
+		u0 = u;
+		end();
+	}
+
+	// Выводим график последнего временного слоя
+	plot(u);
+
+	return 0;
+}
+\end{lstlisting}
+
+\begin{figure}
+\includegraphics[scale=0.3]{Graphics/FEniCS/parabolic-paraview.png} 
+\caption{Результат решения тестовой параболической задачи}
+\label{fig:parabolic-paraview}
+\end{figure}
+
+Как видно, решается система линейных алгебраических уравнений, а не вариационная задача. Так сделано, чтобы учитывать изменение данных со временем, т.е. каждый временной слой решается новая система. На рис. \ref{fig:parabolic-paraview} изображены графики решения для нескольких временных слоев.
