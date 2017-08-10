@@ -46,7 +46,7 @@
 
 \date[August 3, 2017] % (optional, should be abbreviation of conference name)
 {\small Multiscale Methods and Large-scale Scientific Computing\\
-July 31- August 3, 2017, Yakutsk}
+August 2, 2017, Yakutsk}
 % - Either use conference name or its abbreviation.
 % - Not really informative to the audience, more for people (including
 %   yourself) who are reading the slides online
@@ -80,6 +80,8 @@ July 31- August 3, 2017, Yakutsk}
 \begin{itemize}
 \item
 Neutron trasnport
+\item 
+Multigroup diffusion equation
 \item
 Spectral problems
 %Nonstationary processes can naturally be described on the basis of the approximate solution expansion in time-eigenvalue of  $\alpha$-eigenvalue problem.
@@ -107,8 +109,8 @@ In this paper, we formulate a general strategy for the approximate solution of n
 
 \end{frame}
 
-\section{Multigroup diffusion approximation}
-\subsection{Problem description}
+\section{Problem description}
+\subsection{Multigroup diffusion approximation}
 \begin{frame}{Problem statement}
 Multigroup diffusion approximation
 \begin{eqnarray*}
@@ -455,31 +457,31 @@ $p$ & $\kappa$ & $\alpha_1$ &  $\alpha_2, \alpha_3$ &  $\alpha_4, \alpha_5$ \\
 \end{table}
 \end{frame}
 
-\begin{frame}
-\begin{table}[h]
-\caption{Eigenvalues $\alpha_n = \lambda_n^{(\alpha )}, \ n = 6,7, ..., 10$}
-\label{t-3}
-\begin{center}
-\begin{tabular}{ccccccc}
-\hline
-$p$ & $\kappa$ & $\alpha_6$ &  $\alpha_7$ & $\alpha_8$ &  $\alpha_9, \alpha_{10}$ \\ 
-\hline
-& 6 & 0.07107  & 0.07214  & 0.07323  & 0.07397 $\mp$ 2.04990e-08$i$ \\
-1 & 24 & 0.07050  & 0.07167  & 0.07283  & 0.07362 $\mp$ 3.65907e-08$i$ \\
-& 96 & 0.07033  & 0.07152  & 0.07269  & 0.07351 $\mp$ 3.91936e-08$i$  \\
-\hline
-& 6  & 0.07030  & 0.07151  & 0.07268  & 0.07349 $\mp$ 3.69824e-08$i$ \\
-2 & 24 & 0.07027  & 0.07147  & 0.07265  & 0.07347 $\mp$ 4.03121e-08$i$ \\
-& 96  & 0.07026  & 0.07147  & 0.07265  & 0.07347 $\mp$ 4.02324e-08$i$ \\
-\hline
-& 6 & 0.07027  & 0.07147  & 0.07265  & 0.07347 $\mp$ 4.02573e-08$i$ \\
-3 & 24 & 0.07026  & 0.07147  & 0.07265  & 0.07347 $\mp$ 4.02248e-08$i$ \\
-& 96 & 0.07026  & 0.07147  & 0.07265  & 0.07347 $\mp$ 4.02332e-08$i$ \\
-\hline
-\end{tabular}
-\end{center}
-\end{table}
-\end{frame}
+%\begin{frame}
+%\begin{table}[h]
+%\caption{Eigenvalues $\alpha_n = \lambda_n^{(\alpha )}, \ n = 6,7, ..., 10$}
+%\label{t-3}
+%\begin{center}
+%\begin{tabular}{ccccccc}
+%\hline
+%$p$ & $\kappa$ & $\alpha_6$ &  $\alpha_7$ & $\alpha_8$ &  $\alpha_9, \alpha_{10}$ \\ 
+%\hline
+%& 6 & 0.07107  & 0.07214  & 0.07323  & 0.07397 $\mp$ 2.04990e-08$i$ \\
+%1 & 24 & 0.07050  & 0.07167  & 0.07283  & 0.07362 $\mp$ 3.65907e-08$i$ \\
+%& 96 & 0.07033  & 0.07152  & 0.07269  & 0.07351 $\mp$ 3.91936e-08$i$  \\
+%\hline
+%& 6  & 0.07030  & 0.07151  & 0.07268  & 0.07349 $\mp$ 3.69824e-08$i$ \\
+%2 & 24 & 0.07027  & 0.07147  & 0.07265  & 0.07347 $\mp$ 4.03121e-08$i$ \\
+%& 96  & 0.07026  & 0.07147  & 0.07265  & 0.07347 $\mp$ 4.02324e-08$i$ \\
+%\hline
+%& 6 & 0.07027  & 0.07147  & 0.07265  & 0.07347 $\mp$ 4.02573e-08$i$ \\
+%3 & 24 & 0.07026  & 0.07147  & 0.07265  & 0.07347 $\mp$ 4.02248e-08$i$ \\
+%& 96 & 0.07026  & 0.07147  & 0.07265  & 0.07347 $\mp$ 4.02332e-08$i$ \\
+%\hline
+%\end{tabular}
+%\end{center}
+%\end{table}
+%\end{frame}
 
 \begin{frame}
 \begin{figure}[!h]
@@ -513,53 +515,53 @@ $p$ & $\kappa$ & $\alpha_6$ &  $\alpha_7$ & $\alpha_8$ &  $\alpha_9, \alpha_{10}
 \end{figure}
 \end{frame}
 
-\begin{frame}
-\begin{figure}[!h]
-	\begin{center}
-		\begin{minipage}{0.49\linewidth}
-			\center{\includegraphics[width=1\linewidth]{6-1.png}} \\
-		\end{minipage}
-		\hfill
-		\begin{minipage}{0.49\linewidth}
-			\center{\includegraphics[width=1\linewidth]{6-2.png}} \\
-		\end{minipage}
-		\caption{Imaginary part of eigenfunctions $\varphi^{(4)}_1, \ - \varphi^{(5)}_1$ (left) and  eigenfunction $\varphi^{(6)}_1$  (right).}
-		\label{fig:6}
-  	\end{center}
-\end{figure}
-\end{frame}
-
-\begin{frame}
-\begin{figure}[!h]
-	\begin{center}
-		\begin{minipage}{0.49\linewidth}
-			\center{\includegraphics[width=1\linewidth]{7-1.png}} \\
-		\end{minipage}
-		\hfill
-		\begin{minipage}{0.49\linewidth}
-			\center{\includegraphics[width=1\linewidth]{7-2.png}} \\
-		\end{minipage}
-		\caption{The eigenfunction $\varphi^{(7)}_1$ (left) and  eigenfunction $\varphi^{(8)}_1$  (right).}
-		\label{fig:7}
-	\end{center}
-\end{figure}
-\end{frame}
-
-\begin{frame}
-\begin{figure}[!h]
-	\begin{center}
-		\begin{minipage}{0.49\linewidth}
-			\center{\includegraphics[width=1\linewidth]{8-1.png}} \\
-		\end{minipage}
-		\hfill
-		\begin{minipage}{0.49\linewidth}
-			\center{\includegraphics[width=1\linewidth]{8-2.png}} \\
-		\end{minipage}
-		\caption{Real part of eigenfunctions $\varphi^{(9)}_1, \ \varphi^{(10)}_1$ (left) and  imaginary part of eigenfunctions $\varphi^{(9)}_1, \ - \varphi^{(10)}_1$  (right).}
-		\label{fig:8}
-	\end{center}
-\end{figure}
-\end{frame}
+%\begin{frame}
+%\begin{figure}[!h]
+%	\begin{center}
+%		\begin{minipage}{0.49\linewidth}
+%			\center{\includegraphics[width=1\linewidth]{6-1.png}} \\
+%		\end{minipage}
+%		\hfill
+%		\begin{minipage}{0.49\linewidth}
+%			\center{\includegraphics[width=1\linewidth]{6-2.png}} \\
+%		\end{minipage}
+%		\caption{Imaginary part of eigenfunctions $\varphi^{(4)}_1, \ - \varphi^{(5)}_1$ (left) and  eigenfunction $\varphi^{(6)}_1$  (right).}
+%		\label{fig:6}
+%  	\end{center}
+%\end{figure}
+%\end{frame}
+%
+%\begin{frame}
+%\begin{figure}[!h]
+%	\begin{center}
+%		\begin{minipage}{0.49\linewidth}
+%			\center{\includegraphics[width=1\linewidth]{7-1.png}} \\
+%		\end{minipage}
+%		\hfill
+%		\begin{minipage}{0.49\linewidth}
+%			\center{\includegraphics[width=1\linewidth]{7-2.png}} \\
+%		\end{minipage}
+%		\caption{The eigenfunction $\varphi^{(7)}_1$ (left) and  eigenfunction $\varphi^{(8)}_1$  (right).}
+%		\label{fig:7}
+%	\end{center}
+%\end{figure}
+%\end{frame}
+%
+%\begin{frame}
+%\begin{figure}[!h]
+%	\begin{center}
+%		\begin{minipage}{0.49\linewidth}
+%			\center{\includegraphics[width=1\linewidth]{8-1.png}} \\
+%		\end{minipage}
+%		\hfill
+%		\begin{minipage}{0.49\linewidth}
+%			\center{\includegraphics[width=1\linewidth]{8-2.png}} \\
+%		\end{minipage}
+%		\caption{Real part of eigenfunctions $\varphi^{(9)}_1, \ \varphi^{(10)}_1$ (left) and  imaginary part of eigenfunctions $\varphi^{(9)}_1, \ - \varphi^{(10)}_1$  (right).}
+%		\label{fig:8}
+%	\end{center}
+%\end{figure}
+%\end{frame}
 
 \begin{frame}
 	\begin{figure}[!h]
@@ -627,30 +629,30 @@ $n$\textbackslash$m$&1&2&3&4&5 \\
 \end{table}
 \end{frame}
 
-\begin{frame}
-\begin{table}[h]
-\caption{Scalar product $(\phi_1^{(n)}, \phi_1^{(m)}), \ n, m = 6,7, ..., 10$}
-\label{t-5}
-\begin{center} 
-\begin{tabular}{c|rrrrr}
-\hline
-$n$\textbackslash$m$&6&7&8&9&10 \\
-\hline
-1 & -1.8e-09 & 1.0e-02 & -3.2e-09 & -2.2e-08 & 1.6e-09 \\ 
-2 &  4.1e-08 & 1.2e-09 & -2.0e-07 & -3.1e-03 & 7.5e-03 \\ 
-3 &  -1.8e-08 & 1.1e-08 & -3.3e-08 & -7.5e-03 & -3.1e-03 \\ 
-4 &  -1.1e-08 & 1.4e-08 & 4.0e-09 & 3.0e-09 & -1.1e-08 \\ 
-5 &  2.9e-09 & -1.6e-08 & -1.9e-08 & 6.3e-09 & 6.3e-09 \\ 
-6 &  1.0e-00 & -4.2e-09 & -5.6e-03 & 4.1e-08 & -1.2e-07 \\ 
-7 &  -4.2e-09 & 1.0e-00 & -2.1e-09 & -1.8e-08 & 8.0e-09 \\ 
-8 &  -5.6e-03 & -2.1e-09 & 1.0e-00 & -5.2e-08 & 2.3e-07 \\ 
-9 &  4.1e-08 & -1.8e-08 & -5.2e-08 & 1.0e-00 & -5.5e-07 \\ 
-10 &  -1.2e-07 & 8.0e-09 & 2.3e-07 & -5.5e-07 & 1.0e-00 \\ 
-\hline
-\end{tabular}
-\end{center}
-\end{table}
-\end{frame}
+%\begin{frame}
+%\begin{table}[h]
+%\caption{Scalar product $(\phi_1^{(n)}, \phi_1^{(m)}), \ n, m = 6,7, ..., 10$}
+%\label{t-5}
+%\begin{center} 
+%\begin{tabular}{c|rrrrr}
+%\hline
+%$n$\textbackslash$m$&6&7&8&9&10 \\
+%\hline
+%1 & -1.8e-09 & 1.0e-02 & -3.2e-09 & -2.2e-08 & 1.6e-09 \\ 
+%2 &  4.1e-08 & 1.2e-09 & -2.0e-07 & -3.1e-03 & 7.5e-03 \\ 
+%3 &  -1.8e-08 & 1.1e-08 & -3.3e-08 & -7.5e-03 & -3.1e-03 \\ 
+%4 &  -1.1e-08 & 1.4e-08 & 4.0e-09 & 3.0e-09 & -1.1e-08 \\ 
+%5 &  2.9e-09 & -1.6e-08 & -1.9e-08 & 6.3e-09 & 6.3e-09 \\ 
+%6 &  1.0e-00 & -4.2e-09 & -5.6e-03 & 4.1e-08 & -1.2e-07 \\ 
+%7 &  -4.2e-09 & 1.0e-00 & -2.1e-09 & -1.8e-08 & 8.0e-09 \\ 
+%8 &  -5.6e-03 & -2.1e-09 & 1.0e-00 & -5.2e-08 & 2.3e-07 \\ 
+%9 &  4.1e-08 & -1.8e-08 & -5.2e-08 & 1.0e-00 & -5.5e-07 \\ 
+%10 &  -1.2e-07 & 8.0e-09 & 2.3e-07 & -5.5e-07 & 1.0e-00 \\ 
+%\hline
+%\end{tabular}
+%\end{center}
+%\end{table}
+%\end{frame}
 
 \begin{frame}
 Within the modal method, we can not rely on high accuracy when considering a relatively small number of dominant eigenvalues. Therefore, in the example under consideration, we can assume that the eigenvalues are real, and the corresponding eigenfunctions are orthogonal. 
@@ -714,32 +716,32 @@ $p$ & $\kappa$ & $\alpha_1$ &  $\alpha_2, \alpha_3$ &  $\alpha_4, \alpha_5$ \\
 \end{center}
 \end{table}
 \end{frame}
-
-\begin{frame}
-\begin{table}[h]
-\caption{Subcritical state:  $\alpha_n = \lambda_n^{(\alpha )}, \ n = 6,7, ..., 10$}
-\label{t-7}
-\begin{center}
-\begin{tabular}{ccccccc}
-\hline
-$p$ & $\kappa$ & $\alpha_6$ &  $\alpha_7$ & $\alpha_8$ &  $\alpha_9, \alpha_{10}$ \\ 
-\hline
-   & 6 & 0.07276 & 0.07363 & 0.07369 & 0.07466 $\mp$ 2.47162e-08$i$ \\ 
-1 & 24 & 0.07222 & 0.07316 & 0.07329 & 0.07429 $\mp$ 1.08814e-08$i$ \\ 
-  & 96 & 0.07204 & 0.07301 & 0.07316 & 0.07417 $\mp$ 1.38093e-08$i$ \\
-\hline
-   & 6 & 0.07203 & 0.07300 & 0.07315 & 0.07416 $\mp$ 1.26708e-08$i$ \\ 
-2 & 24 & 0.07199 & 0.07296 & 0.07312 & 0.07413 $\mp$ 1.50527e-08$i$ \\ 
-  & 96 & 0.07198 & 0.07295 & 0.07312 & 0.07413 $\mp$ 1.49196e-08$i$ \\ 
-\hline
-   & 6 & 0.07198 & 0.07295 & 0.07312 & 0.07413 $\mp$ 1.52256e-08$i$ \\ 
-3 & 24 & 0.07198 & 0.07295 & 0.07312 & 0.07413 $\mp$ 1.49141e-08$i$ \\ 
-  & 96 & 0.07198 & 0.07295 & 0.07311 & 0.07413 $\mp$ 1.49178e-08$i$ \\ 
-\hline
-\end{tabular}
-\end{center}
-\end{table}
-\end{frame}
+%
+%\begin{frame}
+%\begin{table}[h]
+%\caption{Subcritical state:  $\alpha_n = \lambda_n^{(\alpha )}, \ n = 6,7, ..., 10$}
+%\label{t-7}
+%\begin{center}
+%\begin{tabular}{ccccccc}
+%\hline
+%$p$ & $\kappa$ & $\alpha_6$ &  $\alpha_7$ & $\alpha_8$ &  $\alpha_9, \alpha_{10}$ \\ 
+%\hline
+%   & 6 & 0.07276 & 0.07363 & 0.07369 & 0.07466 $\mp$ 2.47162e-08$i$ \\ 
+%1 & 24 & 0.07222 & 0.07316 & 0.07329 & 0.07429 $\mp$ 1.08814e-08$i$ \\ 
+%  & 96 & 0.07204 & 0.07301 & 0.07316 & 0.07417 $\mp$ 1.38093e-08$i$ \\
+%\hline
+%   & 6 & 0.07203 & 0.07300 & 0.07315 & 0.07416 $\mp$ 1.26708e-08$i$ \\ 
+%2 & 24 & 0.07199 & 0.07296 & 0.07312 & 0.07413 $\mp$ 1.50527e-08$i$ \\ 
+%  & 96 & 0.07198 & 0.07295 & 0.07312 & 0.07413 $\mp$ 1.49196e-08$i$ \\ 
+%\hline
+%   & 6 & 0.07198 & 0.07295 & 0.07312 & 0.07413 $\mp$ 1.52256e-08$i$ \\ 
+%3 & 24 & 0.07198 & 0.07295 & 0.07312 & 0.07413 $\mp$ 1.49141e-08$i$ \\ 
+%  & 96 & 0.07198 & 0.07295 & 0.07311 & 0.07413 $\mp$ 1.49178e-08$i$ \\ 
+%\hline
+%\end{tabular}
+%\end{center}
+%\end{table}
+%\end{frame}
 
 \begin{frame}
 For an approximate solution, we use the following formulation:
@@ -862,31 +864,31 @@ $p$ & $\kappa$ & $\alpha_1$ &  $\alpha_2$ & $\alpha_3$ &  $\alpha_4$ & $\alpha_5
 \end{table}
 \end{frame}
 
-\begin{frame}
-\begin{table}[h]
-\caption{Subcritical asymmetric state:  $\alpha_n = \lambda_n^{(\alpha )}, \ n = 6,7, ..., 10$}
-\label{t-9}
-\begin{center}
-\begin{tabular}{cccccccc}
-\hline
-$p$ & $\kappa$ & $\alpha_6$ &  $\alpha_7$ & $\alpha_8$ &  $\alpha_9$ & $\alpha_{10}$ \\  
-\hline
-   & 6 & 0.07274 & 0.07355 & 0.07369 & 0.07464 & 0.07468 \\ 
-1 & 24 & 0.07220 & 0.07309 & 0.07329 & 0.07427 & 0.07430 \\
-  & 96 & 0.07202 & 0.07294 & 0.07316 & 0.07415 & 0.07419 \\ 
-\hline
-   & 6 & 0.07201 & 0.07293 & 0.07314 & 0.07414 & 0.07417 \\
-2 & 24 & 0.07197 & 0.07289 & 0.07311 & 0.07412 & 0.07415 \\ 
-  & 96 & 0.07196 & 0.07288 & 0.07311 & 0.07411 & 0.07414 \\ 
-\hline
-   & 6 & 0.07196 & 0.07289 & 0.07311 & 0.07411 & 0.07415 \\ 
-3 & 24 & 0.07196 & 0.07288 & 0.07311 & 0.07411 & 0.07414 \\ 
-  & 96 & 0.07196 & 0.07288 & 0.07311 & 0.07411 & 0.07414 \\ 
-\hline
-\end{tabular}
-\end{center}
-\end{table}
-\end{frame}
+%\begin{frame}
+%\begin{table}[h]
+%\caption{Subcritical asymmetric state:  $\alpha_n = \lambda_n^{(\alpha )}, \ n = 6,7, ..., 10$}
+%\label{t-9}
+%\begin{center}
+%\begin{tabular}{cccccccc}
+%\hline
+%$p$ & $\kappa$ & $\alpha_6$ &  $\alpha_7$ & $\alpha_8$ &  $\alpha_9$ & $\alpha_{10}$ \\  
+%\hline
+%   & 6 & 0.07274 & 0.07355 & 0.07369 & 0.07464 & 0.07468 \\ 
+%1 & 24 & 0.07220 & 0.07309 & 0.07329 & 0.07427 & 0.07430 \\
+%  & 96 & 0.07202 & 0.07294 & 0.07316 & 0.07415 & 0.07419 \\ 
+%\hline
+%   & 6 & 0.07201 & 0.07293 & 0.07314 & 0.07414 & 0.07417 \\
+%2 & 24 & 0.07197 & 0.07289 & 0.07311 & 0.07412 & 0.07415 \\ 
+%  & 96 & 0.07196 & 0.07288 & 0.07311 & 0.07411 & 0.07414 \\ 
+%\hline
+%   & 6 & 0.07196 & 0.07289 & 0.07311 & 0.07411 & 0.07415 \\ 
+%3 & 24 & 0.07196 & 0.07288 & 0.07311 & 0.07411 & 0.07414 \\ 
+%  & 96 & 0.07196 & 0.07288 & 0.07311 & 0.07411 & 0.07414 \\ 
+%\hline
+%\end{tabular}
+%\end{center}
+%\end{table}
+%\end{frame}
 
 \begin{frame}
 \begin{figure}[!h]
