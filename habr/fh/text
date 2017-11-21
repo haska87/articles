@@ -14,7 +14,7 @@
 <ul>
 	<li>Автоматическая контроль ошибок и адаптивность, возможность задания функционала, которая должна минимизироваться с определенной точностью;</li>
 	<li>Расширяемая библиотека метода конечных элементов: кроме стандартных конечных элементов, таких как лагранжевы, поддерживаются разрывные методы галеркина, векторные элементы и специальные типы такие как Crouzeix-Raviart;</li>
-	<li>Высокопроизводительная линейная алгебра, несколько вариантов реализации линейной алгебры, такие как <a href="http://www.mcs.anl.gov/petsc/">PETSc</a>, <a href="http://trilinos.sandia.gov/packages/epetra/">Trilinos/Epetra</a>, <a href="http://www.boost.org/doc/libs/release/libs/numeric/ublas/doc/index.htm">uBLAS</a>  и <a href="http://www.simunova.com/de/node/24">MTL4</a> , параллельные вычисления поддерживаются пакетами PETSc и Trilinos/Epetra;</li>
+	<li>Высокопроизводительная линейная алгебра, несколько вариантов реализации линейной алгебры, такие как <a href="http://www.mcs.anl.gov/petsc/">PETSc</a>, <a href="http://trilinos.sandia.gov/packages/epetra/">Trilinos/Epetra</a>, <a href="http://www.boost.org/doc/libs/release/libs/numeric/ublas/doc/index.htm">uBLAS</a>  и <a href="http://www.simunova.com/de/node/24">MTL4</a> , а также библиотека для решения больших разреженных задач на собственные значения <a href="http://slepc.upv.es">SLEPc</a>, в которой параллельные вычисления поддерживаются пакетами PETSc, Trilinos/Epetra и SLEPc;</li>
 	<li>Поддержка расчетов на одно-, двух- и трехмерных областях, адаптивные сетки;</li>
 	<li>Обработка результатов, возможность визуализации сетки, функций и полученных результатов, поддержка широко используемого формата <a href="http://www.vtk.org/">VTK</a> ;</li>
 	<li>Возможность использования языков программирования Python и C++, подобные интерфейсы классов и функций для обоих языков;</li>
@@ -76,8 +76,9 @@ $$display$$\int_\Omega \nabla u \nabla v \; d{x} =
 $$display$$
 
 где $inline$V$inline$ -- пространство пробных функций, а $inline$\hat{V}$inline$ -- пространство тестовых функций:
-$$display$$V  = \{ u({x}) \in H^1(\Omega): \; u({x}) = g({x}), \; {x} \in \partial \Omega \},\\
-\hat{V}  = \{ v({x}) \in H^1(\Omega): \; v({x}) = 0, \; {x} \in \partial \Omega \}.
+$$display$$
+V  = \{ u({x}) \in H^1(\Omega): \,  u({x}) = g({x}), \, {x} \in \partial \Omega \},
+\hat{V}  = \{ v({x}) \in H^1(\Omega): \,  v({x}) = 0, \, {x} \in \partial \Omega \}.
 $$display$$
 $inline$H^1(\Omega)$inline$ -- пространство Соболева содержащий функции $inline$v$inline$, такие что $inline$v^2$inline$ и $inline$|\nabla v|^2$inline$ конечно интегрируемы в области $inline$\Omega$inline$. 
 </spoiler>
@@ -107,8 +108,10 @@ $$display$$
 $$display$$A{y} = {b},
 $$display$$
 где
-$$display$$A_{ij} = \int_\Omega \nabla \phi_j \nabla \hat{\phi_i} \; d{x}, \\ 
-b_i = \int_\Omega f \hat{\phi}_i \; d{x}.
+$$display$$
+A_{ij} = \int_\Omega \nabla \phi_j \nabla \hat{\phi_i} \, d{x}, 
+\quad
+b_i = \int_\Omega f \hat{\phi}_i \, d{x}.
 $$display$$
 
 Уравнение в более общем виде записывается так:
@@ -116,8 +119,9 @@ $$display$$a(u,v) = L(v).
 $$display$$
 
 В нашей задаче:
-$$display$$a(u,v) = \int_\Omega \nabla u \nabla v \; dx, \\
-L(v) = \int_\Omega f v \; dx,
+$$display$$a(u,v) = \int_\Omega \nabla u \nabla v \, dx, 
+\quad
+L(v) = \int_\Omega f v \, dx,
 $$display$$
 где $inline$a(u,v)$inline$ -- называется <b>билинейной формой</b>, а $inline$L(v)$inline$ -- <b>линейной формой</b>.
 </spoiler> 
@@ -156,7 +160,7 @@ $$display$$
 $$display$$\Omega = \left(x \; | \; x = (x_1, x_2), \; 0 \leq x_i \leq1, \; i = 1, 2 \right).
 $$display$$
 
-Рассмотрим реализацию на python-е описывая код шаг за шагом.
+Рассмотрим реализацию на <b>python</b>-е описывая код шаг за шагом.
 
 Во-первых импортируем модуль dolfin:
 <source lang="python">from dolfin import *</source>
@@ -171,4 +175,5 @@ V = FunctionSpace(mesh, "Lagrange", 1)
 </source>
 
 Второй аргумент FunctionSpace является конечным элементом, а третий аргумент задает степень полинома. Таким образом, наше пространство $inline$V$inline$ состоит из лагранжевых  конечных элементов первого порядка (непрерывные кусочно-гладкие полиномиальные функции). 
+
 
