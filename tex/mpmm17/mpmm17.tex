@@ -1,0 +1,652 @@
+\documentclass[a4paper]{jpconf}
+\usepackage{graphicx}
+
+\usepackage{tikz}
+\usepackage{bm}
+\usepackage{amsmath}
+
+\graphicspath{{pictures/}}
+
+
+\begin{document}
+\title{Modelling dynamic processes in a nuclear reactor by state change modal method}
+
+\author{A V Avvakumov$^1$, V F Strizhov$^2$, P N Vabishchevich$^{2,3}$ and A O Vasilev$^3$}
+
+\address{$^1$ National Research Center Kurchatov Institute, Moscow, Russia}
+\address{$^2$ Nuclear Safety Institute of RAS, Moscow, Russia}
+\address{$^3$ North-Eastern Federal University, Yakutsk, Russia}
+
+\ead{haska87@gmail.com}
+
+\begin{abstract}
+Modelling of dynamic processes in nuclear reactors is carried out, mainly, using the multigroup neutron diffusion approximation. 
+The basic model includes a multidimensional set of coupled parabolic equations and ordinary differential equations.
+Dynamic processes are modelled by a successive
+change of the reactor states. It is considered that the transition from one state to another occurs promptly.
+In the modal method the approximate solution is represented as eigenfunction expansion. 
+The numerical-analytical method is based on the use of dominant time-eigenvalues of
+a group diffusion model taking into account delayed neutrons. 
+%For each reactor state the eigenvalues and eigenfunctions of the $\alpha$-eigenvalue problem are calculated in advance.
+%This provides very fast calculations in real-time scale.
+%Numerical simulations of the dynamic process were performed in the framework of the
+%two-group approximation for the VVER-1000 reactor test model. 
+%The last is characterized by the fact that some eigenvalues are complex.
+%The dynamic model includes two reactor states, namely the regular regime of the supercritical state with further transition to the subcritical state.
+%The results of the dynamic process simulation demonstrate the acceptable accuracy in calculation of neutron power and delayed neutrons source in comparison with the direct dynamic calculation.
+\end{abstract}
+
+\section{Introduction}
+To describe neutronic processes occurring in a nuclear reactor  \cite{duderstadt1976nuclear}, a complex integro-differential equation is involved, in which the neutron flux depends on time, energy, spatial and angular variables  \cite{stacey}. As a rule,  the group diffusion  approximation  are used  \cite{marchuk1986numerical} in practical calculations.
+Currently diffusion models are derived and applied using sophisticated homogenization methodologies (see \cite{sanchez2009assembly}). 
+
+In the theory and practice of neutronics calculations, fast methods to obtain approximate solutions are given great attention. A class of methods for modeling the nonstationary group neutron diffusion is associated with the multiplicative representation of the space-time factorization methods and the quasistatic method \cite{dodds1976accuracy}.
+An approximate solution is represented as a product of the time-dependent amplitude the spatial shape function, which is often associated with the fundamental eigenfunction of neutron diffusion equations. 
+
+When using the quasistatic method, the problem is significantly simplified, thus, it is doubtful to obtain good accuracy for an approximate solution, in particular, in dynamic regimes with complex flux redistributions. The general approach of the modal method has been  developed  \cite{stacey1967modal}:
+the solution is represented as a sum of dominant eigenvalues with time-dependent coefficients.
+
+Nonstationary processes can be described using the approximate solution expansion in time-eigenvalue of  $\alpha$-eigenvalue problem \cite{verdu20103d}.
+In a simpler model without delayed neutrons, the modal methods were used in  \cite{modak2007scheme}.
+The principal point is connected with the fact that when using this approach, we deal with an unbound system of the coefficient equations. It should also be noted that the eigenvalues are complex for both   $\lambda$- and 
+$\alpha$-eigenvalue problem. To set the initial state, this leads to the need to solve the appropriate adjoint spectral problems.
+
+%In this paper, we formulate a general strategy for the approximate solution of nonstationary problems of neutron transport in nuclear reactors, which is oriented to fast real-time calculations using the State Change Modal (SCM) method. The dynamic behavior of a nuclear reactor is considered as a sequence of its states characterized by its set of constant coefficients of the multigroup diffusion equations. It is considered that the transition from one state to another occurs instantaneously. For a separate state, the neutron flux is calculated using the modal method to represent the problem’s solution in the form of expansion in the dominant eigenfunctions of the  $\alpha$-eigenvalue problem
+%taking into account delayed neutrons (the full Alpha method). Real-time calculations are provided by the fact that the desired set of eigenvalues and eigenfunctions of the reactor deterministic state are calculated in advance.
+
+\section{Problem statement}
+The neutron flux is modelled in multigroup diffusion approximation. The neutron dynamics is considered in the bounded convex two-dimensional or three-dimensional area  $\Omega$ ($\bm x = \{x_1, ..., x_d\} \in \Omega, \ d = 2,3$) with boundary $\partial \Omega$. The neutron diffusion is described by:
+\begin{equation}\label{1}
+\begin{split}
+V(t) \frac{d \bm \phi}{d t} + (D(t)+S(t)) \bm \phi &= R(t) \bm \phi + B(t)\bm c,
+\\
+\frac{d \bm c}{d t} + \Lambda(t)\bm c &= Q(t) \bm \phi. 
+\end{split}
+\end{equation}  
+Where vectors $\bm \phi = \{\phi_1, \phi_2, ..., \phi_G\}$, $\bm c = \{c_1, c_2, ..., c_M\}$ 
+and matrices:
+\[
+\begin{aligned}
+ V = (v_{g g'}), \quad v_{g g'} = \delta_{g g'} v_g^{-1}, \quad 
+ D = (d_{g g'}), \quad d_{g g'} = - \delta_{g g'} \nabla \cdot D_g \nabla, \\
+ S = (s_{g g'}), \quad  s_{g g'} =  \delta_{g g'} \Sigma_g - \Sigma_{s,g'\rightarrow g}, \quad R  = (r_{g g'}), \quad  r_{g g'} = (1-\beta)\chi_g \nu \Sigma_{fg'}, \\
+ B = (b_{g m}), \quad b_{g m}  = \widetilde{\chi}_g \lambda_m, \quad
+\Lambda = (\lambda_{m m'}), \quad  \lambda_{m m'} = \lambda_m \delta_{m m'}, \\
+ Q = (q_{mg}), \quad  q_{mg}  = \beta_m \nu \Sigma_{fg}, \quad g, g' = 1,2, ..., G, \quad 
+ m, m' = 1,2, ....,M,
+\end{aligned}
+\]
+where
+$\delta_{g g'}$ is the Kronecker symbol. We shall use the set of vectors $\bm \phi$, whose components 
+satisfy the albedo boundary conditions: 
+\begin{equation}\label{2}
+ D_g\frac{\partial \phi_g}{\partial n} + \gamma_g \phi_g = 0, \quad 
+ \quad g = 1,2, ..., G ,
+\end{equation}
+where $n$ --- outer normal to the boundary $\partial \Omega$.
+
+Here $\phi_g(\bm x,t)$ --- neutron flux of $g$ group at point $\bm x$ and time $t$,
+$G$ --- number of energy groups, and other terms are standard.
+
+The Cauchy problem is formulated for equations (\ref{1})  when 
+\begin{equation}\label{3}
+ \bm \phi(0) = \bm \phi^0,
+ \quad   \bm c(0) = \bm c^0,
+ \quad   \phi^0 = \{ \phi_1^0,  \phi_2^0, ...,  \phi_G^0 \},  
+ \quad   \bm c^0 = \{c_1^0, c_2^0, ..., c_M^0\
+\end{equation} 
+
+\section{State change modal method}
+The nuclear reactor is always non-stationary. We will use the following simplified description of the dynamic processes in a nuclear reactor.
+
+In selected time interval, the non-stationary neutron flux is determined by the nuclear reactor state. The reactor state is characterized by the constant coefficients of multigroup diffusion equations (\ref{1}). Dynamic processes in a nuclear reactor can be considered as a change of states  (see  Fig.\ref{fig:1}). 
+At a certain time $t = t_s, \ s = 1,2, ...$ an instantaneous change of state occurs. The state $s$ is defined by the parameters in equations  (\ref{1}):
+\[
+ V(t) = V(t_s), \quad  D(t) = D(t_s), \quad  S(t) = S(t_s), \quad  R(t) = R(t_s), \quad  B(t) = B(t_s),
+\] 
+\[
+ \Lambda(t) = \Lambda(t_s), \quad  Q(t) = Q(t_s),
+ \quad t_{s-1} < t \leq t_s, \quad s = 1,2, ... 
+\] 
+
+
+Simulation of the reactor dynamic behavior is considered as a consistent solution of subtasks for the reactor states. The initial condition for the state $s$ (at $t = t_{s-1}$) is the final state of the reactor for the state $s-1$.
+
+An approximate description of the non-stationary process at a separate stage is based on modal approximation. An approximate solution is considered in the form of decomposition in eigenfunctions of time and $\alpha$-eigenvalue problem. Finite-element approximation in space is used.
+
+Let's $\bm u = \{\bm \phi, \bm c\}$. Rewrite the system of equations (\ref{1}) as
+\begin{equation}\label{4}
+ \bm B \frac{d \bm u}{d t} + \bm A \bm u = 0,
+ \quad t_{s-1} < t \leq t_s,
+\end{equation} 
+with constants
+\[
+ \bm A = 
+ \begin{pmatrix}
+ D(t_s)+S(t_s) - R(t_s) &  - B(t_s) \\
+ - Q(t_s) & \Lambda(t_s) 
+ \end{pmatrix} ,
+ \quad  \bm B = 
+ \begin{pmatrix}
+ V(t_s) & 0 \\
+ 0 & I 
+ \end{pmatrix} ,
+\] 
+where $I$ is the identity matrix. Initial conditions:
+\begin{equation}\label{5}
+ \bm u(t_{s-1}) = \bm u^s .
+\end{equation} 
+
+After approximating over the space by the finite element method from (\ref{4}), (\ref{5}) 
+we turn to the Cauchy problem for a linear system of ordinary differential equations with constant coefficients:
+\begin{equation}\label{6}
+ \bm B_h \frac{d \bm u_h}{d t} + \bm A_h \bm u_h = 0,
+ \quad t_{s-1} < t \leq t_s,
+\end{equation}   
+\begin{equation}\label{7}
+ \bm u_h(t_{s-1}) = \bm u_h^s ,
+\end{equation} 
+where $h$ is the discretization parameter. The main feature of the problems we are considering is that the matrices $\bm A_h$ and $\bm B_h$ 
+are real and asymmetric.
+
+The modal approximation corresponds to the representation of the approximate solution  ($\bm u_h \approx \bm u_N$) of problem   (\ref{6}), (\ref{7}) in the following form
+\begin{equation}\label{8}
+ \bm u_N(\bm x, t) =
+ \sum_{n=1}^{N} a_n(t) \bm w_n(\bm x),
+\end{equation} 
+where $N$ is the number of dominant eigenvalues, 
+$\bm w_n(\bm x)$ are eigenfunctions.
+
+Let us define eigenfunctions and eigenvalues as the solution of the  $\alpha$-eigenvalue problem:
+\begin{equation}\label{9}
+ \bm A_h \bm v = \lambda  \bm B_h \bm v .
+\end{equation} 
+
+In general, eigenfunctions and eigenvalues  (\ref{9}) are complex.Then in the representation  (\ref{8}) we obtain
+\[
+\begin{split}
+ a_n(t) \bm w_n(\bm x) & = b_n \mathrm{Re} \big ( \exp(-\lambda_n (t-t_{s-1})) \bm v_n(\bm x) \big ), \\
+ a_{n+1}(t) \bm w_{n+1}(\bm x) & = b_{n+1} \mathrm{Im} \big ( \exp(-\lambda_n (t-t_{s-1})) \bm v_n(\bm x) \big ) .
+\end{split}
+\] 
+
+A special attention should be paid to define the coefficients $a_n(t_{s-1}) = b_n, \ n = 1,2, ..., N$.
+In the case of real eigenvalues, we have
+\[
+ \bm u_h^s (\bm x) = \sum_{n=1}^{N_h} b_n \bm v_n(\bm x) .
+\] 
+This representation is not very suitable for practical use with modal approximation, when we work only with dominant eigenfunctions.  
+
+The initial condition includes two components  $\bm u_h^s (\bm x) = (\bm \phi_h^s (\bm x), \bm c_h^s (\bm x))$.
+Dynamic behaviour of these components is due to different time-scale processes: slow processes for delayed neutrons and fast processes for neutron flux when the reactor state changes. We can model the slow phase of the reactor dynamics with modal approximation: only the function  $\bm c_h^s (\bm x)$ is approximated. The approximation  $\bm \phi_h^s (\bm x)$ is not of interest to us; we do not model a fast phase of the state change.
+
+The standard approach for the decomposition of the function  $\bm u_h^s (\bm x) $ 
+over the system of non-orthogonal functions $\bm v_n(\bm x), \ n = 1,2, ..., N_h$ 
+consists in using the biorthogonal system of functions 
+\cite{brezinski1991biorthogonality}.
+Consider the spectral problem adjoint to (\ref{9})  
+\begin{equation}\label{10}
+ \bm A_h^T \widetilde{\bm v}  = \lambda  \bm B_h^T \widetilde{\bm v} .
+\end{equation} 
+The eigenfunctions of problems  (\ref{9}) and (\ref{10}) are orthogonal \cite{Laub2005,Ortega1987}  in the sense of the equality
+\[
+  (\bm B_h \bm v_n, \widetilde{\bm v}_m)= 0, 
+  \quad m \neq n,
+  \quad m, n = 1,2, ..., N_h , 
+\] 
+where $(\cdot, \cdot)$ means corresponding scalar product. 
+In view of this, one can obtain
+\begin{equation}\label{11}
+ b_n = \frac{1}{(\bm B_h \bm v_n, \widetilde{\bm v}_n)} (\bm u_h^s, \bm B_h \widetilde{\bm v}_n),
+ \quad n = 1,2, ..., N_h .  
+\end{equation} 
+
+In the approximate solution of problem   (\ref{6}), (\ref{7}) only the first $N$ coefficients  $b_n$ in (\ref{11}) are used (see (\ref{8})):
+\begin{equation}\label{12}
+ \bm c_h^s (\bm x) \approx  \sum_{n=1}^{N} b_n \bm c_n(\bm x) ,
+\end{equation} 
+where $\bm v_n (\bm x) = (\bm \phi_n (\bm x), \bm c_n (\bm x))$.
+In this case, the spectral problems  (\ref{9}), (\ref{10}) are solved for $N$ dominant 
+eigenvalues.
+The solution of the adjoint spectral problem is involved only for calculating the initial condition coefficients. 
+%This complication of the problem is not always justified. Therefore, it is worth to use simpler algorithms for obtaining the coefficients  $b_n, \ n = 1,2, ..., N$ in (\ref{12}).
+%We can define them, for example, based on linear least squares  \cite{LSPk1996,verdu2014modal}.
+%In this case, one can obtain
+%\begin{equation}\label{13}
+% (\bm r_N, \bm r_N) \longrightarrow \min, 
+% \quad \bm r_N (\bm x)  = \bm c_h^s (\bm x) -  \sum_{n=1}^{N} b_n \bm c_n(\bm x) .
+%\end{equation} 
+%To find the coefficients, a system of linear equations is solved. 
+
+The state change modal method is based on the following calculating scheme.
+\begin{description}
+ \item[Off-line calculation.] Calculation of the coefficients of the mathematical model of the multigroup diffusion approximation for the separate reactor states, performed in advance. It can be included calculated dominant eigenvalues and eigenfunctions of the  $\alpha$-eigenvalue problem (\ref{9}). 
+These data can be supplemented by dominant eigenvalues and eigenvalues of the conjugate eigenvalue problem (\ref{10}).
+ \item[On-line calculation.] Real-time modeling is performed using the modal solution of the problem  (\ref{6}), (\ref{7}).
+The coefficients in the representation  (\ref{12}) are calculated from the initial condition using (\ref{11}). The solution for other time intervals is determined according to (\ref{8}).
+\end{description}  
+
+\section{The test: the dynamics of the VVER-1000 reactor during the transition from the supercritical mode to the subcritical mode} 
+
+A test problem for a VVER-1000 reactor \cite{chao} 
+is considered in the two-dimensional approximation using a two-group diffusion approximation with delayed neutrons. 
+
+%\subsection{General description} 
+%
+%The geometric model of the VVER-1000 core consists of a set of hexagonal-shaped cassettes and is shown in Fig.\ref{fig:2}, where fuel assemblies of various types are shown. The assembly ''wrench''  size is 23.6 cm.
+%
+%\begin{figure}[h]
+%  \begin{center}
+%    \includegraphics[width=0.5\linewidth] {2.png}
+%	\caption{Geometrcial model of the VVER-1000 reactor core.}
+%	\label{fig:2}
+%  \end{center}
+%\end{figure} 
+%
+%For an approximate solution of the problem, regular triangular grids are used. The number of triangles per cassette $\kappa$  varies from 6 to 96. %(Fig.\ref{fig:3}). 
+%
+%%\begin{figure}[h]
+%%  \begin{center}
+%%\begin{minipage}{0.15\linewidth}
+%%\center{\includegraphics[width=1\linewidth]{3-1.png}}\\
+%%\end{minipage}
+%%\hspace{20pt}
+%%\begin{minipage}{0.15\linewidth}
+%%\center{\includegraphics[width=1\linewidth]{3-2.png}}\\
+%%\end{minipage}
+%%\hspace{20pt}
+%%\begin{minipage}{0.15\linewidth}
+%%\center{\includegraphics[width=1\linewidth]{3-3.png}}\\
+%%\end{minipage}
+%%\caption{Discretization of assembly into 6, 24 and 96 finite elements.}
+%%\label{fig:3}
+%%  \end{center}
+%%\end{figure}
+%
+%\begin{table}[h]
+%\caption{Diffusion neutronics constants for VVER-1000}
+%\label{t-1}
+%\begin{center}
+%\begin{tabular}{cccccc}
+%\br
+%Material & 1 & 2 & 3 & 4 & 5\\
+%\mr
+%$D_1$ & 1.38320e-0 & 1.38299e-0  & 1.39522e-0  & 1.39446e-0  & 1.39506e-0 \\
+%$D_2$ & 3.86277e-1 & 3.89403e-1 & 3.86225e-1 & 3.87723e-1 & 3.84492e-1 \\
+%$\Sigma_1 + \Sigma_{s,1\rightarrow 2}$ & 2.48836e-2 & 2.62865e-2 & 2.45662e-2 & 2.60117e-2 & 2.46141e-2\\
+%$\Sigma_2$ & 6.73049e-2 & 8.10328e-2 & 8.44801e-1 & 9.89671e-2 & 8.93878e-2\\
+%$\Sigma_{s,1\rightarrow 2}$ & 1.64977e-2 & 1.47315e-2 & 1.56219e-2 & 1.40185e-2 & 1.54981e-2\\
+%$\nu\Sigma_{f1}$ & 4.81619e-3 & 4.66953e-3 & 6.04889e-3 & 5.91507e-3 & 6.40256e-3\\
+%$\nu\Sigma_{f2}$ & 8.46154e-2 & 8.52264e-2 & 1.19428e-1 & 1.20497e-1 & 1.29281e-1\\
+%\br
+%\end{tabular}
+%\end{center}
+%\end{table}
+%
+%The supercritical state of the reactor is characterized by a set of coefficients, which are given in Table \ref{t-1}. 
+%The following boundary conditions (\ref{3}) are used:  $\gamma_g = 0.5, \ g = 1,2$.  
+%The following delayed neutrons parameters are used: one group of delayed neutrons with effective fraction $\beta_1 = 6.5\cdot10^{-3}$ and decay constant $\lambda_1 = 0.08$ s$^{-1}$. 
+%Neutron velocity  $v_1 = 1.25 \cdot 10^7$ cm/s and $v_2 = 2.5 \cdot 10^5$ cm/s.
+
+\subsection{Supercritical state: $\alpha$-eigenvalue problem} 
+
+Below the results of a numerical solution of the $\alpha$-eigenvalue problem (\ref{9}) are presented. 
+%In the framework of the two-group approximation and taking into account the delayed neutrons, one can write 
+%\begin{equation}\label{23}
+%\begin{split}
+% - \nabla \cdot D_1 \nabla \varphi_1  + \Sigma_1 \varphi_1 + \Sigma_{s,1\rightarrow 2} \varphi_1  & \\
+% - (1 - \beta_1)(\nu \Sigma_{f1} \varphi_1 + \nu \Sigma_{f2} \varphi_2) - \lambda_1 s & = \lambda^{(\alpha)} \frac{1}{v_1}   \varphi_1, \\
+% - \nabla \cdot D_2 \nabla \varphi_2  + \Sigma_2 \varphi_2  - \Sigma_{s,1\rightarrow 2} \varphi_1  
+% & = \lambda^{(\alpha)} \frac{1}{v_2}   \varphi_2,\\
+% \lambda_1 s - \beta_1(\nu \Sigma_{f1} \varphi_1 + \nu \Sigma_{f2} \varphi_2) & = \lambda^{(\alpha)} s. 
+%\end{split}
+%\end{equation} 
+The dominant eigenvalues $\alpha_n = \lambda_n^{(\alpha)}, \ n = 1,2, ..., N$ are searched for at
+\[
+ \mathrm{Re}  \lambda_1^{(\alpha)} \leq  \mathrm{Re}  \lambda_2^{(\alpha)} \leq ... 
+ \leq \mathrm{Re}  \lambda_N^{(\alpha)} \leq ...\, \leq \mathrm{Re}  \lambda_{N_h}^{(\alpha)}.
+\]
+Similar calculations of the eigenvalues for the VVER-1000 test problem without delayed neutrons can be found in \cite{avvakumov2017spectral}. 
+
+\begin{table}[h]
+\caption{Eigenvalues $\alpha_n = \lambda_n^{(\alpha )}, \ n = 1,2, ..., 5$}
+\label{t-2}
+\begin{center}
+\begin{tabular}{cccccc}
+\br
+$p$ & $\kappa$ & $\alpha_1$ &  $\alpha_2, \alpha_3$ &  $\alpha_4, \alpha_5$ \\ 
+\mr
+& 6 & -0.22557  & 0.04241 $\mp$ 3.08808e-06$i$  & 0.06588 $\mp$ 4.80449e-07$i$  \\
+1 & 24 & -0.82690  & 0.03777 $\mp$ 5.37884e-06$i$  & 0.06489 $\mp$ 1.37315e-06$i$ \\
+& 96 & -1.74998  & 0.03619 $\mp$ 5.69002e-06$i$  & 0.06456 $\mp$ 1.40299e-06$i$ \\
+\mr
+& 6 & -2.10154  & 0.03592 $\mp$ 4.96474e-06$i$  & 0.06452 $\mp$ 1.21320e-06$i$ \\
+2 & 24 & -2.46601  & 0.03562 $\mp$ 5.78277e-06$i$  & 0.06445 $\mp$ 1.40897e-06$i$ \\
+& 96 & -2.50375  & 0.03559 $\mp$ 5.80693e-06$i$  & 0.06444 $\mp$ 1.41324e-06$i$ \\
+\br
+\end{tabular}
+\end{center}
+\end{table}
+
+%\begin{table}[h]
+%\caption{Eigenvalues $\alpha_n = \lambda_n^{(\alpha )}, \ n = 6,7, ..., 10$}
+%\label{t-3}
+%\begin{center}
+%\begin{tabular}{ccccccc}
+%\br
+%$p$ & $\kappa$ & $\alpha_6$ &  $\alpha_7$ & $\alpha_8$ &  $\alpha_9, \alpha_{10}$ \\ 
+%\mr
+%& 6 & 0.07107  & 0.07214  & 0.07323  & 0.07397 $\mp$ 2.04990e-08$i$ \\
+%1 & 24 & 0.07050  & 0.07167  & 0.07283  & 0.07362 $\mp$ 3.65907e-08$i$ \\
+%& 96 & 0.07033  & 0.07152  & 0.07269  & 0.07351 $\mp$ 3.91936e-08$i$  \\
+%%\hline
+%& 6  & 0.07030  & 0.07151  & 0.07268  & 0.07349 $\mp$ 3.69824e-08$i$ \\
+%2 & 24 & 0.07027  & 0.07147  & 0.07265  & 0.07347 $\mp$ 4.03121e-08$i$ \\
+%& 96  & 0.07026  & 0.07147  & 0.07265  & 0.07347 $\mp$ 4.02324e-08$i$ \\
+%%hline
+%& 6 & 0.07027  & 0.07147  & 0.07265  & 0.07347 $\mp$ 4.02573e-08$i$ \\
+%3 & 24 & 0.07026  & 0.07147  & 0.07265  & 0.07347 $\mp$ 4.02248e-08$i$ \\
+%& 96 & 0.07026  & 0.07147  & 0.07265  & 0.07347 $\mp$ 4.02332e-08$i$ \\
+%\br
+%\end{tabular}
+%\end{center}
+%\end{table}
+
+The results of solving the spectral problem (\ref{9}) for the first eigenvalues  $\alpha_n = \lambda_n^{(\alpha)}, \ n = 1,2, ..., N$, $ N=5$ on different computational grids using different finite element approximations are shown in Table \ref{t-2}. The eigenvalues $\alpha_2, \alpha_3$, $\alpha_4, \alpha_5$, $\alpha_9, \alpha_{10}$ of the spectral problem (\ref{9}) are complex with small imaginary parts, the eigenvalues $\alpha_1, \alpha_6$, $\alpha_7, \alpha_8$ are real.
+
+In our example, the main eigenvalue is negative and therefore the major harmonic will increase, and all others will fade. This demonstrates the regular mode of the reactor operation. The value $\alpha = \lambda_1^{(\alpha)}$ itself determines the neutron flux amplitude and is directly related to the reactor period in the regular regime.
+
+\begin{table}[h]
+\caption{Eigenvalues $\alpha_n = \lambda_n^{(\alpha )}, \ n = 1,2, ..., 10$
+for direct and adjoint problems}
+\label{t-4}
+\begin{center}
+\begin{tabular}{rll}
+\br
+$n$ & $\alpha_n$ for problem (\ref{14}) & $\alpha_n$ for problem (\ref{16}) \\
+\mr
+1 & -2.51280117966 & -2.51280117972 \\
+2,3 & 0.0355815000364 $\mp$ 5.80954455861e-06 & 0.0355815000365 $\mp$ 5.80954421646e-06 \\
+4,5 & 0.0644427013767 $\mp$ 1.41362187449e-06 & 0.0644427013767 $\mp$ 1.41362190730e-06 \\
+6 & 0.0702618501639 & 0.0702618501639 \\
+7 & 0.0714652882224 & 0.0714652882164 \\
+8 & 0.0726456060606 & 0.0726456060606 \\
+9,10 & 0.0734708921578 $\mp$ 4.02332269037e-08 & 0.0734708921578 $\mp$ 4.02332146248e-08 \\
+\br
+\end{tabular}
+\end{center}
+\end{table}
+
+\subsection{Adjoint spectral problem} 
+
+Analogous data were obtained for approximate solution of the adjoint spectral problem (\ref{10}).
+The eigenvalues of the spectral problems (\ref{9}) and (\ref{10}) coincide. Their difference from each other is an indirect measure of the accuracy of the numerical solution. Data on the dominant eigenvalues, which are given in Table \ref{t-4} ($k=96, \ p = 3$), show that the eigenvalues of the main and adjoint spectral problems are close to each other with good accuracy.
+
+The spectral problems under consideration are characterized by small imaginary parts of the eigenvalues. Therefore, we can expect that the eigenfunctions of problem (\ref{9}) 
+are close to orthogonal. 
+%As illustration, Table \ref{t-5} contains data for the scalar products $(\phi_1^{(n)}, \phi_1^{(m)})$ for the first 10 eigenfunctions. 
+For convenience of comparison, the eigenfunctions are normalized in $L_2(\Omega)$.
+The maximum non-orthogonality (for $(\phi_1^{(1)}, \phi_1^{(7)})$)
+does not exceed 10 \%.
+The biorthogonality condition of the eigenfunctions of the fundamental functions (see (\ref{9})) and the adjoint spectral problems (see (\ref{10})) is valid with approximately the same accuracy.
+This observed error can be related to an approximate calculation of eigenvalues and eigenfunctions.
+
+%\begin{table}[h]
+%\caption{Scalar product $(\phi_1^{(n)}, \phi_1^{(m)}), \ n, m = 1,2, ..., 10$}
+%\label{t-5}
+%\begin{center}
+%\footnotesize 
+%%\small
+%\begin{tabular}{crrrrrrrrrr}
+%\br
+%$n$\textbackslash$m$&1&2&3&4&5&6&7&8&9&10 \\
+%\mr
+%1 & 1.0e-00 & 1.3e-08 & 2.2e-08 & -3.8e-08 & 9.8e-09 & -1.8e-09 & 1.0e-02 & -3.2e-09 & -2.2e-08 & 1.6e-09 \\ 
+%2 & 1.3e-08 & 1.0e-00 & -1.6e-08 & -1.6e-08 & 1.4e-08 & 4.1e-08 & 1.2e-09 & -2.0e-07 & -3.1e-03 & 7.5e-03 \\ 
+%3 & 2.2e-08 & -1.6e-08 & 1.0e-00 & -9.8e-09 & -1.1e-08 & -1.8e-08 & 1.1e-08 & -3.3e-08 & -7.5e-03 & -3.1e-03 \\ 
+%4 & -3.8e-08 & -1.6e-08 & -9.8e-09 & 1.0e-00 & -3.9e-10 & -1.1e-08 & 1.4e-08 & 4.0e-09 & 3.0e-09 & -1.1e-08 \\ 
+%5 & 9.8e-09 & 1.4e-08 & -1.1e-08 & -3.9e-10 & 1.0e-00 & 2.9e-09 & -1.6e-08 & -1.9e-08 & 6.3e-09 & 6.3e-09 \\ 
+%6 & -1.8e-09 & 4.1e-08 & -1.8e-08 & -1.1e-08 & 2.9e-09 & 1.0e-00 & -4.2e-09 & -5.6e-03 & 4.1e-08 & -1.2e-07 \\ 
+%7 & 1.0e-02 & 1.2e-09 & 1.1e-08 & 1.4e-08 & -1.6e-08 & -4.2e-09 & 1.0e-00 & -2.1e-09 & -1.8e-08 & 8.0e-09 \\ 
+%8 & -3.2e-09 & -2.0e-07 & -3.3e-08 & 4.0e-09 & -1.9e-08 & -5.6e-03 & -2.1e-09 & 1.0e-00 & -5.2e-08 & 2.3e-07 \\ 
+%9 & -2.2e-08 & -3.1e-03 & -7.5e-03 & 3.0e-09 & 6.3e-09 & 4.1e-08 & -1.8e-08 & -5.2e-08 & 1.0e-00 & -5.5e-07 \\ 
+%10 & 1.6e-09 & 7.5e-03 & -3.1e-03 & -1.1e-08 & 6.3e-09 & -1.2e-07 & 8.0e-09 & 2.3e-07 & -5.5e-07 & 1.0e-00 \\ 
+%\br
+%\end{tabular}
+%\end{center}
+%\end{table}
+
+Within the modal method, we can not rely on high accuracy when considering a relatively small number of dominant eigenvalues. Therefore, in the example under consideration, we can assume that the eigenvalues are real, and the corresponding eigenfunctions are orthogonal. Instead of (\ref{11}) coefficients are used 
+\begin{equation}\label{13}
+ b_n \approx  \frac{1}{(\bm c_n, \bm c_n)} (\bm c_h^s, \bm c_n),
+ \quad n = 1,2, ..., N ,
+\end{equation}
+to approximate the initial condition.
+
+\subsection{Subcritical state} 
+
+In the supercritical mode, due to the sufficiently large magnitude of the main eigenvalue, the regular regime of the reactor is rapidly developing, where 
+\[
+ \bm u (\bm x, t) \approx a_1 \exp(-\alpha_1 t) \bm v_1^0 (\bm x) .
+\] 
+Here  $\bm v_1^0 (\bm x)$ is the first mode of the supercritical state. We consider the problem with the transition from this supercritical state at  $t_0 = 0$  to the subcritical state.
+
+The subcritical stage is characterized by a 15\% increase in the coefficient  
+$\Sigma_2$ for material 4 in the VVER-1000 test diffusion constants. %(see Table  \ref{t-1}). 
+The initial state is characterized by specifying the initial conditions at $t_0 = 0$ as
+\begin{equation}\label{14}
+ \bm u (\bm x, 0) = \bm v_1^0 (\bm x) . 
+\end{equation} 
+
+The calculation results of  the dominant eigenvalues for the subcritical state are presented in Tables \ref{t-6}. In this case even the first eigenvalues not significantly differ from each other. 
+
+\begin{table}[h]
+\caption{Subcritical state: $\alpha_n = \lambda_n^{(\alpha )}, \ n = 1,2, ..., 5$}
+\label{t-6}
+\begin{center}
+\begin{tabular}{cccccc}
+\br
+$p$ & $\kappa$ & $\alpha_1$ &  $\alpha_2, \alpha_3$ &  $\alpha_4, \alpha_5$ \\ 
+\mr
+%   & 6 & 0.03602 & 0.05760 $\mp$ 1.49652e-06$i$ & 0.06890 $\mp$ 4.92606e-07$i$ \\ 
+%1 & 24 & 0.02656 & 0.05502 $\mp$ 2.06007e-06$i$ & 0.06804 $\mp$ 1.01253e-06$i$ \\ 
+%  & 96 & 0.02276 & 0.05411 $\mp$ 2.16813e-06$i$ & 0.06774 $\mp$ 1.03843e-06$i$ \\ 
+%\hline
+%   & 6 & 0.02250 & 0.05404 $\mp$ 1.81823e-06$i$ & 0.06772 $\mp$ 8.73562e-07$i$ \\ 
+%2 & 24 & 0.02144 & 0.05380 $\mp$ 2.19400e-06$i$ & 0.06765 $\mp$ 1.04253e-06$i$ \\ 
+%  & 96 & 0.02125 & 0.05376 $\mp$ 2.20812e-06$i$ & 0.06763 $\mp$ 1.04715e-06$i$ \\ 
+%\hline
+%   & 6 & 0.02139 & 0.05379 $\mp$ 2.22579e-06$i$ & 0.06764 $\mp$ 1.05369e-06$i$ \\ 
+%3 & 24 & 0.02124 & 0.05376 $\mp$ 2.20883e-06$i$ & 0.06763 $\mp$ 1.04736e-06$i$ \\ 
+3  & 96 & 0.02122 & 0.05376 $\mp$ 2.20951e-06$i$ & 0.06763 $\mp$ 1.04756e-06$i$ \\ 
+\br
+\end{tabular}
+\end{center}
+\end{table}
+
+For an approximate solution, we use the following formulation:
+\begin{equation}\label{15}
+ \bm u_N(\bm x, t) = 
+ \sum_{n=1}^{N} b_n \exp(- \mathrm{Re} \, \alpha_n \, t) \bm v_n(\bm x) ,  
+\end{equation} 
+where the coefficients $b_n, \ n = 1,2, ..., N$ are calculated according to the given initial condition (\ref{13}). These coefficients for $N=50$ are shown in Fig.\ref{fig:3}. 
+As we see, an approximate solution can be described by first mode only.
+
+\begin{figure}[!h]
+  \begin{center}
+    \includegraphics[width=0.5\linewidth] {10.png}
+	\caption{Approximate solution coefficients (\ref{15}).}
+	\label{fig:3}
+  \end{center}
+\end{figure} 
+
+We distinguish two phases of the dynamic process: fast and slow. In the fast phase, the initial condition (\ref{14}) 
+is rearranged to the initial condition, which corresponds to (\ref{15}): from the function
+$\bm u(\bm x, 0)$ to the function $\bm u_N(\bm x, 0)$. The slow phase is associated with the solution evolution according to (\ref{15}).
+Within the state change modal technology, the fast phase is not modeled at all.
+
+The beginning and the end of the fast phase are illustrated through the calculational data shown in Fig. \ref{fig:4}. The results were obtained with $N=10$. We can note very small changes in the topology of the initial and reconstructed initial conditions. Let us pay attention to the substantial restructuring of the solution, which is illustrated by large changes in the neutron flux amplitudes for the first and second groups.
+
+\begin{figure}[!h]
+  \begin{center}
+\begin{minipage}{0.051\linewidth}
+\center{1} \\
+\end{minipage}
+\hfill
+\begin{minipage}{0.3\linewidth}
+\center{\includegraphics[width=1\linewidth]{11-11.png}} \\
+\end{minipage}
+\hfill
+\begin{minipage}{0.3\linewidth}
+\center{\includegraphics[width=1\linewidth]{11-12.png}} \\
+\end{minipage}
+\hfill
+\begin{minipage}{0.3\linewidth}
+\center{\includegraphics[width=1\linewidth]{11-13.png}} \\
+\end{minipage}
+
+\begin{minipage}{0.051\linewidth}
+\center{2} \\
+\end{minipage}
+\hfill
+\begin{minipage}{0.3\linewidth}
+\center{\includegraphics[width=1\linewidth]{11-21.png}} \\
+\end{minipage}
+\hfill
+\begin{minipage}{0.3\linewidth}
+\center{\includegraphics[width=1\linewidth]{11-22.png}} \\
+\end{minipage}
+\hfill
+\begin{minipage}{0.3\linewidth}
+\center{\includegraphics[width=1\linewidth]{11-23.png}} \\
+\end{minipage}
+
+\begin{minipage}{0.051\linewidth}
+\center{~} \\
+\end{minipage}
+\hfill
+\begin{minipage}{0.3\linewidth}
+\center{a} \\
+\end{minipage}
+\hfill
+\begin{minipage}{0.3\linewidth}
+\center{b} \\
+\end{minipage}
+\hfill
+\begin{minipage}{0.3\linewidth}
+\center{c} \\
+\end{minipage}
+\hfill
+
+\caption{Function $\bm u(\bm x, 0)$ (string 1) and function  $\bm u_N(\bm x, 0)$ (ctring 2):
+a --- neutron flux of group 1, b --- neutron flux of group 2, c --- delayed neutrons source.}
+\label{fig:4}
+  \end{center}
+\end{figure}
+
+\subsection{Comparison with the nonstationary problem solution} 
+An approximate solution, obtained using modal approximation, can be compared with the dynamic problem solution (\ref{1}). 
+Fully implicit scheme on a uniform grid in time with a sufficiently small step $\tau = 0.0025$ is used (see details in \cite{nd-mm}).
+We consider the dynamics of the neutron power of the nuclear reactor $P$ and the delayed neutrons source $C$ at the initial stage during the transition from the critical state to the subcritical one. 
+Here 
+\[
+ P(t) = \int_{\Omega} (\nu\Sigma_{f1} \varphi_1 + \nu\Sigma_{f2} \varphi_2)  d \bm x,
+ \quad C(t) = \int_{\Omega} c(\bm x,t) d \bm x.
+\] 
+There is a rapid change in neutron power over a short period of time, while the delayed neutrons source changes rather slow. The dynamics of the slow phase is illustrated in Figs. \ref{fig:6}. 
+Here the solution of full equations (dynamic in Figs. \ref{fig:6}), and the modal approximation solution (modal) are presented. We see that the integral characteristics of the reactor dynamics at slow stage are calculated with good accuracy.
+
+\begin{figure}[h]
+\begin{center}
+\begin{minipage}{0.49\linewidth}
+    \includegraphics[width=1\linewidth] {15.png}
+\end{minipage}
+\hfill
+\begin{minipage}{0.49\linewidth}
+    \includegraphics[width=1\linewidth] {16.png}
+\end{minipage}
+\caption{Slow stage of reactor state: neutronic power and delayed neutrons sourse}
+\label{fig:6}
+\end{center}
+\end{figure}
+
+\section{Conclusions} 
+
+The problem of reactor dynamic simulation is considered on the basis of multigroup neutron diffusion equations taken into account delayed neutrons.
+The modal approximation is used: an approximate solution is represented as an expansion on limited number of dominant eigenfunctions of the $\alpha$-eigenvalue spectral problem.
+
+Numerical simulation of reactor non-stationary processes is carried out on the basis of a successive change in the states of the reactor. These states are characterized by a set of constant parameters to describe the multigroup neutron flux behavior.
+The state change modal method was developed. The phase, which described fast transition to the approximate solution, is selected as a set of dominant modes. At a slow phase of the reactor dynamics, the solution is based on the evolution of dominant modes.
+
+The VVER-1000 two-dimensional test problem is used to perform the transition from the supercritical state to the subcritical state.
+Calculations of dominant modes for a reactor supercritical state are performed. The major mode solution, which determines the reactor regular regime, is used as the initial condition for transition to the subcritical state. Comparison of the calculation results obtained by using the modal approximation and direct dynamics calculation, shows the acceptable accuracy in calculation of neutron power and delayed neutrons source.
+
+
+\section*{Acknowledgements}
+This work are supported by the Russian Foundation for Basic Research (\# 16-08-01215) and by the grant of the Russian Federation Government (\# 14.Y26.31.0013).
+
+\section*{References}
+\begin{thebibliography}{50}
+\bibitem{avvakumov2017spectral}
+Avvakumov A V, Strizhov V F, Vabishchevich P N and Vasilev A O 2017
+%Spectral properties of dynamic processes in a nuclear reactor. 
+{\it Annals of Nuclear Energy} {\bf 99} 68--79
+
+\bibitem{nd-mm}
+Avvakumov A V, Vabishchevich P N, Vasilev, A O and Strizhov V F 2016
+Numerical modelling neutron diffusion unsteady problems
+{\it Mathematical Models and Computer Simulations~(submitted)}
+
+\bibitem{brezinski1991biorthogonality}
+Brezinski C 1991
+Biorthogonality and Its Applications to Numerical Analysis 
+{\it CRC Press}
+
+\bibitem{chao}
+Chao Y A and Shatilla Y A 1995
+%Conformal mapping and hexagonal nodal methods-{II}: Implementation in the {ANC-H Code}
+{\it Nuclear Science and  Engineering} {\bf 121} 210--225
+
+\bibitem{dodds1976accuracy}
+Dodds Jr H L 1976
+%Accuracy of the quasistatic method for two-dimensional thermal reactor transients with feedback
+{\it Nuclear Science and Engineering} {\bf 59} 271--276
+
+\bibitem{duderstadt1976nuclear}
+Duderstadt J J and Hamilton L J 1976
+{\it Nuclear Reactor Analysis} Wiley
+
+\bibitem{marchuk1986numerical}
+Marchuk G I and Lebedev V I 1986
+Numerical Methods in the Theory of Neutron Transport
+{\it Harwood Academic Pub}
+
+\bibitem{modak2007scheme}
+Modak R and Gupta A 2007
+%A scheme for the evaluation of dominant  time-eigenvalues of a nuclear reactor 
+{\it Annals of Nuclear Energy} {\bf 34} 213--221
+
+\bibitem{sanchez2009assembly}
+Sanchez R 2009
+%Assembly homogenization techniques for core calculations.
+{\it Progress in Nuclear Energy} {\bf 51} 14--31
+
+\bibitem{stacey1967modal}
+Stacey W M 1967
+Modal Approximations: Theory and an Application to Reactor Physics
+{\it The MIT Press}
+
+\bibitem{stacey}
+Stacey W M 2007
+Nuclear Reactor Physics
+{\it Wiley}
+
+\bibitem{verdu20103d}
+Verdu G, Ginestar D, Roman J and Vidal V 2010
+%{3D} alpha modes of a nuclear power reactor. 
+{\it Journal of Nuclear Science and Technology} {\bf 47} 501--514
+\end{thebibliography}
+
+\end{document}
+
+
