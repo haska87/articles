@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.4.19)  21 NOV 2017 17:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.4.19)  23 NOV 2017 20:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -502,18 +502,8 @@ LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <18.06749> not available
 [1
 
 {/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-
-LaTeX Warning: Reference `fig:1' on page 2 undefined on input line 102.
-
-[2]
-
-LaTeX Warning: Citation `Laub2005' on page 3 undefined on input line 191.
-
-
-LaTeX Warning: Citation `Ortega1987' on page 3 undefined on input line 191.
-
-[3]
-Underfull \hbox (badness 1117) in paragraph at lines 223--225
+[2] [3]
+Underfull \hbox (badness 1117) in paragraph at lines 206--208
 []\OT1/cmr/m/n/10.95 Calculation of the coefficients of the mathematical model 
 of the
  []
@@ -522,64 +512,61 @@ of the
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-LaTeX Warning: Reference `16' on page 4 undefined on input line 366.
-
-
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [4] [5] <pictures/10.png, id=38, 586.8324pt x 442.2924pt>
 File: pictures/10.png Graphic file (type png)
 
 <use pictures/10.png>
-Package pdftex.def Info: pictures/10.png used on input line 477.
+Package pdftex.def Info: pictures/10.png used on input line 333.
 (pdftex.def)             Requested size: 227.62204pt x 171.55525pt.
  [6 <./pictures/10.png>]
 <pictures/11-11.png, id=44, 602.25pt x 401.5pt>
 File: pictures/11-11.png Graphic file (type png)
  <use pictures/11-11.png>
-Package pdftex.def Info: pictures/11-11.png used on input line 497.
+Package pdftex.def Info: pictures/11-11.png used on input line 353.
 (pdftex.def)             Requested size: 136.5746pt x 91.05038pt.
 
 <pictures/11-12.png, id=45, 602.25pt x 401.5pt>
 File: pictures/11-12.png Graphic file (type png)
  <use pictures/11-12.png>
-Package pdftex.def Info: pictures/11-12.png used on input line 501.
+Package pdftex.def Info: pictures/11-12.png used on input line 357.
 (pdftex.def)             Requested size: 136.5746pt x 91.05038pt.
 
 <pictures/11-13.png, id=46, 602.25pt x 401.5pt>
 File: pictures/11-13.png Graphic file (type png)
  <use pictures/11-13.png>
-Package pdftex.def Info: pictures/11-13.png used on input line 505.
+Package pdftex.def Info: pictures/11-13.png used on input line 361.
 (pdftex.def)             Requested size: 136.5746pt x 91.05038pt.
 
 <pictures/11-21.png, id=47, 602.25pt x 401.5pt>
 File: pictures/11-21.png Graphic file (type png)
  <use pictures/11-21.png>
-Package pdftex.def Info: pictures/11-21.png used on input line 513.
+Package pdftex.def Info: pictures/11-21.png used on input line 369.
 (pdftex.def)             Requested size: 136.5746pt x 91.05038pt.
 
 <pictures/11-22.png, id=48, 602.25pt x 401.5pt>
 File: pictures/11-22.png Graphic file (type png)
  <use pictures/11-22.png>
-Package pdftex.def Info: pictures/11-22.png used on input line 517.
+Package pdftex.def Info: pictures/11-22.png used on input line 373.
 (pdftex.def)             Requested size: 136.5746pt x 91.05038pt.
 
 <pictures/11-23.png, id=49, 602.25pt x 401.5pt>
 File: pictures/11-23.png Graphic file (type png)
  <use pictures/11-23.png>
-Package pdftex.def Info: pictures/11-23.png used on input line 521.
+Package pdftex.def Info: pictures/11-23.png used on input line 377.
 (pdftex.def)             Requested size: 136.5746pt x 91.05038pt.
 
 <pictures/15.png, id=50, 586.8324pt x 442.2924pt>
 File: pictures/15.png Graphic file (type png)
  <use pictures/15.png>
-Package pdftex.def Info: pictures/15.png used on input line 562.
+Package pdftex.def Info: pictures/15.png used on input line 418.
 (pdftex.def)             Requested size: 223.0721pt x 168.12685pt.
 
 <pictures/16.png, id=51, 586.8324pt x 442.2924pt>
 File: pictures/16.png Graphic file (type png)
  <use pictures/16.png>
-Package pdftex.def Info: pictures/16.png used on input line 566.
+Package pdftex.def Info: pictures/16.png used on input line 422.
 (pdftex.def)             Requested size: 223.0721pt x 168.12685pt.
 
 
@@ -593,18 +580,15 @@ tures/16.png>] (./mpmm17.aux)
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.78749pt have occurred.
 
-
-LaTeX Warning: There were undefined references.
-
  ) 
 Here is how much of TeX's memory you used:
- 12294 strings out of 493014
- 242147 string characters out of 6133351
+ 12290 strings out of 493014
+ 242114 string characters out of 6133351
  289117 words of memory out of 5000000
- 15587 multiletter control sequences out of 15000+600000
+ 15583 multiletter control sequences out of 15000+600000
  14488 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,19n,54p,715b,409s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,19n,54p,496b,409s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></
@@ -623,7 +607,7 @@ ive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2016/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2016/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on mpmm17.pdf (8 pages, 632420 bytes).
+Output written on mpmm17.pdf (8 pages, 631631 bytes).
 PDF statistics:
  119 PDF objects out of 1000 (max. 8388607)
  78 compressed objects within 1 object stream
