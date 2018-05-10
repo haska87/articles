@@ -249,7 +249,18 @@ The predictive solution is defined as
 \frac{\widetilde s^{n+1}-s^n}{\widetilde\tau^{n+1}} + \lambda s^n &= \beta \nu\Sigma^n_{f} \varphi^n.
 \end{split}
 \end{equation} 
+This solution is used to estimate the approximation error of an implicit scheme in the transition from time $t^n$ to time $\widetilde{t}^{n+1}$.
 
+In accordance with (\ref{14}), the approximation error is calculated from the exact solution for two moment of time: in our case for $t^n$ and $\widetilde{t}^{n+1}$.
+For estimate the error, it is necessary to match something between $\bm{\phi}(t^n)$ and $\bm{\phi}(\widetilde{t}^{n+1})$.  We take $\bm{\varphi^n} = \{\varphi^n, s^n\}$ instead of $\bm{\phi}(t^n)$. To an exact solution on a new layer $\bm{\phi}(\widetilde{t}^{n+1})$, we match an approximate solution $\bm{\widetilde{\varphi}^{n+1}} = \{\widetilde{\varphi}^{n+1}, \widetilde{s}^{n+1}\}$, which is obtained by an explicit scheme. In view of this, we set
+\begin{equation}\label{16}
+\begin{split}
+\widetilde\psi^{n+1}_1  & =  \frac{1}{v} \frac{\widetilde\varphi^{n+1}-\varphi^n}{\widetilde\tau^{n+1}} - \nabla \cdot D^{n+1} \nabla \widetilde\varphi^{n+1} + \Sigma_{a}^{n+1} \widetilde\varphi^{n+1} \\
+&- (1-\beta) \nu \Sigma^{n+1}_{f} \widetilde\varphi^{n+1} - \lambda \widetilde s^{n+1}, \\
+\widetilde\psi^{n+1}_2  & =  \frac{\widetilde s^{n+1}-s^n}{\widetilde\tau^{n+1}} + \lambda \widetilde s^{n+1} - \beta \nu\Sigma_{f}^{n+1} \widetilde\varphi^{n+1}.
+\end{split}
+\end{equation} 
+We match with the approximation error $\bm{\widetilde{\psi}^{n+1} }= \{\widetilde{\psi}^{n+1}_1, \widetilde{\psi}^{n+1}_2\}$ the time step $\widetilde{\tau}^{n+1}$ and with $\bm{\psi^{n+1}}$ the time step $\tau^{n+1}$.
 
 \section{Computational results}
 				
