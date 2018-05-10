@@ -1,0 +1,40 @@
+\documentclass[12pt,a4paper]{article}
+
+\title{\bf Automatic Time Step Selection for Numerical Solution of Neutron Diffusion Problems}
+
+\author
+{A.V. Avvakumov$^{1}$, V.F. Strizhov$^{2}$, P.N. Vabishchevich$^{2,3}$, A.O. Vasilev$^{3}$ 
+\\ 
+$^1$National Research Center \emph{Kurchatov Institute}, Moscow, Russia \\
+$^2$Nuclear Safety Institute of RAS,  Moscow, Russia \\
+$^3$North-Eastern Federal University, Yakutsk, Russia
+}
+
+\date{} 
+ 
+\begin{document}
+
+\maketitle 
+Considering the approximate solution of the boundary value problems for nonstationary equations, the focus should be on the choice of time approximation schemes.
+For parabolic equations of the second order, unconditionally stable schemes are constructed on the basis of implicit approximations.
+In computational practice two-layer schemes are mostly used, compared with three-layered and multilayered schemes which are not so often used.
+
+We propose an algorithm allowing automatic time step evaluation when solving the boundary value problems	for parabolic equations.
+The solution is obtained using guaranteed stable implicit schemes, and the step choice is performed with the use of the solution obtained by an explicit scheme.
+Formulas for explicit calculation of the time step are derived using the estimation of the approximation error at new time step.
+
+Calculation results obtained for some neutron diffusion problems demonstrate reliability of the proposed algorithm for time step choice. The algorithm takes into account the features of neutron diffusion problems, for instance, sharp changes in the solution or instability with respect to the initial data. When using the algorithm, you can expect a noticeable saving in calculation time compared with the fine mesh calculation, while maintaining the required accuracy of the calculation.
+
+\end{document}
+
+%При приближенном решении краевых задач для нестационарных уравнений основное внимание уделяется аппроксимациям по времени. 
+%Для параболических уравнений второго порядка безусловно устойчивые схемы строятся на основе неявных аппроксимаций.
+%В вычислительной практике наибольшее распространение получили двухслойные схемы, в то время как трехслойные, а тем более многослойные схемы по времени используются значительно реже.
+
+%Предлагается алгоритм автоматического выбора шага по времени при приближенном решении краевых задач для параболических уравнений.
+%Само решение находится на основе использования безусловно устойчивых неявных схем, а выбор шага проводится на основе решения, которое получено с использованием явной схемы.
+%Явные расчетные формулы для шага по времени выведены на основе оценки погрешности аппроксимации на новом шаге по времени.
+
+%Представлены результаты расчетов для задач диффузии нейтронов, которые демонстрируют работоспособность предлагаемого алгоритма выбора шага по времени.
+%Алгоритм учитывает особенности задач диффузии нейтронов, такие как резкое изменение решения или неустойчивость по начальных данным.
+%Наблюдается заметный выигрыш времени расчета относительно мелкой сетки по времени при достаточной точности.
