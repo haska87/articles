@@ -1,0 +1,15 @@
+\babel@toc {english}{}
+\beamer@sectionintoc {1}{Introduction}{2}{0}{1}
+\beamer@sectionintoc {2}{Problem description}{3}{0}{2}
+\beamer@subsectionintoc {2}{1}{Parabolic equation}{3}{0}{2}
+\beamer@subsectionintoc {2}{2}{Operator notation}{4}{0}{2}
+\beamer@subsectionintoc {2}{3}{Solution evaluation}{5}{0}{2}
+\beamer@subsectionintoc {2}{4}{Solution error}{6}{0}{2}
+\beamer@subsectionintoc {2}{5}{Algorithm}{7}{0}{2}
+\beamer@sectionintoc {3}{Time step estimate}{8}{0}{3}
+\beamer@subsectionintoc {3}{1}{Neutron diffusion equation}{8}{0}{3}
+\beamer@subsectionintoc {3}{2}{Calculated formulas}{9}{0}{3}
+\beamer@sectionintoc {4}{Benchmark}{11}{0}{4}
+\beamer@subsectionintoc {4}{1}{General description}{11}{0}{4}
+\beamer@subsectionintoc {4}{2}{Computational results}{12}{0}{4}
+\beamer@sectionintoc {5}{Conclusion}{16}{0}{5}
