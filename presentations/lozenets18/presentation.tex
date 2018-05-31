@@ -74,16 +74,6 @@
 
 \section{Introduction}
 \begin{frame}{Introduction}
-bla bla bla bla bla bla bla bla
-bla bla bla bla bla bla bla bla
-bla bla bla bla bla bla bla bla
-bla bla bla bla bla bla bla bla
-bla bla bla bla bla bla bla bla
-bla bla bla bla bla bla bla bla
-bla bla bla bla bla bla bla bla
-bla bla bla bla bla bla bla bla
-bla bla bla bla bla bla bla bla
-bla bla bla bla bla bla bla bla
 \end{frame}
 
 \section{Problem description}
@@ -102,17 +92,22 @@ where
 $\underline{k} \leq k({\bm x}) \leq  \overline{k}, \ {\bm x} \in \Omega, \ \underline{k} > 0$.
 \vfill
 
+\visible<2,3>{
 Boundary condition
 \[
    u({\bm x},t) = g({\bm x},t),
    \quad {\bm x}\in \partial \Omega,
    \quad 0 < t \leq  T.
 \]
+}
+
+\visible<3>{
 Initial condition
 \[
    u({\bm x},0) = u^0({\bm x}),
    \quad {\bm x}\in \Omega.
 \]
+}
 \end{frame}
 
 \subsection{Operator notation}
@@ -127,10 +122,13 @@ with initial condition
    u(0) = u_0.
 \]
 \vfill
+
+\visible<2>{
 Assume $A(t) \geq 0$ in $H$ then
 \[
   \|u(t)\| \leq \|u_0\| + \int_{0}^{t} \|f(\theta) \| d \theta .
 \]
+}
 \end{frame}
 
 \subsection{Solution evaluation}
@@ -141,23 +139,30 @@ Introduce irregular time grid
  \quad n = 0,1, ..., N-1,
  \quad t^n = T .   
 \] 
+\visible<2,3,4>{
 Implicit scheme are used
 \[
   \frac{y^{n+1} - y^{n}}{\tau^{n+1}} + A^{n+1} y^{n+1} = f^{n+1},
   \quad n = 0,1, ..., N-1,
 \]
 and initial condition $y^0 = u^0.$
+}
 
 \vfill
 
+\visible<3,4>{
 Layerwise estimate ($A^{n+1} \geq 0$)
 \[
  \|y^{n+1}\| \leq \|y^{n}\| + \tau^{n+1} \|f^{n+1}\|.
-\] 
+\]
+}
+
+\visible<4>{
 Difference estimate
 \[
  \|y^{n+1}\| \leq \|u^{0}\| + \sum_{k=0}^{n} \tau^{k+1} \|f^{k+1}\|.
 \]
+}
 \end{frame}
 
 \subsection{Solution error}
@@ -170,19 +175,28 @@ For $z^n = y^n - u^n$:
 \[
  z^0 = 0.
 \] 
+
+\visible<2,3,4>{
 Approximation error
 \[
  \psi^{n+1} = f^{n+1} -
  \frac{u^{n+1} - u^{n}}{\tau^{n+1}} - A^{n+1} u^{n+1} . 
 \]
+}
+
+\visible<3,4>{
 Layerwise estimate
 \[
   \|z^{n+1}\| \leq \sum_{k=0}^{n} \tau^{k+1} \|\psi^{k+1}\| .
 \]
+}
+
+\visible<4>{
 Difference estimate
 \[
  \|z^{n+1}\| \leq \delta t^{n+1}.
 \] 
+}
 \end{frame}
 
 \subsection{Algorithm}
@@ -190,12 +204,22 @@ Difference estimate
 \begin{enumerate}
 \item 
 Predictable time step: $\widetilde{\tau}^{n+1} = \gamma \tau^n$ (eg $\gamma=1.25$)
+
+\visible<2,3,4,5>{
 \item Predictive solution $\widetilde{y}^{n+1}$: an explicit scheme, $\widetilde{t}^{n+1} = t^n + \widetilde{\tau}^{n+1}$
+}
 
+\visible<3,4,5>{
 \item Estimation of approximation error: by found $\widetilde{y}^{n+1}$ from an implicit scheme
+}
 
+\visible<4,5>{
 \item Step selection $\tau^{n+1}$: $\ \|\psi^{n+1}\| \approx \delta$
+}
+
+\visible<5>{
 \item Solution on a new time layer $y^{n+1}$: an implicit scheme, $t^{n+1}=t^n + \tau^{n+1}$
+}
 \end{enumerate}
 \end{frame}
 
@@ -313,6 +337,19 @@ Calculated formula for time step
 \end{center}
 \end{frame}
 
+\subsection{Software}
+\begin{frame}{Software}
+\begin{center}
+	{\includegraphics[width=0.4\linewidth] {gmsh.png}}
+    \hfill
+    \visible<2,3,4>{\includegraphics[width=0.49\linewidth] {slepc.png}}
+    \vfill
+	\visible<3,4>{\includegraphics[width=0.49\linewidth] {fenics.png}}
+    \hfill
+    \visible<4>{\includegraphics[width=0.49\linewidth] {python.png}}
+\end{center}
+\end{frame}
+
 \begin{frame}{Time step}
 \begin{center}
 	\includegraphics[width=0.49\linewidth] {ts_iaea/step_down.png}
@@ -338,26 +375,16 @@ $1\cdot 10^{-5}$ & 0.125 & 270 & 37 & 0.120 & 773 & 145 \\
 \end{center}
 \end{table}
 \vspace{5mm}
-Reference solution: fixed time step $10^{-5}$, number of steps -- 50000,  counting time -- 2130 сек. 
-\end{frame}
-
-\section{Conclusion}
-\begin{frame}{Conclusion}
-bla bla bla bla bla bla bla bla
-bla bla bla bla bla bla bla bla
-bla bla bla bla bla bla bla bla
-bla bla bla bla bla bla bla bla
-bla bla bla bla bla bla bla bla
-bla bla bla bla bla bla bla bla
-bla bla bla bla bla bla bla bla
-bla bla bla bla bla bla bla bla
-bla bla bla bla bla bla bla bla
-bla bla bla bla bla bla bla bla
-
-
+Reference solution: fixed time step $10^{-5}$, number of steps -- 50000,  counting time -- 2130 sec. 
+\vfill
+\visible<2>{
 \begin{center}
+\large
 Thank you for your attention!
 \end{center}
+}
+
 \end{frame}
+
 
 \end{document}
