@@ -34,10 +34,12 @@
 
 \institute[Universities of Somewhere and Elsewhere] % (optional, but mostly needed)
 {
-\inst{1} National Research Center "Kurchatov Institute", Moscow, Russia
+\inst{1} National Research Center \textquotedblleft Kurchatov Institute\grqq, Moscow, Russia
 \\
+\vspace{1mm}
 \inst{2} Nuclear Safety Institute, Russian Academy of Sciences, Moscow, Russia
-\\ 
+\\
+\vspace{1mm}
 \inst{3} North-Eastern Federal University, Yakutsk, Russia
 }
 
@@ -92,16 +94,14 @@ where
 $\underline{k} \leq k({\bm x}) \leq  \overline{k}, \ {\bm x} \in \Omega, \ \underline{k} > 0$.
 \vfill
 
-\visible<2,3>{
+\visible<2>{
 Boundary condition
 \[
    u({\bm x},t) = g({\bm x},t),
    \quad {\bm x}\in \partial \Omega,
    \quad 0 < t \leq  T.
 \]
-}
 
-\visible<3>{
 Initial condition
 \[
    u({\bm x},0) = u^0({\bm x}),
@@ -199,23 +199,28 @@ Difference estimate
 }
 \end{frame}
 
+\section{Time step estimate}
 \subsection{Algorithm}
 \begin{frame}{Time step selection algorithm}
 \begin{enumerate}
 \item 
 Predictable time step: $\widetilde{\tau}^{n+1} = \gamma \tau^n$ (eg $\gamma=1.25$)
+\vspace{2mm}
 
 \visible<2,3,4,5>{
 \item Predictive solution $\widetilde{y}^{n+1}$: an explicit scheme, $\widetilde{t}^{n+1} = t^n + \widetilde{\tau}^{n+1}$
 }
+\vspace{2mm}
 
 \visible<3,4,5>{
 \item Estimation of approximation error: by found $\widetilde{y}^{n+1}$ from an implicit scheme
 }
+\vspace{2mm}
 
 \visible<4,5>{
 \item Step selection $\tau^{n+1}$: $\ \|\psi^{n+1}\| \approx \delta$
 }
+\vspace{2mm}
 
 \visible<5>{
 \item Solution on a new time layer $y^{n+1}$: an implicit scheme, $t^{n+1}=t^n + \tau^{n+1}$
@@ -223,7 +228,6 @@ Predictable time step: $\widetilde{\tau}^{n+1} = \gamma \tau^n$ (eg $\gamma=1.25
 \end{enumerate}
 \end{frame}
 
-\section{Time step estimate}
 \subsection{Neutron diffusion equation}
 \begin{frame}{Neutron diffusion equation}
 One group diffusion approximation with one group delayed neutron sources
@@ -233,34 +237,25 @@ One group diffusion approximation with one group delayed neutron sources
 \frac{\partial c}{\partial t} + \lambda c &= \beta \nu \Sigma_{f} \phi.
 \end{split}
 \]
+
+\visible<2>{
 Boundary condition
 \[
  D\frac{\partial \phi}{\partial n} + \gamma \phi = 0.
 \]
+
 Initial conditions
 \[
  \phi(0) = \phi^0,  \,
  c(0) = c^0.
 \]
+}
 \end{frame}
 
 \subsection{Calculated formulas}
 \begin{frame}{Calculated formulas}
-
-The approximation error
-\[
-\begin{split}
-\bm{\widetilde{\psi}^{n+1}} &= (A^{n+1} - A^n)\bm{\varphi^n} + {A}^{n+1}(\bm{\widetilde{\varphi}^{n+1}} - \bm{\varphi^n}) \\
-&= \widetilde{\tau}^{n+1} \left( \frac{A^{n+1} - A^n}{\widetilde{\tau}^{n+1}} \bm{\varphi^n} + A^{n+1} \frac{\bm{\widetilde{\varphi}^{n+1}} - \bm{\varphi^n}}{\widetilde{\tau}^{n+1}} \right),
-\end{split}
-\]
-Error $\widetilde{\bm\psi}^{n+1}$ compare with $\widetilde{\tau}^{n+1}$, and $\bm\psi^{n+1}$ with step $\tau^{n+1}$:
-\[
-  \bar{\tau}^{n+1} = \gamma_{n+1} \tau^n,
-  \quad \gamma_{n+1} = \frac{\delta}{\|\widetilde{\bm\psi}^{n+1}\|}  \gamma .
-\]
-Where
-$\bm{\varphi^n} = \{\varphi^n, s^n\}$, $\bm{\psi^{n+1}} = \{\psi^{n+1}_1, \psi^{n+1}_2\}$, $\bm{\widetilde{\psi}^{n+1} }= \{\widetilde{\psi}^{n+1}_1, \widetilde{\psi}^{n+1}_2\}$,
+Denote vectors and matrix
+$\bm{\varphi} = \{\varphi, s\}$, $\bm{\psi} = \{\psi_1, \psi_2\}$,
 \[
 \begin{split}
 A &= \begin{pmatrix}
@@ -269,6 +264,24 @@ A &= \begin{pmatrix}
  \end{pmatrix}.
 \end{split} 
 \]
+
+\visible<2,3>{
+The approximation error
+\[
+\begin{split}
+\bm{\widetilde{\psi}^{n+1}} &= (A^{n+1} - A^n)\bm{\varphi^n} + {A}^{n+1}(\bm{\widetilde{\varphi}^{n+1}} - \bm{\varphi^n}) \\
+&= \widetilde{\tau}^{n+1} \left( \frac{A^{n+1} - A^n}{\widetilde{\tau}^{n+1}} \bm{\varphi^n} + A^{n+1} \frac{\bm{\widetilde{\varphi}^{n+1}} - \bm{\varphi^n}}{\widetilde{\tau}^{n+1}} \right).
+\end{split}
+\]
+}
+
+\visible<3>{
+Error $\widetilde{\bm\psi}^{n+1}$ compare with $\widetilde{\tau}^{n+1}$, and $\bm\psi^{n+1}$ with step $\tau^{n+1}$:
+\[
+  \bar{\tau}^{n+1} = \gamma_{n+1} \tau^n,
+  \quad \gamma_{n+1} = \frac{\delta}{\|\widetilde{\bm\psi}^{n+1}\|}  \gamma .
+\]
+}
 \end{frame}
 
 \begin{frame}
@@ -279,20 +292,29 @@ The needed time step
  \quad
   \tau^{n+1} = \max \big \{\tau^0, \min \{\gamma_{n+1}, \gamma \} \tau^n \big \}. 
 \] 
+
+\visible<2,3,4>{
 The approximation error has the first order in time
 \[
 \bm{\widetilde{\psi}^{n+1}} = \mathcal{O} (\widetilde{\tau}_{n+1}).
 \]
+}
+
+\visible<3,4>{
 In view of this, we set 
 \[
  \|\bm{\widetilde{\psi}^{n+1}} \| \leq \| (A^{n+1} - A^n) \bm{\varphi^n} +
  A^{n+1} (\bm{\widetilde{\varphi}^{n+1}} - \bm{\varphi^n}) \| .
 \]
+}
+
+\visible<4>{
 Calculated formula for time step
 \[
   \gamma_{n+1} = \frac{\delta}{ \| (A^{n+1} - A^n) \bm{\varphi^n}  +
   A^{n+1} (\bm{\widetilde{\varphi}^{n+1}} - \bm{\varphi^n}) \| } \gamma .
 \]
+}
 \end{frame}
 
 \section{Benchmark}
@@ -303,11 +325,45 @@ Calculated formula for time step
 			\includegraphics[width=1\linewidth]{ts_iaea/1.png}
 		\column{0.5\textwidth}
 			\begin{itemize}
-				\item One group of instantaneous neutrons
-				\item One group of delayed neutrons
-				\item Modeling effect of immersion or extraction of control rods
+				\item Without reflector
+				\vspace{2mm}
+				\visible<2,3>{\item One group of \textit{instantaneous} and \textit{delayed} neutrons}
+				\vspace{2mm}
+				\visible<3>{\item Modeling effect of \textit{immersion} or \textit{extraction} of control rods}
 			\end{itemize}
 	\end{columns}
+\end{frame}
+
+\begin{frame}{Scenario}
+Define the scenario of process:
+\vspace{2mm}
+\begin{enumerate}
+\item The spectral problem is solved (initial condition);
+\vspace{2mm}
+
+\visible<2,3>{
+\item Calculation for the non-stationary model in the range 0 to 0.5 sec;
+}
+\vspace{2mm}
+
+\visible<3>{
+\item At a moment of 0.1 sec the value $\Sigma_a$ for the zone 3 changes to $\pm$ 0.000625.
+}
+
+\end{enumerate}
+\end{frame}
+
+\subsection{Software}
+\begin{frame}{Software}
+\begin{center}
+	{\includegraphics[width=0.4\linewidth] {gmsh.png}}
+    \hfill
+    \visible<2,3,4>{\includegraphics[width=0.49\linewidth] {slepc.png}}
+    \vfill
+	\visible<3,4>{\includegraphics[width=0.49\linewidth] {fenics.png}}
+    \hfill
+    \visible<4>{\includegraphics[width=0.49\linewidth] {python.png}}
+\end{center}
 \end{frame}
 
 \subsection{Computational results}
@@ -337,18 +393,6 @@ Calculated formula for time step
 \end{center}
 \end{frame}
 
-\subsection{Software}
-\begin{frame}{Software}
-\begin{center}
-	{\includegraphics[width=0.4\linewidth] {gmsh.png}}
-    \hfill
-    \visible<2,3,4>{\includegraphics[width=0.49\linewidth] {slepc.png}}
-    \vfill
-	\visible<3,4>{\includegraphics[width=0.49\linewidth] {fenics.png}}
-    \hfill
-    \visible<4>{\includegraphics[width=0.49\linewidth] {python.png}}
-\end{center}
-\end{frame}
 
 \begin{frame}{Time step}
 \begin{center}
@@ -375,16 +419,39 @@ $1\cdot 10^{-5}$ & 0.125 & 270 & 37 & 0.120 & 773 & 145 \\
 \end{center}
 \end{table}
 \vspace{5mm}
+
 Reference solution: fixed time step $10^{-5}$, number of steps -- 50000,  counting time -- 2130 sec. 
+
 \vfill
-\visible<2>{
+
+\end{frame}
+
+\section*{Conclusion}
+\begin{frame}{Conclusion}
+\begin{itemize}
+\item
+An algorithm for automatic time step selection for numerical solution of neutron diffusion problems  has been developed.
+\vspace{2mm}
+
+\visible<2,3,4>{
+\item
+The solution is obtained using guaranteed stable implicit schemes, and the step choice is performed with the use of the solution obtained by an explicit scheme.
+}
+\vspace{2mm}
+
+\visible<3,4>{
+\item
+Calculation results obtained for a neutron diffusion problems demonstrate reliability of the proposed algorithm for time step choice.
+}
+\end{itemize}
+
+\vfill
+\visible<4>{
 \begin{center}
-\large
 Thank you for your attention!
 \end{center}
 }
 
 \end{frame}
-
 
 \end{document}
