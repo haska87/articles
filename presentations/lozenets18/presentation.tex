@@ -76,6 +76,19 @@
 
 \section{Introduction}
 \begin{frame}{Introduction}
+In computational practice two-layer schemes are mostly used, compared with three-layered and multilayered schemes which are not so often used.
+The problem of controlling the time step is relatively well worked out for an approximate solution of the Cauchy problem for systems of differential equations.
+\vfill
+
+\visible<2,3>{
+The main approach is that  the error of the approximate solution is estimated at a new time step on the basis of additional calculations.
+The step is estimated from the theoretical asymptotic dependence of the accuracy on time step and after that correction of step is applied, if necessary, the calculations are repeated.
+}
+\vfill
+
+\visible<3>{
+The algorithm takes into account the features of neutron diffusion problems, for instance, fast changes in the solution or instability with respect to the initial data. 
+}
 \end{frame}
 
 \section{Problem description}

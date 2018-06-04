@@ -1,15 +1,15 @@
 \babel@toc {english}{}
 \beamer@sectionintoc {1}{Introduction}{2}{0}{1}
-\beamer@sectionintoc {2}{Problem description}{3}{0}{2}
-\beamer@subsectionintoc {2}{1}{Parabolic equation}{3}{0}{2}
-\beamer@subsectionintoc {2}{2}{Operator notation}{5}{0}{2}
-\beamer@subsectionintoc {2}{3}{Solution evaluation}{7}{0}{2}
-\beamer@subsectionintoc {2}{4}{Solution error}{11}{0}{2}
-\beamer@sectionintoc {3}{Time step estimate}{15}{0}{3}
-\beamer@subsectionintoc {3}{1}{Algorithm}{15}{0}{3}
-\beamer@subsectionintoc {3}{2}{Neutron diffusion equation}{20}{0}{3}
-\beamer@subsectionintoc {3}{3}{Calculated formulas}{22}{0}{3}
-\beamer@sectionintoc {4}{Benchmark}{29}{0}{4}
-\beamer@subsectionintoc {4}{1}{General description}{29}{0}{4}
-\beamer@subsectionintoc {4}{2}{Software}{35}{0}{4}
-\beamer@subsectionintoc {4}{3}{Computational results}{39}{0}{4}
+\beamer@sectionintoc {2}{Problem description}{5}{0}{2}
+\beamer@subsectionintoc {2}{1}{Parabolic equation}{5}{0}{2}
+\beamer@subsectionintoc {2}{2}{Operator notation}{7}{0}{2}
+\beamer@subsectionintoc {2}{3}{Solution evaluation}{9}{0}{2}
+\beamer@subsectionintoc {2}{4}{Solution error}{13}{0}{2}
+\beamer@sectionintoc {3}{Time step estimate}{17}{0}{3}
+\beamer@subsectionintoc {3}{1}{Algorithm}{17}{0}{3}
+\beamer@subsectionintoc {3}{2}{Neutron diffusion equation}{22}{0}{3}
+\beamer@subsectionintoc {3}{3}{Calculated formulas}{24}{0}{3}
+\beamer@sectionintoc {4}{Benchmark}{31}{0}{4}
+\beamer@subsectionintoc {4}{1}{General description}{31}{0}{4}
+\beamer@subsectionintoc {4}{2}{Software}{37}{0}{4}
+\beamer@subsectionintoc {4}{3}{Computational results}{41}{0}{4}
