@@ -1,0 +1,14 @@
+\beamer@endinputifotherversion {3.36pt}
+\select@language {english}
+\beamer@sectionintoc {1}{Introduction}{2}{0}{1}
+\beamer@sectionintoc {2}{Problem description}{5}{0}{2}
+\beamer@subsectionintoc {2}{1}{Parabolic equation}{5}{0}{2}
+\beamer@subsectionintoc {2}{2}{Operator notation}{6}{0}{2}
+\beamer@subsectionintoc {2}{3}{Solution evaluation}{8}{0}{2}
+\beamer@subsectionintoc {2}{4}{Solution error}{10}{0}{2}
+\beamer@sectionintoc {3}{Time step estimate}{12}{0}{3}
+\beamer@subsectionintoc {3}{1}{Algorithm}{12}{0}{3}
+\beamer@subsectionintoc {3}{2}{Calculated formulas}{17}{0}{3}
+\beamer@sectionintoc {4}{Test problem}{21}{0}{4}
+\beamer@subsectionintoc {4}{1}{General description}{21}{0}{4}
+\beamer@subsectionintoc {4}{2}{Computational results}{26}{0}{4}

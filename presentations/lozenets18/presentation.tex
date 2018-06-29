@@ -80,15 +80,15 @@ In computational practice two-layer schemes are mostly used, compared with three
 The problem of controlling the time step is relatively well worked out for an approximate solution of the Cauchy problem for systems of differential equations.
 \vfill
 
-\visible<2,3>{
+%\visible<2,3>{
 The main approach is that  the error of the approximate solution is estimated at a new time step on the basis of additional calculations.
 The step is estimated from the theoretical asymptotic dependence of the accuracy on time step and after that correction of step is applied, if necessary, the calculations are repeated.
-}
+%}
 \vfill
 
-\visible<3>{
+%\visible<3>{
 The algorithm takes into account the features of neutron diffusion problems, for instance, fast changes in the solution or instability with respect to the initial data. 
-}
+%}
 \end{frame}
 
 \section{Problem description}
@@ -107,7 +107,7 @@ where
 $\underline{k} \leq k({\bm x}) \leq  \overline{k}, \ {\bm x} \in \Omega, \ \underline{k} > 0$.
 \vfill
 
-\visible<2>{
+%\visible<2>{
 Boundary condition
 \[
    u({\bm x},t) = g({\bm x},t),
@@ -120,7 +120,7 @@ Initial condition
    u({\bm x},0) = u^0({\bm x}),
    \quad {\bm x}\in \Omega.
 \]
-}
+%}
 \end{frame}
 
 \subsection{Operator notation}
@@ -152,7 +152,7 @@ Introduce irregular time grid
  \quad n = 0,1, ..., N-1,
  \quad t^n = T .   
 \] 
-\visible<2,3,4>{
+\visible<2,3>{
 Implicit scheme are used
 \[
   \frac{y^{n+1} - y^{n}}{\tau^{n+1}} + A^{n+1} y^{n+1} = f^{n+1},
@@ -163,14 +163,12 @@ and initial condition $y^0 = u^0.$
 
 \vfill
 
-\visible<3,4>{
+\visible<3>{
 Layerwise estimate ($A^{n+1} \geq 0$)
 \[
  \|y^{n+1}\| \leq \|y^{n}\| + \tau^{n+1} \|f^{n+1}\|.
 \]
-}
 
-\visible<4>{
 Difference estimate
 \[
  \|y^{n+1}\| \leq \|u^{0}\| + \sum_{k=0}^{n} \tau^{k+1} \|f^{k+1}\|.
@@ -189,23 +187,19 @@ For $z^n = y^n - u^n$:
  z^0 = 0.
 \] 
 
-\visible<2,3,4>{
 Approximation error
 \[
  \psi^{n+1} = f^{n+1} -
  \frac{u^{n+1} - u^{n}}{\tau^{n+1}} - A^{n+1} u^{n+1} . 
 \]
-}
 
-\visible<3,4>{
-Layerwise estimate
+\visible<2>{
+Difference estimate
 \[
   \|z^{n+1}\| \leq \sum_{k=0}^{n} \tau^{k+1} \|\psi^{k+1}\| .
 \]
-}
 
-\visible<4>{
-Difference estimate
+Then we obtain
 \[
  \|z^{n+1}\| \leq \delta t^{n+1}.
 \] 
@@ -251,10 +245,10 @@ One group diffusion approximation with one group delayed neutron sources
 \end{split}
 \]
 
-\visible<2>{
+%\visible<2>{
 Boundary condition
 \[
- D\frac{\partial \phi}{\partial n} + \gamma \phi = 0.
+ D\frac{\partial \phi}{\partial n} + \gamma_a \phi = 0.
 \]
 
 Initial conditions
@@ -262,7 +256,7 @@ Initial conditions
  \phi(0) = \phi^0,  \,
  c(0) = c^0.
 \]
-}
+%}
 \end{frame}
 
 \subsection{Calculated formulas}
@@ -278,7 +272,6 @@ A &= \begin{pmatrix}
 \end{split} 
 \]
 
-\visible<2,3>{
 The approximation error
 \[
 \begin{split}
@@ -286,10 +279,9 @@ The approximation error
 &= \widetilde{\tau}^{n+1} \left( \frac{A^{n+1} - A^n}{\widetilde{\tau}^{n+1}} \bm{\varphi^n} + A^{n+1} \frac{\bm{\widetilde{\varphi}^{n+1}} - \bm{\varphi^n}}{\widetilde{\tau}^{n+1}} \right).
 \end{split}
 \]
-}
 
-\visible<3>{
-Error $\widetilde{\bm\psi}^{n+1}$ compare with $\widetilde{\tau}^{n+1}$, and $\bm\psi^{n+1}$ with step $\tau^{n+1}$:
+\visible<2>{
+We match error $\widetilde{\bm\psi}^{n+1}$  with step $\widetilde{\tau}^{n+1}$, and $\bm\psi^{n+1}$ with step $\tau^{n+1}$:
 \[
   \bar{\tau}^{n+1} = \gamma_{n+1} \tau^n,
   \quad \gamma_{n+1} = \frac{\delta}{\|\widetilde{\bm\psi}^{n+1}\|}  \gamma .
@@ -306,22 +298,20 @@ The needed time step
   \tau^{n+1} = \max \big \{\tau^0, \min \{\gamma_{n+1}, \gamma \} \tau^n \big \}. 
 \] 
 
-\visible<2,3,4>{
+\visible<2,3>{
 The approximation error has the first order in time
 \[
 \bm{\widetilde{\psi}^{n+1}} = \mathcal{O} (\widetilde{\tau}_{n+1}).
 \]
 }
 
-\visible<3,4>{
+\visible<3>{
 In view of this, we set 
 \[
  \|\bm{\widetilde{\psi}^{n+1}} \| \leq \| (A^{n+1} - A^n) \bm{\varphi^n} +
  A^{n+1} (\bm{\widetilde{\varphi}^{n+1}} - \bm{\varphi^n}) \| .
 \]
-}
 
-\visible<4>{
 Calculated formula for time step
 \[
   \gamma_{n+1} = \frac{\delta}{ \| (A^{n+1} - A^n) \bm{\varphi^n}  +
@@ -340,9 +330,13 @@ Calculated formula for time step
 			\begin{itemize}
 				\item Without reflector
 				\vspace{2mm}
-				\visible<2,3>{\item One group of \textit{instantaneous} and \textit{delayed} neutrons}
+%				\visible<2,3>{
+				\item One group of \textit{instantaneous} and \textit{delayed} neutrons
+				%}
 				\vspace{2mm}
-				\visible<3>{\item Modeling effect of \textit{immersion} or \textit{extraction} of control rods}
+%				\visible<3>{
+				\item Modeling effect of \textit{immersion} or \textit{extraction} of control rods
+				%}
 			\end{itemize}
 	\end{columns}
 \end{frame}
@@ -371,11 +365,15 @@ Define the scenario of process:
 \begin{center}
 	{\includegraphics[width=0.4\linewidth] {gmsh.png}}
     \hfill
-    \visible<2,3,4>{\includegraphics[width=0.49\linewidth] {slepc.png}}
+    \visible<2,3>{
+    \includegraphics[width=0.49\linewidth] {slepc.png}
     \vfill
-	\visible<3,4>{\includegraphics[width=0.49\linewidth] {fenics.png}}
+	\includegraphics[width=0.49\linewidth] {fenics.png}
+	}
     \hfill
-    \visible<4>{\includegraphics[width=0.49\linewidth] {python.png}}
+	 \visible<3>{
+	\includegraphics[width=0.49\linewidth] {python.png}
+	}
 \end{center}
 \end{frame}
 
@@ -446,20 +444,16 @@ Reference solution: fixed time step $10^{-5}$, number of steps -- 50000,  counti
 An algorithm for automatic time step selection for numerical solution of neutron diffusion problems  has been developed.
 \vspace{2mm}
 
-\visible<2,3,4>{
 \item
 The solution is obtained using guaranteed stable implicit schemes, and the step choice is performed with the use of the solution obtained by an explicit scheme.
-}
 \vspace{2mm}
 
-\visible<3,4>{
 \item
 Calculation results obtained for a neutron diffusion problems demonstrate reliability of the proposed algorithm for time step choice.
-}
 \end{itemize}
 
 \vfill
-\visible<4>{
+\visible<2>{
 \begin{center}
 Thank you for your attention!
 \end{center}

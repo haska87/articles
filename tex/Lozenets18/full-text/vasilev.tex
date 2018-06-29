@@ -35,23 +35,21 @@ North-Eastern Federal University, Yakutsk, Russia\\
 \maketitle              % typeset the header of the contribution
 %
 \begin{abstract}
-Considering the approximate solution of the boundary value problems for nonstationary equations, the focus should be on the choice of time approximation schemes. 
-We propose an algorithm allowing automatic time step evaluation when solving the boundary value problems	for parabolic equations.
-The solution is obtained using guaranteed stable implicit schemes, and the step choice is performed with the use of the solution obtained by an explicit scheme.
-Formulas for explicit calculation of the time step are derived using the estimation of the approximation error at new time step.
-Calculation results obtained for some neutron diffusion problems demonstrate reliability of the proposed algorithm for time step choice. 
+An automatic algorithm of time step control for solving the boundary value problems for nonstationary parabolic equations is presented.
+The solution is obtained using complete stable implicit schemes, and the time step is evaluated using of the explicit scheme solution.
+The time step evaluation formulas are derived using the estimation of the approximation error at next time step.
+Calculation results obtained for several neutron diffusion problems demonstrate reliability of the proposed algorithm for time step control. 
 
 \keywords{time step selection \and parabolic equation \and approximation error \and neutron diffusion}
 \end{abstract}
 
 \section{Introduction}
-For parabolic equations of the second order unconditionally stable schemes are constructed on the basis of implicit approximations \cite{Matus}.
+For the second order parabolic equations unconditionally stable schemes are constructed on the basis of implicit approximations \cite{Matus}.
 In computational practice two-layer schemes are mostly used, compared with three-layered and multilayered schemes which are not so often used.
-The problem of controlling the time step is relatively well worked out for an approximate solution of the Cauchy problem for systems of differential equations \cite{Ascher}. 
-The main approach is that on the basis of additional calculations, the error of the approximate solution is estimated at a new time step. 
-The step is estimated from the theoretical asymptotic dependence of the accuracy on time step and after that correction of step is applied, if necessary, the calculations are repeated \cite{Vabishchevich}.
-
-The algorithm takes into account the features of neutron diffusion problems \cite{Lozenets16}, for instance, fast changes in the solution or instability with respect to the initial data. When using the algorithm, we can expect a noticeable saving in calculation time compared with the fine mesh calculation, while maintaining the required accuracy of the calculation.
+The problem of the time step control is relatively well developed for the Cauchy problem solution of differential equations systems \cite{Ascher}. 
+The basic approach is to use additional calculations at a new time step to estimate the approximate solution.
+The time step is estimated using the theoretical asymptotic dependence of the accuracy on time step \cite{Vabishchevich}.
+The algorithm takes into account the features of neutron diffusion problems \cite{Lozenets16}, for instance, fast changes in the solution or instability with respect to the initial data. The proposed algorithm allows a gain in CPU time with respect to the fine mesh calculation at the same calculation accuracy.
 
 \section{Problem description}
 Consider the Cauchy problem for the linear equation
@@ -62,7 +60,7 @@ with initial condition $u(0) = u^0$.
 
 The problem is considered in a finite-dimensional Hilbert space.
 We assume that $A(t) \geq 0$.
-Introduce irregular time grid
+Let's use an irregular time grid
 \[
 t^0 = 0, \quad t^{n+1} = t^n + \tau^{n+1}, \quad 
 n = 0, 1, ... , N-1, \quad t^N = T.
@@ -78,11 +76,11 @@ and initial condition
 $
 y^0 = u^0 .
 $
-For an approximate solution under constraints follows a layerwise estimate
+For the approximate solution we can use the folowing estimate
 \[
  \|y^{n+1}\| \leq \|y^{n}\| + \tau^{n+1} \|f^{n+1}\| .
 \]
-Then we obtain a difference estimate
+Then we can obtain a difference analogue of the estimate
 \begin{equation}\label{5}
  \|y^{n+1}\| \leq \|u^{0}\| + \sum_{k=0}^{n} \tau^{k+1} \|f^{k+1}\|
 \end{equation}
@@ -106,33 +104,32 @@ Checking the error we can focus on the total error $\delta\tau^{n+1}$ in interva
 $\|z^{n+1}\| \leq \delta t^{n+1}.$
 The error accumulates and increases linearly.
 
-The solution is obtained using guaranteed stable implicit schemes.
-This scheme includes main computing costs.
-The step choice is performed with the use of the solution obtained by the explicit scheme.
-The stability of our algorithm is not violated. 
-It is determined by the properties of the implicit scheme.
+The solution is obtained using the unconditionally stable implicit scheme.
+The major part of computing costs is related with this scheme.
+The step control is performed using the explicit scheme solution.
+The algorithm stability is not violated and is determined by the implicit scheme properties.
 
-The accumulation of errors in the transition from the time layer $t^n$ to the new layer $t^{n+1}$  is defined as
+The error accumulation from the time layer $t^n$ to the new layer $t^{n+1}$  is defined as
 \begin{equation}\label{8}
 \|z^{n+1}\| \leq \|z^{n}\| + \tau^{n+1} \|\psi^{n+1}\| .
 \end{equation}
-Therefore, we must control the local error $\psi^{n+1}$. Comparing $\psi^{n+1}$ with a given level of error $\delta$ we can judge the quality of the time step choice. If $\psi^{n+1}$ is significantly larger (smaller) then the $\delta$ that the time step is taken too large (small). Thereby
+Therefore, we have to control the local error $\psi^{n+1}$. Comparing $\psi^{n+1}$ with a given level of error $\delta$ we can control the time step choice. If $\psi^{n+1}$ is significantly larger (or smaller) then the $\delta$ - it means that the time step is too large (or small). Thereby
 \begin{equation}\label{9}
   \tau^{n+1}: \ \|\psi^{n+1}\| \approx \delta .
 \end{equation} 
 
-Consider the main algorithm for choosing the time step. We select the predicted step in time based on the analysis of the solution at the previous steps in time. The predicted time step is determined as following
+Consider the basic algorithm to control the time step. We select the time step based on the analysis of the previous step solutions. The predicted time step is determined as following
 \begin{equation}
  \widetilde{\tau}^{n+1} = \gamma \tau^n , 
 \end{equation}
-where $\gamma$ is numeric parameter. The default parameter of $\gamma$ is 1.25 or 1.5. Using the explicit scheme we find a solution $\widetilde{y}^{n+1}$ at time $\widetilde{t}^{n+1} = t^n + \widetilde{\tau}^{n+1}$. The calculation is done only on one step in time therefore the possible computational instability does not appear.
-We estimate the error of approximation by the found $\widetilde{y}^{n+1}$ using the implicit scheme. The $\tau^{n+1}$ is estimated by the closeness of the error norm to $\delta$. The solution at a new time step $t^{n+1}$ is calculated with a $\tau^{n+1}$  by a implicit scheme.
+where $\gamma$ is numerical parameter. The default value of $\gamma$ is 1.25 or 1.5. Using the explicit scheme we can obtain a solution $\widetilde{y}^{n+1}$ at time $\widetilde{t}^{n+1} = t^n + \widetilde{\tau}^{n+1}$. The calculation is performed only at single time step;  therefore the possible computational instability does not appear.
+We estimate the approximation error using the calculated $\widetilde{y}^{n+1}$ by the implicit scheme. The $\tau^{n+1}$ is estimated by the proximity of the error norm to $\delta$. The solution at a new time step $t^{n+1}$ is calculated with a $\tau^{n+1}$  by the implicit scheme.
 
 \section{Calculated formulas}
-We present the calculated formulas for the choice of the time step for the neutron diffusion equation.
+We present the calculated formulas for the time step control for neutron diffusion equation.
 
 \textbf{Neutron diffusion equation.}
-Let's consider modelling neutron flux in a one group diffusion approximation with one group delayed neutron sources. Neutron flux dynamics is considered within a bounded 2D domain  $\Omega$ ($\bm x = \{x_1, x_2\} \in \Omega$) with a convex boundary $\partial \Omega$.
+Let's consider neutron diffusion equation in one-group approximation with one-group delayed neutron sources. Neutron flux dynamics is considered within a bounded 2D domain  $\Omega$ ($\bm x = \{x_1, x_2\} \in \Omega$) with a convex boundary $\partial \Omega$.
  \begin{equation}\label{11}
 \begin{split}
  \frac{1}{v} \frac{\partial \phi}{\partial t} -  \nabla \cdot D \nabla \phi + \Sigma_{a} \phi &=   \ (1-\beta) \nu \Sigma_{f} \phi + \lambda c, \\
@@ -140,13 +137,13 @@ Let's consider modelling neutron flux in a one group diffusion approximation wit
 \end{split}
 \end{equation} 
 Here $\phi(\bm x,t)$ is the neutron flux at point $\bm x$ and time $t$,
-$v$ is the effective velocity of neutrons,
+$v$ is the neutron velocity,
 $D(\bm x)$ is the diffusion coefficient, 
 $\Sigma_{a}(\bm x,t)$ is the absorption cross-section,
 $\beta$ is the effective fraction of delayed neutrons, 
 $\nu\Sigma_{fg}(\bm x,t)$ is the generation cross-section,
 $c$ is density of source of delayed neutrons, 
-$\lambda$  is decay constant of source of delayed neutrons.
+$\lambda$  is decay constant of delayed neutrons source.
 
 The conditions so-called albedo-type are set at the boundary $\partial \Omega$:
 \begin{equation}\label{12}
@@ -179,8 +176,8 @@ The predictive solution is
 \end{equation} 
 This solution is used to estimate the approximation error of the implicit scheme in the transition from time $t^n$ to time $\widetilde{t}^{n+1}$.
 
-In accordance with (\ref{14}), the approximation error is calculated from the exact solution for two moment of time: in our case for $t^n$ and $\widetilde{t}^{n+1}$.
-To estimate the error, it is necessary to match something between $\bm{\phi}(t^n)$ and $\bm{\phi}(\widetilde{t}^{n+1})$.  We take $\bm{\varphi^n} = \{\varphi^n, s^n\}$ instead of $\bm{\phi}(t^n)$. To an exact solution on a new layer $\bm{\phi}(\widetilde{t}^{n+1})$, we match an approximate solution $\bm{\widetilde{\varphi}^{n+1}} = \{\widetilde{\varphi}^{n+1}, \widetilde{s}^{n+1}\}$, which is obtained by the explicit scheme. In view of this, we set
+In accordance with (\ref{14}), the approximation error is calculated from the exact solution for two time moments: in our case, for $t^n$ and $\widetilde{t}^{n+1}$.
+To estimate the error we take $\bm{\varphi^n} = \{\varphi^n, s^n\}$ instead of $\bm{\phi}(t^n)$. An exact solution at a new time step $\bm{\phi}(\widetilde{t}^{n+1})$, is matched by an approximate solution $\bm{\widetilde{\varphi}^{n+1}} = \{\widetilde{\varphi}^{n+1}, \widetilde{s}^{n+1}\}$, which is obtained by the explicit scheme. By virtue of this, we set
 \begin{equation}\label{16}
 \begin{split}
 \widetilde\psi^{n+1}_1  & =  \frac{1}{v} \frac{\widetilde\varphi^{n+1}-\varphi^n}{\widetilde\tau^{n+1}} - \nabla \cdot D^{n+1} \nabla \widetilde\varphi^{n+1} + \Sigma_{a}^{n+1} \widetilde\varphi^{n+1} \\
@@ -188,7 +185,7 @@ To estimate the error, it is necessary to match something between $\bm{\phi}(t^n
 \widetilde\psi^{n+1}_2  & =  \frac{\widetilde s^{n+1}-s^n}{\widetilde\tau^{n+1}} + \lambda \widetilde s^{n+1} - \beta \nu\Sigma_{f}^{n+1} \widetilde\varphi^{n+1}.
 \end{split}
 \end{equation} 
-We match the approximation error $\bm{\widetilde{\psi}^{n+1} }= \{\widetilde{\psi}^{n+1}_1, \widetilde{\psi}^{n+1}_2\}$ with the time step $\widetilde{\tau}^{n+1}$ and $\bm{\psi^{n+1}}$ with the time step $\tau^{n+1}$.
+We match the approximation error $\bm{\widetilde{\psi}^{n+1} }= \{\widetilde{\psi}^{n+1}_1, \widetilde{\psi}^{n+1}_2\}$ at the time step $\widetilde{\tau}^{n+1}$ and $\bm{\psi^{n+1}}$ at the time step $\tau^{n+1}$.
 Taking into account (\ref{9}), we set
 \begin{equation}\label{17}
   \bar{\tau}^{n+1} = \gamma_{n+1} \tau^n,
@@ -226,12 +223,12 @@ A &= \begin{pmatrix}
  \end{pmatrix}.
 \end{split} 
 \]
-Thus, the approximation error has the first order in
-time:
+Thus, the approximation error has the first order for
+time variable:
 $
 \bm{\widetilde{\psi}^{n+1}} = \mathcal{O} (\widetilde{\tau}_{n+1}).
 $
-In view of this, we set 
+By virtue of this, we set 
 \begin{equation}\label{19}
  \|\bm{\widetilde{\psi}^{n+1}} \| \leq \| (A^{n+1} - A^n) \bm{\varphi^n} +
  A^{n+1} (\bm{\widetilde{\varphi}^{n+1}} - \bm{\varphi^n}) \| .
@@ -241,7 +238,7 @@ Taking into account (\ref{19})  from (\ref{17}), we obtain the calculated formul
   \gamma_{n+1} = \frac{\delta}{ \| (A^{n+1} - A^n) \bm{\varphi^n}  +
   A^{n+1} (\bm{\widetilde{\varphi}^{n+1}} - \bm{\varphi^n}) \| } \gamma .
 \end{equation}
-In this formula (the denominator of the expression), the corrective actions for selecting the time step are clearly reflected, which are associated with the change of the problem operator (the first part), with the dynamics of the solution (second part).
+This formula (the denominator of the expression) clearly shows the corrective actions, which are associated with the change of the problem operator (the first part), with the dynamics of the solution (second part).
 
 \section{Test problem}
 The test problem for reactor IAEA-2D without a reflector in a one-dimensional approximation ($\Omega$ --- is the reactor core area) is considered \cite{Chao}. The geometrical model of the IAEA-2D reactor core is presented in Fig.\ref{fig:1}. The fuel assembly pitch equals 20 cm. Diffusion neutronics constants in the common notations are given in Table \ref{t-1}. 
@@ -269,10 +266,10 @@ $\nu\Sigma_{f}$, cm$^{-1}$ & 0.0225 & 0.0225 & 0.0225\\
 \end{tabular}
 \end{center}
 \end{table}
-Modeling effect of immersion or extraction of control rods (depending on the sign of the perturbation). Define the scenario of process:
+Modeling effect of insersion or withdrawal of control rods (depending on the sign of the perturbation). Define the scenario of the process:
 \begin{enumerate} 
 \item The spectral problem is solved \cite{Annals17}, the solution is taken as the initial condition;
-\item Calculation for the non-stationary model in the time range 0 to 0.1 sec;
+\item Calculation for the non-stationary model at the time range 0 to 0.1 sec;
 \item At a moment of 0.1 sec the value $\Sigma_a$ for the zone 3 changes to $\pm$ 0.000625;
 \item The dynamic regime is calculated starting from 0.1 sec to 0.5 sec.
 \end{enumerate}
@@ -284,7 +281,7 @@ where $a$ is the normalization coefficient by a given value of the integrated po
 
 \textbf{Computational results.}
 The accuracy of the solution was evaluated by a reference solution, which uses a numerical solution on a sufficiently detailed grid in time
-($\tau_{ref} = 1 \cdot 10^{-5}$) by the implicit scheme with a fixed time step. The initial value of $k_{eff}$ was 1.0005063. Figure \ref{fig:2} show the integral powers for the immersion and the extraction of the control rods respectively.
+($\tau_{ref} = 1 \cdot 10^{-5}$) by the implicit scheme with a fixed time step. The initial value of $k_{eff}$ was 1.0005063. Figure \ref{fig:2} show the integral powers for  insersion or withdrawal of the control rods respectively.
 
 \begin{figure}[ht]
   \begin{center}
@@ -311,7 +308,7 @@ $\delta$. Here we see that the error converges as the parameter $\delta$ decreas
   \end{center}
 \end{figure}
 
-Figure \ref{fig:4} shows the time steps for immersion and extraction rods, respectively. It is seen that first there is a rapid growth of the time step with a specified accuracy of $\delta$.
+Figure \ref{fig:4} shows the time steps for insersion or withdrawal of rods, respectively. It is seen that first there is a rapid growth of the time step with a specified accuracy of $\delta$.
 Then the \textit{catch} of a sudden change in power occurs with a strong decrease in the time step.
 Further, the time step grows to a certain point and remains at the same level, which is controlled by the error $\delta$.
 
@@ -331,7 +328,7 @@ The reference solution: the number of steps in time is 50000, the counting time 
 \label{t-2}
 \begin{center}
 \begin{tabular}{ccrrcrr}
-&\multicolumn{3}{c}{immsersion} & \multicolumn{3}{c}{extraction}\\
+&\multicolumn{3}{c}{insersion} & \multicolumn{3}{c}{withdrawal}\\
 \hline
 $\delta$ & max($\epsilon_P$) & $n$ & $t$, сек & max($\epsilon_P$)  & $n$ & $t$, сек \\
 \hline
