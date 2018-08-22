@@ -1,0 +1,196 @@
+% LaTeX Curriculum Vitae Template
+%
+% Copyright (C) 2004-2009 Jason Blevins <jrblevin@sdf.lonestar.org>
+% http://jblevins.org/projects/cv-template/
+%
+% You may use use this document as a template to create your own CV
+% and you may redistribute the source code freely. No attribution is
+% required in any resulting documents. I do ask that you please leave
+% this notice and the above URL in the source code if you choose to
+% redistribute this file.
+
+\documentclass[a4paper]{article}
+
+\usepackage{hyperref}
+\usepackage{geometry}
+
+% Comment the following lines to use the default Computer Modern font
+% instead of the Palatino font provided by the mathpazo package.
+% Remove the 'osf' bit if you don't like the old style figures.
+\usepackage[T1]{fontenc}
+\usepackage[sc,osf]{mathpazo}
+
+% Set your name here
+\def\name{Aleksandr O. Vasilev}
+
+% Replace this with a link to your CV if you like, or set it empty
+% (as in \def\footerlink{}) to remove the link in the footer:
+\def\footerlink{}
+
+% The following metadata will show up in the PDF properties
+\hypersetup{
+  colorlinks = true,
+  urlcolor = black,
+  pdfauthor = {\name},
+  pdfkeywords = {economics, statistics, mathematics},
+  pdftitle = {\name: Curriculum Vitae},
+  pdfsubject = {Curriculum Vitae},
+  pdfpagemode = UseNone
+}
+
+\geometry{
+  body={6in, 9in},
+  left=1.0in,
+  top=1.25in
+}
+
+% Customize page headers
+\pagestyle{myheadings}
+\markright{\name}
+\thispagestyle{empty}
+
+% Custom section fonts
+\usepackage{sectsty}
+\sectionfont{\rmfamily\mdseries\Large}
+\subsectionfont{\rmfamily\mdseries\itshape\large}
+
+% Other possible font commands include:
+% \ttfamily for teletype,
+% \sffamily for sans serif,
+% \bfseries for bold,
+% \scshape for small caps,
+% \normalsize, \large, \Large, \LARGE sizes.
+
+% Don't indent paragraphs.
+\setlength\parindent{0em}
+
+% Make lists without bullets
+\renewenvironment{itemize}{
+  \begin{list}{}{
+    \setlength{\leftmargin}{1.5em}
+  }
+}{
+  \end{list}
+}
+
+\begin{document}
+
+% Place name at left
+{\huge \name}
+
+% Alternatively, print name centered and bold:
+%\centerline{\huge \bf \name}
+
+\vspace{0.25in}
+
+\begin{minipage}{0.45\linewidth}
+  \href{http://www.s-vfu.ru/user/user.php?id=732071}{North-Eastern Federal University} \\
+  42, Kulakovskogo \\
+  677000 Yakutsk, Russia
+\end{minipage}
+\begin{minipage}{0.45\linewidth}
+  \begin{tabular}{ll}
+    Phone: & +7-924-1734045 \\
+    Email: & \href{mailto:haska87@gmail.com}{\tt haska87@gmail.com}  \\ \\
+  \end{tabular}
+\end{minipage}
+
+\section*{Personal}
+
+\begin{itemize}
+\item Born on April 26, 1987
+\item Russian Federation Citizen
+\item English: Pre-Intermediate
+\end{itemize}
+
+\section*{Skills}
+
+\begin{itemize}
+\item Programming languages: C/C ++, Python
+\item Libraries: MPI (Parallelization), FEniCS (FEM), PETSc, SLEPc (Algebra), VTK (Visualisation)
+\item Applications: NETGEN (Mesh generation), GMSH (Mesh generation), Paraview (Visualisation)
+\item Operating systems: Ubuntu (Linux), Mac OS, Windows OS
+\end{itemize}
+
+
+\section*{Education}
+
+\begin{itemize}
+
+  \item M.Sc. in applied mathematics, North-Eastern Federal University, 2011.
+  
+  \item Ph.D. in applied mathematics,  North-Eastern Federal University, 2018. \\ Subject: Numerical modeling of neutron diffusion dynamics in a nuclear reactor.
+\end{itemize}
+
+\section*{Employment}
+
+\begin{itemize}
+\item Programmer, ITERA LLC, Yakutsk, 2011-2011
+\item Specialist Expert, Pension Fund of the Russian Federation, Yakutsk, 2011--2012
+\item Associate Researcher, North-Eastern Federal University, Yakutsk, 2012--2014
+\item Lead Engineer, North-Eastern Federal University, Yakutsk, 2014--2016
+\item Engineer programmer, Nuclear Safety Institute of the RAS, Moscow, 2015--present
+\item Senior Researcher, North-Eastern Federal University, Yakutsk, 2017--present
+\end{itemize}
+
+\section*{Research interests}
+
+\subsection*{Numerical methods}
+\begin{itemize}
+\item{Multiphysics problems}
+\item{Spectral problems} 
+\item{Reduction methods}
+\item{Parallel algorithms}
+\end{itemize}
+\subsection*{Applied modeling}
+\begin{itemize}
+ \item Neutron diffusion in  a nuclear reactor 
+ \item Medicine problems
+\end{itemize} 
+
+\section*{Publications}
+
+\subsection*{Books}
+\begin{enumerate}
+
+ 
+ \item N.M. Afanasyeva, M.Yu. Antonov, V.S. Borisov, A.V. Grigoriev, A.E. Kolesov, P.A. Popov, I.K. Sirditov, A.O. Vasilev, M.V. Vasilieva, P.E. Zakharov edited by P.N. Vabishchevich.
+Computational Technologies. Advanced Topics. Moscow: LENAND, 2017.
+
+\end{enumerate} 
+
+\subsection*{Selected articles}
+
+\begin{enumerate}
+\item Avvakumov A. V., Strizhov V. F., Vabishchevich P. N., Vasilev A.O. State change modal method for numerical simulation of dynamic processes in a nuclear reactor // Progress in Nuclear Energy. -- 2018. -- Vol. 108. -- P. 240-261.
+
+\item Vabishchevich P.N., Vasil\' ev A.O. Time step selection for the numerical solution of boundary value problems for parabolic equations // Computational Mathematics and Mathematical Physics. -- 2017. -- Vol. 57. -- P. 843-853.
+
+\item Avvakumov A. V., Strizhov V. F., Vabishchevich P. N., Vasilev A.O. Spectral properties of dynamic processes in a nuclear reactor // Annals of Nuclear Energy. -- 2017.  -- Vol. 99.  -- P. 68-79.
+
+\item Avvakumov A.V., Vabishchevich P.N., Vasil'ev A.O., Strizhev V.F. Numerical modeling of neutron diffusion non-stationary problems // Matematicheskoe Modelirovanie. --  2017. --  Vol. 29 (7). -- P. 44-62.
+
+\item Avvakumov A. V., Strizhov V. F., Vabishchevich P. N., Vasilev A.O. Solution of the 3D Neutron Diffusion Benchmark by FEM // International Conference on Large-Scale Scientific Computing. -- Springer, Cham, 2017. -- P. 435-442.
+
+\item M. Yu. Antonov, A.V. Popinako, G.A. Prokopiev, A.O. Vasilyev.  Numerical Modelling of Ion Transport in 5-HT3 Serotonin Receptor using molecular dynamics // International Conference on Numerical Analysis and Its Applications, Springer. -- 2016. -- Vol. 10187. -- P. 195-202.
+
+\item Vasilyev A., M. Yu. Antonov, Popinako A. et al. MD simulation of dynamics and transport in 5-HT3 receptor // The Febs Journal. 2015. -- Vol. 282. -- P. 402-402.
+
+
+
+
+
+\end{enumerate}
+
+
+\bigskip
+
+% Footer
+\begin{center}
+  \begin{footnotesize}
+    Last updated: \today \\
+    \href{\footerlink}{\texttt{\footerlink}}
+  \end{footnotesize}
+\end{center}
+
+\end{document}
