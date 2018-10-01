@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.4.19)  17 JUL 2018 15:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.4.19)  13 SEP 2018 14:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**sample.tex
-(./sample.tex
+**vasilev.tex
+(./vasilev.tex
 LaTeX2e <2016/03/31>
 Babel <3.9r> and hyphenation patterns for 83 language(s) loaded.
 (./aip-cp.cls
@@ -165,8 +165,8 @@ Package: bm 2016/02/27 v1.2a Bold Symbol Support (DPC/FMi)
 \symboldlargesymbols=\mathgroup13
 LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 142.
 LaTeX Info: Redefining \bm on input line 208.
-) (./sample.aux)
-\openout1 = `sample.aux'.
+) (./vasilev.aux)
+\openout1 = `vasilev.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 20.
 LaTeX Font Info:    Try loading font information for OML+txmi on input line 20.
@@ -289,46 +289,92 @@ LaTeX Font Info:    Try loading font information for U+txsyc on input line 37.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/txfonts/utxsyc.fd
 File: utxsyc.fd 2000/12/15 v3.1
-)
+) [1{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
+ [3]
+<art/1-1.png, id=20, 586.8324pt x 442.2924pt>
+File: art/1-1.png Graphic file (type png)
+ <use art/1-1.png>
+Package pdftex.def Info: art/1-1.png used on input line 265.
+(pdftex.def)             Requested size: 234.0pt x 176.36041pt.
 
-Package natbib Warning: Citation `Matus' on page 1 undefined on input line 50.
+<art/1-2.png, id=22, 586.8324pt x 442.2924pt>
+File: art/1-2.png Graphic file (type png)
+ <use art/1-2.png>
+Package pdftex.def Info: art/1-2.png used on input line 266.
+(pdftex.def)             Requested size: 234.0pt x 176.36041pt.
+
+<art/2-1.png, id=23, 586.8324pt x 442.2924pt>
+File: art/2-1.png Graphic file (type png)
+ <use art/2-1.png>
+Package pdftex.def Info: art/2-1.png used on input line 279.
+(pdftex.def)             Requested size: 234.0pt x 176.36041pt.
+
+<art/2-2.png, id=24, 586.8324pt x 442.2924pt>
+File: art/2-2.png Graphic file (type png)
+ <use art/2-2.png>
+Package pdftex.def Info: art/2-2.png used on input line 280.
+(pdftex.def)             Requested size: 234.0pt x 176.36041pt.
 
 
-Package natbib Warning: Citation `Ascher' on page 1 undefined on input line 52.
+LaTeX Warning: `h' float specifier changed to `ht'.
 
+[4 <./art/1-1.png> <./art/1-2.png>]
+<art/3-1.png, id=31, 586.8324pt x 442.2924pt>
+File: art/3-1.png Graphic file (type png)
+ <use art/3-1.png>
+Package pdftex.def Info: art/3-1.png used on input line 291.
+(pdftex.def)             Requested size: 234.0pt x 176.36041pt.
 
+<art/3-2.png, id=32, 586.8324pt x 442.2924pt>
+File: art/3-2.png Graphic file (type png)
+ <use art/3-2.png>
+Package pdftex.def Info: art/3-2.png used on input line 292.
+(pdftex.def)             Requested size: 234.0pt x 176.36041pt.
+ [5 <./art/2-1.png> <./art/2-2.png> <./art/3-1.png> <./art/3-2.png>]
+<art/4.png, id=40, 586.8324pt x 442.2924pt>
+File: art/4.png Graphic file (type png)
+ <use art/4.png>
+Package pdftex.def Info: art/4.png used on input line 307.
+(pdftex.def)             Requested size: 234.0pt x 176.36041pt.
 
-Package natbib Warning: Citation `Vabishchevich' on page 1 undefined on input l
-ine 54.
+<art/5-1.png, id=41, 586.8324pt x 442.2924pt>
+File: art/5-1.png Graphic file (type png)
+ <use art/5-1.png>
+Package pdftex.def Info: art/5-1.png used on input line 312.
+(pdftex.def)             Requested size: 234.0pt x 176.36041pt.
 
-[1{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-[2] [3]
-No file sample.bbl.
+<art/5-2.png, id=42, 586.8324pt x 442.2924pt>
+File: art/5-2.png Graphic file (type png)
+ <use art/5-2.png>
+Package pdftex.def Info: art/5-2.png used on input line 313.
+(pdftex.def)             Requested size: 234.0pt x 176.36041pt.
+ (./vasilev.bbl
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Package natbib Warning: There were undefined citations.
-
-[4] (./sample.aux) ) 
+ [6 <./art/4.png> <./art/5-1.png> <./art/5-2.png>]) [7] (./vasilev.aux) ) 
 Here is how much of TeX's memory you used:
- 2906 strings out of 493014
- 37817 string characters out of 6133351
- 96166 words of memory out of 5000000
- 6388 multiletter control sequences out of 15000+600000
- 48018 words of font info for 115 fonts, out of 8000000 for 9000
+ 3033 strings out of 493014
+ 39681 string characters out of 6133351
+ 97422 words of memory out of 5000000
+ 6498 multiletter control sequences out of 15000+600000
+ 59371 words of font info for 145 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,6n,28p,436b,210s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/base/8r
-.enc}</usr/local/texlive/2016/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb><
-/usr/local/texlive/2016/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/lo
-cal/texlive/2016/texmf-dist/fonts/type1/public/txfonts/txex.pfb></usr/local/tex
-live/2016/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></usr/local/texlive/20
-16/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2016/texmf-d
-ist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2016/texmf-dist/fonts
-/type1/urw/times/utmr8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw
-/times/utmri8a.pfb>
-Output written on sample.pdf (4 pages, 68294 bytes).
+ 38i,6n,28p,396b,279s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/
+local/texlive/2016/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2
+016/texmf-dist/fonts/type1/public/txfonts/rtxi.pfb></usr/local/texlive/2016/tex
+mf-dist/fonts/type1/public/txfonts/rtxmi.pfb></usr/local/texlive/2016/texmf-dis
+t/fonts/type1/public/txfonts/rtxr.pfb></usr/local/texlive/2016/texmf-dist/fonts
+/type1/public/txfonts/txex.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/
+public/txfonts/txsy.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/
+txfonts/txsyc.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/times/utm
+b8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><
+/usr/local/texlive/2016/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local
+/texlive/2016/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on vasilev.pdf (7 pages, 355483 bytes).
 PDF statistics:
- 50 PDF objects out of 1000 (max. 8388607)
- 35 compressed objects within 1 object stream
+ 88 PDF objects out of 1000 (max. 8388607)
+ 50 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 46 words of extra memory for PDF output out of 10000 (max. 10000000)
 
