@@ -136,12 +136,10 @@ with initial condition
 \]
 \vfill
 
-\visible<2>{
 Assume $A(t) \geq 0$ in $H$ then
 \[
   \|u(t)\| \leq \|u_0\| + \int_{0}^{t} \|f(\theta) \| d \theta .
 \]
-}
 \end{frame}
 
 \subsection{Solution evaluation}
@@ -152,18 +150,16 @@ Introduce irregular time grid
  \quad n = 0,1, ..., N-1,
  \quad t^n = T .   
 \] 
-\visible<2,3>{
+
 Implicit scheme are used
 \[
   \frac{y^{n+1} - y^{n}}{\tau^{n+1}} + A^{n+1} y^{n+1} = f^{n+1},
   \quad n = 0,1, ..., N-1,
 \]
 and initial condition $y^0 = u^0.$
-}
 
 \vfill
 
-\visible<3>{
 Layerwise estimate ($A^{n+1} \geq 0$)
 \[
  \|y^{n+1}\| \leq \|y^{n}\| + \tau^{n+1} \|f^{n+1}\|.
@@ -173,7 +169,6 @@ Difference estimate
 \[
  \|y^{n+1}\| \leq \|u^{0}\| + \sum_{k=0}^{n} \tau^{k+1} \|f^{k+1}\|.
 \]
-}
 \end{frame}
 
 \subsection{Solution error}
@@ -193,7 +188,6 @@ Approximation error
  \frac{u^{n+1} - u^{n}}{\tau^{n+1}} - A^{n+1} u^{n+1} . 
 \]
 
-\visible<2>{
 Difference estimate
 \[
   \|z^{n+1}\| \leq \sum_{k=0}^{n} \tau^{k+1} \|\psi^{k+1}\| .
@@ -203,7 +197,6 @@ Then we obtain
 \[
  \|z^{n+1}\| \leq \delta t^{n+1}.
 \] 
-}
 \end{frame}
 
 \section{Time step estimate}
@@ -214,24 +207,16 @@ Then we obtain
 Predictable time step: $\widetilde{\tau}^{n+1} = \gamma \tau^n$ (eg $\gamma=1.25$)
 \vspace{2mm}
 
-\visible<2,3,4,5>{
 \item Predictive solution $\widetilde{y}^{n+1}$: an explicit scheme, $\widetilde{t}^{n+1} = t^n + \widetilde{\tau}^{n+1}$
-}
 \vspace{2mm}
 
-\visible<3,4,5>{
 \item Estimation of approximation error: by found $\widetilde{y}^{n+1}$ from an implicit scheme
-}
 \vspace{2mm}
 
-\visible<4,5>{
 \item Step selection $\tau^{n+1}$: $\ \|\psi^{n+1}\| \approx \delta$
-}
 \vspace{2mm}
 
-\visible<5>{
 \item Solution on a new time layer $y^{n+1}$: an implicit scheme, $t^{n+1}=t^n + \tau^{n+1}$
-}
 \end{enumerate}
 \end{frame}
 
@@ -280,13 +265,11 @@ The approximation error
 \end{split}
 \]
 
-\visible<2>{
 We match error $\widetilde{\bm\psi}^{n+1}$  with step $\widetilde{\tau}^{n+1}$, and $\bm\psi^{n+1}$ with step $\tau^{n+1}$:
 \[
   \bar{\tau}^{n+1} = \gamma_{n+1} \tau^n,
   \quad \gamma_{n+1} = \frac{\delta}{\|\widetilde{\bm\psi}^{n+1}\|}  \gamma .
 \]
-}
 \end{frame}
 
 \begin{frame}
@@ -298,14 +281,11 @@ The needed time step
   \tau^{n+1} = \max \big \{\tau^0, \min \{\gamma_{n+1}, \gamma \} \tau^n \big \}. 
 \] 
 
-\visible<2,3>{
 The approximation error has the first order in time
 \[
 \bm{\widetilde{\psi}^{n+1}} = \mathcal{O} (\widetilde{\tau}_{n+1}).
 \]
-}
 
-\visible<3>{
 In view of this, we set 
 \[
  \|\bm{\widetilde{\psi}^{n+1}} \| \leq \| (A^{n+1} - A^n) \bm{\varphi^n} +
@@ -317,7 +297,6 @@ Calculated formula for time step
   \gamma_{n+1} = \frac{\delta}{ \| (A^{n+1} - A^n) \bm{\varphi^n}  +
   A^{n+1} (\bm{\widetilde{\varphi}^{n+1}} - \bm{\varphi^n}) \| } \gamma .
 \]
-}
 \end{frame}
 
 \section{Benchmark}
@@ -348,14 +327,10 @@ Define the scenario of process:
 \item The spectral problem is solved (initial condition);
 \vspace{2mm}
 
-\visible<2,3>{
 \item Calculation for the non-stationary model in the range 0 to 0.5 sec;
-}
 \vspace{2mm}
 
-\visible<3>{
 \item At a moment of 0.1 sec the value $\Sigma_a$ for the zone 3 changes to $\pm$ 0.000625.
-}
 
 \end{enumerate}
 \end{frame}
@@ -365,15 +340,11 @@ Define the scenario of process:
 \begin{center}
 	{\includegraphics[width=0.4\linewidth] {gmsh.png}}
     \hfill
-    \visible<2,3>{
     \includegraphics[width=0.49\linewidth] {slepc.png}
     \vfill
 	\includegraphics[width=0.49\linewidth] {fenics.png}
-	}
     \hfill
-	 \visible<3>{
 	\includegraphics[width=0.49\linewidth] {python.png}
-	}
 \end{center}
 \end{frame}
 
@@ -438,6 +409,11 @@ Reference solution: fixed time step $10^{-5}$, number of steps -- 50000,  counti
 \end{frame}
 
 \section*{Conclusion}
+\begin{frame}{Acknowledgements}
+This work was supported by the Russian Foundation for Basic Research (grants 16-08-01215 and 18-31-00315) and by the grant of the Russian Federation Government 14.Y26.31.0013.
+\end{frame}
+
+
 \begin{frame}{Conclusion}
 \begin{itemize}
 \item
@@ -453,11 +429,9 @@ Calculation results obtained for a neutron diffusion problems demonstrate reliab
 \end{itemize}
 
 \vfill
-\visible<2>{
 \begin{center}
 Thank you for your attention!
 \end{center}
-}
 
 \end{frame}
 

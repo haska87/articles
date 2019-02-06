@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: sp3.aux
+The style file: elsarticle-harv.bst
+Database file #1: sp3.bib
+Warning--empty journal in ryu2010development
+You've used 23 entries,
+            2821 wiz_defined-function locations,
+            757 strings with 8135 characters,
+and the built_in function-call counts, 10218 in all, are:
+= -- 1063
+> -- 470
+< -- 17
++ -- 184
+- -- 153
+* -- 833
+:= -- 1869
+add.period$ -- 69
+call.type$ -- 23
+change.case$ -- 162
+chr.to.int$ -- 23
+cite$ -- 24
+duplicate$ -- 395
+empty$ -- 721
+format.name$ -- 226
+if$ -- 2052
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 27
+newline$ -- 76
+num.names$ -- 92
+pop$ -- 167
+preamble$ -- 1
+purify$ -- 143
+quote$ -- 0
+skip$ -- 318
+stack$ -- 0
+substring$ -- 525
+swap$ -- 49
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 189
+warning$ -- 1
+while$ -- 93
+width$ -- 0
+write$ -- 250
+(There was 1 warning)

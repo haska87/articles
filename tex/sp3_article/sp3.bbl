@@ -1,0 +1,115 @@
+\begin{thebibliography}{23}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+
+\bibitem[{Avvakumov et~al.(2017)Avvakumov, Strizhov, Vabishchevich, and
+  Vasilev}]{avvakumov2017spectral}
+Avvakumov, A.~V., Strizhov, V.~F., Vabishchevich, P.~N., Vasilev, A.~O., 2017.
+  Spectral properties of dynamic processes in a nuclear reactor. Annals of
+  Nuclear Energy 99, 68--79.
+
+\bibitem[{Avvakumov et~al.(2014)Avvakumov, Vabishchevich, and
+  Vasilev}]{avvakumov2014}
+Avvakumov, A.~V., Vabishchevich, P.~N., Vasilev, A.~O., 2014. Metod konechnyh
+  ehlementov dlya uravneniya diffuzii nejtronov v geksagonal'noj geometrii.
+  Vestnik of North-Eastern Federal University 11~(5), 7--18.
+
+\bibitem[{Azmy and Sartori(2010)}]{azmy2010nuclear}
+Azmy, Y., Sartori, E., 2010. Nuclear computational science: a century in
+  review. Springer.
+
+\bibitem[{Beckert and Grundmann(2008)}]{beckert2008development}
+Beckert, C., Grundmann, U., 2008. Development and verification of a nodal
+  approach for solving the multigroup $\mathrm{SP_3}$ equations. Annals of
+  Nuclear Energy 35~(1), 75--86.
+
+\bibitem[{Bell and Glasstone(1970)}]{bell1970}
+Bell, G.~I., Glasstone, S., 1970. Nuclear Reactor Theory. Van Nostrand Reinhold
+  Company.
+
+\bibitem[{Brantley and Larsen(2000)}]{brantley2000simplified}
+Brantley, P.~S., Larsen, E.~W., 2000. The simplified $\mathrm{P_3}$
+  approximation. Nuclear Science and Engineering 134~(1), 1--21.
+
+\bibitem[{Brenner and Scott(2008)}]{brenner2008}
+Brenner, S.~C., Scott, L.~R., 2008. The mathematical theory of finite element
+  methods. Springer.
+
+\bibitem[{Chao and Shatilla(1995)}]{chao1995}
+Chao, Y.~A., Shatilla, Y.~A., 1995. Conformal mapping and hexagonal nodal
+  methods-{II}: Implementation in the {ANC-H Code}. Nuclear Science and
+  Engineering 121, 210--225.
+
+\bibitem[{Downar et~al.(2010)Downar, Xu, Seker, and Hudson}]{downar2010theory}
+Downar, T., Xu, Y., Seker, V., Hudson, N., 2010. Theory manual for the {PARCS}
+  kinetics core simulator module. Department of Nuclear Engineering and
+  Radiological Sciences, University of Michigan.
+
+\bibitem[{Gelbard(1960)}]{gelbard1960application}
+Gelbard, E.~M., 1960. Application of spherical harmonics method to reactor
+  problems. Bettis Atomic Power Laboratory, West Mifflin, PA, Technical Report
+  No. WAPD-BT-20.
+
+\bibitem[{Gelbard(1961)}]{gelbard1961simplified}
+Gelbard, E.~M., 1961. Simplified spherical harmonics equations and their use in
+  shielding problems. Tech. rep., Westinghouse Electric Corp. Bettis Atomic
+  Power Lab., Pittsburgh.
+
+\bibitem[{Gelbard(1962)}]{gelbard1962applications}
+Gelbard, E.~M., 1962. Applications of the simplified spherical harmonics
+  equations in spherical geometry. Tech. rep., Westinghouse Electric Corp.
+  Bettis Atomic Power Lab., Pittsburgh.
+
+\bibitem[{Ginestar et~al.(2002)Ginestar, Miro, Verdu, and
+  Hennig}]{ginestar2002transient}
+Ginestar, D., Miro, R., Verdu, G., Hennig, D., 2002. A transient modal analysis
+  of a {BWR} instability event. Journal of Nuclear Science and Technology
+  39~(5), 554--563.
+
+\bibitem[{Lawrence(1986)}]{lawrence1986progress}
+Lawrence, R.~D., 1986. Progress in nodal methods for the solution of the
+  neutron diffusion and transport equations. Progress in Nuclear Energy 17~(3),
+  271--301.
+
+\bibitem[{Logg et~al.(2012)Logg, Mardal, and Wells}]{logg2012}
+Logg, A., Mardal, K.-A., Wells, G., 2012. Automated solution of differential
+  equations by the finite element method: The {FEniCS} book. Vol.~84. Springer
+  Science \& Business Media.
+
+\bibitem[{McClarren(2010)}]{mcclarren2010theoretical}
+McClarren, R.~G., 2010. Theoretical aspects of the simplified $\mathrm{P_N}$
+  equations. Transport Theory and Statistical Physics 39~(2-4), 73--109.
+
+\bibitem[{Quarteroni and Valli(2008)}]{quarteroni2008}
+Quarteroni, A., Valli, A., 2008. Numerical approximation of partial
+  differential equations. Springer.
+
+\bibitem[{Ryu and Joo(2010)}]{ryu2010development}
+Ryu, E.~H., Joo, H.~G., 2010. Development of a {2-D} simplified $\mathrm{P_3}$
+  fem solver for arbitrary geometry applications.
+
+\bibitem[{Stacey(2007)}]{stacey2007}
+Stacey, W.~M., 2007. Nuclear Reactor Physics. Wiley.
+
+\bibitem[{Stewart(2001)}]{stewart2002krylov}
+Stewart, G.~W., 2001. A {Krylov--Schur} algorithm for large eigenproblems. SIAM
+  Journal on Matrix Analysis and Applications 23~(3), 601--614.
+
+\bibitem[{Tada et~al.(2008)Tada, Yamamoto, Yamane, and
+  Kitamuray}]{tada2008applicability}
+Tada, K., Yamamoto, A., Yamane, Y., Kitamuray, Y., 2008. Applicability of the
+  diffusion and simplified $\mathrm{P_3}$ theories for pin-by-pin geometry of
+  {BWR}. Journal of nuclear science and technology 45~(10), 997--1008.
+
+\bibitem[{Verd{\'u} and Ginestar(2014)}]{verdu2014modal}
+Verd{\'u}, G., Ginestar, D., 2014. Modal decomposition method for {BWR}
+  stability analysis using {A}lpha-modes. Annals of Nuclear Energy 67, 31--40.
+
+\bibitem[{Verdu et~al.(2010)Verdu, Ginestar, Roman, and Vidal}]{verdu20103d}
+Verdu, G., Ginestar, D., Roman, J., Vidal, V., 2010. {3D} alpha modes of a
+  nuclear power reactor. Journal of Nuclear Science and Technology 47~(5),
+  501--514.
+
+\end{thebibliography}

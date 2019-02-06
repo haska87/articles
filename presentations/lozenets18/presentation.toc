@@ -1,16 +1,15 @@
-\beamer@endinputifotherversion {3.36pt}
-\select@language {english}
+\babel@toc {english}{}
 \beamer@sectionintoc {1}{Introduction}{2}{0}{1}
 \beamer@sectionintoc {2}{Problem description}{3}{0}{2}
 \beamer@subsectionintoc {2}{1}{Parabolic equation}{3}{0}{2}
 \beamer@subsectionintoc {2}{2}{Operator notation}{4}{0}{2}
-\beamer@subsectionintoc {2}{3}{Solution evaluation}{6}{0}{2}
-\beamer@subsectionintoc {2}{4}{Solution error}{9}{0}{2}
-\beamer@sectionintoc {3}{Time step estimate}{11}{0}{3}
-\beamer@subsectionintoc {3}{1}{Algorithm}{11}{0}{3}
-\beamer@subsectionintoc {3}{2}{Neutron diffusion equation}{16}{0}{3}
-\beamer@subsectionintoc {3}{3}{Calculated formulas}{17}{0}{3}
-\beamer@sectionintoc {4}{Benchmark}{22}{0}{4}
-\beamer@subsectionintoc {4}{1}{General description}{22}{0}{4}
-\beamer@subsectionintoc {4}{2}{Software}{26}{0}{4}
-\beamer@subsectionintoc {4}{3}{Computational results}{29}{0}{4}
+\beamer@subsectionintoc {2}{3}{Solution evaluation}{5}{0}{2}
+\beamer@subsectionintoc {2}{4}{Solution error}{6}{0}{2}
+\beamer@sectionintoc {3}{Time step estimate}{7}{0}{3}
+\beamer@subsectionintoc {3}{1}{Algorithm}{7}{0}{3}
+\beamer@subsectionintoc {3}{2}{Neutron diffusion equation}{8}{0}{3}
+\beamer@subsectionintoc {3}{3}{Calculated formulas}{9}{0}{3}
+\beamer@sectionintoc {4}{Benchmark}{11}{0}{4}
+\beamer@subsectionintoc {4}{1}{General description}{11}{0}{4}
+\beamer@subsectionintoc {4}{2}{Software}{13}{0}{4}
+\beamer@subsectionintoc {4}{3}{Computational results}{14}{0}{4}
