@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.26)  8 FEB 2019 16:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.26)  11 FEB 2019 16:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -825,138 +825,284 @@ Package pdftex.def Info: figs/mesh3.png  used on input line 378.
 File: figs/iaea.png Graphic file (type png)
 <use figs/iaea.png>
 Package pdftex.def Info: figs/iaea.png  used on input line 390.
-(pdftex.def)             Requested size: 207.0021pt x 183.2729pt.
+(pdftex.def)             Requested size: 241.49895pt x 213.81839pt.
  [7 <./figs/mesh1.png> <./figs/mesh2.png> <./figs/mesh3.png> <./figs/iaea.png>]
  [8]
-<figs/diff_without_p2n24.png, id=271, 704.6325pt x 379.4175pt>
+<figs/diff_without_p2n24.png, id=265, 704.6325pt x 379.4175pt>
 File: figs/diff_without_p2n24.png Graphic file (type png)
 <use figs/diff_without_p2n24.png>
-Package pdftex.def Info: figs/diff_without_p2n24.png  used on input line 482.
-(pdftex.def)             Requested size: 293.2521pt x 157.90111pt.
-<figs/sp3_without_p2n24.png, id=272, 704.6325pt x 379.4175pt>
+Package pdftex.def Info: figs/diff_without_p2n24.png  used on input line 479.
+(pdftex.def)             Requested size: 258.75pt x 139.3228pt.
+<figs/sp3_without_p2n24.png, id=266, 704.6325pt x 379.4175pt>
 File: figs/sp3_without_p2n24.png Graphic file (type png)
 <use figs/sp3_without_p2n24.png>
-Package pdftex.def Info: figs/sp3_without_p2n24.png  used on input line 489.
-(pdftex.def)             Requested size: 293.2521pt x 157.90111pt.
- [9 <./figs/diff_without_p2n24.png>]
+Package pdftex.def Info: figs/sp3_without_p2n24.png  used on input line 486.
+(pdftex.def)             Requested size: 258.75pt x 139.3228pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[9 <./figs/diff_without_p2n24.png>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 <figs/iaea_without/alpha_sp3_u1_1_without.png, id=283, 262.3401pt x 189.3474pt>
 
 File: figs/iaea_without/alpha_sp3_u1_1_without.png Graphic file (type png)
 <use figs/iaea_without/alpha_sp3_u1_1_without.png>
 Package pdftex.def Info: figs/iaea_without/alpha_sp3_u1_1_without.png  used on 
-input line 561.
+input line 562.
 (pdftex.def)             Requested size: 169.0519pt x 122.01978pt.
 <figs/iaea_without/alpha_sp3_u2_1_without.png, id=284, 262.3401pt x 189.3474pt>
 
 File: figs/iaea_without/alpha_sp3_u2_1_without.png Graphic file (type png)
 <use figs/iaea_without/alpha_sp3_u2_1_without.png>
 Package pdftex.def Info: figs/iaea_without/alpha_sp3_u2_1_without.png  used on 
-input line 562.
+input line 563.
 (pdftex.def)             Requested size: 169.0519pt x 122.01978pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 <figs/iaea_without/alpha_sp3_u1_2_without.png, id=285, 264.2673pt x 189.3474pt>
 
 File: figs/iaea_without/alpha_sp3_u1_2_without.png Graphic file (type png)
 <use figs/iaea_without/alpha_sp3_u1_2_without.png>
 Package pdftex.def Info: figs/iaea_without/alpha_sp3_u1_2_without.png  used on 
-input line 569.
+input line 571.
 (pdftex.def)             Requested size: 169.0519pt x 121.12413pt.
 <figs/iaea_without/alpha_sp3_u1_3_without.png, id=286, 264.2673pt x 189.3474pt>
 
 File: figs/iaea_without/alpha_sp3_u1_3_without.png Graphic file (type png)
 <use figs/iaea_without/alpha_sp3_u1_3_without.png>
 Package pdftex.def Info: figs/iaea_without/alpha_sp3_u1_3_without.png  used on 
-input line 570.
+input line 572.
 (pdftex.def)             Requested size: 169.0519pt x 121.12413pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 <figs/iaea_without/alpha_sp3_u1_4_without.png, id=287, 264.2673pt x 189.3474pt>
 
 File: figs/iaea_without/alpha_sp3_u1_4_without.png Graphic file (type png)
 <use figs/iaea_without/alpha_sp3_u1_4_without.png>
 Package pdftex.def Info: figs/iaea_without/alpha_sp3_u1_4_without.png  used on 
-input line 577.
+input line 580.
 (pdftex.def)             Requested size: 169.0519pt x 121.12413pt.
 <figs/iaea_without/alpha_sp3_u1_5_without.png, id=288, 264.2673pt x 189.3474pt>
 
 File: figs/iaea_without/alpha_sp3_u1_5_without.png Graphic file (type png)
 <use figs/iaea_without/alpha_sp3_u1_5_without.png>
 Package pdftex.def Info: figs/iaea_without/alpha_sp3_u1_5_without.png  used on 
-input line 578.
+input line 581.
 (pdftex.def)             Requested size: 169.0519pt x 121.12413pt.
- [10 <./figs/sp3_without_p2n24.png>] [11 <./figs/iaea_without/alpha_sp3_u1_1_wi
-thout.png> <./figs/iaea_without/alpha_sp3_u2_1_without.png> <./figs/iaea_withou
-t/alpha_sp3_u1_2_without.png> <./figs/iaea_without/alpha_sp3_u1_3_without.png>]
-<figs/iaea_without/alpha_delayed_sp3_u1_1_without.png, id=307, 744.7825pt x 543
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[10 <./figs/sp3_without_p2n24.png>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<figs/iaea_without/alpha_delayed_sp3_u1_1_without.png, id=301, 744.7825pt x 543
 .02875pt>
 File: figs/iaea_without/alpha_delayed_sp3_u1_1_without.png Graphic file (type p
 ng)
 <use figs/iaea_without/alpha_delayed_sp3_u1_1_without.png>
 Package pdftex.def Info: figs/iaea_without/alpha_delayed_sp3_u1_1_without.png  
-used on input line 648.
+used on input line 651.
 (pdftex.def)             Requested size: 169.0519pt x 123.25336pt.
-<figs/iaea_without/alpha_delayed_sp3_u2_1_without.png, id=308, 744.7825pt x 543
+<figs/iaea_without/alpha_delayed_sp3_u2_1_without.png, id=302, 744.7825pt x 543
 .02875pt>
 File: figs/iaea_without/alpha_delayed_sp3_u2_1_without.png Graphic file (type p
 ng)
 <use figs/iaea_without/alpha_delayed_sp3_u2_1_without.png>
 Package pdftex.def Info: figs/iaea_without/alpha_delayed_sp3_u2_1_without.png  
-used on input line 649.
+used on input line 652.
 (pdftex.def)             Requested size: 169.0519pt x 123.25336pt.
-<figs/iaea_without/alpha_delayed_sp3_u1_2_without.png, id=309, 749.80125pt x 54
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<figs/iaea_without/alpha_delayed_sp3_u1_2_without.png, id=303, 749.80125pt x 54
 3.02875pt>
 File: figs/iaea_without/alpha_delayed_sp3_u1_2_without.png Graphic file (type p
 ng)
 <use figs/iaea_without/alpha_delayed_sp3_u1_2_without.png>
 Package pdftex.def Info: figs/iaea_without/alpha_delayed_sp3_u1_2_without.png  
-used on input line 656.
+used on input line 659.
 (pdftex.def)             Requested size: 169.0519pt x 122.42476pt.
-<figs/iaea_without/alpha_delayed_sp3_u1_3_without.png, id=310, 749.80125pt x 54
+<figs/iaea_without/alpha_delayed_sp3_u1_3_without.png, id=304, 749.80125pt x 54
 3.02875pt>
 File: figs/iaea_without/alpha_delayed_sp3_u1_3_without.png Graphic file (type p
 ng)
 <use figs/iaea_without/alpha_delayed_sp3_u1_3_without.png>
 Package pdftex.def Info: figs/iaea_without/alpha_delayed_sp3_u1_3_without.png  
-used on input line 657.
+used on input line 660.
 (pdftex.def)             Requested size: 169.0519pt x 122.42476pt.
-<figs/iaea_without/alpha_delayed_sp3_u1_4_without.png, id=311, 749.80125pt x 54
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<figs/iaea_without/alpha_delayed_sp3_u1_4_without.png, id=305, 749.80125pt x 54
 3.02875pt>
 File: figs/iaea_without/alpha_delayed_sp3_u1_4_without.png Graphic file (type p
 ng)
 <use figs/iaea_without/alpha_delayed_sp3_u1_4_without.png>
 Package pdftex.def Info: figs/iaea_without/alpha_delayed_sp3_u1_4_without.png  
-used on input line 664.
+used on input line 667.
 (pdftex.def)             Requested size: 169.0519pt x 122.42476pt.
-<figs/iaea_without/alpha_delayed_sp3_u1_5_without.png, id=312, 749.80125pt x 54
+<figs/iaea_without/alpha_delayed_sp3_u1_5_without.png, id=306, 749.80125pt x 54
 3.02875pt>
 File: figs/iaea_without/alpha_delayed_sp3_u1_5_without.png Graphic file (type p
 ng)
 <use figs/iaea_without/alpha_delayed_sp3_u1_5_without.png>
 Package pdftex.def Info: figs/iaea_without/alpha_delayed_sp3_u1_5_without.png  
-used on input line 665.
+used on input line 668.
 (pdftex.def)             Requested size: 169.0519pt x 122.42476pt.
- [12 <./figs/iaea_without/alpha_sp3_u1_4_without.png> <./figs/iaea_without/alph
-a_sp3_u1_5_without.png>] [13 <./figs/iaea_without/alpha_delayed_sp3_u1_1_withou
-t.png> <./figs/iaea_without/alpha_delayed_sp3_u2_1_without.png> <./figs/iaea_wi
-thout/alpha_delayed_sp3_u1_2_without.png> <./figs/iaea_without/alpha_delayed_sp
-3_u1_3_without.png>]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<figs/diff_p2n24.png, id=338, 704.6325pt x 379.4175pt>
+[11 <./figs/iaea_without/alpha_sp3_u1_1_without.png> <./figs/iaea_without/alpha
+_sp3_u2_1_without.png>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<figs/diff_p2n24.png, id=325, 704.6325pt x 379.4175pt>
 File: figs/diff_p2n24.png Graphic file (type png)
 <use figs/diff_p2n24.png>
-Package pdftex.def Info: figs/diff_p2n24.png  used on input line 733.
+Package pdftex.def Info: figs/diff_p2n24.png  used on input line 737.
 (pdftex.def)             Requested size: 293.2521pt x 157.90111pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<figs/sp3_p3n96.png, id=339, 704.6325pt x 379.4175pt>
+<figs/sp3_p3n96.png, id=326, 704.6325pt x 379.4175pt>
 File: figs/sp3_p3n96.png Graphic file (type png)
 <use figs/sp3_p3n96.png>
-Package pdftex.def Info: figs/sp3_p3n96.png  used on input line 741.
+Package pdftex.def Info: figs/sp3_p3n96.png  used on input line 744.
 (pdftex.def)             Requested size: 293.2521pt x 157.90111pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[14 <./figs/iaea_without/alpha_delayed_sp3_u1_4_without.png> <./figs/iaea_witho
+[12 <./figs/iaea_without/alpha_sp3_u1_2_without.png> <./figs/iaea_without/alpha
+_sp3_u1_3_without.png> <./figs/iaea_without/alpha_sp3_u1_4_without.png> <./figs
+/iaea_without/alpha_sp3_u1_5_without.png>] [13]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<figs/iaea_with/alpha_sp3_u1_1.png, id=354, 740.7675pt x 543.02875pt>
+File: figs/iaea_with/alpha_sp3_u1_1.png Graphic file (type png)
+<use figs/iaea_with/alpha_sp3_u1_1.png>
+Package pdftex.def Info: figs/iaea_with/alpha_sp3_u1_1.png  used on input line 
+820.
+(pdftex.def)             Requested size: 169.0519pt x 123.92451pt.
+<figs/iaea_with/alpha_sp3_u2_1.png, id=355, 740.7675pt x 543.02875pt>
+File: figs/iaea_with/alpha_sp3_u2_1.png Graphic file (type png)
+<use figs/iaea_with/alpha_sp3_u2_1.png>
+Package pdftex.def Info: figs/iaea_with/alpha_sp3_u2_1.png  used on input line 
+821.
+(pdftex.def)             Requested size: 169.0519pt x 123.92451pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<figs/iaea_with/alpha_sp3_u1_2.png, id=356, 745.78625pt x 543.02875pt>
+File: figs/iaea_with/alpha_sp3_u1_2.png Graphic file (type png)
+<use figs/iaea_with/alpha_sp3_u1_2.png>
+Package pdftex.def Info: figs/iaea_with/alpha_sp3_u1_2.png  used on input line 
+828.
+(pdftex.def)             Requested size: 169.0519pt x 123.08765pt.
+<figs/iaea_with/alpha_sp3_u1_3.png, id=357, 745.78625pt x 543.02875pt>
+File: figs/iaea_with/alpha_sp3_u1_3.png Graphic file (type png)
+<use figs/iaea_with/alpha_sp3_u1_3.png>
+Package pdftex.def Info: figs/iaea_with/alpha_sp3_u1_3.png  used on input line 
+829.
+(pdftex.def)             Requested size: 169.0519pt x 123.08765pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<figs/iaea_with/alpha_sp3_u1_4.png, id=358, 745.78625pt x 543.02875pt>
+File: figs/iaea_with/alpha_sp3_u1_4.png Graphic file (type png)
+<use figs/iaea_with/alpha_sp3_u1_4.png>
+Package pdftex.def Info: figs/iaea_with/alpha_sp3_u1_4.png  used on input line 
+836.
+(pdftex.def)             Requested size: 169.0519pt x 123.08765pt.
+<figs/iaea_with/alpha_sp3_u1_5.png, id=359, 745.78625pt x 543.02875pt>
+File: figs/iaea_with/alpha_sp3_u1_5.png Graphic file (type png)
+<use figs/iaea_with/alpha_sp3_u1_5.png>
+Package pdftex.def Info: figs/iaea_with/alpha_sp3_u1_5.png  used on input line 
+837.
+(pdftex.def)             Requested size: 169.0519pt x 123.08765pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[14 <./figs/iaea_without/alpha_delayed_sp3_u1_1_without.png> <./figs/iaea_witho
+ut/alpha_delayed_sp3_u2_1_without.png> <./figs/iaea_without/alpha_delayed_sp3_u
+1_2_without.png> <./figs/iaea_without/alpha_delayed_sp3_u1_3_without.png>]
+<figs/iaea_with/alpha_delayed_sp3_u1_1.png, id=374, 265.7127pt x 188.6247pt>
+File: figs/iaea_with/alpha_delayed_sp3_u1_1.png Graphic file (type png)
+<use figs/iaea_with/alpha_delayed_sp3_u1_1.png>
+Package pdftex.def Info: figs/iaea_with/alpha_delayed_sp3_u1_1.png  used on inp
+ut line 906.
+(pdftex.def)             Requested size: 169.0519pt x 120.00847pt.
+<figs/iaea_with/alpha_delayed_sp3_u2_1.png, id=375, 265.7127pt x 188.6247pt>
+File: figs/iaea_with/alpha_delayed_sp3_u2_1.png Graphic file (type png)
+<use figs/iaea_with/alpha_delayed_sp3_u2_1.png>
+Package pdftex.def Info: figs/iaea_with/alpha_delayed_sp3_u2_1.png  used on inp
+ut line 907.
+(pdftex.def)             Requested size: 169.0519pt x 120.00847pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<figs/iaea_with/alpha_delayed_sp3_u1_2.png, id=376, 745.78625pt x 543.02875pt>
+File: figs/iaea_with/alpha_delayed_sp3_u1_2.png Graphic file (type png)
+<use figs/iaea_with/alpha_delayed_sp3_u1_2.png>
+Package pdftex.def Info: figs/iaea_with/alpha_delayed_sp3_u1_2.png  used on inp
+ut line 915.
+(pdftex.def)             Requested size: 169.0519pt x 123.08765pt.
+<figs/iaea_with/alpha_delayed_sp3_u1_3.png, id=377, 745.78625pt x 543.02875pt>
+File: figs/iaea_with/alpha_delayed_sp3_u1_3.png Graphic file (type png)
+<use figs/iaea_with/alpha_delayed_sp3_u1_3.png>
+Package pdftex.def Info: figs/iaea_with/alpha_delayed_sp3_u1_3.png  used on inp
+ut line 916.
+(pdftex.def)             Requested size: 169.0519pt x 123.08765pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<figs/iaea_with/alpha_delayed_sp3_u1_4.png, id=378, 745.78625pt x 543.02875pt>
+File: figs/iaea_with/alpha_delayed_sp3_u1_4.png Graphic file (type png)
+<use figs/iaea_with/alpha_delayed_sp3_u1_4.png>
+Package pdftex.def Info: figs/iaea_with/alpha_delayed_sp3_u1_4.png  used on inp
+ut line 924.
+(pdftex.def)             Requested size: 169.0519pt x 123.08765pt.
+<figs/iaea_with/alpha_delayed_sp3_u1_5.png, id=379, 745.78625pt x 543.02875pt>
+File: figs/iaea_with/alpha_delayed_sp3_u1_5.png Graphic file (type png)
+<use figs/iaea_with/alpha_delayed_sp3_u1_5.png>
+Package pdftex.def Info: figs/iaea_with/alpha_delayed_sp3_u1_5.png  used on inp
+ut line 925.
+(pdftex.def)             Requested size: 169.0519pt x 123.08765pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<figs/iaea_cosym.png, id=381, 377.2494pt x 333.52605pt>
+File: figs/iaea_cosym.png Graphic file (type png)
+<use figs/iaea_cosym.png>
+Package pdftex.def Info: figs/iaea_cosym.png  used on input line 937.
+(pdftex.def)             Requested size: 207.0021pt x 183.01239pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[15 <./figs/iaea_without/alpha_delayed_sp3_u1_4_without.png> <./figs/iaea_witho
 ut/alpha_delayed_sp3_u1_5_without.png>]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -964,164 +1110,54 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<figs/iaea_with/alpha_sp3_u1_1.png, id=352, 740.7675pt x 543.02875pt>
-File: figs/iaea_with/alpha_sp3_u1_1.png Graphic file (type png)
-<use figs/iaea_with/alpha_sp3_u1_1.png>
-Package pdftex.def Info: figs/iaea_with/alpha_sp3_u1_1.png  used on input line 
-815.
-(pdftex.def)             Requested size: 169.0519pt x 123.92451pt.
-<figs/iaea_with/alpha_sp3_u2_1.png, id=353, 740.7675pt x 543.02875pt>
-File: figs/iaea_with/alpha_sp3_u2_1.png Graphic file (type png)
-<use figs/iaea_with/alpha_sp3_u2_1.png>
-Package pdftex.def Info: figs/iaea_with/alpha_sp3_u2_1.png  used on input line 
-816.
-(pdftex.def)             Requested size: 169.0519pt x 123.92451pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<figs/iaea_with/alpha_sp3_u1_2.png, id=354, 745.78625pt x 543.02875pt>
-File: figs/iaea_with/alpha_sp3_u1_2.png Graphic file (type png)
-<use figs/iaea_with/alpha_sp3_u1_2.png>
-Package pdftex.def Info: figs/iaea_with/alpha_sp3_u1_2.png  used on input line 
-824.
-(pdftex.def)             Requested size: 169.0519pt x 123.08765pt.
-<figs/iaea_with/alpha_sp3_u1_3.png, id=355, 745.78625pt x 543.02875pt>
-File: figs/iaea_with/alpha_sp3_u1_3.png Graphic file (type png)
-<use figs/iaea_with/alpha_sp3_u1_3.png>
-Package pdftex.def Info: figs/iaea_with/alpha_sp3_u1_3.png  used on input line 
-825.
-(pdftex.def)             Requested size: 169.0519pt x 123.08765pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<figs/iaea_with/alpha_sp3_u1_4.png, id=356, 745.78625pt x 543.02875pt>
-File: figs/iaea_with/alpha_sp3_u1_4.png Graphic file (type png)
-<use figs/iaea_with/alpha_sp3_u1_4.png>
-Package pdftex.def Info: figs/iaea_with/alpha_sp3_u1_4.png  used on input line 
-833.
-(pdftex.def)             Requested size: 169.0519pt x 123.08765pt.
-<figs/iaea_with/alpha_sp3_u1_5.png, id=357, 745.78625pt x 543.02875pt>
-File: figs/iaea_with/alpha_sp3_u1_5.png Graphic file (type png)
-<use figs/iaea_with/alpha_sp3_u1_5.png>
-Package pdftex.def Info: figs/iaea_with/alpha_sp3_u1_5.png  used on input line 
-834.
-(pdftex.def)             Requested size: 169.0519pt x 123.08765pt.
+[16 <./figs/diff_p2n24.png>]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<figs/iaea_with/alpha_delayed_sp3_u1_1.png, id=358, 265.7127pt x 188.6247pt>
-File: figs/iaea_with/alpha_delayed_sp3_u1_1.png Graphic file (type png)
-<use figs/iaea_with/alpha_delayed_sp3_u1_1.png>
-Package pdftex.def Info: figs/iaea_with/alpha_delayed_sp3_u1_1.png  used on inp
-ut line 899.
-(pdftex.def)             Requested size: 169.0519pt x 120.00847pt.
-<figs/iaea_with/alpha_delayed_sp3_u2_1.png, id=359, 265.7127pt x 188.6247pt>
-File: figs/iaea_with/alpha_delayed_sp3_u2_1.png Graphic file (type png)
-<use figs/iaea_with/alpha_delayed_sp3_u2_1.png>
-Package pdftex.def Info: figs/iaea_with/alpha_delayed_sp3_u2_1.png  used on inp
-ut line 900.
-(pdftex.def)             Requested size: 169.0519pt x 120.00847pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<figs/iaea_with/alpha_delayed_sp3_u1_2.png, id=360, 745.78625pt x 543.02875pt>
-File: figs/iaea_with/alpha_delayed_sp3_u1_2.png Graphic file (type png)
-<use figs/iaea_with/alpha_delayed_sp3_u1_2.png>
-Package pdftex.def Info: figs/iaea_with/alpha_delayed_sp3_u1_2.png  used on inp
-ut line 908.
-(pdftex.def)             Requested size: 169.0519pt x 123.08765pt.
-<figs/iaea_with/alpha_delayed_sp3_u1_3.png, id=361, 745.78625pt x 543.02875pt>
-File: figs/iaea_with/alpha_delayed_sp3_u1_3.png Graphic file (type png)
-<use figs/iaea_with/alpha_delayed_sp3_u1_3.png>
-Package pdftex.def Info: figs/iaea_with/alpha_delayed_sp3_u1_3.png  used on inp
-ut line 909.
-(pdftex.def)             Requested size: 169.0519pt x 123.08765pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<figs/iaea_with/alpha_delayed_sp3_u1_4.png, id=362, 745.78625pt x 543.02875pt>
-File: figs/iaea_with/alpha_delayed_sp3_u1_4.png Graphic file (type png)
-<use figs/iaea_with/alpha_delayed_sp3_u1_4.png>
-Package pdftex.def Info: figs/iaea_with/alpha_delayed_sp3_u1_4.png  used on inp
-ut line 917.
-(pdftex.def)             Requested size: 169.0519pt x 123.08765pt.
-<figs/iaea_with/alpha_delayed_sp3_u1_5.png, id=363, 745.78625pt x 543.02875pt>
-File: figs/iaea_with/alpha_delayed_sp3_u1_5.png Graphic file (type png)
-<use figs/iaea_with/alpha_delayed_sp3_u1_5.png>
-Package pdftex.def Info: figs/iaea_with/alpha_delayed_sp3_u1_5.png  used on inp
-ut line 918.
-(pdftex.def)             Requested size: 169.0519pt x 123.08765pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<figs/iaea_cosym.png, id=365, 377.2494pt x 333.52605pt>
-File: figs/iaea_cosym.png Graphic file (type png)
-<use figs/iaea_cosym.png>
-Package pdftex.def Info: figs/iaea_cosym.png  used on input line 930.
-(pdftex.def)             Requested size: 207.0021pt x 183.01239pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[15 <./figs/diff_p2n24.png>]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<figs/iaea_cosym/sp3_alpha_u1_1_assym.png, id=372, 255.8358pt x 188.6247pt>
+<figs/iaea_cosym/sp3_alpha_u1_1_assym.png, id=406, 255.8358pt x 188.6247pt>
 File: figs/iaea_cosym/sp3_alpha_u1_1_assym.png Graphic file (type png)
 <use figs/iaea_cosym/sp3_alpha_u1_1_assym.png>
 Package pdftex.def Info: figs/iaea_cosym/sp3_alpha_u1_1_assym.png  used on inpu
-t line 1052.
+t line 1064.
 (pdftex.def)             Requested size: 169.0519pt x 124.64233pt.
-<figs/iaea_cosym/sp3_alpha_u2_1_assym.png, id=373, 255.8358pt x 188.6247pt>
+<figs/iaea_cosym/sp3_alpha_u2_1_assym.png, id=407, 255.8358pt x 188.6247pt>
 File: figs/iaea_cosym/sp3_alpha_u2_1_assym.png Graphic file (type png)
 <use figs/iaea_cosym/sp3_alpha_u2_1_assym.png>
 Package pdftex.def Info: figs/iaea_cosym/sp3_alpha_u2_1_assym.png  used on inpu
-t line 1053.
+t line 1065.
 (pdftex.def)             Requested size: 169.0519pt x 124.64233pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<figs/iaea_cosym/sp3_alpha_u1_2_assym.png, id=374, 257.763pt x 188.6247pt>
+<figs/iaea_cosym/sp3_alpha_u1_2_assym.png, id=408, 257.763pt x 188.6247pt>
 File: figs/iaea_cosym/sp3_alpha_u1_2_assym.png Graphic file (type png)
 <use figs/iaea_cosym/sp3_alpha_u1_2_assym.png>
 Package pdftex.def Info: figs/iaea_cosym/sp3_alpha_u1_2_assym.png  used on inpu
-t line 1061.
+t line 1073.
 (pdftex.def)             Requested size: 169.0519pt x 123.71268pt.
-<figs/iaea_cosym/sp3_alpha_u1_3_assym.png, id=375, 257.763pt x 188.6247pt>
+<figs/iaea_cosym/sp3_alpha_u1_3_assym.png, id=409, 257.763pt x 188.6247pt>
 File: figs/iaea_cosym/sp3_alpha_u1_3_assym.png Graphic file (type png)
 <use figs/iaea_cosym/sp3_alpha_u1_3_assym.png>
 Package pdftex.def Info: figs/iaea_cosym/sp3_alpha_u1_3_assym.png  used on inpu
-t line 1062.
+t line 1074.
 (pdftex.def)             Requested size: 169.0519pt x 123.71268pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<figs/iaea_cosym/sp3_alpha_u1_4_assym.png, id=376, 257.763pt x 188.6247pt>
+<figs/iaea_cosym/sp3_alpha_u1_4_assym.png, id=410, 257.763pt x 188.6247pt>
 File: figs/iaea_cosym/sp3_alpha_u1_4_assym.png Graphic file (type png)
 <use figs/iaea_cosym/sp3_alpha_u1_4_assym.png>
 Package pdftex.def Info: figs/iaea_cosym/sp3_alpha_u1_4_assym.png  used on inpu
-t line 1070.
+t line 1082.
 (pdftex.def)             Requested size: 169.0519pt x 123.71268pt.
-<figs/iaea_cosym/sp3_alpha_u1_5_assym.png, id=377, 257.763pt x 188.6247pt>
+<figs/iaea_cosym/sp3_alpha_u1_5_assym.png, id=411, 257.763pt x 188.6247pt>
 File: figs/iaea_cosym/sp3_alpha_u1_5_assym.png Graphic file (type png)
 <use figs/iaea_cosym/sp3_alpha_u1_5_assym.png>
 Package pdftex.def Info: figs/iaea_cosym/sp3_alpha_u1_5_assym.png  used on inpu
-t line 1071.
+t line 1083.
 (pdftex.def)             Requested size: 169.0519pt x 123.71268pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -1129,111 +1165,112 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<figs/hwr.png, id=382, 1092.08pt x 1003.75pt>
+<figs/hwr.png, id=416, 1092.08pt x 1003.75pt>
 File: figs/hwr.png Graphic file (type png)
 <use figs/hwr.png>
-Package pdftex.def Info: figs/hwr.png  used on input line 1120.
+Package pdftex.def Info: figs/hwr.png  used on input line 1132.
 (pdftex.def)             Requested size: 310.4979pt x 285.3825pt.
+[17 <./figs/sp3_p3n96.png>]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[16 <./figs/sp3_p3n96.png>]
+[18 <./figs/iaea_with/alpha_sp3_u1_1.png> <./figs/iaea_with/alpha_sp3_u2_1.png>
+]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<figs/hwr/alpha_sp3_rx1_1.png, id=391, 727.71875pt x 543.02875pt>
+<figs/hwr/alpha_sp3_rx1_1.png, id=443, 727.71875pt x 543.02875pt>
 File: figs/hwr/alpha_sp3_rx1_1.png Graphic file (type png)
 <use figs/hwr/alpha_sp3_rx1_1.png>
-Package pdftex.def Info: figs/hwr/alpha_sp3_rx1_1.png  used on input line 1243.
+Package pdftex.def Info: figs/hwr/alpha_sp3_rx1_1.png  used on input line 1262.
 
 (pdftex.def)             Requested size: 169.0519pt x 126.14516pt.
-<figs/hwr/alpha_sp3_rx2_1.png, id=392, 727.71875pt x 543.02875pt>
+<figs/hwr/alpha_sp3_rx2_1.png, id=444, 727.71875pt x 543.02875pt>
 File: figs/hwr/alpha_sp3_rx2_1.png Graphic file (type png)
 <use figs/hwr/alpha_sp3_rx2_1.png>
-Package pdftex.def Info: figs/hwr/alpha_sp3_rx2_1.png  used on input line 1244.
+Package pdftex.def Info: figs/hwr/alpha_sp3_rx2_1.png  used on input line 1263.
 
 (pdftex.def)             Requested size: 169.0519pt x 126.14516pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<figs/hwr/alpha_sp3_rx1_2.png, id=393, 732.7375pt x 543.02875pt>
+<figs/hwr/alpha_sp3_rx1_2.png, id=445, 732.7375pt x 543.02875pt>
 File: figs/hwr/alpha_sp3_rx1_2.png Graphic file (type png)
 <use figs/hwr/alpha_sp3_rx1_2.png>
-Package pdftex.def Info: figs/hwr/alpha_sp3_rx1_2.png  used on input line 1252.
+Package pdftex.def Info: figs/hwr/alpha_sp3_rx1_2.png  used on input line 1271.
 
 (pdftex.def)             Requested size: 169.0519pt x 125.28342pt.
-<figs/hwr/alpha_sp3_rx1_4.png, id=394, 732.7375pt x 543.02875pt>
+<figs/hwr/alpha_sp3_rx1_4.png, id=446, 732.7375pt x 543.02875pt>
 File: figs/hwr/alpha_sp3_rx1_4.png Graphic file (type png)
 <use figs/hwr/alpha_sp3_rx1_4.png>
-Package pdftex.def Info: figs/hwr/alpha_sp3_rx1_4.png  used on input line 1253.
+Package pdftex.def Info: figs/hwr/alpha_sp3_rx1_4.png  used on input line 1272.
 
 (pdftex.def)             Requested size: 169.0519pt x 125.28342pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<figs/hwr/alpha_sp3_cx1_2.png, id=395, 732.7375pt x 543.02875pt>
+<figs/hwr/alpha_sp3_cx1_2.png, id=447, 732.7375pt x 543.02875pt>
 File: figs/hwr/alpha_sp3_cx1_2.png Graphic file (type png)
 <use figs/hwr/alpha_sp3_cx1_2.png>
-Package pdftex.def Info: figs/hwr/alpha_sp3_cx1_2.png  used on input line 1261.
+Package pdftex.def Info: figs/hwr/alpha_sp3_cx1_2.png  used on input line 1280.
 
 (pdftex.def)             Requested size: 169.0519pt x 125.28342pt.
-<figs/hwr/alpha_sp3_cx1_4.png, id=396, 732.7375pt x 543.02875pt>
+<figs/hwr/alpha_sp3_cx1_4.png, id=448, 732.7375pt x 543.02875pt>
 File: figs/hwr/alpha_sp3_cx1_4.png Graphic file (type png)
 <use figs/hwr/alpha_sp3_cx1_4.png>
-Package pdftex.def Info: figs/hwr/alpha_sp3_cx1_4.png  used on input line 1262.
+Package pdftex.def Info: figs/hwr/alpha_sp3_cx1_4.png  used on input line 1281.
 
 (pdftex.def)             Requested size: 169.0519pt x 125.28342pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+[19 <./figs/iaea_with/alpha_sp3_u1_2.png> <./figs/iaea_with/alpha_sp3_u1_3.png>
+ <./figs/iaea_with/alpha_sp3_u1_4.png> <./figs/iaea_with/alpha_sp3_u1_5.png>]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[17 <./figs/iaea_with/alpha_sp3_u1_1.png> <./figs/iaea_with/alpha_sp3_u2_1.png>
-]
-Overfull \hbox (53.59802pt too wide) in paragraph at lines 1323--1325
+[20]
+Overfull \hbox (53.59802pt too wide) in paragraph at lines 1348--1350
 \OT1/cmr/m/n/10 (# 18-31-00315) and by the grant of the Rus-sian Fed-er-a-tion 
 Gov-ern-ment (# 14.Y26.31.0013). 
  []
 
-(./sp3.bbl [18 <./figs/iaea_with/alpha_sp3_u1_2.png> <./figs/iaea_with/alpha_sp
-3_u1_3.png> <./figs/iaea_with/alpha_sp3_u1_4.png> <./figs/iaea_with/alpha_sp3_u
-1_5.png>] [19] [20 <./figs/iaea_with/alpha_delayed_sp3_u1_1.png> <./figs/iaea_w
-ith/alpha_delayed_sp3_u2_1.png> <./figs/iaea_with/alpha_delayed_sp3_u1_2.png> <
-./figs/iaea_with/alpha_delayed_sp3_u1_3.png>] [21 <./figs/iaea_with/alpha_delay
-ed_sp3_u1_4.png> <./figs/iaea_with/alpha_delayed_sp3_u1_5.png>]) [22 <./figs/ia
-ea_cosym.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1329.
- [23] [24 <./figs/iaea_cosym/sp3_alpha_u1_1_assym.png> <./figs/iaea_cosym/sp3_a
-lpha_u2_1_assym.png> <./figs/iaea_cosym/sp3_alpha_u1_2_assym.png> <./figs/iaea_
-cosym/sp3_alpha_u1_3_assym.png> <./figs/iaea_cosym/sp3_alpha_u1_4_assym.png> <.
-/figs/iaea_cosym/sp3_alpha_u1_5_assym.png>] [25] [26 <./figs/hwr.png (PNG copy)
->] [27 <./figs/hwr/alpha_sp3_rx1_1.png> <./figs/hwr/alpha_sp3_rx2_1.png>] [28 <
-./figs/hwr/alpha_sp3_rx1_2.png> <./figs/hwr/alpha_sp3_rx1_4.png> <./figs/hwr/al
-pha_sp3_cx1_2.png> <./figs/hwr/alpha_sp3_cx1_4.png>] [29]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1329.
+(./sp3.bbl [21 <./figs/iaea_with/alpha_delayed_sp3_u1_1.png> <./figs/iaea_with/
+alpha_delayed_sp3_u2_1.png> <./figs/iaea_with/alpha_delayed_sp3_u1_2.png> <./fi
+gs/iaea_with/alpha_delayed_sp3_u1_3.png>] [22 <./figs/iaea_with/alpha_delayed_s
+p3_u1_4.png> <./figs/iaea_with/alpha_delayed_sp3_u1_5.png>] [23 <./figs/iaea_co
+sym.png>] [24]) [25 <./figs/iaea_cosym/sp3_alpha_u1_1_assym.png> <./figs/iaea_c
+osym/sp3_alpha_u2_1_assym.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1354.
+ [26 <./figs/iaea_cosym/sp3_alpha_u1_2_assym.png> <./figs/iaea_cosym/sp3_alpha_
+u1_3_assym.png> <./figs/iaea_cosym/sp3_alpha_u1_4_assym.png> <./figs/iaea_cosym
+/sp3_alpha_u1_5_assym.png>] [27] [28 <./figs/hwr.png (PNG copy)>] [29 <./figs/h
+wr/alpha_sp3_rx1_1.png> <./figs/hwr/alpha_sp3_rx2_1.png>] [30 <./figs/hwr/alpha
+_sp3_rx1_2.png> <./figs/hwr/alpha_sp3_rx1_4.png> <./figs/hwr/alpha_sp3_cx1_2.pn
+g> <./figs/hwr/alpha_sp3_cx1_4.png>] [31]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1354.
 
 (./sp3.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1329.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1329.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1354.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1354.
 
 Package rerunfilecheck Info: File `sp3.out' has not changed.
 (rerunfilecheck)             Checksum: AB83891E2933553D97B1D2951180CBF7;1295.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1329.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1354.
  ) 
 Here is how much of TeX's memory you used:
- 26522 strings out of 492982
- 642910 string characters out of 6134895
- 845350 words of memory out of 5000000
+ 26524 strings out of 492982
+ 642924 string characters out of 6134895
+ 841350 words of memory out of 5000000
  29465 multiletter control sequences out of 15000+600000
  14935 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1259,10 +1296,10 @@ public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmti7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mtt8.pfb>
-Output written on sp3.pdf (29 pages, 2872572 bytes).
+Output written on sp3.pdf (31 pages, 2881568 bytes).
 PDF statistics:
- 580 PDF objects out of 1000 (max. 8388607)
- 468 compressed objects within 5 object streams
- 136 named destinations out of 1000 (max. 500000)
+ 618 PDF objects out of 1000 (max. 8388607)
+ 503 compressed objects within 6 object streams
+ 138 named destinations out of 1000 (max. 500000)
  371 words of extra memory for PDF output out of 10000 (max. 10000000)
 
