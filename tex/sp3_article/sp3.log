@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.26)  11 FEB 2019 16:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.26)  11 FEB 2019 17:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -684,39 +684,47 @@ Package: multirow 2016/11/25 v2.2 Span multiple rows of a table
 \multirow@dima=\skip55
 \bigstrutjot=\dimen184
 )
-\c@thm=\count144
-\c@pf=\count145
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count144
+\float@exts=\toks40
+\float@box=\box44
+\@float@everytoks=\toks41
+\@floatcapt=\box45
+)
+\c@thm=\count145
+\c@pf=\count146
  (./sp3.aux)
 \openout1 = `sp3.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count146
+\scratchcounter=\count147
 \scratchdimen=\dimen185
-\scratchbox=\box44
-\nofMPsegments=\count147
-\nofMParguments=\count148
-\everyMPshowfont=\toks40
-\MPscratchCnt=\count149
+\scratchbox=\box46
+\nofMPsegments=\count148
+\nofMParguments=\count149
+\everyMPshowfont=\toks42
+\MPscratchCnt=\count150
 \MPscratchDim=\dimen186
-\MPnumerator=\count150
-\makeMPintoPDFobject=\count151
-\everyMPtoPDFconversion=\toks41
+\MPnumerator=\count151
+\makeMPintoPDFobject=\count152
+\everyMPtoPDFconversion=\toks43
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -739,21 +747,21 @@ ABD: EveryShipout initializing macros
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
 ick labels; missing features). Consider writing \pgfplotsset{compat=1.15} into 
 your preamble.
- on input line 23.
+ on input line 24.
 
-\AtBeginShipoutBox=\box45
-Package hyperref Info: Link coloring OFF on input line 23.
+\AtBeginShipoutBox=\box47
+Package hyperref Info: Link coloring OFF on input line 24.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count152
+\c@section@level=\count153
 )
-LaTeX Info: Redefining \ref on input line 23.
-LaTeX Info: Redefining \pageref on input line 23.
-LaTeX Info: Redefining \nameref on input line 23.
+LaTeX Info: Redefining \ref on input line 24.
+LaTeX Info: Redefining \pageref on input line 24.
+LaTeX Info: Redefining \nameref on input line 24.
 
 (./sp3.out) (./sp3.out)
 \@outlinefile=\write5
@@ -771,7 +779,7 @@ Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ™ in font cmr10!
  [3]
-Overfull \hbox (5.20132pt too wide) in paragraph at lines 138--152
+Overfull \hbox (5.20132pt too wide) in paragraph at lines 139--153
 \OT1/cmr/m/n/10 0th mo-ment of an-gu-lar flux, $\OML/cmm/m/it/10 ^^^[]\OT1/cmr/
 m/n/10 (\OML/cmm/b/it/10 x\OML/cmm/m/it/10 ; t\OT1/cmr/m/n/10 )$ --- sec-ond mo
 -ment of an-gu-lar flux, $^^F[](\OML/cmm/b/it/10 x\OML/cmm/m/it/10 ; t\OT1/cmr/
@@ -779,7 +787,7 @@ m/n/10 )$
  []
 
 [4]
-Overfull \hbox (14.71832pt too wide) in paragraph at lines 270--274
+Overfull \hbox (14.71832pt too wide) in paragraph at lines 271--275
 \OT1/cmr/m/n/10 where $\OML/cmm/b/it/10 u[] \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 
 f\OML/cmm/m/it/10 ^^^[]; ^^^[]; :::; ^^^[]\OMS/cmsy/m/n/10 g$\OT1/cmr/m/n/10 , 
 $\OML/cmm/b/it/10 u[] \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 ^^^[
@@ -798,480 +806,687 @@ Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ‹ in font cmr10!
 [5]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 362.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 363.
 
  (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 362.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 363.
  [6]
 <figs/mesh1.png, id=233, 175.65625pt x 153.57375pt>
 File: figs/mesh1.png Graphic file (type png)
 <use figs/mesh1.png>
-Package pdftex.def Info: figs/mesh1.png  used on input line 370.
+Package pdftex.def Info: figs/mesh1.png  used on input line 371.
 (pdftex.def)             Requested size: 103.50105pt x 90.49289pt.
 <figs/mesh2.png, id=235, 247.92625pt x 214.8025pt>
 File: figs/mesh2.png Graphic file (type png)
 <use figs/mesh2.png>
-Package pdftex.def Info: figs/mesh2.png  used on input line 374.
+Package pdftex.def Info: figs/mesh2.png  used on input line 375.
 (pdftex.def)             Requested size: 103.50105pt x 89.67235pt.
 <figs/mesh3.png, id=236, 251.94125pt x 219.82124pt>
 File: figs/mesh3.png Graphic file (type png)
 <use figs/mesh3.png>
-Package pdftex.def Info: figs/mesh3.png  used on input line 378.
+Package pdftex.def Info: figs/mesh3.png  used on input line 379.
 (pdftex.def)             Requested size: 103.50105pt x 90.30505pt.
 <figs/iaea.png, id=240, 1059.96pt x 938.50626pt>
 File: figs/iaea.png Graphic file (type png)
 <use figs/iaea.png>
-Package pdftex.def Info: figs/iaea.png  used on input line 390.
+Package pdftex.def Info: figs/iaea.png  used on input line 391.
 (pdftex.def)             Requested size: 241.49895pt x 213.81839pt.
- [7 <./figs/mesh1.png> <./figs/mesh2.png> <./figs/mesh3.png> <./figs/iaea.png>]
- [8]
-<figs/diff_without_p2n24.png, id=265, 704.6325pt x 379.4175pt>
+ [7pdfTeX warning (ext4): destination with the same identifier (name{figure.1})
+ has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.399 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.
+2}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.399 
+       <./figs/mesh1.png> <./figs/mesh2.png> <./figs/mesh3.png> <./figs/iaea.pn
+g>] [8pdfTeX warning (ext4): destination with the same identifier (name{table.1
+}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.454 
+      pdfTeX warning (ext4): destination with the same identifier (name{table.2
+}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.454 
+      ]
+<figs/diff_without_p2n24.png, id=268, 704.6325pt x 379.4175pt>
 File: figs/diff_without_p2n24.png Graphic file (type png)
 <use figs/diff_without_p2n24.png>
-Package pdftex.def Info: figs/diff_without_p2n24.png  used on input line 479.
+Package pdftex.def Info: figs/diff_without_p2n24.png  used on input line 484.
 (pdftex.def)             Requested size: 258.75pt x 139.3228pt.
-<figs/sp3_without_p2n24.png, id=266, 704.6325pt x 379.4175pt>
+<figs/sp3_without_p2n24.png, id=269, 704.6325pt x 379.4175pt>
 File: figs/sp3_without_p2n24.png Graphic file (type png)
 <use figs/sp3_without_p2n24.png>
-Package pdftex.def Info: figs/sp3_without_p2n24.png  used on input line 486.
+Package pdftex.def Info: figs/sp3_without_p2n24.png  used on input line 491.
 (pdftex.def)             Requested size: 258.75pt x 139.3228pt.
+ [9pdfTeX warning (ext4): destination with the same identifier (name{table.3}) 
+has been already used, duplicate ignored
 
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.496 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.
+3}) has been already used, duplicate ignored
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.496 
+       <./figs/diff_without_p2n24.png>] [10pdfTeX warning (ext4): destination w
+ith the same identifier (name{figure.4}) has been already used, duplicate ignor
+ed
 
-[9 <./figs/diff_without_p2n24.png>]
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.537 
+      pdfTeX warning (ext4): destination with the same identifier (name{table.4
+}) has been already used, duplicate ignored
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<figs/iaea_without/alpha_sp3_u1_1_without.png, id=283, 262.3401pt x 189.3474pt>
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.537 
+       <./figs/sp3_without_p2n24.png>]
+<figs/iaea_without/alpha_sp3_u1_1_without.png, id=293, 262.3401pt x 189.3474pt>
 
 File: figs/iaea_without/alpha_sp3_u1_1_without.png Graphic file (type png)
 <use figs/iaea_without/alpha_sp3_u1_1_without.png>
 Package pdftex.def Info: figs/iaea_without/alpha_sp3_u1_1_without.png  used on 
-input line 562.
+input line 567.
 (pdftex.def)             Requested size: 169.0519pt x 122.01978pt.
-<figs/iaea_without/alpha_sp3_u2_1_without.png, id=284, 262.3401pt x 189.3474pt>
+<figs/iaea_without/alpha_sp3_u2_1_without.png, id=294, 262.3401pt x 189.3474pt>
 
 File: figs/iaea_without/alpha_sp3_u2_1_without.png Graphic file (type png)
 <use figs/iaea_without/alpha_sp3_u2_1_without.png>
 Package pdftex.def Info: figs/iaea_without/alpha_sp3_u2_1_without.png  used on 
-input line 563.
+input line 568.
 (pdftex.def)             Requested size: 169.0519pt x 122.01978pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<figs/iaea_without/alpha_sp3_u1_2_without.png, id=285, 264.2673pt x 189.3474pt>
+<figs/iaea_without/alpha_sp3_u1_2_without.png, id=295, 264.2673pt x 189.3474pt>
 
 File: figs/iaea_without/alpha_sp3_u1_2_without.png Graphic file (type png)
 <use figs/iaea_without/alpha_sp3_u1_2_without.png>
 Package pdftex.def Info: figs/iaea_without/alpha_sp3_u1_2_without.png  used on 
-input line 571.
+input line 575.
 (pdftex.def)             Requested size: 169.0519pt x 121.12413pt.
-<figs/iaea_without/alpha_sp3_u1_3_without.png, id=286, 264.2673pt x 189.3474pt>
+<figs/iaea_without/alpha_sp3_u1_3_without.png, id=296, 264.2673pt x 189.3474pt>
 
 File: figs/iaea_without/alpha_sp3_u1_3_without.png Graphic file (type png)
 <use figs/iaea_without/alpha_sp3_u1_3_without.png>
 Package pdftex.def Info: figs/iaea_without/alpha_sp3_u1_3_without.png  used on 
-input line 572.
+input line 576.
 (pdftex.def)             Requested size: 169.0519pt x 121.12413pt.
+ [11pdfTeX warning (ext4): destination with the same identifier (name{table.5})
+ has been already used, duplicate ignored
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.581 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.
+5}) has been already used, duplicate ignored
 
-<figs/iaea_without/alpha_sp3_u1_4_without.png, id=287, 264.2673pt x 189.3474pt>
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.581 
+       <./figs/iaea_without/alpha_sp3_u1_1_without.png> <./figs/iaea_without/al
+pha_sp3_u2_1_without.png>]
+<figs/iaea_without/alpha_sp3_u1_4_without.png, id=304, 264.2673pt x 189.3474pt>
 
 File: figs/iaea_without/alpha_sp3_u1_4_without.png Graphic file (type png)
 <use figs/iaea_without/alpha_sp3_u1_4_without.png>
 Package pdftex.def Info: figs/iaea_without/alpha_sp3_u1_4_without.png  used on 
-input line 580.
+input line 584.
 (pdftex.def)             Requested size: 169.0519pt x 121.12413pt.
-<figs/iaea_without/alpha_sp3_u1_5_without.png, id=288, 264.2673pt x 189.3474pt>
+<figs/iaea_without/alpha_sp3_u1_5_without.png, id=305, 264.2673pt x 189.3474pt>
 
 File: figs/iaea_without/alpha_sp3_u1_5_without.png Graphic file (type png)
 <use figs/iaea_without/alpha_sp3_u1_5_without.png>
 Package pdftex.def Info: figs/iaea_without/alpha_sp3_u1_5_without.png  used on 
-input line 581.
+input line 585.
 (pdftex.def)             Requested size: 169.0519pt x 121.12413pt.
+ [12pdfTeX warning (ext4): destination with the same identifier (name{figure.6}
+) has been already used, duplicate ignored
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.620 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.
+7}) has been already used, duplicate ignored
 
-[10 <./figs/sp3_without_p2n24.png>]
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.620 
+      pdfTeX warning (ext4): destination with the same identifier (name{table.6
+}) has been already used, duplicate ignored
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<figs/iaea_without/alpha_delayed_sp3_u1_1_without.png, id=301, 744.7825pt x 543
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.620 
+       <./figs/iaea_without/alpha_sp3_u1_2_without.png> <./figs/iaea_without/al
+pha_sp3_u1_3_without.png> <./figs/iaea_without/alpha_sp3_u1_4_without.png> <./f
+igs/iaea_without/alpha_sp3_u1_5_without.png>]
+<figs/iaea_without/alpha_delayed_sp3_u1_1_without.png, id=317, 744.7825pt x 543
 .02875pt>
 File: figs/iaea_without/alpha_delayed_sp3_u1_1_without.png Graphic file (type p
 ng)
 <use figs/iaea_without/alpha_delayed_sp3_u1_1_without.png>
 Package pdftex.def Info: figs/iaea_without/alpha_delayed_sp3_u1_1_without.png  
-used on input line 651.
+used on input line 654.
 (pdftex.def)             Requested size: 169.0519pt x 123.25336pt.
-<figs/iaea_without/alpha_delayed_sp3_u2_1_without.png, id=302, 744.7825pt x 543
+<figs/iaea_without/alpha_delayed_sp3_u2_1_without.png, id=318, 744.7825pt x 543
 .02875pt>
 File: figs/iaea_without/alpha_delayed_sp3_u2_1_without.png Graphic file (type p
 ng)
 <use figs/iaea_without/alpha_delayed_sp3_u2_1_without.png>
 Package pdftex.def Info: figs/iaea_without/alpha_delayed_sp3_u2_1_without.png  
-used on input line 652.
+used on input line 655.
 (pdftex.def)             Requested size: 169.0519pt x 123.25336pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<figs/iaea_without/alpha_delayed_sp3_u1_2_without.png, id=303, 749.80125pt x 54
+<figs/iaea_without/alpha_delayed_sp3_u1_2_without.png, id=319, 749.80125pt x 54
 3.02875pt>
 File: figs/iaea_without/alpha_delayed_sp3_u1_2_without.png Graphic file (type p
 ng)
 <use figs/iaea_without/alpha_delayed_sp3_u1_2_without.png>
 Package pdftex.def Info: figs/iaea_without/alpha_delayed_sp3_u1_2_without.png  
-used on input line 659.
+used on input line 662.
 (pdftex.def)             Requested size: 169.0519pt x 122.42476pt.
-<figs/iaea_without/alpha_delayed_sp3_u1_3_without.png, id=304, 749.80125pt x 54
+<figs/iaea_without/alpha_delayed_sp3_u1_3_without.png, id=320, 749.80125pt x 54
 3.02875pt>
 File: figs/iaea_without/alpha_delayed_sp3_u1_3_without.png Graphic file (type p
 ng)
 <use figs/iaea_without/alpha_delayed_sp3_u1_3_without.png>
 Package pdftex.def Info: figs/iaea_without/alpha_delayed_sp3_u1_3_without.png  
-used on input line 660.
+used on input line 663.
 (pdftex.def)             Requested size: 169.0519pt x 122.42476pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<figs/iaea_without/alpha_delayed_sp3_u1_4_without.png, id=305, 749.80125pt x 54
+<figs/iaea_without/alpha_delayed_sp3_u1_4_without.png, id=321, 749.80125pt x 54
 3.02875pt>
 File: figs/iaea_without/alpha_delayed_sp3_u1_4_without.png Graphic file (type p
 ng)
 <use figs/iaea_without/alpha_delayed_sp3_u1_4_without.png>
 Package pdftex.def Info: figs/iaea_without/alpha_delayed_sp3_u1_4_without.png  
-used on input line 667.
+used on input line 670.
 (pdftex.def)             Requested size: 169.0519pt x 122.42476pt.
-<figs/iaea_without/alpha_delayed_sp3_u1_5_without.png, id=306, 749.80125pt x 54
+<figs/iaea_without/alpha_delayed_sp3_u1_5_without.png, id=322, 749.80125pt x 54
 3.02875pt>
 File: figs/iaea_without/alpha_delayed_sp3_u1_5_without.png Graphic file (type p
 ng)
 <use figs/iaea_without/alpha_delayed_sp3_u1_5_without.png>
 Package pdftex.def Info: figs/iaea_without/alpha_delayed_sp3_u1_5_without.png  
-used on input line 668.
+used on input line 671.
 (pdftex.def)             Requested size: 169.0519pt x 122.42476pt.
+ [13pdfTeX warning (ext4): destination with the same identifier (name{table.7})
+ has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.675 \end{figure}
+                  pdfTeX warning (ext4): destination with the same identifier (
+name{figure.8}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.675 \end{figure}
+                   <./figs/iaea_without/alpha_delayed_sp3_u1_1_without.png> <./
+figs/iaea_without/alpha_delayed_sp3_u2_1_without.png>]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[11 <./figs/iaea_without/alpha_sp3_u1_1_without.png> <./figs/iaea_without/alpha
-_sp3_u2_1_without.png>]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<figs/diff_p2n24.png, id=325, 704.6325pt x 379.4175pt>
+<figs/diff_p2n24.png, id=341, 704.6325pt x 379.4175pt>
 File: figs/diff_p2n24.png Graphic file (type png)
 <use figs/diff_p2n24.png>
-Package pdftex.def Info: figs/diff_p2n24.png  used on input line 737.
-(pdftex.def)             Requested size: 293.2521pt x 157.90111pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<figs/sp3_p3n96.png, id=326, 704.6325pt x 379.4175pt>
+Package pdftex.def Info: figs/diff_p2n24.png  used on input line 741.
+(pdftex.def)             Requested size: 258.75pt x 139.3228pt.
+<figs/sp3_p3n96.png, id=342, 704.6325pt x 379.4175pt>
 File: figs/sp3_p3n96.png Graphic file (type png)
 <use figs/sp3_p3n96.png>
-Package pdftex.def Info: figs/sp3_p3n96.png  used on input line 744.
-(pdftex.def)             Requested size: 293.2521pt x 157.90111pt.
+Package pdftex.def Info: figs/sp3_p3n96.png  used on input line 748.
+(pdftex.def)             Requested size: 258.75pt x 139.3228pt.
+[14pdfTeX warning (ext4): destination with the same identifier (name{figure.9})
+ has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.752 \end{figure}
+                  pdfTeX warning (ext4): destination with the same identifier (
+name{figure.10}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.752 \end{figure}
+                   <./figs/iaea_without/alpha_delayed_sp3_u1_2_without.png> <./
+figs/iaea_without/alpha_delayed_sp3_u1_3_without.png> <./figs/iaea_without/alph
+a_delayed_sp3_u1_4_without.png> <./figs/iaea_without/alpha_delayed_sp3_u1_5_wit
+hout.png>] [15pdfTeX warning (ext4): destination with the same identifier (name
+{table.8}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.752 \end{figure}
+                  pdfTeX warning (ext4): destination with the same identifier (
+name{table.9}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.752 \end{figure}
+                  pdfTeX warning (ext4): destination with the same identifier (
+name{figure.11}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.752 \end{figure}
+                   <./figs/diff_p2n24.png>]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[12 <./figs/iaea_without/alpha_sp3_u1_2_without.png> <./figs/iaea_without/alpha
-_sp3_u1_3_without.png> <./figs/iaea_without/alpha_sp3_u1_4_without.png> <./figs
-/iaea_without/alpha_sp3_u1_5_without.png>] [13]
+[16pdfTeX warning (ext4): destination with the same identifier (name{figure.12}
+) has been already used, duplicate ignored
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.819 
+      pdfTeX warning (ext4): destination with the same identifier (name{table.1
+0}) has been already used, duplicate ignored
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<figs/iaea_with/alpha_sp3_u1_1.png, id=354, 740.7675pt x 543.02875pt>
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.819 
+       <./figs/sp3_p3n96.png>]
+<figs/iaea_with/alpha_sp3_u1_1.png, id=369, 740.7675pt x 543.02875pt>
 File: figs/iaea_with/alpha_sp3_u1_1.png Graphic file (type png)
 <use figs/iaea_with/alpha_sp3_u1_1.png>
 Package pdftex.def Info: figs/iaea_with/alpha_sp3_u1_1.png  used on input line 
-820.
+822.
 (pdftex.def)             Requested size: 169.0519pt x 123.92451pt.
-<figs/iaea_with/alpha_sp3_u2_1.png, id=355, 740.7675pt x 543.02875pt>
+<figs/iaea_with/alpha_sp3_u2_1.png, id=370, 740.7675pt x 543.02875pt>
 File: figs/iaea_with/alpha_sp3_u2_1.png Graphic file (type png)
 <use figs/iaea_with/alpha_sp3_u2_1.png>
 Package pdftex.def Info: figs/iaea_with/alpha_sp3_u2_1.png  used on input line 
-821.
+823.
 (pdftex.def)             Requested size: 169.0519pt x 123.92451pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<figs/iaea_with/alpha_sp3_u1_2.png, id=356, 745.78625pt x 543.02875pt>
+<figs/iaea_with/alpha_sp3_u1_2.png, id=371, 745.78625pt x 543.02875pt>
 File: figs/iaea_with/alpha_sp3_u1_2.png Graphic file (type png)
 <use figs/iaea_with/alpha_sp3_u1_2.png>
 Package pdftex.def Info: figs/iaea_with/alpha_sp3_u1_2.png  used on input line 
-828.
+830.
 (pdftex.def)             Requested size: 169.0519pt x 123.08765pt.
-<figs/iaea_with/alpha_sp3_u1_3.png, id=357, 745.78625pt x 543.02875pt>
+<figs/iaea_with/alpha_sp3_u1_3.png, id=372, 745.78625pt x 543.02875pt>
 File: figs/iaea_with/alpha_sp3_u1_3.png Graphic file (type png)
 <use figs/iaea_with/alpha_sp3_u1_3.png>
 Package pdftex.def Info: figs/iaea_with/alpha_sp3_u1_3.png  used on input line 
-829.
+831.
 (pdftex.def)             Requested size: 169.0519pt x 123.08765pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<figs/iaea_with/alpha_sp3_u1_4.png, id=358, 745.78625pt x 543.02875pt>
+<figs/iaea_with/alpha_sp3_u1_4.png, id=373, 745.78625pt x 543.02875pt>
 File: figs/iaea_with/alpha_sp3_u1_4.png Graphic file (type png)
 <use figs/iaea_with/alpha_sp3_u1_4.png>
 Package pdftex.def Info: figs/iaea_with/alpha_sp3_u1_4.png  used on input line 
-836.
+838.
 (pdftex.def)             Requested size: 169.0519pt x 123.08765pt.
-<figs/iaea_with/alpha_sp3_u1_5.png, id=359, 745.78625pt x 543.02875pt>
+<figs/iaea_with/alpha_sp3_u1_5.png, id=374, 745.78625pt x 543.02875pt>
 File: figs/iaea_with/alpha_sp3_u1_5.png Graphic file (type png)
 <use figs/iaea_with/alpha_sp3_u1_5.png>
 Package pdftex.def Info: figs/iaea_with/alpha_sp3_u1_5.png  used on input line 
-837.
+839.
 (pdftex.def)             Requested size: 169.0519pt x 123.08765pt.
+ [17pdfTeX warning (ext4): destination with the same identifier (name{table.11}
+) has been already used, duplicate ignored
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.843 \end{figure}
+                  pdfTeX warning (ext4): destination with the same identifier (
+name{figure.13}) has been already used, duplicate ignored
 
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.843 \end{figure}
+                   <./figs/iaea_with/alpha_sp3_u1_1.png> <./figs/iaea_with/alph
+a_sp3_u2_1.png>] [18pdfTeX warning (ext4): destination with the same identifier
+ (name{figure.14}) has been already used, duplicate ignored
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.874 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.
+15}) has been already used, duplicate ignored
 
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.874 
+      pdfTeX warning (ext4): destination with the same identifier (name{table.1
+2}) has been already used, duplicate ignored
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[14 <./figs/iaea_without/alpha_delayed_sp3_u1_1_without.png> <./figs/iaea_witho
-ut/alpha_delayed_sp3_u2_1_without.png> <./figs/iaea_without/alpha_delayed_sp3_u
-1_2_without.png> <./figs/iaea_without/alpha_delayed_sp3_u1_3_without.png>]
-<figs/iaea_with/alpha_delayed_sp3_u1_1.png, id=374, 265.7127pt x 188.6247pt>
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.874 
+       <./figs/iaea_with/alpha_sp3_u1_2.png> <./figs/iaea_with/alpha_sp3_u1_3.p
+ng> <./figs/iaea_with/alpha_sp3_u1_4.png> <./figs/iaea_with/alpha_sp3_u1_5.png>
+]
+<figs/iaea_with/alpha_delayed_sp3_u1_1.png, id=392, 265.7127pt x 188.6247pt>
 File: figs/iaea_with/alpha_delayed_sp3_u1_1.png Graphic file (type png)
 <use figs/iaea_with/alpha_delayed_sp3_u1_1.png>
 Package pdftex.def Info: figs/iaea_with/alpha_delayed_sp3_u1_1.png  used on inp
-ut line 906.
+ut line 908.
 (pdftex.def)             Requested size: 169.0519pt x 120.00847pt.
-<figs/iaea_with/alpha_delayed_sp3_u2_1.png, id=375, 265.7127pt x 188.6247pt>
+<figs/iaea_with/alpha_delayed_sp3_u2_1.png, id=393, 265.7127pt x 188.6247pt>
 File: figs/iaea_with/alpha_delayed_sp3_u2_1.png Graphic file (type png)
 <use figs/iaea_with/alpha_delayed_sp3_u2_1.png>
 Package pdftex.def Info: figs/iaea_with/alpha_delayed_sp3_u2_1.png  used on inp
-ut line 907.
+ut line 909.
 (pdftex.def)             Requested size: 169.0519pt x 120.00847pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<figs/iaea_with/alpha_delayed_sp3_u1_2.png, id=376, 745.78625pt x 543.02875pt>
+<figs/iaea_with/alpha_delayed_sp3_u1_2.png, id=394, 745.78625pt x 543.02875pt>
 File: figs/iaea_with/alpha_delayed_sp3_u1_2.png Graphic file (type png)
 <use figs/iaea_with/alpha_delayed_sp3_u1_2.png>
 Package pdftex.def Info: figs/iaea_with/alpha_delayed_sp3_u1_2.png  used on inp
-ut line 915.
+ut line 916.
 (pdftex.def)             Requested size: 169.0519pt x 123.08765pt.
-<figs/iaea_with/alpha_delayed_sp3_u1_3.png, id=377, 745.78625pt x 543.02875pt>
+<figs/iaea_with/alpha_delayed_sp3_u1_3.png, id=395, 745.78625pt x 543.02875pt>
 File: figs/iaea_with/alpha_delayed_sp3_u1_3.png Graphic file (type png)
 <use figs/iaea_with/alpha_delayed_sp3_u1_3.png>
 Package pdftex.def Info: figs/iaea_with/alpha_delayed_sp3_u1_3.png  used on inp
-ut line 916.
+ut line 917.
 (pdftex.def)             Requested size: 169.0519pt x 123.08765pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<figs/iaea_with/alpha_delayed_sp3_u1_4.png, id=378, 745.78625pt x 543.02875pt>
+<figs/iaea_with/alpha_delayed_sp3_u1_4.png, id=396, 745.78625pt x 543.02875pt>
 File: figs/iaea_with/alpha_delayed_sp3_u1_4.png Graphic file (type png)
 <use figs/iaea_with/alpha_delayed_sp3_u1_4.png>
 Package pdftex.def Info: figs/iaea_with/alpha_delayed_sp3_u1_4.png  used on inp
 ut line 924.
 (pdftex.def)             Requested size: 169.0519pt x 123.08765pt.
-<figs/iaea_with/alpha_delayed_sp3_u1_5.png, id=379, 745.78625pt x 543.02875pt>
+<figs/iaea_with/alpha_delayed_sp3_u1_5.png, id=397, 745.78625pt x 543.02875pt>
 File: figs/iaea_with/alpha_delayed_sp3_u1_5.png Graphic file (type png)
 <use figs/iaea_with/alpha_delayed_sp3_u1_5.png>
 Package pdftex.def Info: figs/iaea_with/alpha_delayed_sp3_u1_5.png  used on inp
 ut line 925.
 (pdftex.def)             Requested size: 169.0519pt x 123.08765pt.
+ [19pdfTeX warning (ext4): destination with the same identifier (name{table.13}
+) has been already used, duplicate ignored
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.929 \end{figure}
+                  pdfTeX warning (ext4): destination with the same identifier (
+name{figure.16}) has been already used, duplicate ignored
 
-<figs/iaea_cosym.png, id=381, 377.2494pt x 333.52605pt>
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.929 \end{figure}
+                   <./figs/iaea_with/alpha_delayed_sp3_u1_1.png> <./figs/iaea_w
+ith/alpha_delayed_sp3_u2_1.png>]
+<figs/iaea_cosym.png, id=407, 377.2494pt x 333.52605pt>
 File: figs/iaea_cosym.png Graphic file (type png)
 <use figs/iaea_cosym.png>
-Package pdftex.def Info: figs/iaea_cosym.png  used on input line 937.
-(pdftex.def)             Requested size: 207.0021pt x 183.01239pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[15 <./figs/iaea_without/alpha_delayed_sp3_u1_4_without.png> <./figs/iaea_witho
-ut/alpha_delayed_sp3_u1_5_without.png>]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
+Package pdftex.def Info: figs/iaea_cosym.png  used on input line 935.
+(pdftex.def)             Requested size: 258.75pt x 228.7744pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[16 <./figs/diff_p2n24.png>]
+[20pdfTeX warning (ext4): destination with the same identifier (name{figure.17}
+) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.975 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.
+18}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.975 
+       <./figs/iaea_with/alpha_delayed_sp3_u1_2.png> <./figs/iaea_with/alpha_de
+layed_sp3_u1_3.png> <./figs/iaea_with/alpha_delayed_sp3_u1_4.png> <./figs/iaea_
+with/alpha_delayed_sp3_u1_5.png>] [21pdfTeX warning (ext4): destination with th
+e same identifier (name{figure.19}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.998 
+      pdfTeX warning (ext4): destination with the same identifier (name{table.1
+4}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.998 
+       <./figs/iaea_cosym.png>]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<figs/iaea_cosym/sp3_alpha_u1_1_assym.png, id=406, 255.8358pt x 188.6247pt>
+<figs/iaea_cosym/sp3_alpha_u1_1_assym.png, id=427, 255.8358pt x 188.6247pt>
 File: figs/iaea_cosym/sp3_alpha_u1_1_assym.png Graphic file (type png)
 <use figs/iaea_cosym/sp3_alpha_u1_1_assym.png>
 Package pdftex.def Info: figs/iaea_cosym/sp3_alpha_u1_1_assym.png  used on inpu
-t line 1064.
+t line 1062.
 (pdftex.def)             Requested size: 169.0519pt x 124.64233pt.
-<figs/iaea_cosym/sp3_alpha_u2_1_assym.png, id=407, 255.8358pt x 188.6247pt>
+<figs/iaea_cosym/sp3_alpha_u2_1_assym.png, id=428, 255.8358pt x 188.6247pt>
 File: figs/iaea_cosym/sp3_alpha_u2_1_assym.png Graphic file (type png)
 <use figs/iaea_cosym/sp3_alpha_u2_1_assym.png>
 Package pdftex.def Info: figs/iaea_cosym/sp3_alpha_u2_1_assym.png  used on inpu
-t line 1065.
+t line 1063.
 (pdftex.def)             Requested size: 169.0519pt x 124.64233pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<figs/iaea_cosym/sp3_alpha_u1_2_assym.png, id=408, 257.763pt x 188.6247pt>
+<figs/iaea_cosym/sp3_alpha_u1_2_assym.png, id=429, 257.763pt x 188.6247pt>
 File: figs/iaea_cosym/sp3_alpha_u1_2_assym.png Graphic file (type png)
 <use figs/iaea_cosym/sp3_alpha_u1_2_assym.png>
 Package pdftex.def Info: figs/iaea_cosym/sp3_alpha_u1_2_assym.png  used on inpu
-t line 1073.
+t line 1070.
 (pdftex.def)             Requested size: 169.0519pt x 123.71268pt.
-<figs/iaea_cosym/sp3_alpha_u1_3_assym.png, id=409, 257.763pt x 188.6247pt>
+<figs/iaea_cosym/sp3_alpha_u1_3_assym.png, id=430, 257.763pt x 188.6247pt>
 File: figs/iaea_cosym/sp3_alpha_u1_3_assym.png Graphic file (type png)
 <use figs/iaea_cosym/sp3_alpha_u1_3_assym.png>
 Package pdftex.def Info: figs/iaea_cosym/sp3_alpha_u1_3_assym.png  used on inpu
-t line 1074.
+t line 1071.
 (pdftex.def)             Requested size: 169.0519pt x 123.71268pt.
+[22pdfTeX warning (ext4): destination with the same identifier (name{table.15})
+ has been already used, duplicate ignored
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.1075 \end{figure}
+                   pdfTeX warning (ext4): destination with the same identifier 
+(name{table.16}) has been already used, duplicate ignored
 
-<figs/iaea_cosym/sp3_alpha_u1_4_assym.png, id=410, 257.763pt x 188.6247pt>
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.1075 \end{figure}
+                   ]
+<figs/iaea_cosym/sp3_alpha_u1_4_assym.png, id=440, 257.763pt x 188.6247pt>
 File: figs/iaea_cosym/sp3_alpha_u1_4_assym.png Graphic file (type png)
 <use figs/iaea_cosym/sp3_alpha_u1_4_assym.png>
 Package pdftex.def Info: figs/iaea_cosym/sp3_alpha_u1_4_assym.png  used on inpu
-t line 1082.
+t line 1078.
 (pdftex.def)             Requested size: 169.0519pt x 123.71268pt.
-<figs/iaea_cosym/sp3_alpha_u1_5_assym.png, id=411, 257.763pt x 188.6247pt>
+<figs/iaea_cosym/sp3_alpha_u1_5_assym.png, id=441, 257.763pt x 188.6247pt>
 File: figs/iaea_cosym/sp3_alpha_u1_5_assym.png Graphic file (type png)
 <use figs/iaea_cosym/sp3_alpha_u1_5_assym.png>
 Package pdftex.def Info: figs/iaea_cosym/sp3_alpha_u1_5_assym.png  used on inpu
-t line 1083.
+t line 1079.
 (pdftex.def)             Requested size: 169.0519pt x 123.71268pt.
+ [23pdfTeX warning (ext4): destination with the same identifier (name{table.17}
+) has been already used, duplicate ignored
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.1084 
+       pdfTeX warning (ext4): destination with the same identifier (name{figure
+.20}) has been already used, duplicate ignored
 
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.1084 
+       pdfTeX warning (ext4): destination with the same identifier (name{figure
+.21}) has been already used, duplicate ignored
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<figs/hwr.png, id=416, 1092.08pt x 1003.75pt>
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.1084 
+        <./figs/iaea_cosym/sp3_alpha_u1_1_assym.png> <./figs/iaea_cosym/sp3_alp
+ha_u2_1_assym.png> <./figs/iaea_cosym/sp3_alpha_u1_2_assym.png> <./figs/iaea_co
+sym/sp3_alpha_u1_3_assym.png>]
+<figs/hwr.png, id=450, 1092.08pt x 1003.75pt>
 File: figs/hwr.png Graphic file (type png)
 <use figs/hwr.png>
-Package pdftex.def Info: figs/hwr.png  used on input line 1132.
+Package pdftex.def Info: figs/hwr.png  used on input line 1128.
 (pdftex.def)             Requested size: 310.4979pt x 285.3825pt.
-[17 <./figs/sp3_p3n96.png>]
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[24pdfTeX warning (ext4): destination with the same identifier (name{figure.22}
+) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.1160 
+       pdfTeX warning (ext4): destination with the same identifier (name{table.
+18}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.1160 
+        <./figs/iaea_cosym/sp3_alpha_u1_4_assym.png> <./figs/iaea_cosym/sp3_alp
+ha_u1_5_assym.png>] [25pdfTeX warning (ext4): destination with the same identif
+ier (name{figure.23}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.1162 
+       pdfTeX warning (ext4): destination with the same identifier (name{table.
+19}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.1162 
+        <./figs/hwr.png (PNG copy)>]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[18 <./figs/iaea_with/alpha_sp3_u1_1.png> <./figs/iaea_with/alpha_sp3_u2_1.png>
-]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<figs/hwr/alpha_sp3_rx1_1.png, id=443, 727.71875pt x 543.02875pt>
+<figs/hwr/alpha_sp3_rx1_1.png, id=473, 727.71875pt x 543.02875pt>
 File: figs/hwr/alpha_sp3_rx1_1.png Graphic file (type png)
 <use figs/hwr/alpha_sp3_rx1_1.png>
-Package pdftex.def Info: figs/hwr/alpha_sp3_rx1_1.png  used on input line 1262.
+Package pdftex.def Info: figs/hwr/alpha_sp3_rx1_1.png  used on input line 1259.
 
 (pdftex.def)             Requested size: 169.0519pt x 126.14516pt.
-<figs/hwr/alpha_sp3_rx2_1.png, id=444, 727.71875pt x 543.02875pt>
+<figs/hwr/alpha_sp3_rx2_1.png, id=474, 727.71875pt x 543.02875pt>
 File: figs/hwr/alpha_sp3_rx2_1.png Graphic file (type png)
 <use figs/hwr/alpha_sp3_rx2_1.png>
-Package pdftex.def Info: figs/hwr/alpha_sp3_rx2_1.png  used on input line 1263.
+Package pdftex.def Info: figs/hwr/alpha_sp3_rx2_1.png  used on input line 1260.
 
 (pdftex.def)             Requested size: 169.0519pt x 126.14516pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<figs/hwr/alpha_sp3_rx1_2.png, id=445, 732.7375pt x 543.02875pt>
+<figs/hwr/alpha_sp3_rx1_2.png, id=475, 732.7375pt x 543.02875pt>
 File: figs/hwr/alpha_sp3_rx1_2.png Graphic file (type png)
 <use figs/hwr/alpha_sp3_rx1_2.png>
-Package pdftex.def Info: figs/hwr/alpha_sp3_rx1_2.png  used on input line 1271.
+Package pdftex.def Info: figs/hwr/alpha_sp3_rx1_2.png  used on input line 1267.
 
 (pdftex.def)             Requested size: 169.0519pt x 125.28342pt.
-<figs/hwr/alpha_sp3_rx1_4.png, id=446, 732.7375pt x 543.02875pt>
+<figs/hwr/alpha_sp3_rx1_4.png, id=476, 732.7375pt x 543.02875pt>
 File: figs/hwr/alpha_sp3_rx1_4.png Graphic file (type png)
 <use figs/hwr/alpha_sp3_rx1_4.png>
-Package pdftex.def Info: figs/hwr/alpha_sp3_rx1_4.png  used on input line 1272.
+Package pdftex.def Info: figs/hwr/alpha_sp3_rx1_4.png  used on input line 1268.
 
 (pdftex.def)             Requested size: 169.0519pt x 125.28342pt.
+[26pdfTeX warning (ext4): destination with the same identifier (name{table.20})
+ has been already used, duplicate ignored
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<figs/hwr/alpha_sp3_cx1_2.png, id=447, 732.7375pt x 543.02875pt>
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.1272 \end{figure}
+                   ]
+<figs/hwr/alpha_sp3_cx1_2.png, id=487, 732.7375pt x 543.02875pt>
 File: figs/hwr/alpha_sp3_cx1_2.png Graphic file (type png)
 <use figs/hwr/alpha_sp3_cx1_2.png>
-Package pdftex.def Info: figs/hwr/alpha_sp3_cx1_2.png  used on input line 1280.
+Package pdftex.def Info: figs/hwr/alpha_sp3_cx1_2.png  used on input line 1275.
 
 (pdftex.def)             Requested size: 169.0519pt x 125.28342pt.
-<figs/hwr/alpha_sp3_cx1_4.png, id=448, 732.7375pt x 543.02875pt>
+<figs/hwr/alpha_sp3_cx1_4.png, id=488, 732.7375pt x 543.02875pt>
 File: figs/hwr/alpha_sp3_cx1_4.png Graphic file (type png)
 <use figs/hwr/alpha_sp3_cx1_4.png>
-Package pdftex.def Info: figs/hwr/alpha_sp3_cx1_4.png  used on input line 1281.
+Package pdftex.def Info: figs/hwr/alpha_sp3_cx1_4.png  used on input line 1276.
 
 (pdftex.def)             Requested size: 169.0519pt x 125.28342pt.
+ [27pdfTeX warning (ext4): destination with the same identifier (name{table.21}
+) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.1280 \end{figure}
+                   pdfTeX warning (ext4): destination with the same identifier 
+(name{table.22}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.1280 \end{figure}
+                   pdfTeX warning (ext4): destination with the same identifier 
+(name{figure.24}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.1280 \end{figure}
+                    <./figs/hwr/alpha_sp3_rx1_1.png> <./figs/hwr/alpha_sp3_rx2_
+1.png>]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[19 <./figs/iaea_with/alpha_sp3_u1_2.png> <./figs/iaea_with/alpha_sp3_u1_3.png>
- <./figs/iaea_with/alpha_sp3_u1_4.png> <./figs/iaea_with/alpha_sp3_u1_5.png>]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+[28pdfTeX warning (ext4): destination with the same identifier (name{figure.25}
+) has been already used, duplicate ignored
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.1340 \newpage
+               pdfTeX warning (ext4): destination with the same identifier (nam
+e{figure.26}) has been already used, duplicate ignored
 
-[20]
-Overfull \hbox (53.59802pt too wide) in paragraph at lines 1348--1350
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.1340 \newpage
+                <./figs/hwr/alpha_sp3_rx1_2.png> <./figs/hwr/alpha_sp3_rx1_4.pn
+g> <./figs/hwr/alpha_sp3_cx1_2.png> <./figs/hwr/alpha_sp3_cx1_4.png>]
+Overfull \hbox (53.59802pt too wide) in paragraph at lines 1343--1345
 \OT1/cmr/m/n/10 (# 18-31-00315) and by the grant of the Rus-sian Fed-er-a-tion 
 Gov-ern-ment (# 14.Y26.31.0013). 
  []
 
-(./sp3.bbl [21 <./figs/iaea_with/alpha_delayed_sp3_u1_1.png> <./figs/iaea_with/
-alpha_delayed_sp3_u2_1.png> <./figs/iaea_with/alpha_delayed_sp3_u1_2.png> <./fi
-gs/iaea_with/alpha_delayed_sp3_u1_3.png>] [22 <./figs/iaea_with/alpha_delayed_s
-p3_u1_4.png> <./figs/iaea_with/alpha_delayed_sp3_u1_5.png>] [23 <./figs/iaea_co
-sym.png>] [24]) [25 <./figs/iaea_cosym/sp3_alpha_u1_1_assym.png> <./figs/iaea_c
-osym/sp3_alpha_u2_1_assym.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1354.
- [26 <./figs/iaea_cosym/sp3_alpha_u1_2_assym.png> <./figs/iaea_cosym/sp3_alpha_
-u1_3_assym.png> <./figs/iaea_cosym/sp3_alpha_u1_4_assym.png> <./figs/iaea_cosym
-/sp3_alpha_u1_5_assym.png>] [27] [28 <./figs/hwr.png (PNG copy)>] [29 <./figs/h
-wr/alpha_sp3_rx1_1.png> <./figs/hwr/alpha_sp3_rx2_1.png>] [30 <./figs/hwr/alpha
-_sp3_rx1_2.png> <./figs/hwr/alpha_sp3_rx1_4.png> <./figs/hwr/alpha_sp3_cx1_2.pn
-g> <./figs/hwr/alpha_sp3_cx1_4.png>] [31]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1354.
+(./sp3.bbl [29pdfTeX warning (ext4): destination with the same identifier (name
+{table.23}) has been already used, duplicate ignored
 
-(./sp3.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1354.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1354.
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.23 
+     pdfTeX warning (ext4): destination with the same identifier (name{table.24
+}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.23 
+     ] [30]) [31]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1349.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1349.
+ (./sp3.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1349.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1349.
 
 Package rerunfilecheck Info: File `sp3.out' has not changed.
 (rerunfilecheck)             Checksum: AB83891E2933553D97B1D2951180CBF7;1295.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1354.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1349.
  ) 
 Here is how much of TeX's memory you used:
- 26524 strings out of 492982
- 642924 string characters out of 6134895
- 841350 words of memory out of 5000000
- 29465 multiletter control sequences out of 15000+600000
+ 26583 strings out of 492982
+ 643691 string characters out of 6134895
+ 802690 words of memory out of 5000000
+ 29520 multiletter control sequences out of 15000+600000
  14935 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,25n,96p,727b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1296,7 +1511,7 @@ public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmti7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mtt8.pfb>
-Output written on sp3.pdf (31 pages, 2881568 bytes).
+Output written on sp3.pdf (31 pages, 2881392 bytes).
 PDF statistics:
  618 PDF objects out of 1000 (max. 8388607)
  503 compressed objects within 6 object streams
