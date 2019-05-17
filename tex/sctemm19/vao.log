@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.26)  17 MAY 2019 15:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.26)  17 MAY 2019 15:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -289,7 +289,7 @@ LaTeX Font Warning: Size substitutions with differences
  ) 
 Here is how much of TeX's memory you used:
  2396 strings out of 492982
- 30342 string characters out of 6134895
+ 30348 string characters out of 6134895
  102311 words of memory out of 5000000
  5926 multiletter control sequences out of 15000+600000
  17997 words of font info for 63 fonts, out of 8000000 for 9000
@@ -314,7 +314,7 @@ ist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/typ
 e1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
 ic/amsfonts/cm/cmtt9.pfb>
-Output written on vao.pdf (6 pages, 346909 bytes).
+Output written on vao.pdf (6 pages, 347119 bytes).
 PDF statistics:
  108 PDF objects out of 1000 (max. 8388607)
  75 compressed objects within 1 object stream
