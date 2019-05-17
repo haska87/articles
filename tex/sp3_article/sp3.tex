@@ -89,7 +89,7 @@ More rigorous theoretical foundation of the $\mathrm{SP_3}$ methodology has been
 The $\mathrm{SP_3}$ method, as expected, can provide accuracy improvement compared with the common used diffusion method. 
 Besides, implementation of the $\mathrm{SP_3}$ equations into the diffusion code is not difficult because of the similar structure of the $\mathrm{SP_3}$ and diffusion equations. 
 For this reason the $\mathrm{SP_3}$ method was adopted in different whole-core calculation codes, such as DYN3D \citep{beckert2008development}, PARCS \citep{downar2010theory} and others. According to \citep{tada2008applicability}, application of the $\mathrm{SP_3}$ theory to the pin-by-pin calculation for BWR geometry resulted in remarkable improvement in the calculation accuracy compared with the diffusion method. 
-Besides, as it turned out, the computation time using the $\mathrm{SP_3}$ method is only 1.5 times longer than that using the diffusion method \citep{tada2008applicability}.
+Another report \citep{Brewster2018} shows the comparison of the diffusion and  $\mathrm{SP_3}$ methods to calculate the control rod reactivity  in a light-water reactor. As compared with the Monte Carlo reference calculation, the  $\mathrm{SP_3}$ method gives twice as accurate result compared with the diffusion method. Besides, as it turned out, the computation time using the $\mathrm{SP_3}$ method is only 1.5 times longer than that using the diffusion method \citep{tada2008applicability}.
 
 Thus, the $\mathrm{SP_3}$ method can be considered as an improved approximation of the neutron transport equation compared with the diffusion method. 
 In this regard, it will be very useful to compare the spectral parameters, calculated by both the diffusion and $\mathrm{SP_3}$ methods. 
@@ -99,7 +99,7 @@ The reactor dynamic behavior can naturally be described on the basis of the appr
 At large times, one can talk about the asymptotic behavior of a neutron flux, whose amplitude is exp($\alpha$t). 
 Previously the complex eigenvalues and eigenfunctions were found in the spectral problems for some numerical tests \citep{avvakumov2017spectral}.
 
-In this paper we consider the $\mathrm{SP_N}$ approximation for the steady-state multi-group neutron transport problem.
+In this paper we consider the $\mathrm{SP_3}$ approximation for the steady-state multi-group neutron transport problem.
 To solve spectral problems with nonsymmetrical matrices we use well-designed algorithms and relevant free software including the library SLEPc (Scalable Library for Eigenvalue Problem Computations, http://slepc.upv.es/). 
 We use a Krylov-Schur algorithm, a variation of Arnoldi method, described in \citep{stewart2002krylov}.
 
@@ -110,7 +110,7 @@ Some numerical examples of calculation of spectral characteristics of two-dimens
 The results of the work are summarized in Section 5.
 
 \section{Problem statement}
-Let’s consider the symmetric form of the $\mathrm{SP_3}$ equation for the neutron flux \citep{ryu2010development}.
+Let’s consider the symmetric form of the $\mathrm{SP_3}$ equation for the neutron flux \citep{ryu2013fem}.
 The neutron dynamics is considered in the limited convex two-dimensional or three-dimensional area  $\Omega$ ($\bm x = \{x_1, ..., x_d\} \in \Omega, \ d = 2,3$) with boundary $\partial \Omega$. 
 The neutron transport is described by the system of equations
 \begin{equation}\label{1.1}
@@ -156,7 +156,7 @@ The density of sources of delayed neutrons is described by the equations
  \frac{\partial c_m}{\partial t} + \lambda_m c_m = \beta_m S_{n},
  \quad m = 1,2, ..., M, 
 \end{equation}
-where $\beta_m$ is a fraction of delayed neutrons of m-type, and
+where $\beta_m$ is the fraction of delayed neutrons of m-type, and
 \[
  \beta = \sum_{m=1}^{M} \beta_m.
 \] 
@@ -257,7 +257,7 @@ V(- 2 \frac{\partial \bm u_1}{\partial t} + 9 \frac{\partial \bm u_2}{\partial t
 \frac{\partial \bm c}{d t} + \Lambda \bm c &= Q (\bm u_1 - 2\bm u_2). 
 \end{split}
 \end{equation}
-Without taking into account delayed neutrons, we have
+Without taking into account delayed neutrons (all neutrons are considered as prompt), we have
 \begin{equation}\label{1.6}
 \begin{split}
 V (\frac{\partial \bm u_1}{\partial t} - 2 \frac{\partial \bm u_2}{\partial t}) + A_1 \bm u_1 + B \bm u_2 &= F (\bm u_1 - 2\bm u_2),
@@ -307,9 +307,8 @@ At $k > 1$, one can speak about supercriticality, at $k < 1$ --- about subcritic
 %Due to nonself-adjoint operators of neutron transport we have, generally speaking, the complex eigenvalues. The reality and positivity property of the fundamental eigenvalue for the system of neutronics equations is proved using the principle of maximum at some restrictions on factors of neutron transport operators (Habetler and Martino, 1961). This is also true for the nonself-adjoint elliptic operator of the second order (Evans, 1998).
 
 The spectral problem (\ref{1.8}) cannot directly be connected with the
-dynamic processes in a nuclear reactor. 
-The eigenvalues of the multiplication factor of the reactor and the corresponding eigenfunctions do not depend on the time delay for the emission of delayed neutrons. 
-The reason is that the problem (\ref{1.8}) on eigenvalues ​​is the problem of finding time-independent solutions of the neutron transport equation, and the term describing the contribution of fission to the neutron balance is equal to the total number of fission neutrons, both instantaneous and delayed divided by $k$.
+dynamic processes in a nuclear reactor. The eigenvalues of the multiplication factor of the reactor and the corresponding eigenfunctions do not depend on the time delay for the emission of delayed neutrons. 
+The reason is that the problem (\ref{1.8}) on eigenvalues is the problem of finding time-independent solutions of the neutron transport equation, and the term describing the contribution of fission to the neutron balance is equal to the total number of fission neutrons, both instantaneous and delayed divided by $k$.
 At the best, we can get only the limiting case --- the stationary critical state.
 The more acceptable spectral characteristics for the non-stationary equation (\ref{1.5}) are related the spectral problem
 \begin{equation}\label{1.9}
@@ -318,7 +317,7 @@ L \bm \varphi - (1 - \beta) M \bm \varphi - I \bm s &= \lambda^{(\alpha)} W \bm 
 \Lambda \bm s - R \bm \varphi  &= \lambda^{(\alpha)} \bm s.
 \end{split}
 \end{equation}
-Without taking into account delayed neutrons (\ref{1.6}), we have
+The  $\alpha$-eigenvalue problem without delayed neutrons (\ref{1.6}) can be written as follows
 \begin{equation}\label{1.10}
 L \bm \varphi - M \bm \varphi = \lambda^{(\alpha)} W \bm \varphi,
 \end{equation}
@@ -339,20 +338,33 @@ V & -2V \\
 \end{pmatrix}
 \]
 The fundamental eigenvalue
-\[ 
+\[
  \alpha = \lambda^{(\alpha)}_1
 \]
-is called \citep{bell1970} $\alpha$-eigenvalues or period eigenvalues, because they are inversely related to the reactor periods.
+is called \citep{bell1970} the $\alpha$-eigenvalue or the period eigenvalue, because it is inversely related to the reactor period.
 The problem of the period eigenvalues essentially takes into account the contribution of delayed neutrons.
 In particular, the long lifetime of the predecessors of delayed neutrons makes a large contribution to the slowly decreasing eigenfunctions of the reactor period, and this does not occur when only instantaneous neutrons are taken into account.
 
 The asymptotic behaviour of Cauchy problem solution (\ref{1.5})-(\ref{1.7}) at large times can be connected with the eigenvalue $\alpha$.
 In this regular mode, the reactor behaviour is described by the function $\exp(-\alpha t) \bm \varphi^{(1)}(\bm x)$.
-Critical state of the reactor is defined by the values $\alpha = 0$; when $\alpha > 0$ we get the supercritical state, and when $\alpha <  0$ --- subcritical state of the reactor.
+If $\alpha = 0$, then the reactor is critical; if $\alpha > 0$, then we get the neutron flux decreasing (subcritical state), and if $\alpha <  0$, then we get the neutron flux increasing (supercritical state).
+
+There is a simple approximate relationship between the dominant eigenvalues of the $k$- and $\alpha$-spectral problems without delayed neutrons:
+\begin{equation}\label{1.11}
+\ \dfrac{1 - k}{k} \approx \mathop{\alpha} \Lambda_{pr},  
+\ 1 - k \approx \mathop{\alpha} \l_{pr},
+\end{equation}
+where $\Lambda_{pr}$ ---  the prompt neutron generation time and  $l_{pr}$ ---  the prompt neutron lifetime.
 
 \section{Numerical examples}
-We shall give some results of eigenvalue calculation. 
-The elementary two-group model ($G = 2$) is used. 
+To study the properties of the eigenvalues and eigenfunctions of dufferent types, several benchmarks are studied.
+The first benchmark is the IAEA-2D two dimensional hexagonal problem of VVER-type without reflector \citep{chao1995}.
+The second benchmark is the similar test but with radial reflector \citep{chao1995}. 
+The aim of the third test is to investigate azimutally non-symmetric effects on the eigenvalues and eigenfunctions 
+(the changed IAEA-2D test with reflector).
+Finally, we studied the complex eigenvalues and eigenfunctions for the heavy water hexagonal reactor test HWR \citep{chao1995}.
+
+The two-group model ($G = 2$) is used in all tests. 
 The method of finite elements \citep{brenner2008, quarteroni2008} on triangular calculation grids is used for the approximate solution of the spectral problem. 
 The standard Lagrangian finite elements are used.
 The software has been developed using the engineering and scientific calculation library FEniCS \citep{logg2012}.
@@ -363,7 +375,7 @@ The following parameters were varied in the calculations:
 \item $n$ --- the number of triangles per one assembly (Fig.~\ref{fig:mesh}); 
 \item $p$ --- the order of finite element.
 \end{itemize}
-We compare the calculations based on the $\mathrm{SP_3}$ model and the diffusion model  in \citep{avvakumov2014, avvakumov2017spectral}.
+In this work we compare the $\mathrm{SP_3}$ calculations with the previous diffusion model calculations \citep{avvakumov2014, avvakumov2017spectral}.
 
 
 \begin{figure}[h]
@@ -383,8 +395,7 @@ We compare the calculations based on the $\mathrm{SP_3}$ model and the diffusion
 \end{figure}
 
 \subsection{IAEA-2D without reflector}
-The test problem for reactor IAEA-2D without reflector \citep{chao1995} in two-dimensional approximation ($\Omega$ is the section of reactor core) is considered.
-The geometrical model of the IAEA-2D reactor core consists of a set of hexagonal assemblies and is presented in Fig.~\ref{fig:iaea}, where the assemblies of various types are marked with various digits. 
+The geometrical model of the IAEA-2D reactor core \citep{chao1995} consists of a set of hexagonal assemblies and is presented in Fig.~\ref{fig:iaea}, where the assemblies of various types are marked with various digits. 
 The total size of assembly equals 20 cm. 
 
 \begin{figure}[h]
@@ -420,7 +431,15 @@ $\nu_2\Sigma_{f2}$ & 0.135 & 0.135 & 0.135 & 0.00\\
 \end{table}
 
 \subsubsection{Solution of Lambda Modes spectral problem}
-The obtained results by \citep{avvakumov2014} was taken as a reference solution for the diffusion model, and for the $\mathrm{SP_3}$ model --- the solution on a fine grid with $p = 3, n = 96$.
+As a reference solution for the diffusion model, we used the previous results \citep{avvakumov2014}; for the $\mathrm{SP_3}$ model --- the solution obtained using very fine mesh ($p = 3, n = 96$). The maximum difference in assembly power between two models is about 2 percent for the rodded assemblies (material 3, see Fig.~\ref{fig:iaea}).
+
+The results of the solution of the effective multiplication factor for test IAEA-2D without a reflector are shown in Table~\ref{tab:iaea_without_lambda}.
+Hereinafter, for $\lambda$-spectral problems, the following notation is used: $k_{dif}$ --- effective multiplication factor for the diffusion model; $k_{sp_3}$ --- effective multiplication factor for the $\mathrm{SP_3}$ model; $\Delta$ --- absolute deviation from the reference value in pcm ($10^{-5}$); $\delta$ --- the standard deviation of the relative power in percent. %%$t$ --- время счета.
+These data demonstrate the convergence of the computed eigenvalues with refinement of the calculation mesh and increase in polynomial degree.
+
+The results of the first 10 eigenvalues for $ p = 3, n = 96 $ are shown in Table~\ref{tab:iaea_without_lambda_10}.
+The power and error distributions for the diffusion and $\mathrm{SP_3}$ models are presented in Figs \ref{fig:power_iaea_without_dif} and \ref{fig:power_ieae_without_sp3} for $p = 2, n = 24$.
+Hereinafter, for each assembly the following data are given: the reference solution (the diffusion or $\mathrm{SP_3}$ model), the solution for $p = 2, n = 24$ and the relative error from the reference solution.
 
 \begin{table}[h]
 \caption{The effective multiplication factor.}
@@ -428,7 +447,7 @@ The obtained results by \citep{avvakumov2014} was taken as a reference solution 
 \begin{center}
 \begin{tabular}{c r r r r r r r}
 \hline
-$n$ & $p$ & $k_{dif}$ & $\Delta_{dif}$ & $\delta_{dif}$ &$k_{sp_3}$& $\Delta_{sp_3}$ & $\delta_{sp_3}$ \\
+$n$ & $p$ & $k_{dif}$ & $\Delta_{dif},pcm$ & $\delta_{dif}$ &$k_{sp_3}$& $\Delta_{sp_3},pcm$ & $\delta_{sp_3}$ \\
 \hline
 	& 1	& 0.97335& 473& 3.80& 0.97445& 490&  4.02\\
 6	& 2	& 0.97760&  48& 0.45& 0.97881&  54&  0.52\\
@@ -448,10 +467,6 @@ Ref.&   & 0.97808&    &     & 0.97935&    &\\
 \end{center}
 \end{table}
 
-The results of the solution of the effective multiplication factor for test IAEA-2D without a reflector are shown in Table~\ref{tab:iaea_without_lambda}.
-Hereinafter, for $\lambda$-spectral problems, the following notation is used: $k_{dif}$ --- effective multiplication factor by diffusion model; $k_{sp_3}$ --- effective multiplication factor by $\mathrm{SP_3}$ model; $\Delta$ --- absolute deviation from the reference value in pcm ($10^{-5}$); $\delta$ --- the standard deviation of the relative power. %%$t$ --- время счета.
-These data demonstrate the convergence of approximate computed eigenvalues as the computational grid crowds and degree of the approximating polynomials increases --- h-p finite element method.
-
 \begin{table}[h]
 \caption{The eigenvalues $k_i=1/\lambda_i^{(k)}$ for $p=3, n=96$.}
 \label{tab:iaea_without_lambda_10}
@@ -460,51 +475,45 @@ These data demonstrate the convergence of approximate computed eigenvalues as th
 \hline
 $i$ & Diffusion & SP$_3$  \\
 \hline
-1 & 0.97808 + 0.0$i$ & 0.97935 + 0.0$i$\\
-2 & 0.96318 + 0.0$i$ & 0.96460 + 0.0$i$\\
-3 & 0.96318 + 0.0$i$ & 0.96460 + 0.0$i$\\
-4 & 0.93844 + 0.0$i$ & 0.94025 + 0.0$i$\\
-5 & 0.93844 + 0.0$i$ & 0.94025 + 0.0$i$\\
-6 & 0.91966 + 0.0$i$ & 0.92184 + 0.0$i$\\
-7 & 0.90220 + 0.0$i$ & 0.90447 + 0.0$i$\\
-8 & 0.87141 + 0.0$i$ & 0.87500 + 0.0$i$\\
-9 & 0.84957 + 0.0$i$ & 0.85315 + 0.0$i$\\
-10 & 0.84957 + 0.0$i$ & 0.85315 + 0.0$i$\\
+1 & 0.97808 + 0.0$i$ & 0.979351 + 0.0$i$\\
+2 & 0.96318 + 0.0$i$ & 0.964604 + 0.0$i$\\
+3 & 0.96318 + 0.0$i$ & 0.964604 + 0.0$i$\\
+4 & 0.93844 + 0.0$i$ & 0.940253 + 0.0$i$\\
+5 & 0.93844 + 0.0$i$ & 0.940253 + 0.0$i$\\
+6 & 0.91966 + 0.0$i$ & 0.921844 + 0.0$i$\\
+7 & 0.90220 + 0.0$i$ & 0.904467 + 0.0$i$\\
+8 & 0.87141 + 0.0$i$ & 0.874997 + 0.0$i$\\
+9 & 0.84957 + 0.0$i$ & 0.853155 + 0.0$i$\\
+10 & 0.84957 + 0.0$i$ & 0.853154 + 0.0$i$\\
 \hline
 \end{tabular}
 \end{center}
 \end{table}
 
-The results of the first 10 eigenvalues for $ p = 3, n = 96 $ are shown in Table~\ref{tab:iaea_without_lambda_10}.
-The power and error distribution for $p = 2, n = 24$ is shown in the Figures \ref{fig:power_iaea_without_dif}, \ref{fig:power_ieae_without_sp3}.
-Hereinafter, for each cassette from above, the following are given: reference solution, solution and relative error from the reference solution.
-
 \begin{figure}[H]
 \begin{center}
 	\includegraphics[width=0.75\linewidth]{diff_without_p2n24.png}\\
-	\caption{Power and error distributions using diffusion model.}
+	\caption{Power and error distributions using the diffusion model.}
 	\label{fig:power_iaea_without_dif}
 \end{center}
 \end{figure}
 \begin{figure}[H]
 \begin{center}
 	\includegraphics[width=0.75\linewidth]{sp3_without_p2n24.png}\\
-	\caption{Power and error distributions using $\mathrm{SP_3}$ model.}
+	\caption{Power and error distributions using the $\mathrm{SP_3}$ model.}
 	\label{fig:power_ieae_without_sp3}
 \end{center}
 \end{figure}
 
-\subsubsection{Solution of Alpha Modes spectral problem}
-As a reference solution, the solutions obtained using the diffusion or transport $\mathrm{SP_3}$ model on a fine grid $ p = 3, n = 96 $ are taken.
+\subsubsection{Solution of $\alpha$-spectral problem without delayed neutrons}
+As a reference solution for both the diffusion and transport $\mathrm{SP_3}$ models, we used the solutions obtained using very fine mesh ($p = 3, n = 96$).
 Hereinafter, for $\alpha$-spectral problems, the following notation is used: $\alpha_{dif}$ --- $\alpha$-eigenvalue by diffusion model; $\alpha_{sp_3}$ --- $\alpha$-eigenvalue by $\mathrm{SP_3}$ model; $\Delta$ --- absolute deviation from the reference value.
 
-\textbf{Without delayed neutrons.}
-
-The results of solution of the $\alpha$-spectral problem without taking into account delayed neutrons using the different grids and finite elements are shown in Table~\ref{tab:iaea_without_alpha}.
-These data demonstrate the convergence of approximate computed eigenvalues.
+The calculation results for the $\alpha$-spectral problem without  delayed neutrons using the different meshes and the finite element orders are shown in Table~\ref{tab:iaea_without_alpha}.
+These data demonstrate the convergence of approximate computed eigenvalues with refinement of the calculation mesh and increase in polynomial degree.
 
 \begin{table}[h]
-\caption{The period eigenvalues.}
+\caption{The $\alpha$- eigenvalues.}
 \label{tab:iaea_without_alpha}
 \begin{center}
 \begin{tabular}{c c r r r r}
@@ -529,11 +538,13 @@ Ref.& & 455.5 & & 428.6 \\
 \end{center}
 \end{table}
 
-The results of solution of the spectral problem for the first 10 eigenvalues are shown in Table~\ref{tab:iaea_without_alpha_10}.
+According to (\ref{1.11}), the prompt neutron lifetime $l_{pr} \approx 4.8 \cdot 10^{-5}$ sec for both the diffusion and $\mathrm{SP_3}$ models at any mesh parameters.
+
+The spectral problem results for the first 10 eigenvalues are shown in Table~\ref{tab:iaea_without_alpha_10}.
 The eigenvalues $\lambda_1^{(\alpha)} \leq \lambda_2^{(\alpha)} \leq ...$ are well separated. 
-In our example, the fundamental eigenvalue is less the rest and therefore the main harmonic  will attenuate more slowly than the rest.
+In this example, the fundamental eigenvalue is less compared the rest and therefore the main harmonic  will attenuate more slowly.
 A regular mode of the reactor is thereby defined.
-The value $\alpha = \lambda_1^{(\alpha)}$ determines the amplitude of neutron field development and connects directly with reactor period in the regular mode.
+The value $\alpha = \lambda_1^{(\alpha)}$ determines the amplitude of neutron flux and is connected directly with reactor period in the regular mode.
 
 \begin{table}[h]
 \caption{The eigenvalues $\alpha_i=\lambda_i^{(\alpha)}$ for $p=3, n=96$.}
@@ -558,9 +569,9 @@ $i$ & Diffusion & SP$_3$ \\
 \end{center}
 \end{table}
 
-The eigenfunctions for fundamental eigenvalue ($i=1$) of the $\alpha$-spectral problem without taking into account delayed neutron are shown in the Fig.~\ref{fig:iaea_without_fun_1}. 
-Due to the fact that a state of the reactor is close to critical ($k=k_1\approx 0.97935$), the fundamental eigenfunctions of the $\lambda$-spectral problem are close to the fundamental eigenfunctions of the $\alpha$-spectral problem.
-The eigenfunctions $\phi_1^{(i)}, i=2,3,4,5$ are shown in the Fig.~\ref{fig:iaea_without_fun_2}, Fig.~\ref{fig:iaea_without_fun_3}.
+The eigenfunctions for fundamental eigenvalue ($i=1$) of the $\alpha$-spectral problem without delayed neutron are shown in Fig.~\ref{fig:iaea_without_fun_1}. 
+Due to the fact that the reactor state is close to critical ($k=k_1\approx 0.97935$), the fundamental eigenfunctions of the $\lambda$-spectral problem are close to the fundamental eigenfunctions of the $\alpha$-spectral problem.
+The eigenfunctions $\phi_1^{(i)}, i=2,3,4,5$ are shown in Fig.~\ref{fig:iaea_without_fun_2}, Fig.~\ref{fig:iaea_without_fun_3}.
 
 \begin{figure}[H]
 \begin{center}
@@ -588,9 +599,14 @@ The eigenfunctions $\phi_1^{(i)}, i=2,3,4,5$ are shown in the Fig.~\ref{fig:iaea
 \end{center}
 \end{figure}
 
-\textbf{With delayed neutrons.}
+\subsubsection{Solution of $\alpha$-spectral problem with delayed neutrons}
+
+As a reference solution for both the diffusion and transport $\mathrm{SP_3}$ models, we used the solutions obtained using very fine mesh ($p = 3, n = 96$). 
+The  $\alpha$-spectral problem results with delayed neutrons using the different meshes and finite element orders are shown in Table~\ref{tab:iaea_without_alpha_del}.
+Compared with the previous case without delayed neutrons, these data demonstrate the similar convergence of the computed eigenvalues.
+
 \begin{table}[h]
-\caption{The period eigenvalues.}
+\caption{The $\alpha$-eigenvalues.}
 \label{tab:iaea_without_alpha_del}
 \begin{center}
 \begin{tabular}{c c r r r r}
@@ -615,9 +631,6 @@ Ref.& & 0.06201 & & 0.06115 \\
 \end{center}
 \end{table}
 
-The results of solution of the $\alpha$-spectral problem taking into account delayed neutrons using the different grids and finite elements are shown in Table~\ref{tab:iaea_without_alpha_del}.
-These data demonstrate the convergence of approximate computed eigenvalues.
-
 \begin{table}[h]
 \caption{The eigenvalues $\alpha_i=\lambda_i^{(\alpha)}$ for $p=3, n=96$.}
 \label{tab:iaea_without_alpha_del_10}
@@ -641,13 +654,12 @@ $i$ & Diffusion & SP$_3$ \\
 \end{center}
 \end{table}
 
-The results of solution of the spectral problem for the first 10 eigenvalues are shown in Table~\ref{tab:iaea_without_alpha_del_10}.
-Due to the contribution of delayed neutrons, the fundamental eigenvalue is much smaller than in the case without taking into account delayed neutrons.
-Again the fundamental eigenvalue is less the rest and therefore the main harmonic  will attenuate more slowly than the rest.
+The first 10 spectral problem eigenvalues are shown in Table~\ref{tab:iaea_without_alpha_del_10}.
+Due to the contribution of delayed neutrons, the fundamental eigenvalue is much smaller compared with the case without delayed neutrons.
 
-The eigenfunctions for fundamental eigenvalue ($i=1$) of the $\alpha$-spectral problem taking into account delayed neutron are shown in the Fig.~\ref{fig:iaea_without_fun_del_1}. 
-The eigenfunctions $\phi_1^{(i)}, i=2,3,4,5$ are shown in the Fig.~\ref{fig:iaea_without_fun_del_2}, Fig.~\ref{fig:iaea_without_fun_del_3}.
-The eigenfunctions of the problems without taking into account and taking into account delayed neutrons are close to each other in topology.
+The eigenfunctions for fundamental eigenvalue ($i=1$) of the $\alpha$-spectral problem with delayed neutron are shown in Fig.~\ref{fig:iaea_without_fun_del_1}. 
+The eigenfunctions $\phi_1^{(i)}, i=2,3,4,5$ are shown in Fig.~\ref{fig:iaea_without_fun_del_2}, Fig.~\ref{fig:iaea_without_fun_del_3}.
+The eigenfunctions of the problems without and with delayed neutrons are close to each other in topology.
 
 \begin{figure}[H]
 \begin{center}
@@ -675,16 +687,15 @@ The eigenfunctions of the problems without taking into account and taking into a
 \end{figure}
 
 \subsection{IAEA-2D with reflector}
-Added external reflector row (material 4, see Table~\ref{tab:iaea}). 
+This test differs from the previous one only additional external row of reflector assemblies (material 4, see Table~\ref{tab:iaea}). 
 
 \subsubsection{Solution of Lambda Modes spectral problem}
 
-The obtained results by \citep{avvakumov2015} was taken as a reference solution for the diffusion model, and for the $\mathrm{SP_3}$ model ---  the solution obtained by MCNP4C code \citep{ryu2010development}.
-The results of the solution of the effective multiplication factor for test IAEA-2D with a reflector are shown in Table~\ref{tab:iaea_with_lambda}. 
-These data demonstrate the convergence of approximate computed eigenvalues as the computational grid crowds and degree of the approximating polynomials increases --- h-p finite element method.
+As a reference solution for the diffusion model, we used the previous results \citep{avvakumov2015}; for the $\mathrm{SP_3}$ model --- the solution obtained using the MCNP4C code \citep{Bahabadi2016}. As well as in the previous benchmark calculations, the maximum difference in assembly power between two models is about 2 percent for the rodded assemblies (material 3, see Fig.~\ref{fig:iaea}).
 
-The results of the first 10 eigenvalues for $ p = 3, n = 96 $ is shown in Table~\ref{tab:iaea_with_lambda_10}.
-The power and error distribution for $p = 2, n = 24$ using diffusion model is shown in the Fig~\ref{fig:power_iaea_with_dif} and for $p = 3, n = 96$ using $\mathrm{SP_3}$ model is shown Fig~\ref{fig:power_iaea_with_sp3}.
+The comparison of the calculated effective multiplication factors is shown in Table~\ref{tab:iaea_with_lambda}. 
+The results of the first 10 eigenvalues for $ p = 3, n = 96 $ are presented in Table~\ref{tab:iaea_with_lambda_10}.
+The power distributions and calculation errors for $p = 2, n = 24$ using the diffusion model are shown in Fig~\ref{fig:power_iaea_with_dif} and for $p = 3, n = 96$ using the $\mathrm{SP_3}$ model are shown Fig~\ref{fig:power_iaea_with_sp3}.
 
 \begin{table}[h]
 \caption{The effective multiplication factor.}
@@ -692,7 +703,7 @@ The power and error distribution for $p = 2, n = 24$ using diffusion model is sh
 \begin{center}
 \begin{tabular}{c c r r r r r r}
 \hline
-$n$ & $p$ & $k_{dif}$ & $\Delta_{dif}$ & $\delta_{dif}$ &$k_{sp_3}$& $\Delta_{sp_3}$ & $\delta_{sp_3}$ \\
+$n$ & $p$ & $k_{dif}$ & $\Delta_{dif},pcm$ & $\delta_{dif}$ &$k_{sp_3}$& $\Delta_{sp_3},pcm$ & $\delta_{sp_3}$ \\
 \hline
 	& 1	& 1.01041& 490&13.29& 1.01159& 536& 14.14\\
 6	& 2	& 1.00623&  72& 1.88& 1.00711&  88&  2.19\\
@@ -721,16 +732,16 @@ Ref.&   & 1.00551&    &     & 1.00623&     &\\
 \hline
 $i$ & Diffusion & SP$_3$  \\
 \hline
-1 & 1.00551 + 0.0$i$ & 1.00625 + 0.0$i$\\
-2 & 0.99649 + 0.0$i$ & 0.99725 + 0.0$i$\\
-3 & 0.99649 + 0.0$i$ & 0.99725 + 0.0$i$\\
-4 & 0.97679 + 0.0$i$ & 0.97776 + 0.0$i$\\
-5 & 0.97679 + 0.0$i$ & 0.97776 + 0.0$i$\\
-6 & 0.95868 + 0.0$i$ & 0.95990 + 0.0$i$\\
-7 & 0.92898 + 0.0$i$ & 0.93097 + 0.0$i$\\
-8 & 0.92419 + 0.0$i$ & 0.92593 + 0.0$i$\\
-9 & 0.90479 + 0.0$i$ & 0.90735 + 0.0$i$\\
-10 & 0.90479 + 0.0$i$ & 0.90735 + 0.0$i$\\
+1 & 1.005510 + 0.0$i$   & 1.006245 + 0.0$i$\\
+2 & 0.996490 + 0.0$i$ & 0.997254 + 0.0$i$\\
+3 & 0.996490 + 0.0$i$ & 0.997254 + 0.0$i$\\
+4 & 0.976791 + 0.0$i$ & 0.977759 + 0.0$i$\\
+5 & 0.976791 + 0.0$i$ & 0.977759 + 0.0$i$\\
+6 & 0.958684 + 0.0$i$ & 0.959895 + 0.0$i$\\
+7 & 0.928980 + 0.0$i$ & 0.930969 + 0.0$i$\\
+8 & 0.924186 + 0.0$i$ & 0.925931 + 0.0$i$\\
+9 & 0.904788 + 0.0$i$ & 0.907349 + 0.0$i$\\
+10 & 0.904788 + 0.0$i$ & 0.907349 + 0.0$i$\\
 \hline
 \end{tabular}
 \end{center}
@@ -739,28 +750,24 @@ $i$ & Diffusion & SP$_3$  \\
 \begin{figure}[H]
 \begin{center}
 	\includegraphics[width=0.75\linewidth]{diff_p2n24.png}\\
-	\caption{Power and error distributions using diffusion model.}
+	\caption{Power and error distributions using the diffusion model.}
 	\label{fig:power_iaea_with_dif}
 \end{center}
 \end{figure}
 \begin{figure}[H]
 \begin{center}
 	\includegraphics[width=0.75\linewidth]{sp3_p3n96.png}\\
-	\caption{Power and error distributions using $\mathrm{SP_3}$ model.}
+	\caption{Power and error distributions using the $\mathrm{SP_3}$ model.}
 	\label{fig:power_iaea_with_sp3}
 \end{center}
 \end{figure}
 
-\subsubsection{Solution of Alpha Modes spectral problem}
-As a reference solution, the solutions obtained using the diffusion or transport $\mathrm{SP_3}$ model on a fine grid $ p = 3, n = 96 $ are taken.
- 
-\textbf{Without delayed neutrons.}
-
-The results of solution of the $\alpha$-spectral problem without taking into account delayed neutrons using the different grids and finite elements are shown in Table~\ref{tab:iaea_with_alpha}.
-These data demonstrate the convergence of approximate computed eigenvalues.
+\subsubsection{Solution of $\alpha$-spectral problem without delayed neutrons}
+As a reference solution, we use the fine mesh solutions obtained using the diffusion or transport $\mathrm{SP_3}$ model ($ p = 3, n = 96 $). 
+The $\alpha$-spectral problem results are shown in Table~\ref{tab:iaea_with_alpha}.
 
 \begin{table}[h]
-\caption{The period eigenvalues.}
+\caption{The $\alpha$-eigenvalues.}
 \label{tab:iaea_with_alpha}
 \begin{center}
 \begin{tabular}{c c r r r r}
@@ -785,10 +792,11 @@ Ref.& & $-$100.81 & & $-$114.60 \\
 \end{center}
 \end{table}
 
-The results of the first 10 eigenvalues for $ p = 3, n = 96 $ is shown in Table~\ref{tab:iaea_with_lambda_10}.
+According to (\ref{1.11}), the prompt neutron lifetime $l_{pr} \approx 5.4 \cdot 10^{-5}$ sec for both the diffusion and $\mathrm{SP_3}$ models.
+
+The results of the first 10 eigenvalues for $ p = 3, n = 96 $ are presented in Table~\ref{tab:iaea_with_lambda_10}.
 As before, the eigenvalues are well separated.
 In this example, the fundamental eigenvalue is negative and therefore the main harmonic will increase, while all others will attenuate. 
-A regular mode of the reactor is thereby defined.
 
 \begin{table}[h]
 \caption{The eigenvalues $\alpha_i=\lambda_i^{(\alpha)}$ for $p=3, n=96$.}
@@ -813,9 +821,9 @@ $i$ & Diffusion & SP$_3$ \\
 \end{center}
 \end{table}
 
-The eigenfunctions for fundamental eigenvalue ($i=1$) of the $\alpha$-spectral problem without taking into account delayed neutron are shown in the Fig.~\ref{fig:iaea_with_fun_1}. 
+The eigenfunctions for fundamental eigenvalue ($i=1$) of the $\alpha$-spectral problem without delayed neutrons are shown in Fig.~\ref{fig:iaea_with_fun_1}. 
 Due to the fact that a state of the reactor is close to critical ($k=k_1\approx 1.00625$), the fundamental eigenfunctions of the $\lambda$-spectral problem are close to the fundamental eigenfunctions of the $\alpha$-spectral problem.
-The eigenfunctions $\phi_1^{(i)}, i=2,3,4,5$ are shown in the Fig.~\ref{fig:iaea_with_fun_2}, Fig.~\ref{fig:iaea_with_fun_3}.
+The eigenfunctions $\phi_1^{(i)}, i=2,3,4,5$ are shown in Fig.~\ref{fig:iaea_with_fun_2}, Fig.~\ref{fig:iaea_with_fun_3}.
 
 \begin{figure}[H]
 \begin{center}
@@ -842,9 +850,14 @@ The eigenfunctions $\phi_1^{(i)}, i=2,3,4,5$ are shown in the Fig.~\ref{fig:iaea
 \end{center}
 \end{figure}
 
-\textbf{With delayed neutrons.}
+\subsubsection{Solution of $\alpha$-spectral problem with delayed neutrons}
+
+As a reference solution, we use the fine mesh solutions obtained using the diffusion or transport $\mathrm{SP_3}$ model ($ p = 3, n = 96 $). 
+The $\alpha$-spectral problem results are shown in
+Table~\ref{tab:iaea_with_alpha_del}.
+
 \begin{table}[h]
-\caption{The period eigenvalues.}
+\caption{The $\alpha$-eigenvalues.}
 \label{tab:iaea_with_alpha_del}
 \begin{center}
 \begin{tabular}{c c r r r r}
@@ -869,9 +882,6 @@ Ref.& & $-$0.4184 & & $-$1.3375 \\
 \end{center}
 \end{table}
 
-The results of solution of the $\alpha$-spectral problem taking into account delayed neutrons using the different grids and finite elements are shown in Table~\ref{tab:iaea_with_alpha_del}.
-These data demonstrate the convergence of approximate computed eigenvalues.
-
 \begin{table}[h]
 \caption{The eigenvalues $\alpha_i=\lambda_i^{(\alpha)}$ for $p=3, n=96$.}
 \label{tab:iaea_with_alpha_del_10}
@@ -880,7 +890,7 @@ These data demonstrate the convergence of approximate computed eigenvalues.
 \hline
 $i$ & Diffusion & SP$_3$ \\
 \hline
-1& $-$0.4184 + 0.0$i$&$-$1.3374 + 0.0$i$\\
+1& $-$0.4184 + 0.0$i$&$-$1.3375 + 0.0$i$\\
 2& 0.0281 + 0.0$i$&0.0238 + 0.0$i$\\
 3& 0.0281 + 0.0$i$&0.0238 + 0.0$i$\\
 4& 0.0628 + 0.0$i$&0.0622 + 0.0$i$\\
@@ -895,13 +905,12 @@ $i$ & Diffusion & SP$_3$ \\
 \end{center}
 \end{table}
 
-The results of solution of the spectral problem for the first 10 eigenvalues are shown in Table~\ref{tab:iaea_with_alpha_del_10}.
-Due to the contribution of delayed neutrons, the fundamental eigenvalue is much smaller than in the case without taking into account delayed neutrons.
-Again the fundamental eigenvalue is negative and therefore the main harmonic will increase, while all others will attenuate.
+The calculation results for the first 10 eigenvalues are shown in Table~\ref{tab:iaea_with_alpha_del_10}.
+Due to the contribution of delayed neutrons, the fundamental eigenvalue is much smaller than in the case without delayed neutrons. Again the fundamental eigenvalue is negative and therefore the main harmonic will increase, while all others will attenuate.
 
-The eigenfunctions for fundamental eigenvalue ($i=1$) of the $\alpha$-spectral problem taking into account delayed neutron are shown in the Fig.~\ref{fig:iaea_with_fun_del_1}. 
-The eigenfunctions $\phi_1^{(i)}, i=2,3,4,5$ are shown in the Fig.~\ref{fig:iaea_with_fun_del_2}, Fig.~\ref{fig:iaea_with_fun_del_3}.
-The eigenfunctions of the problems without taking into account and taking into account delayed neutrons are close to each other in topology.
+The eigenfunctions for fundamental eigenvalue ($i=1$) of the $\alpha$-spectral problem with delayed neutrons are presented in Fig.~\ref{fig:iaea_with_fun_del_1}. 
+The eigenfunctions $\phi_1^{(i)}, i=2,3,4,5$ are shown in Fig.~\ref{fig:iaea_with_fun_del_2}, Fig.~\ref{fig:iaea_with_fun_del_3}.
+The eigenfunctions of the problems without and with delayed neutrons are close to each other in topology.
 
 \begin{figure}[H]
 \begin{center}
@@ -928,24 +937,22 @@ The eigenfunctions of the problems without taking into account and taking into a
 \end{center}
 \end{figure}
 
+\subsection{Azimutally non-symmetric test IAEA-2D with reflector}
 
-\subsection{Cosymmetric IAEA-2D with reflector}
+To investigate azimutally non-symmetric geometry effects on the eigenfunction behaviour, we replaced two unrodded assemblies in the north-east part of the core by rodded ones (material 3, see Fig. \ref{fig:iaea_cosym}). 
+
 \begin{figure}[h]
-\begin{center}
-	\includegraphics[width=0.75\linewidth]{iaea_cosym.png}\\
-	\caption{Geometrcial model of the cosymmetric IAEA-2D reactor core with reflector.}
-	\label{fig:iaea_cosym}
-\end{center}
+	\begin{center}
+		\includegraphics[width=0.75\linewidth]{iaea_cosym.png}\\
+		\caption{Geometrcial model of the non-symmetric test IAEA-2D.}
+		\label{fig:iaea_cosym}
+	\end{center}
 \end{figure}
 
-Two rods added.
-The geometrical model of reactor core is shown in Fig. \ref{fig:iaea_cosym}. 
-
 \subsubsection{Solution of Lambda Modes spectral problem}
-As a reference solution, the solutions obtained using the diffusion or transport $\mathrm{SP_3}$ model on a fine grid $ p = 3, n = 96 $ are taken.
-The results of the solution of the effective multiplication factor for test cosymmetric IAEA-2D with a reflector are shown in Table~\ref{tab:iaea_cosym_lambda}. 
-These data demonstrate the convergence of approximate computed eigenvalues as the computational grid crowds and degree of the approximating polynomials increases --- h-p finite element method.
-The results of the first 10 eigenvalues for $ p = 3, n = 96 $ is shown in Table~\ref{tab:iaea_cosym_lambda_10}.
+As a reference solution for both the diffusion and transport $\mathrm{SP_3}$ models, we used the solutions obtained using very fine mesh ($p = 3, n = 96$). 
+The effective multiplication factors are shown in Table~\ref{tab:iaea_cosym_lambda}. 
+The results of the first 10 eigenvalues for $ p = 3, n = 96 $ are presented in Table~\ref{tab:iaea_cosym_lambda_10}.
 
 \begin{table}[H]
 \caption{The effective multiplication factor.}
@@ -955,19 +962,19 @@ The results of the first 10 eigenvalues for $ p = 3, n = 96 $ is shown in Table~
 \hline
 $n$ & $p$ & $k_{dif}$ & $\Delta_{dif}$ &$k_{sp_3}$& $\Delta_{sp_3}$ \\
 \hline
-	& 1	& 1.00809& 509& 1.00931& 556\\
-6	& 2	& 1.00374&  74& 1.00465&  90\\
-	& 3	& 1.00306&   6& 1.00387&  12\\
+	& 1	& 1.00809& 509& 1.009309& 555.8\\
+6	& 2	& 1.00374&  74& 1.004655&  90.4\\
+	& 3	& 1.00306&   6& 1.003875&  12.4\\
 \hline
-	& 1	& 1.00454& 154& 1.00550& 175\\
-24& 2	& 1.00310&  10& 1.00391&  16\\
-	& 3	& 1.00300&   0& 1.00376&   1\\ 
+	& 1	& 1.00454& 154& 1.005501& 175.0\\
+24& 2	& 1.00310&  10& 1.003910&  15.9\\
+	& 3	& 1.00300&   0& 1.003764&   1.3\\ 
 \hline
-	& 1	& 1.00341&  41& 1.00424&  49\\
-96& 2	& 1.00300&   0& 1.00377&   2\\
-	& 3	& 1.00300&  --& 1.00375&  --\\ 
+	& 1	& 1.00341&  41& 1.004241&  49.0\\
+96& 2	& 1.00300&   0& 1.003771&   2.0\\
+	& 3	& 1.00300&  --& 1.003751&  --\\ 
 \hline
-Ref.&   & 1.00300&    & 1.00375&    \\ 
+Ref.&   & 1.00300&    & 1.003751&    \\ 
 \hline
 \end{tabular}
 \end{center}
@@ -981,26 +988,28 @@ Ref.&   & 1.00300&    & 1.00375&    \\
 \hline
 $i$ & diffusion & SP$_3$  \\
 \hline
-1 & 1.00300 + 0.0$i$ & 1.00375 + 0.0$i$\\
-2 & 0.99457 + 0.0$i$ & 0.99537 + 0.0$i$\\
-3 & 0.98630 + 0.0$i$ & 0.98724 + 0.0$i$\\
-4 & 0.97032 + 0.0$i$ & 0.97141 + 0.0$i$\\
-5 & 0.96898 + 0.0$i$ & 0.97021 + 0.0$i$\\
-6 & 0.94555 + 0.0$i$ & 0.94717 + 0.0$i$\\
-7 & 0.92844 + 0.0$i$ & 0.93044 + 0.0$i$\\
-8 & 0.92386 + 0.0$i$ & 0.92561 + 0.0$i$\\
-9 & 0.90326 + 0.0$i$ & 0.90587 + 0.0$i$\\
-10 & 0.90159 + 0.0$i$ & 0.90425 + 0.0$i$\\
+1 & 1.002996 + 0.0$i$ & 1.003751 + 0.0$i$\\
+2 & 0.994571 + 0.0$i$ & 0.995365 + 0.0$i$\\
+3 & 0.986297 + 0.0$i$ & 0.987243 + 0.0$i$\\
+4 & 0.970315 + 0.0$i$ & 0.971407 + 0.0$i$\\
+5 & 0.968980 + 0.0$i$ & 0.970207 + 0.0$i$\\
+6 & 0.945551 + 0.0$i$ & 0.947166 + 0.0$i$\\
+7 & 0.928439 + 0.0$i$ & 0.930441 + 0.0$i$\\
+8 & 0.923863 + 0.0$i$ & 0.925611 + 0.0$i$\\
+9 & 0.903265 + 0.0$i$ & 0.905868 + 0.0$i$\\
+10 & 0.901593 + 0.0$i$ & 0.904253 + 0.0$i$\\
 \hline
 \end{tabular}
 \end{center}
 \end{table}
 
-\subsubsection{Solution of Alpha Modes spectral problem}
-As a reference solution, the solutions obtained using the diffusion or transport model on a fine grid $ p = 3, n = 96 $ are taken.
+\subsubsection{Solution of $\alpha$-spectral problem without delayed neutrons}
+As a reference solution for both the diffusion and  $\mathrm{SP_3}$ models, we used the solutions obtained using very fine mesh ($p = 3, n = 96$).
+The $\alpha$-spectral problem results are shown in Table~\ref{tab:iaea_cosym_alpha}.
+The results of the first 10 eigenvalues for $ p = 3, n = 96 $ are presented in Table~\ref{tab:iaea_cosym_alpha_10}.
 
 \begin{table}[h]
-\caption{The period eigenvalues.}
+\caption{The $\alpha$-eigenvalues.}
 \label{tab:iaea_cosym_alpha}
 \begin{center}
 \begin{tabular}{rrrrrr}
@@ -1024,12 +1033,6 @@ Ref.& & $-$54.57 & & $-$68.55 \\
 \end{tabular}
 \end{center}
 \end{table}
-The results of solution of the $\alpha$-spectral problem without taking into account delayed neutrons using the different grids and finite elements are shown in Table~\ref{tab:iaea_cosym_alpha}.
-These data demonstrate the convergence of approximate computed eigenvalues.
-The results of the first 10 eigenvalues for $ p = 3, n = 96 $ is shown in Table~\ref{tab:iaea_cosym_alpha_10}.
-As before, the eigenvalues are well separated.
-In this example, the fundamental eigenvalue is negative and therefore the main harmonic will increase, while all others will attenuate. 
-A regular mode of the reactor is thereby defined.
 
 \begin{table}[h]
 \caption{The eigenvalues $\alpha_i=\lambda_i^{(\alpha)}$ for $p=3, n=96$.}
@@ -1054,8 +1057,12 @@ $i$ & Diffusion & SP$_3$ \\
 \end{center}
 \end{table}
 
-The eigenfunctions for fundamental eigenvalue ($i=1$) of the $\alpha$-spectral problem without taking into account delayed neutron are shown in the Fig.~\ref{fig:iaea_cosym_fun_1}. 
-The eigenfunctions $\phi_1^{(i)}, i=2,3,4,5$ are shown in the Fig.~\ref{fig:iaea_cosym_fun_2}, Fig.~\ref{fig:iaea_cosym_fun_3}.
+According to (\ref{1.11}), the prompt neutron lifetime $l_{pr} \approx 5.5 \cdot 10^{-5}$ sec for both the diffusion and $\mathrm{SP_3}$ models. Thus, for the non-symmetric test we obtained similar neutronic properties compared with the symmetric test. 
+
+Let's consider changes in the eigenfunctions due to the rodded assembly insertion.
+The eigenfunctions for fundamental eigenvalue ($i=1$) of the $\alpha$-spectral problem without delayed neutrons are shown in Fig.~\ref{fig:iaea_cosym_fun_1}. 
+The eigenfunctions $\phi_1^{(i)}, i=2,3,4,5$ are shown in  Fig.~\ref{fig:iaea_cosym_fun_2}, Fig.~\ref{fig:iaea_cosym_fun_3}.
+As can be seen from Fig.~\ref{fig:iaea_cosym_fun_1} to Fig.~\ref{fig:iaea_cosym_fun_3}, the overal structure of the eigenfunctions is preserved taking into account the neutron flux perturbations.
 
 \begin{figure}[H]
 \begin{center}
@@ -1082,13 +1089,17 @@ The eigenfunctions $\phi_1^{(i)}, i=2,3,4,5$ are shown in the Fig.~\ref{fig:iaea
 \end{center}
 \end{figure}
 
-\subsection{HWR problem}
-This benchmark simulate the active zone of a large heavy-water reactor HWR \citep{chao1995}. 
-The geometrical model of the HWR reactor core consists of a set of hexagonal assemblies and is presented in Fig. \ref{fig:hwr}. 
-The total size of assembly equals 17.78 cm. Diffusion neutronics constants in the common units are given in Table \ref{tab:hwr}. 
+\subsection{HWR test problem}
+This benchmark is a model of large heavy-water reactor HWR \citep{chao1995}. 
+The geometry of the HWR test is presented in Fig. \ref{fig:hwr}. Fuel assemblis (1, 2, 3 and 6 in Fig. \ref{fig:hwr}) located in the central part of the core, are surrouded by the target zone and reflector layer (7 and 9 in Fig. \ref{fig:hwr}). There are two types of rodded assemblies (4 and 8).
+The assembly size is equal to 17.78 cm. 
+
+Diffusion constants  are given in Table \ref{tab:hwr}. 
+The following delayed neutrons parameters are used: one group of delayed neutrons with effective fraction $\beta_1 = 6.5\cdot10^{-3}$ and decay constant $\lambda_1 = 0.08$ s$^{-1}$. 
+Neutron velocity  $v_1 = 1.25 \cdot 10^7$ cm/s and $v_2 = 2.5 \cdot 10^5$ cm/s.
 
 \begin{table}[h]
-\caption{Diffusion neutronics constants for HWR.}
+\caption{Diffusion constants for HWR test.}
 \label{tab:hwr}
 \begin{center}
 \begin{tabular}{ccllll}
@@ -1126,7 +1137,7 @@ Material & Group & $D$, cm & $\Sigma_r$, cm$^{-1}$ & $\Sigma_{1\to 2}$, cm$^{-1}
 \begin{figure}[h]
 	\begin{center}
     		\includegraphics[width=0.9\linewidth] {hwr.png}
-		\caption{Geometrcial model of the HWR reactor core.}
+		\caption{Geometrcial model of the HWR test.}
 		\label{fig:hwr}
 	\end{center}
 \end{figure} 
@@ -1138,7 +1149,7 @@ Material & Group & $D$, cm & $\Sigma_r$, cm$^{-1}$ & $\Sigma_{1\to 2}$, cm$^{-1}
 \begin{center}
 \begin{tabular}{c c r r r r r r}
 \hline
-$n$ & $p$ & $k_{dif}$ & $\Delta_{dif}$ & $\delta_{dif}$ &$k_{sp_3}$& $\Delta_{sp_3}$ & $\delta_{dif}$ \\
+$n$ & $p$ & $k_{dif}$ & $\Delta_{dif},pcm$ & $\delta_{dif}$ &$k_{sp_3}$& $\Delta_{sp_3},pcm$ & $\delta_{dif}$ \\
 \hline
 	& 1	& 0.991985&  2.0& 1.16&0.992178&   5.0& 0.80\\
 6	& 2	& 0.991989&  2.4& 0.31&0.992166&   3.8& 0.24\\
@@ -1158,10 +1169,9 @@ Ref.&   & 0.991965&    & & 0.992128 & & \\
 \end{center}
 \end{table}
 
-The obtained results by \citep{chao1995} was taken as a reference solution for the diffusion model, and for the $\mathrm{SP_3}$ model ---  the solution on a fine grid $p = 3, n = 96 $ are taken.
+As a reference solution for the diffusion model, we used the  results obtained by \citep{chao1995}; for the $\mathrm{SP_3}$ model --- the solution obtained using very fine mesh ($p = 3, n = 96$).
 
-The results of the solution of the effective multiplication factor for test HWR are shown in Table~\ref{tab:hwr_lambda}. 
-We have the convergence of approximate computed eigenvalues as the computational grid crowds and degree of the approximating polynomials increases.
+The effective multiplication factors for the HWR test are shown in Table~\ref{tab:hwr_lambda}. 
 
 \begin{table}[h]
 \caption{The eigenvalues $k_i=1/\lambda_i^{(k)}$ for $p=3, n=96$.}
@@ -1171,42 +1181,41 @@ We have the convergence of approximate computed eigenvalues as the computational
 \hline
 $i$ & diffusion & SP$_3$  \\
 \hline
-1 & 0.99196 + 0.0$i$   & 0.99213 + 0.0$i$\\
-2 & 0.98359 + 1.1645e-05$i$   & 0.98379 + 1.2072e-05$i$\\
-3 & 0.98359 $-$ 1.1645e-05$i$ & 0.98379 $-$ 1.2072e-05$i$\\
-4 & 0.96424 + 2.1564e-05$i$   & 0.96452 + 2.2337e-05$i$\\
-5 & 0.96424 $-$ 2.1564e-05$i$ & 0.96452 $-$ 2.2337e-05$i$\\
-6 & 0.94329 + 0.0$i$   & 0.94373 + 0.0$i$\\
-7 & 0.92387 + 0.0$i$   & 0.92426 + 0.0$i$\\
-8 & 0.91866 + 0.0$i$   & 0.91880 + 0.0$i$\\
-9 & 0.89568 + 3.5570e-05$i$   & 0.89632 + 3.6750e-05$i$\\
-10 & 0.89568 $-$ 3.5570e-05$i$& 0.89632 + 3.6750e-05$i$\\
+1 & 0.991963 + 0.0$i$   & 0.992128 + 0.0$i$\\
+2 & 0.983594 + 1.1645e-05$i$   & 0.983793 + 1.2072e-05$i$\\
+3 & 0.983594 $-$ 1.1645e-05$i$ & 0.983793 $-$ 1.2072e-05$i$\\
+4 & 0.964240 + 2.1564e-05$i$   & 0.964523 + 2.2337e-05$i$\\
+5 & 0.964240 $-$ 2.1564e-05$i$ & 0.964523 $-$ 2.2337e-05$i$\\
+6 & 0.943290 + 0.0$i$   & 0.943733 + 0.0$i$\\
+7 & 0.923872 + 0.0$i$   & 0.924257 + 0.0$i$\\
+8 & 0.918657 + 0.0$i$   & 0.918798 + 0.0$i$\\
+9 & 0.895682 + 3.5570e-05$i$   & 0.896317 + 3.6750e-05$i$\\
+10 & 0.895682 $-$ 3.5570e-05$i$& 0.896317 + 3.6750e-05$i$\\
 \hline
 \end{tabular}
 \end{center}
 \end{table}
 
-The results of the first 10 eigenvalues for $ p = 3, n = 96 $ is shown in Table~\ref{tab:hwr_lambda_10}.
+The results of the first 10 eigenvalues for $ p = 3, n = 96 $ are presented in Table~\ref{tab:hwr_lambda_10}.
 The eigenvalues $k_2, k_3, k_4, k_5, k_9, k_{10}$ of the $\lambda$-spectral problem are the complex values with small imaginary parts, and the eigenvalues $k_1, k_6, k_7, k_8$ are the real values. 
-We give the graphs of real and imaginary parts of $\phi^{(n)}$ eigenfunctions which correspond to the first eigenvalues $k_n, n = 1, 2, \dots, 5$. 
 
-\subsubsection{Solution of Alpha Modes spectral problem}
-As a reference solution, the solutions obtained using the diffusion or transport model on a fine grid $ p = 3, n = 96 $ are taken.
+\subsubsection{Solution of $\alpha$-spectral problem without delayed neutrons}
+As a reference solution for the diffusion and $\mathrm{SP_3}$ models we use the solutions obtained using very fine mesh ($p = 3, n = 96$).
 
-\textbf{Without delayed neutrons.}
-
-The results of solution of the $\alpha$-spectral problem without taking into account delayed neutrons at different computational grids using different finite-element approximations are shown in Table~\ref{tab:hwr_alpha}. 
-The results of the first 10 eigenvalues for $p = 3, n = 96 $ is shown in Table~\ref{tab:hwr_alpha_10}.
+The $\alpha$-spectral problem results at different computational parameters are shown in Table~\ref{tab:hwr_alpha}. 
+The results of the first 10 eigenvalues for $p = 3, n = 96 $ are presented in Table~\ref{tab:hwr_alpha_10}.
 The eigenvalues are well separated.
 The eigenvalues $\alpha_2, \alpha_3$, $\alpha_4, \alpha_5$, $\alpha_9, \alpha_{10}$ of the $\alpha$-spectral problem, like for the $\lambda$-spectral problem, are the complex values with small imaginary parts, and the eigenvalues $\alpha_1, \alpha_6$, $\alpha_7, \alpha_8$ are the real values.
 
-The eigenfunctions for fundamental eigenvalue ($n=1$) of the $\alpha$-spectral problem  are shown in the Fig.~\ref{fig:hwr_fun_1}.
-The real part of the eigenfunctions $\phi^{(n)}_1, \ n = 2,3,4,5$ is shown in the Fig.~\ref{fig:hwr_fun_2}.
+According to (\ref{1.11}), the prompt neutron lifetime $l_{pr} \approx 1.9 \cdot 10^{-4}$ sec for both the diffusion and $\mathrm{SP_3}$ models. This is a typical value of the HWR prompt neutron lifetime (more than 20 times less compared with the considered light water tests IAEA-2D).
+
+The eigenfunctions for fundamental eigenvalue ($n=1$) of the $\alpha$-spectral problem  are shown in Fig.~\ref{fig:hwr_fun_1}.
+The real part of the eigenfunctions $\phi^{(n)}_1, \ n = 2,3,4,5$ is shown in Fig.~\ref{fig:hwr_fun_2}.
 Fig.~\ref{fig:hwr_fun_3} shows the imaginary part of these eigenfunctions.
 The eigenfunctions of the $\lambda$-spectral and $\alpha$-spectral problems are close to each other in topology.
 
 \begin{table}[h]
-\caption{The period eigenvalues.}
+\caption{The $\alpha$-eigenvalues.}
 \label{tab:hwr_alpha}
 \begin{center}
 \begin{tabular}{rrrrrr}
@@ -1279,16 +1288,17 @@ $i$ & Diffusion & SP$_3$ \\
 \end{center}
 \end{figure}
 
-\textbf{With delayed neutrons.}
+\subsubsection{Solution of $\alpha$-spectral problem with delayed neutrons}
 
-The results of solution of the $\alpha$-spectral problem taking into account delayed neutrons at different computational grids using different finite-element approximations are shown in Table~\ref{tab:hwr_alpha_del}. 
-Due to the contribution of delayed neutrons, the fundamental eigenvalue is much smaller than in the case without taking into account delayed neutrons.
+As a reference solution for the diffusion and $\mathrm{SP_3}$ models we use the solutions obtained using very fine mesh ($p = 3, n = 96$).
 
+The $\alpha$-spectral problem results are shown in Table~\ref{tab:hwr_alpha_del}. 
+Due to the contribution of delayed neutrons, the fundamental eigenvalue is much smaller than in the case without delayed neutrons.
 The results of the first 10 eigenvalues for $p = 3, n = 96 $ is shown in Table~\ref{tab:hwr_alpha_del_10}.
 The eigenvalues $\alpha_2, \alpha_3$, $\alpha_4, \alpha_5$, $\alpha_9, \alpha_{10}$ of the $\alpha$-spectral problem, like as before, are the complex values with small imaginary parts, and the eigenvalues $\alpha_1, \alpha_6$, $\alpha_7, \alpha_8$ are the real values.
 
 \begin{table}[h]
-\caption{The period eigenvalues.}
+\caption{The $\alpha$-eigenvalues.}
 \label{tab:hwr_alpha_del}
 \begin{center}
 \begin{tabular}{rrrrrr}
@@ -1337,13 +1347,27 @@ $i$ & Diffusion & SP$_3$ \\
 \end{table}
 
 \pagebreak
-\newpage
+\section*{Conclusion}
+
+Simulation of reactor dynamic processes is basically considered on the basis of multigroup diffusion approximation of the neutron transport equation. 
+To improve the calculation accuracy for some situations of interest, including pin-by-pin calculations, the $\mathrm{SP_3}$ approximation was adopted in different whole-core diffusion codes as an improved option compared with the diffusion approximation. 
+In this regard, it will be very useful to compare the spectral parameters, calculated by both the diffusion and $\mathrm{SP_3}$ options using the finite element method. 
+
+Solution of the $\lambda$- and $\alpha$-spectral problems has been tested for the IAEA-2D and HWR reactor benchmark tests. 
+The classical Lagrange finite elements are used for the spatial approximation. 
+Accuracy control is performed using condensed grids. 
+Spectral problems are solved numerically using well-developed free software SLEPc and using GMSH as a generic mesh generator.
+
+It was found noticeable differences in $\alpha$-eigenvalues problems taking into account delayed neutrons. 
+Of particular interest is the problem associated with appearance of complex eigenvalues and eigenfunctions. 
+It was found that this tendency occurs for both the diffusion and $\mathrm{SP_3}$ solutions of the HWR reactor test. 
+On the contrary, solutions of the IAEA-2D benchmark test showed the absence of complex eigenvalues and eigenfunctions, even in a skew-symmetric variant of the benchmark.
+
 \section*{Acknowledgements}
 
-This work was supported by the Russian Foundation for Basic Research (\#~18-31-00315) 
-and by the grant of the Russian Federation Government (\#~14.Y26.31.0013).
+This work was supported by the grant of the Russian Federation Government (\#~14.Y26.31.0013) and by the Russian Foundation for Basic Research (\#~18-31-00315).
 
-\section*{Reference}
+\section*{}
 \bibliography{sp3}
 
 \end{document}
