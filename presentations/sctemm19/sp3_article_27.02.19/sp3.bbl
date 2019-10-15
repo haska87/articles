@@ -1,0 +1,210 @@
+\begin{thebibliography}{26}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\href}[2]{#2}
+\providecommand{\path}[1]{#1}
+\providecommand{\DOIprefix}{doi:}
+\providecommand{\ArXivprefix}{arXiv:}
+\providecommand{\URLprefix}{URL: }
+\providecommand{\Pubmedprefix}{pmid:}
+\providecommand{\doi}[1]{\href{http://dx.doi.org/#1}{\path{#1}}}
+\providecommand{\Pubmed}[1]{\href{pmid:#1}{\path{#1}}}
+\providecommand{\bibinfo}[2]{#2}
+\ifx\xfnm\relax \def\xfnm[#1]{\unskip,\space#1}\fi
+%Type = Article
+\bibitem[{Avvakumov et~al.(2017)Avvakumov, Strizhov, Vabishchevich and
+  Vasilev}]{avvakumov2017spectral}
+\bibinfo{author}{Avvakumov, A.V.}, \bibinfo{author}{Strizhov, V.F.},
+  \bibinfo{author}{Vabishchevich, P.N.}, \bibinfo{author}{Vasilev, A.O.},
+  \bibinfo{year}{2017}.
+\newblock \bibinfo{title}{Spectral properties of dynamic processes in a nuclear
+  reactor}.
+\newblock \bibinfo{journal}{Annals of Nuclear Energy} \bibinfo{volume}{99},
+  \bibinfo{pages}{68--79}.
+%Type = Article
+\bibitem[{Avvakumov et~al.(2014)Avvakumov, Vabishchevich and
+  Vasilev}]{avvakumov2014}
+\bibinfo{author}{Avvakumov, A.V.}, \bibinfo{author}{Vabishchevich, P.N.},
+  \bibinfo{author}{Vasilev, A.O.}, \bibinfo{year}{2014}.
+\newblock \bibinfo{title}{Metod konechnyh ehlementov dlya uravneniya diffuzii
+  nejtronov v geksagonal'noj geometrii}.
+\newblock \bibinfo{journal}{Vestnik of North-Eastern Federal University}
+  \bibinfo{volume}{11}, \bibinfo{pages}{7--18}.
+%Type = Article
+\bibitem[{Avvakumov et~al.(2015)Avvakumov, Vasilev and
+  Zakharov}]{avvakumov2015}
+\bibinfo{author}{Avvakumov, A.V.}, \bibinfo{author}{Vasilev, A.O.},
+  \bibinfo{author}{Zakharov, P.E.}, \bibinfo{year}{2015}.
+\newblock \bibinfo{title}{Programmnaya realizaciya metoda konechnyh ehlementov
+  dlya uravneniya diffuzii nejtronov}.
+\newblock \bibinfo{journal}{Vestnik of North-Eastern Federal University} .
+%Type = Book
+\bibitem[{Azmy and Sartori(2010)}]{azmy2010nuclear}
+\bibinfo{author}{Azmy, Y.}, \bibinfo{author}{Sartori, E.},
+  \bibinfo{year}{2010}.
+\newblock \bibinfo{title}{Nuclear computational science: a century in review}.
+\newblock \bibinfo{publisher}{Springer}.
+%Type = Article
+\bibitem[{Bahabadi et~al.(2016)Bahabadi, Pazirandeh and Mitra}]{Bahabadi2016}
+\bibinfo{author}{Bahabadi, M.H.}, \bibinfo{author}{Pazirandeh, A.},
+  \bibinfo{author}{Mitra, A.}, \bibinfo{year}{2016}.
+\newblock \bibinfo{title}{Analytic function expansion nodal ({AFEN}) method for
+  solving multigroup neutron simplified $\mathrm{P_3}$ ($\mathrm{SP_3}$)
+  equations in hexagonal-z geometry}.
+\newblock \bibinfo{journal}{Annals of Nuclear Energy} \bibinfo{volume}{98},
+  \bibinfo{pages}{74--80}.
+%Type = Article
+\bibitem[{Beckert and Grundmann(2008)}]{beckert2008development}
+\bibinfo{author}{Beckert, C.}, \bibinfo{author}{Grundmann, U.},
+  \bibinfo{year}{2008}.
+\newblock \bibinfo{title}{Development and verification of a nodal approach for
+  solving the multigroup $\mathrm{SP_3}$ equations}.
+\newblock \bibinfo{journal}{Annals of Nuclear Energy} \bibinfo{volume}{35},
+  \bibinfo{pages}{75--86}.
+%Type = Book
+\bibitem[{Bell and Glasstone(1970)}]{bell1970}
+\bibinfo{author}{Bell, G.I.}, \bibinfo{author}{Glasstone, S.},
+  \bibinfo{year}{1970}.
+\newblock \bibinfo{title}{Nuclear Reactor Theory}.
+\newblock \bibinfo{publisher}{Van Nostrand Reinhold Company}.
+%Type = Article
+\bibitem[{Brantley and Larsen(2000)}]{brantley2000simplified}
+\bibinfo{author}{Brantley, P.S.}, \bibinfo{author}{Larsen, E.W.},
+  \bibinfo{year}{2000}.
+\newblock \bibinfo{title}{The simplified $\mathrm{P_3}$ approximation}.
+\newblock \bibinfo{journal}{Nuclear Science and Engineering}
+  \bibinfo{volume}{134}, \bibinfo{pages}{1--21}.
+%Type = Book
+\bibitem[{Brenner and Scott(2008)}]{brenner2008}
+\bibinfo{author}{Brenner, S.C.}, \bibinfo{author}{Scott, L.R.},
+  \bibinfo{year}{2008}.
+\newblock \bibinfo{title}{The mathematical theory of finite element methods}.
+\newblock \bibinfo{publisher}{Springer}.
+%Type = Article
+\bibitem[{Brewster(2018)}]{Brewster2018}
+\bibinfo{author}{Brewster, W.J.}, \bibinfo{year}{2018}.
+\newblock \bibinfo{title}{Development and {Monte Carlo} validation of a finite
+  element reactor analysis framework}.
+\newblock \bibinfo{journal}{Masters Theses 7756, Missouri University of Science
+  and Technology} .
+%Type = Article
+\bibitem[{Chao and Shatilla(1995)}]{chao1995}
+\bibinfo{author}{Chao, Y.A.}, \bibinfo{author}{Shatilla, Y.A.},
+  \bibinfo{year}{1995}.
+\newblock \bibinfo{title}{Conformal mapping and hexagonal nodal methods-{II}:
+  Implementation in the {ANC-H Code}.}
+\newblock \bibinfo{journal}{Nuclear Science and Engineering}
+  \bibinfo{volume}{121}, \bibinfo{pages}{210--225}.
+%Type = Article
+\bibitem[{Downar et~al.(2010)Downar, Xu, Seker and Hudson}]{downar2010theory}
+\bibinfo{author}{Downar, T.}, \bibinfo{author}{Xu, Y.}, \bibinfo{author}{Seker,
+  V.}, \bibinfo{author}{Hudson, N.}, \bibinfo{year}{2010}.
+\newblock \bibinfo{title}{Theory manual for the {PARCS} kinetics core simulator
+  module}.
+\newblock \bibinfo{journal}{Department of Nuclear Engineering and Radiological
+  Sciences, University of Michigan} .
+%Type = Article
+\bibitem[{Gelbard(1960)}]{gelbard1960application}
+\bibinfo{author}{Gelbard, E.M.}, \bibinfo{year}{1960}.
+\newblock \bibinfo{title}{Application of spherical harmonics method to reactor
+  problems}.
+\newblock \bibinfo{journal}{Bettis Atomic Power Laboratory, West Mifflin, PA,
+  Technical Report No. WAPD-BT-20} .
+%Type = Techreport
+\bibitem[{Gelbard(1961)}]{gelbard1961simplified}
+\bibinfo{author}{Gelbard, E.M.}, \bibinfo{year}{1961}.
+\newblock \bibinfo{title}{Simplified spherical harmonics equations and their
+  use in shielding problems}.
+\newblock \bibinfo{type}{Technical Report}. Westinghouse Electric Corp. Bettis
+  Atomic Power Lab., Pittsburgh.
+%Type = Techreport
+\bibitem[{Gelbard(1962)}]{gelbard1962applications}
+\bibinfo{author}{Gelbard, E.M.}, \bibinfo{year}{1962}.
+\newblock \bibinfo{title}{Applications of the simplified spherical harmonics
+  equations in spherical geometry}.
+\newblock \bibinfo{type}{Technical Report}. Westinghouse Electric Corp. Bettis
+  Atomic Power Lab., Pittsburgh.
+%Type = Article
+\bibitem[{Ginestar et~al.(2002)Ginestar, Miro, Verdu and
+  Hennig}]{ginestar2002transient}
+\bibinfo{author}{Ginestar, D.}, \bibinfo{author}{Miro, R.},
+  \bibinfo{author}{Verdu, G.}, \bibinfo{author}{Hennig, D.},
+  \bibinfo{year}{2002}.
+\newblock \bibinfo{title}{A transient modal analysis of a {BWR} instability
+  event}.
+\newblock \bibinfo{journal}{Journal of Nuclear Science and Technology}
+  \bibinfo{volume}{39}, \bibinfo{pages}{554--563}.
+%Type = Article
+\bibitem[{Lawrence(1986)}]{lawrence1986progress}
+\bibinfo{author}{Lawrence, R.D.}, \bibinfo{year}{1986}.
+\newblock \bibinfo{title}{Progress in nodal methods for the solution of the
+  neutron diffusion and transport equations}.
+\newblock \bibinfo{journal}{Progress in Nuclear Energy} \bibinfo{volume}{17},
+  \bibinfo{pages}{271--301}.
+%Type = Book
+\bibitem[{Logg et~al.(2012)Logg, Mardal and Wells}]{logg2012}
+\bibinfo{author}{Logg, A.}, \bibinfo{author}{Mardal, K.A.},
+  \bibinfo{author}{Wells, G.}, \bibinfo{year}{2012}.
+\newblock \bibinfo{title}{Automated solution of differential equations by the
+  finite element method: The {FEniCS} book}. volume~\bibinfo{volume}{84}.
+\newblock \bibinfo{publisher}{Springer Science \& Business Media}.
+%Type = Article
+\bibitem[{McClarren(2010)}]{mcclarren2010theoretical}
+\bibinfo{author}{McClarren, R.G.}, \bibinfo{year}{2010}.
+\newblock \bibinfo{title}{Theoretical aspects of the simplified $\mathrm{P_N}$
+  equations}.
+\newblock \bibinfo{journal}{Transport Theory and Statistical Physics}
+  \bibinfo{volume}{39}, \bibinfo{pages}{73--109}.
+%Type = Book
+\bibitem[{Quarteroni and Valli(2008)}]{quarteroni2008}
+\bibinfo{author}{Quarteroni, A.}, \bibinfo{author}{Valli, A.},
+  \bibinfo{year}{2008}.
+\newblock \bibinfo{title}{Numerical approximation of partial differential
+  equations}.
+\newblock \bibinfo{publisher}{Springer}.
+%Type = Article
+\bibitem[{Ryu and Joo(2013)}]{ryu2013fem}
+\bibinfo{author}{Ryu, E.H.}, \bibinfo{author}{Joo, H.G.}, \bibinfo{year}{2013}.
+\newblock \bibinfo{title}{Finite element method solution of the simplified
+  $\mathrm{P_3}$ equations for general geometry applications}.
+\newblock \bibinfo{journal}{Annals of Nuclear Energy} \bibinfo{volume}{56},
+  \bibinfo{pages}{194--207}.
+%Type = Book
+\bibitem[{Stacey(2007)}]{stacey2007}
+\bibinfo{author}{Stacey, W.M.}, \bibinfo{year}{2007}.
+\newblock \bibinfo{title}{Nuclear Reactor Physics}.
+\newblock \bibinfo{publisher}{Wiley}.
+%Type = Article
+\bibitem[{Stewart(2001)}]{stewart2002krylov}
+\bibinfo{author}{Stewart, G.W.}, \bibinfo{year}{2001}.
+\newblock \bibinfo{title}{A {Krylov--Schur} algorithm for large eigenproblems}.
+\newblock \bibinfo{journal}{SIAM Journal on Matrix Analysis and Applications}
+  \bibinfo{volume}{23}, \bibinfo{pages}{601--614}.
+%Type = Article
+\bibitem[{Tada et~al.(2008)Tada, Yamamoto, Yamane and
+  Kitamuray}]{tada2008applicability}
+\bibinfo{author}{Tada, K.}, \bibinfo{author}{Yamamoto, A.},
+  \bibinfo{author}{Yamane, Y.}, \bibinfo{author}{Kitamuray, Y.},
+  \bibinfo{year}{2008}.
+\newblock \bibinfo{title}{Applicability of the diffusion and simplified
+  $\mathrm{P_3}$ theories for pin-by-pin geometry of {BWR}}.
+\newblock \bibinfo{journal}{Journal of nuclear science and technology}
+  \bibinfo{volume}{45}, \bibinfo{pages}{997--1008}.
+%Type = Article
+\bibitem[{Verdu and Ginestar(2014)}]{verdu2014modal}
+\bibinfo{author}{Verdu, G.}, \bibinfo{author}{Ginestar, D.},
+  \bibinfo{year}{2014}.
+\newblock \bibinfo{title}{Modal decomposition method for {BWR} stability
+  analysis using alpha-modes}.
+\newblock \bibinfo{journal}{Annals of Nuclear Energy} \bibinfo{volume}{67},
+  \bibinfo{pages}{31--40}.
+%Type = Article
+\bibitem[{Verdu et~al.(2010)Verdu, Ginestar, Roman and Vidal}]{verdu20103d}
+\bibinfo{author}{Verdu, G.}, \bibinfo{author}{Ginestar, D.},
+  \bibinfo{author}{Roman, J.}, \bibinfo{author}{Vidal, V.},
+  \bibinfo{year}{2010}.
+\newblock \bibinfo{title}{{3D} alpha modes of a nuclear power reactor}.
+\newblock \bibinfo{journal}{Journal of Nuclear Science and Technology}
+  \bibinfo{volume}{47}, \bibinfo{pages}{501--514}.
+
+\end{thebibliography}
