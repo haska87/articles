@@ -1,0 +1,94 @@
+\documentclass[runningheads]{llncs}
+
+\usepackage{graphicx}
+\graphicspath{{./figs/}}
+
+\usepackage{amsmath} 
+\usepackage{bm}
+\usepackage{amsbsy} 
+\usepackage{amssymb}
+\usepackage{cite}
+
+\begin{document}
+%
+\title{Multiscale model reduction for neutron diffusion equation}
+%
+%\titlerunning{Abbreviated paper title}
+% If the paper title is too long for the running head, you can set
+% an abbreviated paper title here
+%
+\author{A.O. Vasilev\inst{1} \and 
+D.A. Spiridonov\inst{1} \and
+A.V. Avvakumov\inst{2} }
+%
+\authorrunning{A.O. Vasilev, D.A. Spiridonov \and A.V. Avvakumov}
+% First names are abbreviated in the running head.
+% If there are more than two authors, 'et al.' is used.
+%
+\institute{North-Eastern Federal University, Yakutsk, Russia \and
+National Research Center \emph{Kurchatov Institute}, Moscow, Russia\\
+\email{haska87@gmail.com}
+}
+%
+\maketitle              % typeset the header of the contribution
+%
+\begin{abstract}
+Construction of multiscale method for neutron diffusion equation is provided. 
+The neutron diffusion approximation is mostly used for reactor analysis and applied in most engineering calculation codes. 
+The solution method is based on the use of a generalized multiscale finite element method.
+The main idea is to create local solutions that can be used to effectively solve on a coarse grid.
+Numerical results show that multiscale basis functions can well take into account the small-scale characteristics of the medium and provide accurate solutions. 
+
+\keywords{multiscale method \and parabolic equation \and neutron diffusion}
+\end{abstract}
+
+\section{Introduction}
+bla bla bla
+
+\section{Problem statement}
+Let's consider modelling neutron flux in a one-group diffusion approximation. Neutron flux dynamics is considered within a bounded 2D domain  $\Omega$ ($\bm x = \{x_1, x_2\} \in \Omega$) with a convex boundary $\partial \Omega$. The neutron diffusion is described by the following set of equations with one group delayed neutron source:
+\begin{equation}\label{1}
+\begin{split}
+ \frac{1}{v} \frac{\partial \phi}{\partial t} - \nabla \cdot D \nabla \phi + \Sigma_r \phi &= \frac{1 - \beta}{K_{eff}} \nu \Sigma_f \phi + \lambda c, \\
+\frac{\partial c}{\partial t} + \lambda c &= \frac{\beta}{K_{eff}} \nu \Sigma_f \phi.
+\end{split}
+\end{equation} 
+Here $\phi(\bm x,t)$ --- neutron flux  at point $\bm x$ and time $t$,
+$v$ --- effective velocity of neutrons,
+$D(\bm x)$ --- diffusion coefficient, 
+$\Sigma_r(\bm x,t)$ --- removal cross-section,
+$\Sigma_f(\bm x,t)$ --- generation cross-section,
+$\beta$ --- effective fraction of delayed neutrons, 
+$\lambda$ --- decay constant of sources of delayed neutrons.
+System of equations (\ref{1}) is supplement with boundary condition and  initial condition.
+
+The albedo-type conditions are set at the boundary of the area $\partial \Omega$:
+\begin{equation}\label{2}
+ D\frac{\partial \phi}{\partial n} + \gamma \phi = 0,
+\end{equation}
+where $n$ --- outer normal to the boundary $\partial \Omega$, $\gamma$ --- albedo constant.
+Let's propose that in the initial time moment (at t = 0) the reactor is in the
+critical state:
+\begin{equation}\label{3}
+ \phi(\bm x,0) = \phi^0(\bm x).
+\end{equation} 
+%Let's consider problem (\ref{1}) with boundary conditions (\ref{2}) and initial conditions
+
+\section{Multiscale method}
+
+\section{Test problem}
+
+
+\section*{Acknowledgements}
+This work was supported by the grant of the Russian Federation Government
+(\#14.Y26.31.0013) and the Russian Science Foundation (\#19-71-00008).
+
+\begin{thebibliography}{8}
+\bibitem{Annals17}
+Avvakumov,~A.~V., et al.: Spectral properties of dynamic processes in a nuclear reactor. Annals of Nuclear Energy. \textbf{99}, 68--79 (2017) 
+
+\bibitem{Progress18}
+Avvakumov A. V. et al.: State change modal method for numerical simulation of dynamic processes in a nuclear reactor. Progress in Nuclear Energy. \textbf{106}, 240--261 (2018)
+
+\end{thebibliography}
+\end{document}
