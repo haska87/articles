@@ -8,6 +8,7 @@
 \usepackage{amsbsy} 
 \usepackage{amssymb}
 \usepackage{cite}
+\usepackage{multirow}
 
 \begin{document}
 %
@@ -122,9 +123,9 @@ where $N_f$ is the nunber of vertices on the fine grid.
 
 The problem is solving a system of linear algebraic equations
 \begin{equation}\label{5}
-A\phi = b,
+A_f \phi = b_f,
 \end{equation}
-where the operator $A$ corresponds to the left side of equation (\ref{4}), and the vector $b$ corresponds to the right side of equation (\ref{4}).
+where the operator $A_f$ corresponds to the left side of equation (\ref{4}), and the vector $b_f$ corresponds to the right side of equation (\ref{4}).
 
 \section{Multiscale method}
 For the discretization on the coarse grid we use GMsFEM.
@@ -133,10 +134,6 @@ For multiscale basis construction, we define local domains $\omega_i$, where $i 
 We assume that $\mathcal{T}_h$ is a refinement of $\mathcal{T}_H$, where $h$ and $H$ represent the fine and coarse mesh sizes, respectively. 
 We assume that the fine-scale mesh $\mathcal{T}_h$ is sufficiently fine to fully resolve the small-scale information of the domain  while $\mathcal{T}_H$ is a coarse mesh containing many fine-scale features.
 A local domain $\omega_i$ is obtained by the combining all the coarse cells around one vertex of the coarse grid. 
-%The number of such domains will be equal to the number of vertices of our coarse grid.  
-%In Figure \ref{p1} we present local domain $\omega _i$.
-%For multiscale In such coarse subdomains $\omega _i$ we will solve local problems to construct a multiscale space. 
-%We construct a multiscale basis functions in each local domain by the solution of the local spectral problem that help to select important modes of the solution.
 
 \begin{figure}[h!]
 \centering
@@ -147,7 +144,7 @@ A local domain $\omega_i$ is obtained by the combining all the coarse cells arou
 \label{p1}
 \end{figure} 
 
-GMsFEM  involves two basic steps: (1) the construction of multiscale basic functions that take into account small scale heterogeneities in the local domains and (2) the construction of the coarse scale approximation. 
+GMsFEM  involves two basic steps: (a) the construction of multiscale basic functions that take into account small scale heterogeneities in the local domains and (b) the construction of the coarse scale approximation. 
 For the construction of the multiscale basic functions we solve spectral problems in local domains.
 Spectral problems help to identify the most important characteristics of the solution. 
 In contrast to the available techniques, this method allows to avoid the limitations associated with idealization and limitations on the applicability of the method.
@@ -168,11 +165,11 @@ Each $y_j$ is supported in local domain $w_i$.
 The firts step is the solution of local spectral problems on the local domains. These spectral problems identify important modes of the problem and used to construct a multiscale space. In order to construct a conforming basis functions, we multiply eigenvectors related to the smallest eigenvalues to the partition of unity functions.
  
 We use following spectral problem in $\omega_i$
-\begin{equation} \label{e4}
+\begin{equation} \label{6}
 A \varphi^i = \lambda S \varphi^i,
 \end{equation} 
 where the elements of the matrices $A= \{ a_{ij} \}$ and $S = \{ s_{ij} \}$ are defined as follow{
-\begin{equation} \label{e5}
+\begin{equation} \label{7}
 \begin{split}
 a_{ij} = 
 \int_{\omega_i} D \nabla\phi \cdot \nabla q dx &+ 
@@ -182,14 +179,13 @@ s_{ij} &= \int_{\omega _i} D u q dx.
 \end{split}
 \end{equation}}
 We solve this spectral problem on the local domain
-\begin{equation} \label{e8}
+\begin{equation} \label{8}
 \tilde{A} \tilde{\varphi}^i = \lambda \tilde{S}  \tilde{\varphi}^i, \quad
 \tilde{A} = P A P^T, \quad \text{ and } \quad 
 \tilde{S} = P S P^T.
 \end{equation}
 where $P = \{ \psi_0, \psi_1, ...,\psi_{J_i} \}$ and {$\varphi^i_k = P \tilde{\varphi}^i_k$} for $k = 1,2,...$.
-{Then, we choose eigenvectors corresponding to the smallest $M_{i}$ eigenvalues from \eqref{e8} and use them for the construction of multiscale basis functions.} 
-%In Figure \ref{p6}, we present first four eigenvectors. 
+{Then, we choose eigenvectors corresponding to the smallest $M_{i}$ eigenvalues from \eqref{8} and use them for the construction of multiscale basis functions.} 
 
 % POU
 \textbf{Partirion of unity functions. } As  partition of unity functions, we use linear functions in each domain $\omega_i$.
@@ -200,16 +196,15 @@ Domain $K_j$  is one element from a coarse grid.
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.4\linewidth]{pofs.png} 
+\includegraphics[width=0.35\linewidth]{pofs.png} 
 \hspace{2em}
-\includegraphics[width=0.4\linewidth]{pouK.png} 
+\includegraphics[width=0.35\linewidth]{pouK.png} 
 \caption{Partirion of unity functions on the $\omega_i$ (right) and $K_j$ (left)}
 \label{p2}
 \end{figure} 
  
 The multiscale space is defined as the span of $\chi_i \varphi^i_k$, where $\chi_i$ is the usual nodal basis function for the node $i$ (linear partition of unity functions). 
 The number of bases can be different, the accuracy of the solution can be improved when we increase the number of bases.
-%In Figure \ref{p7}, we present first four multiscale basis functions in local domain $\omega_i$.
 
 %\subsection{Assembling a matrix in a multiscale space}
 \textbf{Coarse-scale approximation. }
@@ -223,17 +218,129 @@ R = [ R^1, R^2, ..., R^{N_v} ],
 \]
 where $N_v$ is the number of local domains $\omega_i$.
 
-Then using transition matrix $R$ and fine grid system  \ref{5}, we construct coarse grid approximation
-\begin{equation}\label{e12}
+Then using transition matrix $R$ and fine grid system (\ref{5}), we construct coarse grid approximation
+\begin{equation}\label{9}
 A_c \phi_c = b_c, \quad 
-A_c = R A R^T 
+A_c = R A_f R^T 
 \quad \text{ and } \quad 
-b_c = R b,
+b_c = R b_f,
 \end{equation}  
 and using coarse-scale solution $\phi_c$, we can  reconstruct a fine grid solution $\phi_{ms} = R^T \phi_c$.
 
 \section{Numerical results}
+The test problem for reactor small PWR-2D ($\Omega$ --- reactor core area) is considered \cite{Chao}. 
+The geometrical model of the small PWR-2D reactor core is presented in Fig.\ref{p3}. 
+The diameter of the fuel rods is 0.82 cm, the cell width is 1.26 cm.
+Diffusion neutronics constants in the common notations are given in Table \ref{t1}. 
+There are two types of cassettes, with fuel 1\% $UO_2$ and 2\% $UO_2$.
+The boundary conditions (\ref{2}) are used at $\gamma = 0$ (total reflection).
+The following delayed neutrons parameters are used: $\beta = 6.5 \cdot 10^{−3}$, $\lambda = 0.08$ s$^{-1}$ and $v = 5 \cdot 10^5$ cm/s.
 
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[width=0.35\linewidth] {smallpwr.png}
+	\caption{Geometrcial model of the small PWR-2D reactor core}
+	\label{p3}
+  \end{center}
+\end{figure} 
+
+\begin{table}[h]
+\caption{Diffusion neutronics constants for IAEA-2D test problem}
+\label{t1}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\multirow{2}{*}{Zone} & \multicolumn{2}{c|}{1} & \multicolumn{2}{c|}{2} \\
+\cline{2-5}
+& coolant & fuel & coolant & fuel \\
+\hline
+$D$ & 0.34473872445 & 0.77002585054 & 0.31679441560 & 0.80236505122 \\
+$\Sigma_a$ & 5.3858400E-03 & 8.9337900E-02 & 6.0670900E-03 & 6.6279500E-02 \\
+$\Sigma_{f}$ & 0.0 & 5.4731800E-02 & 0.0 & 3.3377700E-02 \\
+$\nu$ & 0.0 & 2.44844861671 & 0.0 & 2.45482762443 \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+We define the next scenario of the process: The $\lambda$-spectral problem is solved \cite{Annals17}, the solution is taken as the initial condition; 
+Calculation for the non-stationary model at the time range 0 to 0.4 sec;
+At a moment of 0.1 sec and 0.3 sec the fuel value $\Sigma_a$ for the zone 1 changes to +2\% and -3\% respectively (modeling effect of insertion or withdrawal of control rods).
+At each time the integrated power is calculated 
+\[P(t) = a\int_{\Omega}\Sigma_f \phi d\bm x,\]
+where $a$ is the normalization coefficient by a given value of the integrated power.
+
+Coarse mesh contains $49$ vertices.
+The fine grid contains 115891 vertices. 
+The time step for both grids is $\tau = 0.001$.
+As an exact solution, we take the solution by the finite element method on a fine grid.
+The initial value of $K_{eff}$ was 1.xxxxxxx. 
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.45\linewidth]{power_fine.png} 
+\hspace{2em}
+\includegraphics[width=0.45\linewidth]{power.png} 
+\caption{Interal power on a fine grid and relative errors ($\%$) of the multiscale solution power.}
+\label{p4}
+\end{figure}
+ 
+The integral power on a fine grid and relative errors of a integral powers for multiscale soultion shown in Figure~\ref{p4}. 
+When using one basis, the error does not exceed 1\%, and for using 4 or more bases it does not exceed 0.01\%.
+
+In Figure \ref{p5}, we present relative $L_2$ and $H_1$ errors of multiscale solution vs. time for different number of multiscale basis functions.
+From the numerical results, we observe a good convergence behavior, when we take sufficient number of multiscale basis functions.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.45\linewidth]{L2_log.png} 
+\hspace{2em}
+\includegraphics[width=0.45\linewidth]{H1.png} 
+\caption{Relative $L_2$ and $H_1$ errors ($\%$) of the multiscale solution.}
+\label{p5}
+\end{figure} 
+
+In Table~\ref{t2}, we present relative $L_2$ and $H_1$ errors at final time for different number of multiscale basis functions.
+For example, when we use 8 spectral basis functions, we obtain $0.34\%$ $L_2$ error and $7.18\%$ $H_1$ error. 
+Our comparison showed that it is prefer to use 4 or higher count of bases. 
+The solution of the problem on a fine grid and multiscale solution using 16 basis functions on each local domain $\omega_i$ are shown in Figure \ref{p6}. Relative errors are 0.13\% for $L_2$ and 4.43\% for $H_1$. 
+
+\begin{table}[h!]
+\caption{Relative $L_2$ and $H_1$ errors ($\%$) of the solution at final time.}
+\label{t2}
+\begin{center}
+\begin{tabular}{|c|c|r|r|r|}
+\hline
+Number of bases & Number of DOF & $L_2$ error & $H_1$ error & Calc time\\
+\hline
+1 & xx & 8.09 & 34.36 & 0.015 \\
+2 & xx & 4.32 & 26.73 & 0.018 \\
+4 & xx & 0.56 & 9.24 & 0.026 \\
+8 & xx & 0.34 & 7.18 & 0.056 \\
+12 & xx & 0.17 & 5.17 & 0.102 \\
+16 & xx & 0.13 & 4.43 & 0.239 \\
+fine & xx & -- & -- & 6.816 \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.85\linewidth]{flux.png} 
+\caption{Fine grid and multiscale solution at final time.}
+\label{p6}
+\end{figure} 
+
+\section{Conclusions}
+A Generalized Multiscale Finite Element method was developed successfully for solving neutron diffusion in one-group approxmimation.  
+We presented an implementation of GMsFEM. 
+We considered each step of GMsFEM algorithm.
+The results showed that GMsFEM has good accuracy in all cases.
+
+In the current work, we considered the most popular and simplest model of neutron transport equation.
+Computational expenses are always an issue even for modern computers.
+In the future, we will consider more complex models of the neutron diffusion and transport equation, such as $SP_3$ approximation. 
 
 \section*{Acknowledgements}
 This work was supported by the grant of the Russian Federation Government
@@ -245,6 +352,9 @@ Avvakumov,~A.~V., et al.: Spectral properties of dynamic processes in a nuclear 
 
 \bibitem{Progress18}
 Avvakumov A. V. et al.: State change modal method for numerical simulation of dynamic processes in a nuclear reactor. Progress in Nuclear Energy. \textbf{106}, 240--261 (2018)
+
+\bibitem{Spiridonov2019}
+Spiridonov D., Vasilyeva M., Leung W. T.: A Generalized Multiscale Finite Element Method (GMsFEM) for perforated domain flows with Robin boundary conditions. Journal of Computational and Applied Mathematics. \textbf{357}, 319--328 (2019)
 
 \end{thebibliography}
 \end{document}
