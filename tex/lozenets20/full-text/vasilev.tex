@@ -37,10 +37,10 @@ National Research Center \emph{Kurchatov Institute}, Moscow, Russia\\
 Construction of multiscale method for neutron diffusion equation is provided. 
 The neutron diffusion approximation is mostly used for reactor analysis and applied in most engineering calculation codes. 
 The solution method is based on the use of a generalized multiscale finite element method.
-The main idea is to create local solutions that can be used to effectively solve on a coarse grid.
+The main idea is to create multiscale basis functions that can be used to effectively solve on a coarse grid.
 Numerical results show that multiscale basis functions can well take into account the small-scale characteristics of the medium and provide accurate solutions. 
 
-\keywords{multiscale method \and parabolic equation \and neutron diffusion}
+\keywords{parabolic equation \and neutron diffusion \and multiscale simulation \and generalized multiscale finite element method (GMsFEM)}
 \end{abstract}
 
 \section{Introduction}
@@ -59,16 +59,16 @@ As a result, the methods of numerical homogenization give macroscopic laws and p
 On the other hand, multiscale methods construct multiscale basis functions in each coarse-grid block and couple these basis functions in a global formulation. 
 These methods have a two-way information exchange between micro and macro scales. 
 There are many variations of multiscale finite element methods (MsFEM).
-A detailed description of several variations of the method is presented in \cite{}.
+A detailed description of several variations of the method is presented in \cite{Efendiev2009}.
 
 In this paper, we consider the solution of the neutron diffusion equation uses Generalized Multiscale Finite Element Method (GMsFEM). 
 The main idea of the GMsFEM is to reduce the dimension of the problem. 
-GMsFEM  involves two basic steps: (a) the construction of multiscale basic functions that take into account small scale heterogeneities in the local domains and (b) the construction of the coarse scale approximation. 
-For the construction of the multiscale basic functions we solve spectral problems in local domains.
+GMsFEM  involves two basic steps: (a) the construction of multiscale basis functions that take into account small scale heterogeneities in the local domains and (b) the construction of the coarse scale approximation. 
+For the construction of the multiscale basis functions we solve spectral problems in local domains.
 Spectral problems help to identify the most important characteristics of the solution. 
 In contrast to the available techniques, this method allows to avoid the limitations associated with idealization and limitations on the applicability of the method.
 This method also more general technology that takes into account the different scale processes.
-The construction of basic functions occurs independently for each local domain, doesn't require the exchange of information between processors, and  has a high parallelization efficiency.
+The construction of basis functions occurs independently for each local domain, doesn't require the exchange of information between processors, and  has a high parallelization efficiency.
 %Basis functions are designed to capture the multiscale features of the solution. 
 %Important multiscale features of the solution are incorporated into localized basis functions which contain information about the scales that are smaller (as well as larger) than the local numerical scale defined by the basis functions. 
 %The computation of basis functions use local spectral problems to reduce the dimension of the local problem. 
@@ -116,13 +116,13 @@ To specify the variational formulation, we multiply equations by the test functi
 Using the integration by parts, we obtain the following variational formulation: find $\phi^{n+1} \in V$ such that
 \begin{equation} \label{4}
 \begin{split}
-\int_\Omega \frac{1}{v} \frac{\phi^{n+1}}{\tau} q dx +
-\int_\Omega D^{n+1} \nabla\phi^{n+1} \cdot \nabla q dx &+ 
-\int_\Omega \Sigma_r^{n+1} \phi^{n+1} q dx - \\
-\int_\Omega \frac{1+\lambda\tau-\beta}{K_{eff}(1+\lambda\tau)} \nu \Sigma_f^{n+1} \phi^{n+1} q dx &+
-\int_{\partial \Omega} \gamma \phi^{n+1} q ds = \\
-\int_\Omega \frac{1}{v} \frac{\phi^{n}}{\tau} q dx +
-\int_\Omega \frac{\lambda c^n}{1+\lambda\tau} q dx &, \quad \forall q \in V,
+\int_\Omega \frac{1}{v} \frac{\phi^{n+1}}{\tau} q d\bm x +
+\int_\Omega D^{n+1} \nabla\phi^{n+1} \cdot \nabla q d\bm x &+ 
+\int_\Omega \Sigma_r^{n+1} \phi^{n+1} q d\bm x - \\
+\int_\Omega \frac{1+\lambda\tau-\beta}{K_{eff}(1+\lambda\tau)} \nu \Sigma_f^{n+1} \phi^{n+1} q d\bm x &+
+\int_{\partial \Omega} \gamma \phi^{n+1} q d\bm s = \\
+\int_\Omega \frac{1}{v} \frac{\phi^{n}}{\tau} q d\bm x +
+\int_\Omega \frac{\lambda c^n}{1+\lambda\tau} q d\bm x &, \quad \forall q \in V,
 \end{split}
 \end{equation}
 where $V=H^1(\Omega)$ --- sobolev space consisting of scalar functions $\upsilon$ such that $\upsilon^2$ and $|\nabla \upsilon^2|$ have a finite integral in $\Omega$.
@@ -153,12 +153,12 @@ A local domain $\omega_i$ is obtained by the combining all the coarse cells arou
 \centering
 \includegraphics[width=0.26\linewidth]{coarse_grid.png}
 \hspace{2em}
-\includegraphics[width=0.5\linewidth]{omega.png} 
+\includegraphics[width=0.5\linewidth]{omega_GA.png} 
 \caption{Coarse grid and local domain $\omega_i$ with $K_j$}
 \label{p1}
 \end{figure} 
 
-Using constructed multiscale basic functions, we construct a mathematical model on a coarse grid that allows to significant reduce the solution time, the amount of used memory, and can be used to perform calculations for a given configuration of  heterogeneous properties. 
+Using constructed multiscale basis functions, we construct a mathematical model on a coarse grid that allows to significant reduce the solution time, the amount of used memory, and can be used to perform calculations for a given configuration of  heterogeneous properties. 
 We construct the mutiscale function space
 \[
 {V}_{\text{off}} = \mbox{span} \{ y_j \}_{j=1}^{N},
@@ -178,24 +178,18 @@ where the elements of the matrices $A= \{ a_{ij} \}$ and $S = \{ s_{ij} \}$ are 
 \begin{equation} \label{7}
 \begin{split}
 a_{ij} = 
-\int_{\omega_i} D \nabla\phi \cdot \nabla q dx &+ 
-\int_{\omega_i} \Sigma_r \phi q dx - 
-\int_{\omega_i} \frac{1+\lambda\tau-\beta}{K_{eff}(1+\lambda\tau)} \nu \Sigma_f \phi q dx, \\
-s_{ij} &= \int_{\omega _i} D u q dx.
+\int_{\omega_i} D \nabla\phi \cdot \nabla q d\bm x &+ 
+\int_{\omega_i} \Sigma_r \phi q d\bm x - 
+\int_{\omega_i} \frac{1+\lambda\tau-\beta}{K_{eff}(1+\lambda\tau)} \nu \Sigma_f \phi q d\bm x, \\
+s_{ij} &= \int_{\omega _i} D u q d\bm x.
 \end{split}
 \end{equation}}
-We solve this spectral problem on the local domain
-\begin{equation} \label{8}
-\tilde{A} \tilde{\varphi}^i = \lambda \tilde{S}  \tilde{\varphi}^i, \quad
-\tilde{A} = P A P^T, \quad \text{ and } \quad 
-\tilde{S} = P S P^T.
-\end{equation}
-where $P = \{ \psi_0, \psi_1, ...,\psi_{J_i} \}$ and {$\varphi^i_k = P \tilde{\varphi}^i_k$} for $k = 1,2,...$.
-{Then, we choose eigenvectors corresponding to the smallest $M_{i}$ eigenvalues from \eqref{8} and use them for the construction of multiscale basis functions.} 
+
+{Then, we choose eigenvectors corresponding to the smallest $M_{i}$ eigenvalues from \eqref{6} and use them for the construction of multiscale basis functions.} 
 
 % POU
 \textbf{Partirion of unity functions. } As  partition of unity functions, we use linear functions in each domain $\omega_i$.
-Partitions of unity are calculated in the domain $ K_j $ as a linear function from $\Gamma$ to the vertex $ A $, and $ 0 $ is assigned to the entire segment $\Gamma$, and at point $ A $ is assigned the value $1$. 
+Partitions of unity are calculated in the domain $ K_j $ as a linear function from $\Gamma$ to the vertex $ A $, and $ 0 $ is assigned to the entire segment $\Gamma$, and at point $ A $ is assigned the value $1$ (see Fig \ref{p1}). 
 Thus, we obtain a linear function from $ 0 $ to $ 1 $ over the entire domain $ K_j $. 
 %Partitions of unity are shown in Figure \ref{p2}. 
 %Domain $K_j$  is one element from a coarse grid. 
@@ -209,14 +203,14 @@ Thus, we obtain a linear function from $ 0 $ to $ 1 $ over the entire domain $ K
 %%\label{p2}
 %\end{figure} 
  
-The multiscale space is defined as the span of $\chi_i \varphi^i_k$, where $\chi_i$ is the usual nodal basis function for the node $i$ (linear partition of unity functions). 
+The multiscale space is defined as the span of $y_i = \chi_i \varphi^i_k$, where $\chi_i$ is the usual nodal basis function for the node $i$ (linear partition of unity functions). 
 The number of bases can be different, the accuracy of the solution can be improved when we increase the number of bases.
 
 %\subsection{Assembling a matrix in a multiscale space}
 \textbf{Coarse-scale approximation. }
 Next, we create following  matrix for each $\omega_i$
 \[
-R^i = \left[ \chi_i \varphi_1^i, \ldots, \chi_i \varphi_{M_i}^i,  \chi_i \eta^i \right].
+R^i = \left[ y_1, \ldots, y_{M_i-1},  y_{M_i} \right].
 \]
 and  define a transition matrix from a fine grid to a coarse grid to reduce the dimension of the problem
 \[
@@ -240,7 +234,7 @@ The diameter of the fuel rods is 0.82 cm, the cell width is 1.26 cm.
 Diffusion neutronics constants in the common notations are given in Table \ref{t1}. 
 %There are two types of cassettes, with fuel 1\% $UO_2$ and 2\% $UO_2$.
 The boundary conditions (\ref{2}) are used at $\gamma = 0$ (total reflection).
-The following delayed neutrons parameters are used: $\beta = 6.5 \cdot 10^{−3}$, $\lambda = 0.08$ s$^{-1}$ and $v = 5 \cdot 10^5$ cm/s.
+The following delayed neutrons parameters are used: $\beta = 6.5 \cdot 10^{-3}$, $\lambda = 0.08$ s$^{-1}$ and $v = 5 \cdot 10^5$ cm/s.
 
 \begin{figure}[h]
   \begin{center}
@@ -250,7 +244,7 @@ The following delayed neutrons parameters are used: $\beta = 6.5 \cdot 10^{−3}
   \end{center}
 \end{figure} 
 
-We define the next scenario of the process: The $\lambda$-spectral problem is solved \cite{Annals17}, the solution is taken as the initial condition; 
+We define the next scenario of the process: The $\lambda$-spectral problem (see \cite{Annals17}) is solved, the solution is taken as the initial condition; 
 Calculation for the non-stationary model at the time range 0 to 0.4 sec;
 At a moment of 0.1 sec and 0.3 sec the fuel value $\Sigma_a$ for the zone 1 changes to +2\% and -3\% respectively (modeling effect of insertion or withdrawal of control rods).
 At each time the integrated power is calculated 
@@ -280,7 +274,7 @@ Coarse mesh contains $49$ vertices.
 The fine grid contains 115891 vertices. 
 The time step for both grids is $\tau = 0.001$.
 As an exact solution, we take the solution by the finite element method on a fine grid.
-The initial value of $K_{eff}$ was 1.xxxxxxx. 
+The initial value of $K_{eff}$ was 1.183280. 
 
 \begin{figure}[h!]
 \centering
@@ -319,13 +313,13 @@ The solution of the problem on a fine grid and multiscale solution using 16 basi
 \hline
 Number of bases & Number of DOF & $L_2$ error & $H_1$ error & Calc time\\
 \hline
-1 & xx & 8.09 & 34.36 & 0.015 \\
-2 & xx & 4.32 & 26.73 & 0.018 \\
-4 & xx & 0.56 & 9.24 & 0.026 \\
-8 & xx & 0.34 & 7.18 & 0.056 \\
-12 & xx & 0.17 & 5.17 & 0.102 \\
-16 & xx & 0.13 & 4.43 & 0.239 \\
-fine & xx & -- & -- & 6.816 \\
+1 & 49 & 8.09 & 34.36 & 0.015 \\
+2 & 98 & 4.32 & 26.73 & 0.018 \\
+4 & 196 & 0.56 & 9.24 & 0.026 \\
+8 & 392 & 0.34 & 7.18 & 0.056 \\
+12 & 588 & 0.17 & 5.17 & 0.102 \\
+16 & 784 & 0.13 & 4.43 & 0.239 \\
+fine & 115891 & -- & -- & 6.816 \\
 \hline
 \end{tabular}
 \end{center}
@@ -355,29 +349,32 @@ This work was supported by the grant of the Russian Federation Government
 \begin{thebibliography}{8}
 
 \bibitem{Annals17}
-Avvakumov,~A.~V., et al.: Spectral properties of dynamic processes in a nuclear reactor. Annals of Nuclear Energy. \textbf{99}, 68--79 (2017) 
+Avvakumov, A.V., et al.: Spectral properties of dynamic processes in a nuclear reactor. Annals of Nuclear Energy. \textbf{99}, 68--79 (2017) 
 
 \bibitem{Progress18}
-Avvakumov A.~V. et al.: State change modal method for numerical simulation of dynamic processes in a nuclear reactor. Progress in Nuclear Energy. \textbf{106}, 240--261 (2018)
+Avvakumov, A.V., et al.: State change modal method for numerical simulation of dynamic processes in a nuclear reactor. Progress in Nuclear Energy. \textbf{106}, 240--261 (2018)
 
 \bibitem{Duderstadt1976}
-Duderstadt, J.~J., Hamilton, L.~J.: Nuclear Reactor Analysis. Wiley (1976)
+Duderstadt, J.J., Hamilton, L.J.: Nuclear Reactor Analysis. Wiley (1976)
+
+\bibitem{dulla2008quasi}
+Dulla, S., Mund, E.H., Ravetto, P.: The quasi-static method revisited. Progress in Nuclear Energy \textbf{50}(8), 908--920 (2008)
 
 \bibitem{Spiridonov2019}
-Spiridonov D., Vasilyeva M., Leung W. T.: A Generalized Multiscale Finite Element Method (GMsFEM) for perforated domain flows with Robin boundary conditions. Journal of Computational and Applied Mathematics. \textbf{357}, 319--328 (2019)
+Spiridonov, D., Vasilyeva, M., Leung, W.T.: A Generalized Multiscale Finite Element Method (GMsFEM) for perforated domain flows with Robin boundary conditions. Journal of Computational and Applied Mathematics. \textbf{357}, 319--328 (2019)
 
 \bibitem{Stacey2007}
-Stacey, W.~M.: Nuclear Reactor Physics. Wiley (2007)
+Stacey, W.M.: Nuclear Reactor Physics. Wiley (2007)
 
 \bibitem{Stalnov2017}
-Stalnov, D.~A., Vasilyeva, M.~V.: Numerical averaging for the heat conduction problem in inhomogeneous and perforated media. Herald of the Northeastern Federal University. MK Ammosov. \textbf{2}(58) (2017)
+Stalnov, D.A., Vasilyeva, M.V.: Numerical averaging for the heat conduction problem in inhomogeneous and perforated media. Herald of the Northeastern Federal University. MK Ammosov. \textbf{2}(58) (2017)
 
 \bibitem{Bakhvalov2012}
-Bakhvalov, N.~S., Panasenko,  G.: Homogenisation: averaging processes in periodic media: mathematical problems in the mechanics of composite materials. Springer Science
+Bakhvalov, N.S., Panasenko, G.: Homogenisation: averaging processes in periodic media: mathematical problems in the mechanics of composite materials. Springer Science
 \& Business Media.  \textbf{36} (2012)
 
 \bibitem{Efendiev2009}
-Yalchin, E., Thomas, Y.~H.: Multiscale finite element methods: theory and applications.
+Yalchin, E., Thomas, Y.H.: Multiscale finite element methods: theory and applications.
 Springer Science \& Business Media. \textbf{4} (2009)
 
 \end{thebibliography}
