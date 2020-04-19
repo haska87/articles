@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.3.25)  15 APR 2020 18:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.3.25)  19 APR 2020 16:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -338,12 +338,8 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 34.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (2.2924pt too wide) in paragraph at lines 37--42
-[]\OT1/cmr/m/n/9 Construction of mul-ti-scale method for neu-tron dif-fu-sion e
-qua-
- []
-
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 43.
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
@@ -355,49 +351,58 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
 <./figs/coarse_grid.png, id=22, 805.0075pt x 805.0075pt>
 File: ./figs/coarse_grid.png Graphic file (type png)
 <use ./figs/coarse_grid.png>
-Package pdftex.def Info: ./figs/coarse_grid.png  used on input line 154.
+Package pdftex.def Info: ./figs/coarse_grid.png  used on input line 155.
 (pdftex.def)             Requested size: 90.2502pt x 90.2462pt.
 <./figs/omega_GA.png, id=23, 841.64438pt x 440.39531pt>
 File: ./figs/omega_GA.png Graphic file (type png)
 <use ./figs/omega_GA.png>
-Package pdftex.def Info: ./figs/omega_GA.png  used on input line 156.
+Package pdftex.def Info: ./figs/omega_GA.png  used on input line 157.
 (pdftex.def)             Requested size: 173.56177pt x 90.81248pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[3] [4 <./figs/coarse_grid.png> <./figs/omega_GA.png>]
+ [3] [4 <./figs/coarse_grid.png> <./figs/omega_GA.png>]
 <./figs/smallpwr.png, id=37, 368.37625pt x 368.37625pt>
 File: ./figs/smallpwr.png Graphic file (type png)
 <use ./figs/smallpwr.png>
-Package pdftex.def Info: ./figs/smallpwr.png  used on input line 241.
+Package pdftex.def Info: ./figs/smallpwr.png  used on input line 242.
 (pdftex.def)             Requested size: 138.84729pt x 138.84337pt.
- [5 <./figs/smallpwr.png>]
-<./figs/power_fine.png, id=43, 399.6531pt x 302.0886pt>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<./figs/power_fine.png, id=38, 399.6531pt x 302.0886pt>
 File: ./figs/power_fine.png Graphic file (type png)
 <use ./figs/power_fine.png>
-Package pdftex.def Info: ./figs/power_fine.png  used on input line 281.
+Package pdftex.def Info: ./figs/power_fine.png  used on input line 282.
 (pdftex.def)             Requested size: 156.20453pt x 118.0722pt.
-<./figs/power.png, id=44, 414.1071pt x 300.6432pt>
+<./figs/power.png, id=39, 414.1071pt x 300.6432pt>
 File: ./figs/power.png Graphic file (type png)
 <use ./figs/power.png>
-Package pdftex.def Info: ./figs/power.png  used on input line 283.
+Package pdftex.def Info: ./figs/power.png  used on input line 284.
 (pdftex.def)             Requested size: 156.20453pt x 113.4061pt.
-<./figs/L2_log.png, id=45, 416.9979pt x 302.0886pt>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[5]
+<./figs/L2_log.png, id=44, 416.9979pt x 302.0886pt>
 File: ./figs/L2_log.png Graphic file (type png)
 <use ./figs/L2_log.png>
-Package pdftex.def Info: ./figs/L2_log.png  used on input line 296.
+Package pdftex.def Info: ./figs/L2_log.png  used on input line 297.
 (pdftex.def)             Requested size: 156.20453pt x 113.16309pt.
-<./figs/H1.png, id=46, 406.1574pt x 300.6432pt>
+<./figs/H1.png, id=45, 406.1574pt x 300.6432pt>
 File: ./figs/H1.png Graphic file (type png)
 <use ./figs/H1.png>
-Package pdftex.def Info: ./figs/H1.png  used on input line 298.
+Package pdftex.def Info: ./figs/H1.png  used on input line 299.
 (pdftex.def)             Requested size: 156.20453pt x 115.62183pt.
- [6 <./figs/power_fine.png> <./figs/power.png>]
+
+Underfull \vbox (badness 1308) has occurred while \output is active []
+
+ [6 <./figs/smallpwr.png> <./figs/power_fine.png> <./figs/power.png>]
 <./figs/flux.png, id=52, 1201.48875pt x 661.47125pt>
 File: ./figs/flux.png Graphic file (type png)
 <use ./figs/flux.png>
-Package pdftex.def Info: ./figs/flux.png  used on input line 330.
+Package pdftex.def Info: ./figs/flux.png  used on input line 331.
 (pdftex.def)             Requested size: 260.34265pt x 143.32379pt.
 
 
@@ -408,7 +413,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 Here is how much of TeX's memory you used:
  3081 strings out of 492982
  40002 string characters out of 6134896
- 108441 words of memory out of 5000000
+ 110441 words of memory out of 5000000
  6569 multiletter control sequences out of 15000+600000
  14766 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -431,7 +436,7 @@ cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb
 texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on vasilev.pdf (8 pages, 1603187 bytes).
+Output written on vasilev.pdf (8 pages, 1602955 bytes).
 PDF statistics:
  122 PDF objects out of 1000 (max. 8388607)
  78 compressed objects within 1 object stream
