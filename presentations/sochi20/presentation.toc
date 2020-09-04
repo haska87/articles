@@ -1,0 +1,14 @@
+\babel@toc {english}{}
+\beamer@sectionintoc {1}{Introduction}{2}{0}{1}
+\beamer@sectionintoc {2}{Problem statement}{3}{0}{2}
+\beamer@subsectionintoc {2}{1}{Diffusion approximation}{3}{0}{2}
+\beamer@subsectionintoc {2}{2}{Boundary and initial conditons}{4}{0}{2}
+\beamer@subsectionintoc {2}{3}{Discretization}{5}{0}{2}
+\beamer@sectionintoc {3}{Multiscale method}{8}{0}{3}
+\beamer@subsectionintoc {3}{1}{Algorithm}{8}{0}{3}
+\beamer@subsectionintoc {3}{2}{Neutron diffusion equation}{9}{0}{3}
+\beamer@subsectionintoc {3}{3}{Calculated formulas}{10}{0}{3}
+\beamer@sectionintoc {4}{Benchmark}{12}{0}{4}
+\beamer@subsectionintoc {4}{1}{General description}{12}{0}{4}
+\beamer@subsectionintoc {4}{2}{Software}{14}{0}{4}
+\beamer@subsectionintoc {4}{3}{Computational results}{15}{0}{4}
