@@ -1,0 +1,428 @@
+\documentclass[10pt,pdf,hyperref={unicode}]{beamer}
+
+\usepackage{graphicx}
+\graphicspath{{./figs/}}
+
+\mode<presentation> {
+	\usetheme{Warsaw}
+%	\usetheme{chpc}
+	  
+	\setbeamercovered{transparent}
+  % or whatever (possibly just delete it)
+}
+
+\usepackage[english]{babel}
+%\usepackage[utf8x]{inputenc}
+
+%\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage{pgfplots}
+
+\title[] % (optional, use only with long paper titles)
+{Multiscale Model Reduction \\for Neutron Diffusion Equation}
+
+%\subtitle
+%{Include Only If Paper Has a Subtitle}
+
+\author[] % (optional, use only with lots of authors)
+{Aleksandr Avvakumov \inst{1} \and Denis Spiridonov \inst{2} \\ 
+\and \underline{Aleksandr Vasilev \inst{2}}}
+% - Give the names in the same order as the appear in the paper.
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+
+\institute[Universities of Somewhere and Elsewhere] % (optional, but mostly needed)
+{
+\inst{1} National Research Center \textquotedblleft Kurchatov Institute\grqq, Moscow, Russia
+\\
+\vspace{1mm}
+\inst{2} North-Eastern Federal University, Yakutsk, Russia
+}
+
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+
+\date[September 9-12, 2020] % (optional, should be abbreviation of conference name)
+{4th MMR\& HPC, September 9-12, 2020 Sochi}
+% - Either use conference name or its abbreviation.
+% - Not really informative to the audience, more for people (including
+%   yourself) who are reading the slides online
+
+\subject{Theoretical Computer Science}
+% This is only inserted into the PDF information catalog. Can be left
+% out. 
+
+% Папка с рисунками
+\graphicspath{{./figs/}}
+\newcommand{\grad}{\mathop{\rm grad}\nolimits}
+\renewcommand{\div}{\mathop{\rm div}\nolimits}
+\newcommand{\const}{\mathop{\rm const}\nolimits}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%{
+%  \begin{frame}<beamer>
+%    \tableofcontents
+%  \end{frame}
+%}
+
+\section{Introduction}
+\begin{frame}{Introduction}
+	Real dynamic neutronic calculations require the use of large computational grids during large characteristic times. 
+	For these reasons, the reactor calculations can be very expensive.
+	\begin{center}
+		\includegraphics[width=0.7\linewidth] {plant.png}	
+	\end{center}
+	When solving these problems, it is common to use numerical averaging techniques or different multiscale methods that can significantly reduce the number of unknowns, through the construction of coarse-scale model.
+\end{frame}
+
+\begin{frame}{Equations}
+	Neutron transport equation: time, energy, spatial and angular variables (7 unknowns)
+
+	\begin{itemize}
+		\item Diffusion approximation: one-group, two-group, multi-group
+
+		\item Spherical Harmonics: P$_1$, ..., P$_N$ approximations
+		\item Simplified P$_N$: SP$_3$, ..., SP$_N$ approximations
+	\end{itemize}
+	
+	\begin{center}
+		\includegraphics[width=0.7\linewidth] {homer.jpg}	
+	\end{center}
+\end{frame}
+
+\section{Problem statement}
+\subsection{Diffusion approximation}
+\begin{frame}{Problem statement}
+	We consider a bounded 2D domain  $\Omega$ ($\bm x = \{x_1, x_2\} \in \Omega$) with a convex boundary $\partial \Omega$. 
+	The one-group transport equation in the diffusion approximation with one-group delayed neutron source can be written as follows
+	\begin{equation}\label{1}
+		\begin{split}
+			\frac{1}{v} \frac{\partial \phi}{\partial t} - \nabla \cdot D \nabla \phi + \Sigma_r \phi &= \frac{1 - \beta}{K_{eff}} \nu \Sigma_f \phi + \lambda c, \\
+			\frac{\partial c}{\partial t} + \lambda c &= \frac{\beta}{K_{eff}} \nu \Sigma_f \phi.
+		\end{split}
+	\end{equation}
+	Here $\phi(\bm x,t)$ is the neutron flux  at point $\bm x$ and time $t$,
+	$v$ is the effective neutron velocity,
+	$D(\bm x)$ is the diffusion coefficient, 
+	$\Sigma_r(\bm x,t)$ is the removal cross-section,
+	$\Sigma_f(\bm x,t)$ is the fission cross-section,
+	$\beta$ is the effective fraction of delayed neutrons, 
+	$\lambda$ is the decay constant of the delayed neutron source.
+\end{frame}
+
+\subsection{Boundary and initial conditons}
+\begin{frame}{Boundary and initial conditons}
+	Let's determine the boundary and initial conditions for Equation (\ref{1}).
+	The albedo-type conditions are set at the boundary  $\partial \Omega$:
+	\begin{equation}\label{2}
+		D\frac{\partial \phi}{\partial n} + \gamma \phi = 0,
+	\end{equation} 
+
+	where $n$ is an outer normal to the boundary $\partial \Omega$, $\gamma$ is the albedo constant.
+
+	\begin{center}
+		\includegraphics[width=0.1\linewidth] {boundary.png}
+	\end{center}
+
+	Let's propose that at the initial time t = 0, the reactor is in steady-state critical condition
+	\begin{equation}\label{3}
+		\phi(\bm x,0) = \phi^0(\bm x).
+	\end{equation}
+\end{frame}
+
+\subsection{Discretization}
+\begin{frame}{Time approximation}
+	To solve the problem within the domain $\Omega$, we approximate the system of equations (\ref1)-(\ref{3}) using the finite element method.
+	We discretize the time derivatives using finite-difference scheme, and then bring each stationary problem to a variational formulation. 
+	For approximation in time, we use a fully implicit scheme with time step $\tau$. 
+%	\vfill
+%	\begin{center}
+%		\includegraphics[width=0.3\linewidth] {Implicit.png}
+%	\end{center}
+\end{frame}
+
+\begin{frame}{Varitional formulation}
+	To specify the variational formulation, we multiply equations by the test function $q$ and integrate over the domain $\Omega$. 
+	Using the integration by parts, we obtain the following variational formulation: let's find $\phi^{n+1} \in V$ such that
+	\begin{equation} \label{4}
+	\begin{split}
+		\int_\Omega \frac{1}{v} \frac{\phi^{n+1}}{\tau} q d\bm x +
+		\int_\Omega D^{n+1} \nabla\phi^{n+1} \cdot \nabla q d\bm x &+ 
+		\int_\Omega \Sigma_r^{n+1} \phi^{n+1} q d\bm x - \\
+		\int_\Omega \frac{1+\lambda\tau-\beta}{K_{eff}(1+\lambda\tau)} \nu \Sigma_f^{n+1} \phi^{n+1} q d\bm x &+
+		\int_{\partial \Omega} \gamma \phi^{n+1} q d\bm s = \\
+		\int_\Omega \frac{1}{v} \frac{\phi^{n}}{\tau} q d\bm x +
+		\int_\Omega \frac{\lambda c^n}{1+\lambda\tau} q d\bm x &, \quad \forall q \in V,
+	\end{split}
+	\end{equation}
+	where $V=H^1(\Omega)$ is the Sobolev space consisting of scalar functions $\upsilon$ such that $\upsilon^2$ and $|\nabla \upsilon^2|$ have a finite integral in $\Omega$.
+\end{frame}
+
+\begin{frame}{Discrete problem}
+	Further, it's necessary to pass from the continuous variational problem (\ref{4}) to the discrete problem. 
+	We introduce finite-dimensional space of finite elements $V_h \subset V$ and formulate a discrete variational problem. 
+	We use standard linear basis functions as basis functions to solve the problem on the fine grid.
+	\vfill
+	\begin{center}
+		\includegraphics[width=0.4\linewidth] {triangle.png}
+	\end{center}
+	
+	The problem is solving a system of linear algebraic equations
+	\begin{equation}\label{5}
+		A_f \phi = b_f,
+	\end{equation}
+	where the operator $A_f$ corresponds to the left side of equation (\ref{4}), and the vector $b_f$ corresponds to the right side of equation (\ref{4}).
+\end{frame}
+
+
+\section{Multiscale method}
+\subsection{Multiscale method}
+\begin{frame}{Multiscale method}
+	For the discretization on the coarse grid we use Generalized Multiscale Finite Element Method
+(GMsFEM).   
+	\begin{center}
+		\includegraphics[width=0.5\linewidth] {mmr.jpeg}
+	\end{center}
+	GMsFEM involves two basic steps: 
+	\begin{enumerate}
+	\item The construction of multiscale basis functions that take into
+account small scale heterogeneities in local domains;
+	\item The construction of the coarse scale approximation.
+	\end{enumerate}
+\end{frame}
+
+\subsection{Calculation grid}
+\begin{frame}{Coarse and fine grids}
+	We construct two grids: fine grid ($\mathcal{T}_h$) and coarse grid ($\mathcal{T}_H$). 
+	We define local domains $\omega_i$, where $i = 1,...,N_v$ and $N_v$ is the number of coarse grid nodes.
+	%We assume that $\mathcal{T}_h$ is a refinement of $\mathcal{T}_H$, where $h$ and $H$ represent the fine and coarse grid sizes, respectively. 
+	%We assume that the fine-scale grid $\mathcal{T}_h$ is sufficiently fine to fully resolve the small-scale information of the domain  while $\mathcal{T}_H$ is a coarse grid containing many fine-scale features.
+
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.26\linewidth]{coarse_grid.png}
+		\hspace{2em}
+		\includegraphics[width=0.5\linewidth]{omega.png} 
+		\caption{Coarse grid and local domain $\omega_i$ with $K_j$}
+	\end{figure} 
+
+	A local domain $\omega_i$ is obtained by the combining all the coarse cells around one vertex of the coarse grid. 
+\end{frame}
+
+\subsection{Spectral problems}
+\begin{frame}{Spectral problems}
+	For the construction of the multiscale basic functions we solve spectral problems in local
+domains. 
+	Spectral problems help to identify the most important characteristics of the solution.
+	We use following spectral problem in $\omega_i$
+	\begin{equation} \label{6}
+		A \varphi^i = \lambda S \varphi^i,
+	\end{equation} 
+	where the elements of the matrices $A= \{ a_{ij} \}$ and $S = \{ s_{ij} \}$ are defined as follow{
+	\begin{equation} \label{7}
+	\begin{split}
+		a_{ij} = 
+		\int_{\omega_i} D \nabla\phi \cdot \nabla q d\bm x &+ 
+		\int_{\omega_i} \Sigma_r \phi q d\bm x - 
+		\int_{\omega_i} \frac{1+\lambda\tau-\beta}{K_{eff}(1+\lambda\tau)} \nu \Sigma_f \phi q d\bm x, \\
+		s_{ij} &= \int_{\omega _i} D u q d\bm x.
+	\end{split}
+	\end{equation}}
+
+	Then, we choose eigenvectors corresponding to dominant $M_{i}$ eigenvalues from \eqref{6} and use them to construct the multiscale basis functions.
+\end{frame}
+
+\subsection{Partition of unity functions}
+\begin{frame}{Partition of unity functions}
+	As  partition of unity functions, we use linear functions in each domain $\omega_i$.
+%	Partitions of unity are calculated in the domain $ K_j $ as a linear function from $\Gamma$ to the vertex $ A $, and $ 0 $ is assigned to the entire segment $\Gamma$, and at point $ A $ is assigned the value $1$. 
+	Thus, we obtain a linear function from $ 0 $ to $ 1 $ over the entire domain $ K_j $. 
+	Domain $K_j$  is one element from a coarse grid. 
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.3\linewidth]{pofs.png} 
+		\hspace{2em}
+		\includegraphics[width=0.3\linewidth]{pouK.png} 
+		\caption{Partirion of unity functions on the $\omega_i$ (right) and $K_j$ (left)}
+	\end{figure} 
+ 
+	The multiscale space is defined as the span of $y_i = \chi_i \varphi^i_k$, where $\chi_i$ is the usual nodal basis function for the node $i$ (linear partition of unity functions). 
+	The number of bases can be different, the accuracy of the solution can be improved when we increase the number of bases.
+\end{frame}
+
+\subsection{Coarse-scale approximation}
+\begin{frame}
+	Next, we create the following  matrix for each $\omega_i$
+	\[
+		R^i = \left[ y_1, \ldots, y_{M_i-1},  y_{M_i} \right].
+	\]
+	and define the transition matrix $R$ (transition from a fine grid to a coarse grid) to reduce the dimension of the problem
+	\[
+		R = [ R^1, R^2, ..., R^{N_v} ].
+	\]
+	Then using the transition matrix $R$ and fine grid system (\ref{5}), we construct the coarse grid approximation
+	\begin{equation}\label{9}
+		A_c \phi_c = b_c, \quad 
+		A_c = R A_f R^T 
+		\quad \text{ and } \quad 
+		b_c = R b_f,
+	\end{equation}  
+	and using the coarse-scale solution $\phi_c$, we can  reconstruct the fine grid solution 
+	\[
+		\phi_{ms} = R^T \phi_c.
+	\]
+\end{frame}
+
+\section{Numerical results}
+\subsection{Benchmark}
+\begin{frame}{Small PWR 2D}
+	Let's consider the 2D test problem for small PWR reactor ($\Omega$ --- reactor core area). 
+	\begin{figure}[h]
+  		\centering
+    	\includegraphics[width=0.3\linewidth] {smallpwr.png}
+		\caption{Geometrcial model of the small PWR-2D reactor core}
+	\end{figure} 
+	The diameter of the fuel rods is 0.82 cm, the cell width is 1.26 cm.
+	%Diffusion neutronics constants in the common notations are given in Table \ref{t1}. 
+	There are two types of cassettes, with fuel 1\% $UO_2$ and 2\% $UO_2$.
+	The reflective boundary conditions (\ref{2}) are used ($\gamma = 0$).
+	The following delayed neutrons parameters are used: $\beta = 6.5 \cdot 10^{-3}$, $\lambda = 0.08$ s$^{-1}$ and $v = 5 \cdot 10^5$ cm/s.
+\end{frame}
+
+\begin{frame}{Scenario}
+We define the next scenario of the process:
+\begin{itemize}
+\item The $\lambda$-spectral problem is solved and the solution is taken as the initial condition;
+\item Calculation for the non-stationary model at the time range from 0 to 0.4 sec;
+\item At $t=0.1$ sec and $t=0.3$ sec $\Sigma_a$ for fuel in the zone 1 changes to +2\% and -3\%, respectively (simulation of insertion or withdrawal of control rods).
+\end{itemize}
+At each time the integrated power is calculated as
+\[P(t) = a\int_{\Omega}\Sigma_f \phi d\bm x,\]
+where $a$ is the normalization coefficient, which corresponds to a given value of the integrated power.
+\end{frame}
+
+\subsection{Software}
+\begin{frame}{Software}
+\begin{center}
+    \includegraphics[width=0.49\linewidth] {slepc.png}
+    \vfill
+	\includegraphics[width=0.49\linewidth] {fenics.png}
+\end{center}
+\end{frame}
+
+\subsection{Computational results}
+\begin{frame}{Fine grid solution}
+	The fine grid contains 115891 vertices. 
+	The time step for both grids is $\tau = 0.001$.
+	As an exact solution, we take the fine-grid solution.
+	The initial value of $K_{eff}$ is 1.183280. 
+
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.55\linewidth]{power_fine.png} 
+		\caption{Integral power on the fine grid.}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Coarse grid solution}
+	The coarse grid contains $49$ vertices.
+	When using single basis, the error does not exceed 1\%, and for using 4 or more bases it does not exceed 0.01\%.
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.55\linewidth]{power.png} 
+		\caption{Relative errors ($\%$) of the multiscale solution power.}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{$L_2$ error}
+	We present relative $L_2$ errors of the multiscale solution vs. time for different number of multiscale basis functions.
+	The numerical results show good convergence behavior, provided that we take sufficient number of the multiscale basis functions.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.55\linewidth]{L2_log.png} 
+	\caption{Relative $L_2$ errors ($\%$) of the multiscale solution.}
+\end{figure} 
+\end{frame}
+
+\begin{frame}{$H_1$ error}
+	We present relative $H_1$ errors of the multiscale solution vs. time for different number of multiscale basis functions.
+	The numerical results show good convergence behavior, provided that we take sufficient number of the multiscale basis functions.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.55\linewidth]{H1.png} 
+	\caption{Relative $H_1$ errors ($\%$) of the multiscale solution.}
+\end{figure} 
+\end{frame}
+
+
+\begin{frame}{Errors at final time}
+	In Table we present relative $L_2$ and $H_1$ errors at final time for different number of the multiscale basis functions.
+	For example, when we use 8 spectral basis functions, we obtain $0.34\%$ for $L_2$ error and $7.18\%$ for $H_1$ error. 
+	Our calculations show that it is necessary to use 4 or more basis functions. 
+	\begin{table}[h]
+		\caption{Relative $L_2$ and $H_1$ errors ($\%$) of the solution at final time.}
+		\begin{center}
+		\begin{tabular}{|c|c|r|r|r|}
+			\hline
+			Number of bases & Number of DOF & $L_2$ error & $H_1$ error & Calc time\\
+			\hline
+			1 & 49 & 8.09 & 34.36 & 0.015 \\
+			2 & 98 & 4.32 & 26.73 & 0.018 \\
+			4 & 196 & 0.56 & 9.24 & 0.026 \\
+			8 & 392 & 0.34 & 7.18 & 0.056 \\
+			12 & 588 & 0.17 & 5.17 & 0.102 \\
+			16 & 784 & 0.13 & 4.43 & 0.239 \\
+			fine & 115891 & -- & -- & 6.816 \\
+			\hline
+		\end{tabular}
+		\end{center}
+	\end{table}
+\end{frame}
+
+\begin{frame}{Bases}
+	We present first four (of 16) multiscale basis functions in local domain $\omega_i$.
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1\linewidth]{basis.png} 
+		\caption{The first four multiscale basis functions.}
+	\end{figure} 
+\end{frame}
+
+\begin{frame}{Neutron flux}
+	The fine-grid solution and the multiscale solution (16 basis functions on each local domain) $\omega_i$ are shown in Figure. 
+	Relative errors are 0.13\% for $L_2$ and 4.43\% for $H_1$. 
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.75\linewidth]{flux.png} 
+		\caption{Fine grid (left) and multiscale solutions (right).}
+	\end{figure} 
+\end{frame}
+
+\section*{Conclusion}
+%\begin{frame}{Acknowledgements}
+%This work was supported by the grant of the Russian Science Foundation (\#19-71-00008).
+%\end{frame}
+
+\begin{frame}{Conclusion and future work}
+	A Generalized Multiscale Finite Element method was developed successfully for modeling neutron transport in one-group diffusion approxmimation.  
+	We presented an implementation of GMsFEM. 
+	We considered each step of GMsFEM algorithm.
+	The results showed that GMsFEM performed with a good accuracy in all considered cases.
+\vspace{1em}
+
+	In the current work, we considered the popular and simplest model of neutron transport equation.
+	Computational expenses are always an issue even for modern computers.
+	In the future, we will consider more complex models of neutron transport, such as $SP_3$ approximation. 
+\end{frame}
+
+\begin{frame}
+	\includegraphics[width=1\linewidth]{thanks.jpg} 
+\end{frame}
+
+\end{document}

@@ -68,10 +68,7 @@ Spectral problems allow identifying the most important characteristics of the so
 In contrast to the available techniques, this method allows to avoid the limitations associated with idealization and the applicability of the method.
 This method also more general technology that takes into account the different scale processes.
 The construction of basis functions occurs independently for each local domain and doesn't require information exchanges between processors, and the method is effective in a high parallelization.
-
-Basis functions are designed to capture the multiscale features of the solution. 
-Important multiscale features of the solution are incorporated into localized basis functions which contain information about the scales that are smaller (as well as larger) than the local numerical scale defined by the basis functions. 
-The computation of basis functions use local spectral problems to reduce the dimension of the local problem. 
+Using constructed multiscale basis functions, we construct a mathematical model on a coarse grid that allows to significant reduce the solution time, the amount of used memory, and can be used to perform calculations for a given configuration of  heterogeneous properties. 
 
 In this paper, we present numerical results for 2D small PWR test. 
 We compare the GMsFEM results with the fine-grid simulations. 
@@ -159,8 +156,11 @@ A local domain $\omega_i$ is obtained by the combining all the coarse cells arou
 \label{p1}
 \end{figure} 
 
-Using constructed multiscale basis functions, we construct a mathematical model on a coarse grid that allows to significant reduce the solution time, the amount of used memory, and can be used to perform calculations for a given configuration of  heterogeneous properties. 
-We construct the mutiscale function space
+%Basis functions are designed to capture the multiscale features of the solution. 
+%Important multiscale features of the solution are incorporated into localized basis functions which contain information about the scales that are smaller (as well as larger) than the local numerical scale defined by the basis functions. 
+%The computation of basis functions use local spectral problems to reduce the dimension of the local problem. 
+
+We construct the multiscale function space
 \[
 {V}_{\text{off}} = \mbox{span} \{ y_j \}_{j=1}^{N},
 \]
@@ -186,7 +186,7 @@ s_{ij} &= \int_{\omega _i} D u q d\bm x.
 \end{split}
 \end{equation}}
 
-{Then, we choose eigenvectors corresponding to dominant $M_{i}$ eigenvalues from \eqref{6} and use them to construct the multiscale basis functions.} 
+Then, we choose eigenvectors corresponding to dominant $M_{i}$ eigenvalues from \eqref{6} and use them to construct the multiscale basis functions.
 
 % POU
 \textbf{Partition of unity functions. } As  partition of unity functions, we use linear functions in each domain $\omega_i$.
