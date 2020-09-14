@@ -72,6 +72,7 @@
 %}
 
 \section{Introduction}
+\subsection{Introduction}
 \begin{frame}{Introduction}
 	Real dynamic neutronic calculations require the use of large computational grids during large characteristic times. 
 	For these reasons, the reactor calculations can be very expensive.
@@ -81,6 +82,7 @@
 	When solving these problems, it is common to use numerical averaging techniques or different multiscale methods that can significantly reduce the number of unknowns, through the construction of coarse-scale model.
 \end{frame}
 
+\subsection{Equations}
 \begin{frame}{Equations}
 	Neutron transport equation: time, energy, spatial and angular variables (7 unknowns)
 
@@ -108,10 +110,11 @@
 		\end{split}
 	\end{equation}
 	Here $\phi(\bm x,t)$ is the neutron flux  at point $\bm x$ and time $t$,
+	$c(\bm x, t)$ is density of sources of delayed neutrons,
 	$v$ is the effective neutron velocity,
-	$D(\bm x)$ is the diffusion coefficient, 
-	$\Sigma_r(\bm x,t)$ is the removal cross-section,
-	$\Sigma_f(\bm x,t)$ is the fission cross-section,
+	$D$ is the diffusion coefficient, 
+	$\Sigma_r$ is the removal cross-section,
+	$\nu\Sigma_f$ is the fission cross-section,
 	$\beta$ is the effective fraction of delayed neutrons, 
 	$\lambda$ is the decay constant of the delayed neutron source.
 \end{frame}
@@ -182,7 +185,7 @@
 
 
 \section{Multiscale method}
-\subsection{Multiscale method}
+\subsection{GMsFEM}
 \begin{frame}{Multiscale method}
 	For the discretization on the coarse grid we use Generalized Multiscale Finite Element Method
 (GMsFEM).   
@@ -257,7 +260,7 @@ domains.
 \end{frame}
 
 \subsection{Coarse-scale approximation}
-\begin{frame}
+\begin{frame}{Coarse-scale approximation}
 	Next, we create the following  matrix for each $\omega_i$
 	\[
 		R^i = \left[ y_1, \ldots, y_{M_i-1},  y_{M_i} \right].
