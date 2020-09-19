@@ -1,0 +1,19 @@
+\beamer@endinputifotherversion {3.36pt}
+\select@language {english}
+\beamer@sectionintoc {1}{Introduction}{2}{0}{1}
+\beamer@sectionintoc {2}{Multigroup diffusion approximation}{4}{0}{2}
+\beamer@subsectionintoc {2}{1}{Problem description}{4}{0}{2}
+\beamer@subsectionintoc {2}{2}{Initial and boundary conditions}{5}{0}{2}
+\beamer@subsectionintoc {2}{3}{Operator formulation}{6}{0}{2}
+\beamer@subsectionintoc {2}{4}{Discretization}{7}{0}{2}
+\beamer@sectionintoc {3}{State change modal method}{8}{0}{3}
+\beamer@subsectionintoc {3}{1}{State change scheme}{8}{0}{3}
+\beamer@subsectionintoc {3}{2}{Modal approximation}{9}{0}{3}
+\beamer@subsectionintoc {3}{3}{Time scale processes}{11}{0}{3}
+\beamer@subsectionintoc {3}{4}{Adjoint spectral problem}{12}{0}{3}
+\beamer@subsectionintoc {3}{5}{Computation scheme}{13}{0}{3}
+\beamer@sectionintoc {4}{The test}{14}{0}{4}
+\beamer@subsectionintoc {4}{1}{Hardware and Software}{14}{0}{4}
+\beamer@subsectionintoc {4}{2}{Genaral description}{16}{0}{4}
+\beamer@subsectionintoc {4}{3}{One delayed group}{17}{0}{4}
+\beamer@subsectionintoc {4}{4}{Six delayed group}{31}{0}{4}
