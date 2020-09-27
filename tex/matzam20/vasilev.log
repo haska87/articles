@@ -1,13 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.9.5)  17 SEP 2020 20:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.9.5)  21 SEP 2020 19:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **vasilev.tex
 (./vasilev.tex
 LaTeX2e <2020-02-02> patch level 5
-L3 programming layer <2020-09-03> (./llncs.cls
-Document Class: llncs 2018/03/10 v2.20 
- LaTeX document class for Lecture Notes in Computer Science
+L3 programming layer <2020-09-03>
 (c:/texlive/2020/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
 (c:/texlive/2020/texmf-dist/tex/latex/base/size10.clo
@@ -25,136 +23,12 @@ File: size10.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
 \belowcaptionskip=\skip48
 \bibindent=\dimen134
 )
-(c:/texlive/2020/texmf-dist/tex/latex/tools/multicol.sty
-Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
-\c@tracingmulticols=\count176
-\mult@box=\box45
-\multicol@leftmargin=\dimen135
-\c@unbalance=\count177
-\c@collectmore=\count178
-\doublecol@number=\count179
-\multicoltolerance=\count180
-\multicolpretolerance=\count181
-\full@width=\dimen136
-\page@free=\dimen137
-\premulticols=\dimen138
-\postmulticols=\dimen139
-\multicolsep=\skip49
-\multicolbaselineskip=\skip50
-\partial@page=\box46
-\last@line=\box47
-\maxbalancingoverflow=\dimen140
-\mult@rightbox=\box48
-\mult@grightbox=\box49
-\mult@gfirstbox=\box50
-\mult@firstbox=\box51
-\@tempa=\box52
-\@tempa=\box53
-\@tempa=\box54
-\@tempa=\box55
-\@tempa=\box56
-\@tempa=\box57
-\@tempa=\box58
-\@tempa=\box59
-\@tempa=\box60
-\@tempa=\box61
-\@tempa=\box62
-\@tempa=\box63
-\@tempa=\box64
-\@tempa=\box65
-\@tempa=\box66
-\@tempa=\box67
-\@tempa=\box68
-\@tempa=\box69
-\@tempa=\box70
-\@tempa=\box71
-\@tempa=\box72
-\@tempa=\box73
-\@tempa=\box74
-\@tempa=\box75
-\@tempa=\box76
-\@tempa=\box77
-\@tempa=\box78
-\@tempa=\box79
-\@tempa=\box80
-\@tempa=\box81
-\@tempa=\box82
-\@tempa=\box83
-\@tempa=\box84
-\@tempa=\box85
-\@tempa=\box86
-\@tempa=\box87
-\@tempa=\box88
-\c@minrows=\count182
-\c@columnbadness=\count183
-\c@finalcolumnbadness=\count184
-\last@try=\dimen141
-\multicolovershoot=\dimen142
-\multicolundershoot=\dimen143
-\mult@nat@firstbox=\box89
-\colbreak@box=\box90
-\mc@col@check@num=\count185
-)
-(c:/texlive/2020/texmf-dist/tex/latex/oberdiek/aliascnt.sty
-Package: aliascnt 2018/09/07 v1.5 Alias counters (HO)
-)
-\c@chapter=\count186
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 362.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 363.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 364.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 365.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 366.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 367.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 368.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 369.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 370.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 371.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 372.
-\tocchpnum=\dimen144
-\tocsecnum=\dimen145
-\tocsectotal=\dimen146
-\tocsubsecnum=\dimen147
-\tocsubsectotal=\dimen148
-\tocsubsubsecnum=\dimen149
-\tocsubsubsectotal=\dimen150
-\tocparanum=\dimen151
-\tocparatotal=\dimen152
-\tocsubparanum=\dimen153
-\@tempcntc=\count187
-\fnindent=\dimen154
-\c@@inst=\count188
-\c@@auth=\count189
-\c@auco=\count190
-\instindent=\dimen155
-\authrun=\box91
-\authorrunning=\toks15
-\tocauthor=\toks16
-\titrun=\box92
-\titlerunning=\toks17
-\toctitle=\toks18
-\c@theorem=\count191
-\c@case=\count192
-\c@conjecture=\count193
-\c@corollary=\count194
-\c@definition=\count195
-\c@example=\count196
-\c@exercise=\count197
-\c@lemma=\count198
-\c@note=\count199
-\c@problem=\count266
-\c@property=\count267
-\c@proposition=\count268
-\c@question=\count269
-\c@solution=\count270
-\c@remark=\count271
-\headlineindent=\dimen156
-)
 (c:/texlive/2020/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
 
 (c:/texlive/2020/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks19
+\KV@toks@=\toks15
 )
 (c:/texlive/2020/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
@@ -170,12 +44,12 @@ Package graphics Info: Driver file: pdftex.def on input line 105.
 (c:/texlive/2020/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2020/08/26 v1.2 Graphics/color driver for pdftex
 ))
-\Gin@req@height=\dimen157
-\Gin@req@width=\dimen158
+\Gin@req@height=\dimen135
+\Gin@req@width=\dimen136
 )
 (c:/texlive/2020/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2020/01/20 v2.17e AMS math features
-\@mathmargin=\skip51
+\@mathmargin=\skip49
 
 For additional information on amsmath, use the `?' option.
 (c:/texlive/2020/texmf-dist/tex/latex/amsmath/amstext.sty
@@ -183,51 +57,51 @@ Package: amstext 2000/06/29 v2.01 AMS text
 
 (c:/texlive/2020/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks20
-\ex@=\dimen159
+\@emptytoks=\toks16
+\ex@=\dimen137
 ))
 (c:/texlive/2020/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen160
+\pmbraise@=\dimen138
 )
 (c:/texlive/2020/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count272
+\inf@bad=\count176
 LaTeX Info: Redefining \frac on input line 227.
-\uproot@=\count273
-\leftroot@=\count274
+\uproot@=\count177
+\leftroot@=\count178
 LaTeX Info: Redefining \overline on input line 389.
-\classnum@=\count275
-\DOTSCASE@=\count276
+\classnum@=\count179
+\DOTSCASE@=\count180
 LaTeX Info: Redefining \ldots on input line 486.
 LaTeX Info: Redefining \dots on input line 489.
 LaTeX Info: Redefining \cdots on input line 610.
-\Mathstrutbox@=\box93
-\strutbox@=\box94
-\big@size=\dimen161
+\Mathstrutbox@=\box45
+\strutbox@=\box46
+\big@size=\dimen139
 LaTeX Font Info:    Redeclaring font encoding OML on input line 733.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 734.
-\macc@depth=\count277
-\c@MaxMatrixCols=\count278
+\macc@depth=\count181
+\c@MaxMatrixCols=\count182
 \dotsspace@=\muskip16
-\c@parentequation=\count279
-\dspbrk@lvl=\count280
-\tag@help=\toks21
-\row@=\count281
-\column@=\count282
-\maxfields@=\count283
-\andhelp@=\toks22
-\eqnshift@=\dimen162
-\alignsep@=\dimen163
-\tagshift@=\dimen164
-\tagwidth@=\dimen165
-\totwidth@=\dimen166
-\lineht@=\dimen167
-\@envbody=\toks23
-\multlinegap=\skip52
-\multlinetaggap=\skip53
-\mathdisplay@stack=\toks24
+\c@parentequation=\count183
+\dspbrk@lvl=\count184
+\tag@help=\toks17
+\row@=\count185
+\column@=\count186
+\maxfields@=\count187
+\andhelp@=\toks18
+\eqnshift@=\dimen140
+\alignsep@=\dimen141
+\tagshift@=\dimen142
+\tagwidth@=\dimen143
+\totwidth@=\dimen144
+\lineht@=\dimen145
+\@envbody=\toks19
+\multlinegap=\skip50
+\multlinetaggap=\skip51
+\mathdisplay@stack=\toks20
 LaTeX Info: Redefining \[ on input line 2859.
 LaTeX Info: Redefining \] on input line 2860.
 )
@@ -257,15 +131,15 @@ Package: cite 2015/02/27  v 5.5
 )
 (c:/texlive/2020/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
-\multirow@colwidth=\skip54
-\multirow@cntb=\count284
-\multirow@dima=\skip55
-\bigstrutjot=\dimen168
+\multirow@colwidth=\skip52
+\multirow@cntb=\count188
+\multirow@dima=\skip53
+\bigstrutjot=\dimen146
 )
 (c:/texlive/2020/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2020-09-01 L3 backend support: PDF output (pdfTeX)
-\l__kernel_color_stack_int=\count285
-\l__pdf_internal_box=\box95
+\l__kernel_color_stack_int=\count189
+\l__pdf_internal_box=\box47
 )
 (./vasilev.aux)
 \openout1 = `vasilev.aux'.
@@ -286,17 +160,17 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
 LaTeX Font Info:    ... okay on input line 13.
  (c:/texlive/2020/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count286
-\scratchdimen=\dimen169
-\scratchbox=\box96
-\nofMPsegments=\count287
-\nofMParguments=\count288
-\everyMPshowfont=\toks25
-\MPscratchCnt=\count289
-\MPscratchDim=\dimen170
-\MPnumerator=\count290
-\makeMPintoPDFobject=\count291
-\everyMPtoPDFconversion=\toks26
+\scratchcounter=\count190
+\scratchdimen=\dimen147
+\scratchbox=\box48
+\nofMPsegments=\count191
+\nofMParguments=\count192
+\everyMPshowfont=\toks21
+\MPscratchCnt=\count193
+\MPscratchDim=\dimen148
+\MPnumerator=\count194
+\makeMPintoPDFobject=\count195
+\everyMPtoPDFconversion=\toks22
 ) (c:/texlive/2020/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -306,125 +180,142 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Trying to load font information for U+msa on input line 26.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 38.
 
 
 (c:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 26.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 38.
 
 
 (c:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [2]
-[3]
-<./figs/coarse_grid.png, id=26, 805.0075pt x 805.0075pt>
+{c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
+<./figs/coarse_grid.png, id=31, 805.0075pt x 805.0075pt>
 File: ./figs/coarse_grid.png Graphic file (type png)
 <use ./figs/coarse_grid.png>
-Package pdftex.def Info: ./figs/coarse_grid.png  used on input line 153.
-(pdftex.def)             Requested size: 104.1381pt x 104.13875pt.
-<./figs/omega.png, id=27, 841.64438pt x 440.39531pt>
+Package pdftex.def Info: ./figs/coarse_grid.png  used on input line 170.
+(pdftex.def)             Requested size: 103.50105pt x 103.5pt.
+<./figs/omega.png, id=32, 841.64438pt x 440.39531pt>
 File: ./figs/omega.png Graphic file (type png)
 <use ./figs/omega.png>
-Package pdftex.def Info: ./figs/omega.png  used on input line 155.
-(pdftex.def)             Requested size: 197.86295pt x 103.5265pt.
- [4 <./figs/coarse_grid.png> <./figs/omega.png>]
-<./figs/pofs.png, id=36, 728.7225pt x 630.355pt>
+Package pdftex.def Info: ./figs/omega.png  used on input line 172.
+(pdftex.def)             Requested size: 196.65253pt x 102.89484pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[4]
+<./figs/pofs.png, id=39, 728.7225pt x 630.355pt>
 File: ./figs/pofs.png Graphic file (type png)
 <use ./figs/pofs.png>
-Package pdftex.def Info: ./figs/pofs.png  used on input line 200.
-(pdftex.def)             Requested size: 156.20453pt x 135.11008pt.
-<./figs/pouK.png, id=37, 715.67375pt x 632.3625pt>
+Package pdftex.def Info: ./figs/pofs.png  used on input line 216.
+(pdftex.def)             Requested size: 155.24895pt x 134.29251pt.
+<./figs/pouK.png, id=40, 715.67375pt x 632.3625pt>
 File: ./figs/pouK.png Graphic file (type png)
 <use ./figs/pouK.png>
-Package pdftex.def Info: ./figs/pouK.png  used on input line 202.
-(pdftex.def)             Requested size: 156.20453pt x 138.02019pt.
- [5 <./figs/pofs.png> <./figs/pouK.png>]
-<./figs/smallpwr.png, id=45, 368.37625pt x 368.37625pt>
+Package pdftex.def Info: ./figs/pouK.png  used on input line 218.
+(pdftex.def)             Requested size: 155.24895pt x 137.17107pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[5 <./figs/coarse_grid.png> <./figs/omega.png>]
+<./figs/smallpwr.png, id=47, 368.37625pt x 368.37625pt>
 File: ./figs/smallpwr.png Graphic file (type png)
 <use ./figs/smallpwr.png>
-Package pdftex.def Info: ./figs/smallpwr.png  used on input line 245.
-(pdftex.def)             Requested size: 173.56177pt x 173.55843pt.
- [6 <./figs/smallpwr.png>]
-<./figs/power_fine.png, id=50, 399.6531pt x 302.0886pt>
+Package pdftex.def Info: ./figs/smallpwr.png  used on input line 261.
+(pdftex.def)             Requested size: 172.5pt x 172.49606pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[6 <./figs/pofs.png> <./figs/pouK.png>]
+<./figs/power_fine.png, id=54, 399.6531pt x 302.0886pt>
 File: ./figs/power_fine.png Graphic file (type png)
 <use ./figs/power_fine.png>
-Package pdftex.def Info: ./figs/power_fine.png  used on input line 288.
-(pdftex.def)             Requested size: 156.20453pt x 118.0722pt.
-<./figs/power.png, id=51, 414.1071pt x 300.6432pt>
+Package pdftex.def Info: ./figs/power_fine.png  used on input line 304.
+(pdftex.def)             Requested size: 155.24895pt x 117.34851pt.
+<./figs/power.png, id=55, 414.1071pt x 300.6432pt>
 File: ./figs/power.png Graphic file (type png)
 <use ./figs/power.png>
-Package pdftex.def Info: ./figs/power.png  used on input line 290.
-(pdftex.def)             Requested size: 156.20453pt x 113.4061pt.
- [7 <./figs/power_fine.png> <./figs/power.png>]
-<./figs/L2_log.png, id=58, 416.9979pt x 302.0886pt>
+Package pdftex.def Info: ./figs/power.png  used on input line 306.
+(pdftex.def)             Requested size: 155.24895pt x 112.7134pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<./figs/L2_log.png, id=56, 416.9979pt x 302.0886pt>
 File: ./figs/L2_log.png Graphic file (type png)
 <use ./figs/L2_log.png>
-Package pdftex.def Info: ./figs/L2_log.png  used on input line 303.
-(pdftex.def)             Requested size: 156.20453pt x 113.16309pt.
-<./figs/H1.png, id=59, 406.1574pt x 300.6432pt>
+Package pdftex.def Info: ./figs/L2_log.png  used on input line 319.
+(pdftex.def)             Requested size: 155.24895pt x 112.46706pt.
+<./figs/H1.png, id=57, 406.1574pt x 300.6432pt>
 File: ./figs/H1.png Graphic file (type png)
 <use ./figs/H1.png>
-Package pdftex.def Info: ./figs/H1.png  used on input line 305.
-(pdftex.def)             Requested size: 156.20453pt x 115.62183pt.
-<./figs/basis.png, id=60, 3176.86874pt x 583.17876pt>
+Package pdftex.def Info: ./figs/H1.png  used on input line 321.
+(pdftex.def)             Requested size: 155.24895pt x 114.91536pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[7 <./figs/smallpwr.png>]
+<./figs/basis.png, id=63, 3176.86874pt x 583.17876pt>
 File: ./figs/basis.png Graphic file (type png)
 <use ./figs/basis.png>
-Package pdftex.def Info: ./figs/basis.png  used on input line 338.
-(pdftex.def)             Requested size: 329.7663pt x 60.52814pt.
+Package pdftex.def Info: ./figs/basis.png  used on input line 354.
+(pdftex.def)             Requested size: 327.74895pt x 60.16328pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<./figs/flux.png, id=61, 1201.48875pt x 661.47125pt>
+<./figs/flux.png, id=64, 1201.48875pt x 661.47125pt>
 File: ./figs/flux.png Graphic file (type png)
 <use ./figs/flux.png>
-Package pdftex.def Info: ./figs/flux.png  used on input line 345.
-(pdftex.def)             Requested size: 260.34265pt x 143.32379pt.
+Package pdftex.def Info: ./figs/flux.png  used on input line 361.
+(pdftex.def)             Requested size: 258.75pt x 142.44568pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [8 <./figs/L2_log.png> <./figs/H1.png>] [9 <./figs/basis.png> <./figs/flux.png
- (PNG copy)>] [10] (./vasilev.aux) ) 
+[8 <./figs/power_fine.png> <./figs/power.png> <./figs/L2_log.png> <./figs/H1.pn
+g>] [9 <./figs/basis.png> <./figs/flux.png (PNG copy)>] [10] (./vasilev.aux) ) 
 Here is how much of TeX's memory you used:
- 3059 strings out of 480880
- 38896 string characters out of 5911595
- 289368 words of memory out of 5000000
- 18635 multiletter control sequences out of 15000+600000
- 546551 words of font info for 71 fonts, out of 8000000 for 9000
+ 2664 strings out of 480880
+ 34271 string characters out of 5911595
+ 274993 words of memory out of 5000000
+ 18241 multiletter control sequences out of 15000+600000
+ 551349 words of font info for 88 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,16n,33p,293b,307s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2020/texmf-dist/fonts/enc/dvips
-/cm-super/cm-super-ts1.enc}<c:/texlive/2020/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmbx10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-bx12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><
-c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texliv
-e/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2020/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2020/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2020/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmmi9.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmmib10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pf
-b><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texli
-ve/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2020/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><c:/texlive/2020/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmsy7.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmti9.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mtt9.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb>
-Output written on vasilev.pdf (10 pages, 2004197 bytes).
+ 36i,16n,33p,293b,282s stack positions out of 5000i,500n,10000p,200000b,80000s
+{
+c:/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texliv
+e/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2020/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2020/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmbx8.pfb><c:/texlive/2020/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmbx9.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmex10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmmi10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.p
+fb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/tex
+live/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2020/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><c:/texlive/2020/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2020/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr17.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr6.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pf
+b><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texli
+ve/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><c:/texlive/2020/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2020/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2020/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmsy8.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmti9.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfbx0800.pfb>
+<c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on vasilev.pdf (10 pages, 2038650 bytes).
 PDF statistics:
- 135 PDF objects out of 1000 (max. 8388607)
- 83 compressed objects within 1 object stream
+ 155 PDF objects out of 1000 (max. 8388607)
+ 98 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  56 words of extra memory for PDF output out of 10000 (max. 10000000)
 

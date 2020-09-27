@@ -1,4 +1,4 @@
-\documentclass[runningheads]{llncs}
+\documentclass[10pt]{article}
 
 \usepackage{graphicx}
 \graphicspath{{./figs/}}
@@ -14,16 +14,35 @@
 
 \title{Multiscale model reduction for neutron diffusion equation}
 
-\author{A.O. Vasilev\inst{1} \and D.A. Spiridonov\inst{1} \and A.V. Avvakumov\inst{2} }
-
-\authorrunning{A.O. Vasilev, D.A. Spiridonov \and A.V. Avvakumov}
-
-\institute{North-Eastern Federal University, Yakutsk, Russia \and
-National Research Center \emph{Kurchatov Institute}, Moscow, Russia\\
-\email{haska87@gmail.com}
+\author{
+A.O. Vasilev$^{1,*}$,
+D.A. Spiridonov$^1$,
+A.V. Avvakumov$^2$ \\
+\\
+\small
+$^1$North-Eastern Federal University, Yakutsk, Russia \\
+\small
+$^2$National Research Center \emph{Kurchatov Institute}, Moscow, Russia \\
+\small
+$^*$haska87@gmail.com
 }
 
+\date{}
+
+%\institute{
+%North-Eastern Federal University, Yakutsk, Russia \and
+%National Research Center \emph{Kurchatov Institute}, Moscow, Russia\\
+%\email{haska87@gmail.com}
+%}
+
 \maketitle
+UDC 519.63
+
+$$\footnotetext{
+\medskip
+This work was supported by the grant of the Russian Science Foundation (\#19-71-00008).
+\bf{\copyright 2020 A.O.~Vasilev, D.A.~Spiridonov, A.V.~Avvakumov \\}
+}$$
 
 \begin{abstract}
 In this paper, we attempt to employ a model reduction technique based on the multiscale method for neutron diffusion equation. 
@@ -32,12 +51,10 @@ The proposed method is based on the use of a generalized multiscale finite eleme
 The main idea is to create multiscale basis functions that can be used to effectively solve on a coarse grid.
 From calculation results, we obtain that multiscale basis functions can properly take into account the small-scale characteristics of the medium and provide accurate solutions. 
 
-\keywords{parabolic equation \and neutron diffusion \and multiscale simulation \and generalized multiscale finite element method (GMsFEM)}
-
+\textbf{Keywords: }{parabolic equation, neutron diffusion, multiscale simulation, generalized multiscale finite element method (GMsFEM)}
 \end{abstract}
 
 \section{Introduction}
-
 Among the basic physical processes occurring in a nuclear reactor \cite{Duderstadt1976}, the focus is on neutron transport. 
 To predict the neutron distribution, a rather complex integro-differential equation is involved; besides, the neutron flux distribution depends on time, energy, spatial and angular variables \cite{Stacey2007}.
 In practical calculations of nuclear reactors, as a rule,  different approximative forms of the neutron transport equation are used. For example, the most neutronics codes are based on the multigroup diffusion equations.
@@ -157,10 +174,6 @@ A local domain $\omega_i$ is obtained by the combining all the coarse cells arou
 \label{p1}
 \end{figure} 
 
-%Basis functions are designed to capture the multiscale features of the solution. 
-%Important multiscale features of the solution are incorporated into localized basis functions which contain information about the scales that are smaller (as well as larger) than the local numerical scale defined by the basis functions. 
-%The computation of basis functions use local spectral problems to reduce the dimension of the local problem. 
-
 We construct the multiscale function space
 \[
 {V}_{\text{off}} = \mbox{span} \{ y_j \}_{j=1}^{N},
@@ -168,9 +181,12 @@ We construct the multiscale function space
 where $N$ is the number of coarse basis functions.
 Each $y_j$ is supported in local domain $w_i$.
 
+Basis functions are designed to capture the multiscale features of the solution. 
+Important multiscale features of the solution are incorporated into localized basis functions which contain information about the scales that are smaller (as well as larger) than the local numerical scale defined by the basis functions. 
+
 % spectral
 \textbf{Multiscale space.}
-The first step is the solution of local spectral problems on local domains.  
+The computation of basis functions use local spectral problems to reduce the dimension of the local problem. 
 In order to construct conforming basis functions, we multiply eigenvectors related to dominant eigenvalues to the partition of unity functions.
 We use following spectral problem in $\omega_i$
 \begin{equation} \label{6}
@@ -357,8 +373,8 @@ In the current work, we considered the most popular and simplest model of neutro
 Computational expenses are always an issue even for modern computers.
 In the future, we will consider more complex models of neutron transport, such as $SP_3$ approximation. 
 
-\section*{Acknowledgements}
-This work was supported by the grant of the Russian Science Foundation (\#19-71-00008).
+%\section*{Acknowledgements}
+%This work was supported by the grant of the Russian Science Foundation (\#19-71-00008).
 
 \begin{thebibliography}{8}
 \bibitem{Duderstadt1976}

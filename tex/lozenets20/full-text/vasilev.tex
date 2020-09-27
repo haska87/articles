@@ -11,28 +11,20 @@
 \usepackage{multirow}
 
 \begin{document}
-%
+
 \title{Multiscale model reduction for neutron diffusion equation}
-%
-%\titlerunning{Abbreviated paper title}
-% If the paper title is too long for the running head, you can set
-% an abbreviated paper title here
-%
-\author{A.O. Vasilev\inst{1} \and 
-D.A. Spiridonov\inst{1} \and
-A.V. Avvakumov\inst{2} }
-%
+
+\author{A.O. Vasilev\inst{1} \and D.A. Spiridonov\inst{1} \and A.V. Avvakumov\inst{2} }
+
 \authorrunning{A.O. Vasilev, D.A. Spiridonov \and A.V. Avvakumov}
-% First names are abbreviated in the running head.
-% If there are more than two authors, 'et al.' is used.
-%
+
 \institute{North-Eastern Federal University, Yakutsk, Russia \and
 National Research Center \emph{Kurchatov Institute}, Moscow, Russia\\
 \email{haska87@gmail.com}
 }
-%
-\maketitle              % typeset the header of the contribution
-%
+
+\maketitle
+
 \begin{abstract}
 In this paper, we attempt to employ a model reduction technique based on the multiscale method for neutron diffusion equation. 
 The neutron diffusion approximation is widely used for reactor analysis and applied in most engineering calculation codes. 
@@ -40,29 +32,37 @@ The proposed method is based on the use of a generalized multiscale finite eleme
 The main idea is to create multiscale basis functions that can be used to effectively solve on a coarse grid.
 From calculation results, we obtain that multiscale basis functions can properly take into account the small-scale characteristics of the medium and provide accurate solutions. 
 
-\keywords{parabolic equation \and neutron diffusion \and multiscale simulation \and generalized multiscale finite element method (GMsFEM)}
+\keywords{parabolic equation, neutron diffusion, multiscale simulation, generalized multiscale finite element method (GMsFEM)}
+
 \end{abstract}
 
 \section{Introduction}
+
 Among the basic physical processes occurring in a nuclear reactor \cite{Duderstadt1976}, the focus is on neutron transport. 
 To predict the neutron distribution, a rather complex integro-differential equation is involved; besides, the neutron flux distribution depends on time, energy, spatial and angular variables \cite{Stacey2007}.
 In practical calculations of nuclear reactors, as a rule,  different approximative forms of the neutron transport equation are used. For example, the most neutronics codes are based on the multigroup diffusion equations.
 The computational model is a system of coupled second-order parabolic equations, which is supplemented by a system of ordinary differential equations to take into account delayed neutrons.
 
+The stationary state of neutron flux, which is related to the critical state of the reactor, is characterised by local balancing of neutron absorption and generation. 
+This boundary state is usually described by solution of a spectral problem (Lambda Modes problem \cite{Verdu1994, Annals2017, Munoz2019}) provided that the fundamental eigenvalue (maximal eigenvalue) that is called k-effective of the reactor core, is equal to unity. 
+In this case, the stationary neutron field is related with the corresponding eigenfunction.
+Computations of k-effective of the reactor using the Lambda Modes problem are obligatory for reactor design calculations.
+
 Real dynamic neutronic calculations require the use of large computational grids during large characteristic times. For these reasons, the reactor calculations can be very expensive.
 When solving these problems, it is common to use numerical averaging techniques or different multiscale methods that can significantly reduce the number of unknowns, through the construction of coarse-scale model.
-Also note a class of methods for modeling the nonstationary  neutron diffusion, which is associated with the multiplicative representation of the space-time factorization methods and the quasistatic method \cite{dulla2008quasi}. The general strategy for the approximate solution of the nonstationary problems of neutron transport, which is oriented to fast calculations using the state change modal method was formulated in \cite{Progress18}.
+Also note a class of methods for modelling the non-stationary  neutron diffusion, which is associated with the multiplicative representation of the space-time factorization methods and the quasistatic method \cite{dulla2008quasi, Carreno2019}. 
+The general strategy for the approximate solution of the non-stationary problems of neutron transport, which is oriented to fast calculations using the state change modal method was formulated in \cite{Progress2018}.
 
 Homogenization methods are used for coarse-grid approximation and allow calculating the effective properties of the domain.
-As a result, the methods of numerical homogenization establish macroscopic laws on the basis of local computations, but such approaches are usually based on a priori formulated assumptions, see e.g. \cite{Stalnov2017,Bakhvalov2012}. 
+As a result, the methods of numerical homogenization establish macroscopic laws on the basis of local computations, but such approaches are usually based on a priori formulated assumptions, see e.g. \cite{Stalnov2017,Bakhvalov2012, Vidal2018}. 
 On the other hand, multiscale methods construct multiscale basis functions in each coarse-grid block and couple these basis functions in a global formulation. 
 These methods have a two-way information exchange between micro- and macro-scales. 
 There are many variations of multiscale finite element methods (MsFEM).
 A detailed description of several variations of the method is presented in \cite{Efendiev2009}.
 
-In this paper, we propose a Generalized Multiscale Finite Element Method (GMsFEM \cite{Spiridonov2019}) to solve the neutron diffusion equation. 
+In this paper, we propose a Generalized Multiscale Finite Element Method (GMsFEM \cite{Efendiev2013, Spiridonov2019}) to solve the neutron diffusion equation. 
 The main idea of the GMsFEM is the dimensionality reduction of the problem. 
-GMsFEM  involves two basic steps: (a) the construction of multiscale basis functions that take into account small scale heterogeneities in local domains and (b) the construction of the coarse scale approximation. 
+GMsFEM  involves two basic steps: the construction of multiscale basis functions that take into account small scale heterogeneities in local domains and the construction of the coarse scale approximation. 
 For the construction of the multiscale basis functions we solve spectral problems in local domains.
 Spectral problems allow identifying the most important characteristics of the solution. 
 In contrast to the available techniques, this method allows to avoid the limitations associated with idealization and the applicability of the method.
@@ -88,8 +88,9 @@ The one-group transport equation in the diffusion approximation with one-group d
 \end{split}
 \end{equation} 
 Here $\phi(\bm x,t)$ is the neutron flux  at point $\bm x$ and time $t$,
+$c(\bm x,t)$ is density of sources of delayed neutrons,
 $v$ is the effective neutron velocity,
-$D(\bm x)$ is the diffusion coefficient, 
+$D(\bm x, t)$ is the diffusion coefficient, 
 $\Sigma_r(\bm x,t)$ is the removal cross-section,
 $\Sigma_f(\bm x,t)$ is the fission cross-section,
 $\beta$ is the effective fraction of delayed neutrons, 
@@ -101,12 +102,13 @@ The albedo-type conditions are set at the boundary  $\partial \Omega$:
  D\frac{\partial \phi}{\partial n} + \gamma \phi = 0,
 \end{equation} 
 where $n$ is an outer normal to the boundary $\partial \Omega$, $\gamma$ is the albedo constant.
+
 Let's propose that at the initial time t = 0, the reactor is in steady-state critical condition
 \begin{equation}\label{3}
  \phi(\bm x,0) = \phi^0(\bm x).
 \end{equation} 
 %Let's consider problem (\ref{1}) with boundary conditions (\ref{2}) and initial conditions (\ref{3}).
-To solve the problem within the domain $\Omega$, we approximate the system of equations (\ref1)-(\ref{3}) using the finite element method.
+To solve the problem within the domain $\Omega$, we approximate the system of equations (\ref1)-(\ref{3}) using the finite element method \cite{Brenner2007}.
 We discretize the time derivatives using finite-difference scheme, and then bring each stationary problem to a variational formulation. 
 For approximation in time, we use a fully implicit scheme with time step $\tau$. 
 To specify the variational formulation, we multiply equations by the test function $q$ and integrate over the domain $\Omega$. 
@@ -126,12 +128,11 @@ where $V=H^1(\Omega)$ is the Sobolev space consisting of scalar functions $\upsi
 
 Further, it's necessary to pass from the continuous variational problem (\ref{4}) to the discrete problem. 
 We introduce finite-dimensional space of finite elements $V_h \subset V$ and formulate a discrete variational problem. 
-We use standard linear basis functions as basis functions to solve the problem on the fine grid.
-%and
-%\[
-%\phi = \sum_{i = 1}^{N_f} \phi_i y_i,
-%\] 
-%where $N_f$ is the nunber of vertices on the fine grid.
+We use standard linear basis functions as basis functions to solve the problem on the fine grid and
+\[
+\phi = \sum_{i = 1}^{N_f} \phi_i y_i,
+\] 
+where $N_f$ is the number of vertices on the fine grid.
 
 The problem is solving a system of linear algebraic equations
 \begin{equation}\label{5}
@@ -199,7 +200,7 @@ Domain $K_j$  is one element from a coarse grid.
 \includegraphics[width=0.45\linewidth]{pofs.png} 
 \hspace{2em}
 \includegraphics[width=0.45\linewidth]{pouK.png} 
-\caption{Partirion of unity functions on the $\omega_i$ (right) and $K_j$ (left)}
+\caption{Partition of unity functions on the $\omega_i$ (right) and $K_j$ (left)}
 \label{p2}
 \end{figure} 
  
@@ -242,14 +243,14 @@ The following delayed neutrons parameters are used: $\beta = 6.5 \cdot 10^{-3}$,
 \begin{figure}[h]
   \begin{center}
     \includegraphics[width=0.5\linewidth] {smallpwr.png}
-	\caption{Geometrcial model of the small PWR-2D reactor core}
+	\caption{Geometrical model of the small PWR-2D reactor core}
 	\label{p3}
   \end{center}
 \end{figure} 
 
 We define the next scenario of the process:
 \begin{itemize}
-\item The $\lambda$-spectral problem (see \cite{Annals17}) is solved and the solution is taken as the initial condition;
+\item The $\lambda$-spectral problem is solved and the solution is taken as the initial condition;
 \item Calculation for the non-stationary model at the time range from 0 to 0.4 sec;
 \item At $t=0.1$ sec and $t=0.3$ sec $\Sigma_a$ for fuel in the zone 1 changes to +2\% and -3\%, respectively (simulation of insertion or withdrawal of control rods).
 \end{itemize}
@@ -295,7 +296,7 @@ The integral power for the fine grid and relative errors of integral powers are 
 When using single basis, the error does not exceed 1\%, and for using 4 or more bases it does not exceed 0.01\%.
 
 In Figure \ref{p5}, we present relative $L_2$ and $H_1$ errors of the multiscale solution vs. time for different number of multiscale basis functions.
-The numerical results show good convergence behavior, provided that we take sufficient number of the multiscale basis functions.
+The numerical results show good convergence behaviour, provided that we take sufficient number of the multiscale basis functions.
 
 \begin{figure}[h!]
 \centering
@@ -309,6 +310,7 @@ The numerical results show good convergence behavior, provided that we take suff
 In Table~\ref{t2}, we present relative $L_2$ and $H_1$ errors at final time for different number of the multiscale basis functions.
 For example, when we use 8 spectral basis functions, we obtain $0.34\%$ for $L_2$ error and $7.18\%$ for $H_1$ error. 
 Our calculations show that it is necessary to use 4 or more basis functions. 
+In Figure \ref{p7}, we present first four (of 16) multiscale basis functions in local domain $\omega_i$.
 The fine-grid solution and the multiscale solution (16 basis functions on each local domain) $\omega_i$ are shown in Figure \ref{p6}. Relative errors are 0.13\% for $L_2$ and 4.43\% for $H_1$. 
 
 \begin{table}[h!]
@@ -333,13 +335,20 @@ fine & 115891 & -- & -- & 6.816 \\
 
 \begin{figure}[h!]
 \centering
+\includegraphics[width=0.95\linewidth]{basis.png} 
+\caption{The first four multiscale basis functions.}
+\label{p7}
+\end{figure} 
+
+\begin{figure}[h!]
+\centering
 \includegraphics[width=0.75\linewidth]{flux.png} 
 \caption{Fine grid and multiscale solution with 16 basis functions at final time.}
 \label{p6}
 \end{figure} 
 
 \section{Conclusions}
-A Generalized Multiscale Finite Element method was developed successfully for modeling neutron transport in one-group diffusion approxmimation.  
+A Generalized Multiscale Finite Element method was developed successfully for modelling neutron transport in one-group diffusion approximation.  
 We presented an implementation of GMsFEM. 
 We considered each step of GMsFEM algorithm.
 The results showed that GMsFEM performed with a good accuracy in all considered cases.
@@ -352,35 +361,50 @@ In the future, we will consider more complex models of neutron transport, such a
 This work was supported by the grant of the Russian Science Foundation (\#19-71-00008).
 
 \begin{thebibliography}{8}
-
-\bibitem{Annals17}
-Avvakumov, A.V., et al.: Spectral properties of dynamic processes in a nuclear reactor. Annals of Nuclear Energy. \textbf{99}, 68--79 (2017) 
-
-\bibitem{Progress18}
-Avvakumov, A.V., et al.: State change modal method for numerical simulation of dynamic processes in a nuclear reactor. Progress in Nuclear Energy. \textbf{106}, 240--261 (2018)
-
 \bibitem{Duderstadt1976}
-Duderstadt, J.J., Hamilton, L.J.: Nuclear Reactor Analysis. Wiley (1976)
-
-\bibitem{dulla2008quasi}
-Dulla, S., Mund, E.H., Ravetto, P.: The quasi-static method revisited. Progress in Nuclear Energy \textbf{50}(8), 908--920 (2008)
-
-\bibitem{Spiridonov2019}
-Spiridonov, D., Vasilyeva, M., Leung, W.T.: A Generalized Multiscale Finite Element Method (GMsFEM) for perforated domain flows with Robin boundary conditions. Journal of Computational and Applied Mathematics. \textbf{357}, 319--328 (2019)
+Duderstadt J. J. Nuclear reactor analysis. – Wiley, 1976.
 
 \bibitem{Stacey2007}
-Stacey, W.M.: Nuclear Reactor Physics. Wiley (2007)
+Stacey W. M. Nuclear reactor physics. – Weinheim : wiley-vch, 2007. – V. 2.
+
+\bibitem{Annals2017}
+Avvakumov A. V. et al. Spectral properties of dynamic processes in a nuclear reactor //Annals of Nuclear Energy. – 2017. – V. 99. – P. 68-79.
+
+\bibitem{Verdu1994}
+Verdú G. et al. 3D $\lambda$-modes of the neutron-diffusion equation //Annals of Nuclear Energy. – 1994. – V. 21. – №. 7. – P. 405-421.
+
+\bibitem{Munoz2019}
+Munoz-Cobo J. L. et al. 3D calculation of the lambda eigenvalues and eigenmodes of the two-group neutron diffusion equation by coarse-mesh nodal methods //Progress in Nuclear Energy. – 2019. – V. 110. – P. 393-409.
+
+\bibitem{dulla2008quasi}
+Dulla S., Mund E. H., Ravetto P. The quasi-static method revisited //Progress in Nuclear Energy. – 2008. – V. 50. – №. 8. – P. 908-920.
+
+\bibitem{Carreno2019}
+Carreño A. et al. Modal methods for the neutron diffusion equation using different spatial modes //Progress in Nuclear Energy. – 2019. – V. 115. – P. 181-193.
+
+\bibitem{Progress2018}
+Avvakumov A. V. et al. State change modal method for numerical simulation of dynamic processes in a nuclear reactor //Progress in Nuclear Energy. – 2018. – V. 106. – P. 240-261.
 
 \bibitem{Stalnov2017}
-Stalnov, D.A., Vasilyeva, M.V.: Numerical averaging for the heat conduction problem in inhomogeneous and perforated media. Herald of the Northeastern Federal University. MK Ammosov. \textbf{2}(58) (2017)
+Vasilyeva M., Stalnov D. A. Numerical averaging for the heat conduction problem in inhomogeneous and perforated media //Herald of MK Ammosov Northeastern Federal University. – 2017.
 
 \bibitem{Bakhvalov2012}
-Bakhvalov, N.S., Panasenko, G.: Homogenisation: averaging processes in periodic media: mathematical problems in the mechanics of composite materials. Springer Science
-\& Business Media.  \textbf{36} (2012)
+Bakhvalov N. S., Panasenko G. Homogenisation: averaging processes in periodic media: mathematical problems in the mechanics of composite materials. – Springer Science \& Business Media, 2012. – V. 36.
+
+\bibitem{Vidal2018}
+Vidal-Ferràndiz A. et al. Pin-wise homogenization for SPN neutron transport approximation using the finite element method //Journal of Computational and Applied Mathematics. – 2018. – V. 330. – P. 806-821.
 
 \bibitem{Efendiev2009}
-Yalchin, E., Thomas, Y.H.: Multiscale finite element methods: theory and applications.
-Springer Science \& Business Media. \textbf{4} (2009)
+Efendiev Y., Hou T. Y. Multiscale finite element methods: theory and applications. – Springer Science \& Business Media, 2009. – V. 4.
+
+\bibitem{Efendiev2013}
+Efendiev Y., Galvis J., Hou T. Y. Generalized multiscale finite element methods (GMsFEM) //Journal of Computational Physics. – 2013. – V. 251. – P. 116-135.
+
+\bibitem{Spiridonov2019}
+Spiridonov D., Vasilyeva M., Leung W. T. A Generalized Multiscale Finite Element Method (GMsFEM) for perforated domain flows with Robin boundary conditions //Journal of Computational and Applied Mathematics. – 2019. – V. 357. – P. 319-328.
+
+\bibitem{Brenner2007}
+Brenner S., Scott R. The mathematical theory of finite element methods. – Springer Science \& Business Media, 2007. – V. 15.
 
 \end{thebibliography}
 \end{document}

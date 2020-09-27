@@ -1,24 +1,9 @@
-<<<<<<< HEAD
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.4.19)  3 SEP 2020 16:20
-=======
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.9.5)  5 SEP 2020 20:14
->>>>>>> efd5b77cae555d4f602e059945958edc0358d7d8
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.9.5)  21 SEP 2020 18:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **vasilev.tex
 (./vasilev.tex
-<<<<<<< HEAD
-LaTeX2e <2016/03/31>
-Babel <3.9r> and hyphenation patterns for 83 language(s) loaded.
-(./llncs.cls
-Document Class: llncs 2018/03/10 v2.20 
- LaTeX document class for Lecture Notes in Computer Science
-(/usr/local/texlive/2016/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-(/usr/local/texlive/2016/texmf-dist/tex/latex/base/size10.clo
-File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
-=======
 LaTeX2e <2020-02-02> patch level 5
 L3 programming layer <2020-09-03> (./llncs.cls
 Document Class: llncs 2018/03/10 v2.20 
@@ -27,7 +12,6 @@ Document Class: llncs 2018/03/10 v2.20
 Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
 (c:/texlive/2020/texmf-dist/tex/latex/base/size10.clo
 File: size10.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
->>>>>>> efd5b77cae555d4f602e059945958edc0358d7d8
 )
 \c@part=\count168
 \c@section=\count169
@@ -41,62 +25,6 @@ File: size10.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
 \belowcaptionskip=\skip48
 \bibindent=\dimen134
 )
-<<<<<<< HEAD
-(/usr/local/texlive/2016/texmf-dist/tex/latex/tools/multicol.sty
-Package: multicol 2016/04/07 v1.8p multicolumn formatting (FMi)
-\c@tracingmulticols=\count87
-\mult@box=\box26
-\multicol@leftmargin=\dimen103
-\c@unbalance=\count88
-\c@collectmore=\count89
-\doublecol@number=\count90
-\multicoltolerance=\count91
-\multicolpretolerance=\count92
-\full@width=\dimen104
-\page@free=\dimen105
-\premulticols=\dimen106
-\postmulticols=\dimen107
-\multicolsep=\skip43
-\multicolbaselineskip=\skip44
-\partial@page=\box27
-\last@line=\box28
-\maxbalancingoverflow=\dimen108
-\mult@rightbox=\box29
-\mult@grightbox=\box30
-\mult@gfirstbox=\box31
-\mult@firstbox=\box32
-\@tempa=\box33
-\@tempa=\box34
-\@tempa=\box35
-\@tempa=\box36
-\@tempa=\box37
-\@tempa=\box38
-\@tempa=\box39
-\@tempa=\box40
-\@tempa=\box41
-\@tempa=\box42
-\@tempa=\box43
-\@tempa=\box44
-\@tempa=\box45
-\@tempa=\box46
-\@tempa=\box47
-\@tempa=\box48
-\@tempa=\box49
-\c@columnbadness=\count93
-\c@finalcolumnbadness=\count94
-\last@try=\dimen109
-\multicolovershoot=\dimen110
-\multicolundershoot=\dimen111
-\mult@nat@firstbox=\box50
-\colbreak@box=\box51
-\mc@col@check@num=\count95
-)
-(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/aliascnt.sty
-Package: aliascnt 2016/05/16 v1.4 Alias counters (HO)
-
-(/usr/local/texlive/2016/texmf-dist/tex/latex/carlisle/remreset.sty))
-\c@chapter=\count96
-=======
 (c:/texlive/2020/texmf-dist/tex/latex/tools/multicol.sty
 Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
 \c@tracingmulticols=\count176
@@ -171,7 +99,6 @@ Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
 Package: aliascnt 2018/09/07 v1.5 Alias counters (HO)
 )
 \c@chapter=\count186
->>>>>>> efd5b77cae555d4f602e059945958edc0358d7d8
 LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 362.
 LaTeX Font Info:    Redeclaring math symbol \Delta on input line 363.
 LaTeX Font Info:    Redeclaring math symbol \Theta on input line 364.
@@ -222,43 +149,13 @@ LaTeX Font Info:    Redeclaring math symbol \Omega on input line 372.
 \c@remark=\count271
 \headlineindent=\dimen156
 )
-<<<<<<< HEAD
-(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
-
-(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/keyval.sty
-=======
 (c:/texlive/2020/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
 
 (c:/texlive/2020/texmf-dist/tex/latex/graphics/keyval.sty
->>>>>>> efd5b77cae555d4f602e059945958edc0358d7d8
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks19
 )
-<<<<<<< HEAD
-(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2016/05/09 v1.0r Standard LaTeX Graphics (DPC,SPQR)
-
-(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/trig.sty
-Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
-)
-(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
-File: graphics.cfg 2016/01/02 v1.10 sample graphics configuration
-)
-Package graphics Info: Driver file: pdftex.def on input line 96.
-
-(/usr/local/texlive/2016/texmf-dist/tex/latex/pdftex-def/pdftex.def
-File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
-
-(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/infwarerr.sty
-Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
-)
-(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
-Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
-)
-\Gread@gobject=\count116
-=======
 (c:/texlive/2020/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
 
@@ -272,22 +169,10 @@ Package graphics Info: Driver file: pdftex.def on input line 105.
 
 (c:/texlive/2020/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2020/08/26 v1.2 Graphics/color driver for pdftex
->>>>>>> efd5b77cae555d4f602e059945958edc0358d7d8
 ))
 \Gin@req@height=\dimen157
 \Gin@req@width=\dimen158
 )
-<<<<<<< HEAD
-(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2016/03/10 v2.15b AMS math features
-\@mathmargin=\skip45
-
-For additional information on amsmath, use the `?' option.
-(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amstext.sty
-Package: amstext 2000/06/29 v2.01 AMS text
-
-(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsgen.sty
-=======
 (c:/texlive/2020/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2020/01/20 v2.17e AMS math features
 \@mathmargin=\skip51
@@ -297,77 +182,14 @@ For additional information on amsmath, use the `?' option.
 Package: amstext 2000/06/29 v2.01 AMS text
 
 (c:/texlive/2020/texmf-dist/tex/latex/amsmath/amsgen.sty
->>>>>>> efd5b77cae555d4f602e059945958edc0358d7d8
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks20
 \ex@=\dimen159
 ))
-<<<<<<< HEAD
-(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsbsy.sty
-=======
 (c:/texlive/2020/texmf-dist/tex/latex/amsmath/amsbsy.sty
->>>>>>> efd5b77cae555d4f602e059945958edc0358d7d8
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen160
 )
-<<<<<<< HEAD
-(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsopn.sty
-Package: amsopn 2016/03/08 v2.02 operator names
-)
-\inf@bad=\count117
-LaTeX Info: Redefining \frac on input line 199.
-\uproot@=\count118
-\leftroot@=\count119
-LaTeX Info: Redefining \overline on input line 297.
-\classnum@=\count120
-\DOTSCASE@=\count121
-LaTeX Info: Redefining \ldots on input line 394.
-LaTeX Info: Redefining \dots on input line 397.
-LaTeX Info: Redefining \cdots on input line 518.
-\Mathstrutbox@=\box54
-\strutbox@=\box55
-\big@size=\dimen129
-LaTeX Font Info:    Redeclaring font encoding OML on input line 634.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 635.
-
-
-Package amsmath Warning: Unable to redefine math accent \vec.
-
-\macc@depth=\count122
-\c@MaxMatrixCols=\count123
-\dotsspace@=\muskip10
-\c@parentequation=\count124
-\dspbrk@lvl=\count125
-\tag@help=\toks20
-\row@=\count126
-\column@=\count127
-\maxfields@=\count128
-\andhelp@=\toks21
-\eqnshift@=\dimen130
-\alignsep@=\dimen131
-\tagshift@=\dimen132
-\tagwidth@=\dimen133
-\totwidth@=\dimen134
-\lineht@=\dimen135
-\@envbody=\toks22
-\multlinegap=\skip46
-\multlinetaggap=\skip47
-\mathdisplay@stack=\toks23
-LaTeX Info: Redefining \[ on input line 2739.
-LaTeX Info: Redefining \] on input line 2740.
-) (/usr/local/texlive/2016/texmf-dist/tex/latex/tools/bm.sty
-Package: bm 2016/02/27 v1.2a Bold Symbol Support (DPC/FMi)
-\symboldoperators=\mathgroup4
-\symboldletters=\mathgroup5
-\symboldsymbols=\mathgroup6
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 142.
-LaTeX Info: Redefining \bm on input line 208.
-)
-(/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/amssymb.sty
-Package: amssymb 2013/01/14 v3.01 AMS font symbols
-
-(/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/amsfonts.sty
-=======
 (c:/texlive/2020/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
@@ -421,7 +243,6 @@ LaTeX Info: Redefining \bm on input line 209.
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 
 (c:/texlive/2020/texmf-dist/tex/latex/amsfonts/amsfonts.sty
->>>>>>> efd5b77cae555d4f602e059945958edc0358d7d8
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup7
 \symAMSb=\mathgroup8
@@ -429,19 +250,11 @@ LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ))
-<<<<<<< HEAD
-(/usr/local/texlive/2016/texmf-dist/tex/latex/cite/cite.sty
-=======
 (c:/texlive/2020/texmf-dist/tex/latex/cite/cite.sty
->>>>>>> efd5b77cae555d4f602e059945958edc0358d7d8
 LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 332.
 Package: cite 2015/02/27  v 5.5
 )
-<<<<<<< HEAD
-(/usr/local/texlive/2016/texmf-dist/tex/latex/multirow/multirow.sty
-\bigstrutjot=\dimen136
-=======
 (c:/texlive/2020/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
 \multirow@colwidth=\skip54
@@ -453,7 +266,6 @@ Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
 File: l3backend-pdftex.def 2020-09-01 L3 backend support: PDF output (pdfTeX)
 \l__kernel_color_stack_int=\count285
 \l__pdf_internal_box=\box95
->>>>>>> efd5b77cae555d4f602e059945958edc0358d7d8
 )
 (./vasilev.aux)
 \openout1 = `vasilev.aux'.
@@ -472,66 +284,6 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
 LaTeX Font Info:    ... okay on input line 13.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
 LaTeX Font Info:    ... okay on input line 13.
-<<<<<<< HEAD
-
-(/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count129
-\scratchdimen=\dimen137
-\scratchbox=\box56
-\nofMPsegments=\count130
-\nofMParguments=\count131
-\everyMPshowfont=\toks24
-\MPscratchCnt=\count132
-\MPscratchDim=\dimen138
-\MPnumerator=\count133
-\makeMPintoPDFobject=\count134
-\everyMPtoPDFconversion=\toks25
-) (/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2016/05/10 v0.21 Utility functions of pdfTeX for LuaTeX (HO
-)
-
-(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ifluatex.sty
-Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
-Package ifluatex Info: LuaTeX not detected.
-)
-(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2016/05/14 v3.1 Provides the ifpdf switch
-)
-Package pdftexcmds Info: LuaTeX not detected.
-Package pdftexcmds Info: \pdf@primitive is available.
-Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode found.
-)
-(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
-
-(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/grfext.sty
-Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
-
-(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
-Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
-))
-(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
-
-(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
-
-(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/etexcmds.sty
-Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
-Package etexcmds Info: Could not find \expanded.
-(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
-(etexcmds)             that some package has redefined \expanded.
-(etexcmds)             In the latter case, load this package earlier.
-)))
-Package grfext Info: Graphics extension search list:
-(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
-G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 456.
-
-(/usr/local/texlive/2016/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-=======
  (c:/texlive/2020/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count286
@@ -551,221 +303,132 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
 
 (c:/texlive/2020/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
->>>>>>> efd5b77cae555d4f602e059945958edc0358d7d8
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
-))
-LaTeX Font Info:    Trying to load font information for U+msa on input line 34.
+)) [1{c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+
+]
+LaTeX Font Info:    Trying to load font information for U+msa on input line 27.
 
 
-<<<<<<< HEAD
-(/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
-=======
 (c:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
->>>>>>> efd5b77cae555d4f602e059945958edc0358d7d8
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 34.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 27.
 
-<<<<<<< HEAD
-(/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 43.
-
-(/usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 43.
- [1
-
-{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
-
-=======
 
 (c:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
+) [2]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-{c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
->>>>>>> efd5b77cae555d4f602e059945958edc0358d7d8
-<./figs/coarse_grid.png, id=26, 805.0075pt x 805.0075pt>
+ [3]
+[4]
+<./figs/coarse_grid.png, id=28, 805.0075pt x 805.0075pt>
 File: ./figs/coarse_grid.png Graphic file (type png)
-
 <use ./figs/coarse_grid.png>
-<<<<<<< HEAD
-Package pdftex.def Info: ./figs/coarse_grid.png used on input line 155.
+Package pdftex.def Info: ./figs/coarse_grid.png  used on input line 154.
 (pdftex.def)             Requested size: 104.1381pt x 104.13875pt.
-
-<./figs/omega.png, id=27, 841.64438pt x 440.39531pt>
-File: ./figs/omega.png Graphic file (type png)
- <use ./figs/omega.png>
-Package pdftex.def Info: ./figs/omega.png used on input line 157.
-(pdftex.def)             Requested size: 197.86295pt x 103.5265pt.
-
-[4 <./figs/coarse_grid.png> <./figs/omega.png>]
-<./figs/pofs.png, id=37, 728.7225pt x 630.355pt>
-File: ./figs/pofs.png Graphic file (type png)
- <use ./figs/pofs.png>
-Package pdftex.def Info: ./figs/pofs.png used on input line 199.
-(pdftex.def)             Requested size: 156.20453pt x 135.11008pt.
-
-<./figs/pouK.png, id=38, 715.67375pt x 632.3625pt>
-File: ./figs/pouK.png Graphic file (type png)
- <use ./figs/pouK.png>
-Package pdftex.def Info: ./figs/pouK.png used on input line 201.
-(pdftex.def)             Requested size: 156.20453pt x 138.02019pt.
-
-[5 <./figs/pofs.png> <./figs/pouK.png>]
-<./figs/smallpwr.png, id=45, 368.37625pt x 368.37625pt>
-=======
-Package pdftex.def Info: ./figs/coarse_grid.png  used on input line 152.
-(pdftex.def)             Requested size: 90.2502pt x 90.2462pt.
-<./figs/omega.png, id=27, 841.64438pt x 440.39531pt>
+<./figs/omega.png, id=29, 841.64438pt x 440.39531pt>
 File: ./figs/omega.png Graphic file (type png)
 <use ./figs/omega.png>
-Package pdftex.def Info: ./figs/omega.png  used on input line 154.
-(pdftex.def)             Requested size: 173.56177pt x 90.81248pt.
-<./figs/pofs.png, id=29, 728.7225pt x 630.355pt>
+Package pdftex.def Info: ./figs/omega.png  used on input line 156.
+(pdftex.def)             Requested size: 197.86295pt x 103.5265pt.
+ [5 <./figs/coarse_grid.png> <./figs/omega.png>]
+<./figs/pofs.png, id=38, 728.7225pt x 630.355pt>
 File: ./figs/pofs.png Graphic file (type png)
 <use ./figs/pofs.png>
-Package pdftex.def Info: ./figs/pofs.png  used on input line 199.
-(pdftex.def)             Requested size: 104.1381pt x 90.0766pt.
-<./figs/pouK.png, id=30, 715.67375pt x 632.3625pt>
+Package pdftex.def Info: ./figs/pofs.png  used on input line 201.
+(pdftex.def)             Requested size: 156.20453pt x 135.11008pt.
+<./figs/pouK.png, id=39, 715.67375pt x 632.3625pt>
 File: ./figs/pouK.png Graphic file (type png)
 <use ./figs/pouK.png>
-Package pdftex.def Info: ./figs/pouK.png  used on input line 201.
-(pdftex.def)             Requested size: 104.1381pt x 92.01346pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[4 <./figs/coarse_grid.png> <./figs/omega.png>]
-<./figs/smallpwr.png, id=39, 368.37625pt x 368.37625pt>
->>>>>>> efd5b77cae555d4f602e059945958edc0358d7d8
+Package pdftex.def Info: ./figs/pouK.png  used on input line 203.
+(pdftex.def)             Requested size: 156.20453pt x 138.02019pt.
+ [6 <./figs/pofs.png> <./figs/pouK.png>]
+<./figs/smallpwr.png, id=47, 368.37625pt x 368.37625pt>
 File: ./figs/smallpwr.png Graphic file (type png)
-
 <use ./figs/smallpwr.png>
-Package pdftex.def Info: ./figs/smallpwr.png used on input line 244.
+Package pdftex.def Info: ./figs/smallpwr.png  used on input line 246.
 (pdftex.def)             Requested size: 173.56177pt x 173.55843pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[5 <./figs/pofs.png> <./figs/pouK.png>]
-<./figs/power_fine.png, id=46, 399.6531pt x 302.0886pt>
+ [7 <./figs/smallpwr.png>]
+<./figs/power_fine.png, id=53, 399.6531pt x 302.0886pt>
 File: ./figs/power_fine.png Graphic file (type png)
-
 <use ./figs/power_fine.png>
-Package pdftex.def Info: ./figs/power_fine.png used on input line 287.
+Package pdftex.def Info: ./figs/power_fine.png  used on input line 289.
 (pdftex.def)             Requested size: 156.20453pt x 118.0722pt.
- <./figs/power.png, id=47, 414.1071pt x 300.6432pt>
+<./figs/power.png, id=54, 414.1071pt x 300.6432pt>
 File: ./figs/power.png Graphic file (type png)
-
 <use ./figs/power.png>
-Package pdftex.def Info: ./figs/power.png used on input line 289.
+Package pdftex.def Info: ./figs/power.png  used on input line 291.
 (pdftex.def)             Requested size: 156.20453pt x 113.4061pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[6 <./figs/smallpwr.png>] <./figs/L2_log.png, id=52, 416.9979pt x 302.0886pt>
+ [8 <./figs/power_fine.png> <./figs/power.png>]
+<./figs/L2_log.png, id=60, 416.9979pt x 302.0886pt>
 File: ./figs/L2_log.png Graphic file (type png)
-
 <use ./figs/L2_log.png>
-Package pdftex.def Info: ./figs/L2_log.png used on input line 302.
+Package pdftex.def Info: ./figs/L2_log.png  used on input line 304.
 (pdftex.def)             Requested size: 156.20453pt x 113.16309pt.
- <./figs/H1.png, id=53, 406.1574pt x 300.6432pt>
+<./figs/H1.png, id=61, 406.1574pt x 300.6432pt>
 File: ./figs/H1.png Graphic file (type png)
-
 <use ./figs/H1.png>
-Package pdftex.def Info: ./figs/H1.png used on input line 304.
+Package pdftex.def Info: ./figs/H1.png  used on input line 306.
 (pdftex.def)             Requested size: 156.20453pt x 115.62183pt.
-<<<<<<< HEAD
- [7 <./figs/power_fine.png> <./figs/power.png> <./figs/L2_log.png> <./figs/H1.p
-ng>] <./figs/flux.png, id=62, 1201.48875pt x 661.47125pt>
-=======
+<./figs/basis.png, id=62, 3176.86874pt x 583.17876pt>
+File: ./figs/basis.png Graphic file (type png)
+<use ./figs/basis.png>
+Package pdftex.def Info: ./figs/basis.png  used on input line 339.
+(pdftex.def)             Requested size: 329.7663pt x 60.52814pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<./figs/flux.png, id=54, 1201.48875pt x 661.47125pt>
->>>>>>> efd5b77cae555d4f602e059945958edc0358d7d8
+<./figs/flux.png, id=63, 1201.48875pt x 661.47125pt>
 File: ./figs/flux.png Graphic file (type png)
-
 <use ./figs/flux.png>
-Package pdftex.def Info: ./figs/flux.png used on input line 336.
+Package pdftex.def Info: ./figs/flux.png  used on input line 346.
 (pdftex.def)             Requested size: 260.34265pt x 143.32379pt.
-<<<<<<< HEAD
- [8 <./figs/flux.png (PNG copy)>] [9] (./vasilev.aux) ) 
-Here is how much of TeX's memory you used:
- 3092 strings out of 493014
- 40574 string characters out of 6133351
- 111858 words of memory out of 5000000
- 6556 multiletter control sequences out of 15000+600000
- 14766 words of font info for 55 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 38i,16n,26p,473b,274s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2016
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2016/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2016/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2016/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2016/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2016/texmf
--dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2016/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2016/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2016/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2016/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2016/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2016/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2016/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmti9.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmtt9.pfb>
-Output written on vasilev.pdf (9 pages, 1699988 bytes).
-=======
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[7 <./figs/power_fine.png> <./figs/power.png> <./figs/L2_log.png> <./figs/H1.pn
-g>] [8 <./figs/flux.png (PNG copy)>] [9] (./vasilev.aux) ) 
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [9 <./figs/L2_log.png> <./figs/H1.png>] [10 <./figs/basis.png> <./figs/flux.pn
+g (PNG copy)>] [11] (./vasilev.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 3043 strings out of 480880
- 38684 string characters out of 5911595
- 288336 words of memory out of 5000000
- 18620 multiletter control sequences out of 15000+600000
+ 3058 strings out of 480880
+ 38874 string characters out of 5911595
+ 289368 words of memory out of 5000000
+ 18634 multiletter control sequences out of 15000+600000
  546551 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,16n,33p,473b,308s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2020/texm
-f-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2020/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2020/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmbx9.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmex10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.p
-fb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/tex
-live/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2020/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2020/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmmi9.pfb><c:/texlive/2020/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmmib10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmr10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmr6.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pf
-b><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><c:/texli
-ve/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2020/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2020/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmti9.pfb><c:/texlive/2020/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmtt9.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/c
-m-super/sfrm0900.pfb>
-Output written on vasilev.pdf (9 pages, 1690673 bytes).
->>>>>>> efd5b77cae555d4f602e059945958edc0358d7d8
+ 36i,16n,33p,293b,304s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/tex
+live/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2020
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2020/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/texlive/2020/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmmi10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmmi5.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi
+6.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/
+texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb><c:/texlive/20
+20/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><c:/texlive/2020/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2020/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2020/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr7.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr9.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10
+.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/t
+exlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb><c:/texlive/202
+0/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb><c:/texlive/2020/texmf-di
+st/fonts/type1/public/cm-super/sfrm0900.pfb>
+Output written on vasilev.pdf (11 pages, 2004191 bytes).
 PDF statistics:
- 130 PDF objects out of 1000 (max. 8388607)
- 81 compressed objects within 1 object stream
+ 138 PDF objects out of 1000 (max. 8388607)
+ 85 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 51 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 56 words of extra memory for PDF output out of 10000 (max. 10000000)
 
