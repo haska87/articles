@@ -57,29 +57,43 @@
 %организация - в формате \affiliation{Московский государственный университет,\protect\\ Россия, 141700, г. Москва, ул. Университетская, д. 9}
 \affiliation{Национальный исследовательский центр <<Курчатовский институт>>,\protect\\ Россия, 123182, г. Москва, пл. Академика Курчатова, д. 1}
 %организация - в формате \affiliationeng{Moscow State Institute University, 9 University street, Moscow, 141700, Russia}
-\affiliationeng{National Research Center <<Kurchatov Institute>>,\protect\\ Address}
+\affiliationeng{National Research Center <<Kurchatov Institute>>,\protect\\ 1, Akademika Kurchatova pl., Moscow, 123182, Russia}
 
 % повторите блок для каждого автора;
 % если авторов несколько, и автоматическая расстановка сносок от фамилий 
 % к организациям приводит к неправильным результатам, укажите правильный 
 % вариант в квадраных скобках
 
-\author[2]{\firstname{Александр\,О.}~\surname{Васильев}}
+\author[2]{\firstname{Петр\,О.}~\surname{Вабищевич}}
+\authorfull{Петр Николаевич Вабищевич}
+\authoreng{\firstname{P.\,N.}~\surname{Vabishchevich}}
+\authorfulleng{P.\,N. Vabishchevich}
+\email{vabishchevich@gmail.com}
+\affiliation[2]{Институт проблем безопасного развития атомной энергетики РАН,\protect\\ Россия, 115191, г. Москва, ул. Большая Тульская, д. 52}
+\affiliationeng{Nuclear Safety Institute of Russian Academy of Science,\protect\\ 52, Bolshaya Tulskaya Street, Moscow, 115191, Russia}
+
+\author[3]{\firstname{Александр\,О.}~\surname{Васильев}}
 \authorfull{Александр Олегович Васильев}
 \authoreng{\firstname{A.\,O.}~\surname{Vasilev}}
 \authorfulleng{A.\,O. Vasilev}
 \email{haska87@gmail.com}
-\affiliation[2]{Северо-Восточный федеральный университет им. М.К. Аммосова,\protect\\ Россия, 677000, г. Якутск, ул. Белинского, д. 58}
-\affiliationeng{North-Eastern Federal University,\protect\\ Address}
+\affiliation[3]{Северо-Восточный федеральный университет им. М.К. Аммосова,\protect\\ Россия, 677000, г. Якутск, ул. Белинского, д. 58}
+\affiliationeng{North-Eastern Federal University,\protect\\ 58, Belinskogo Street, Yakutsk, 677000, Russia}
+
+\author[2]{\firstname{Валерий\,О.}~\surname{Стрижов}}
+\authorfull{Валерий Федорович Стрижов}
+\authoreng{\firstname{V.\,F.}~\surname{Strizhov}}
+\authorfulleng{V.\,F. Strizhov}
+\email{vfs@ibrae.ac.ru}
 
 
 \begin{abstract}
 Для анализа активной зоны реактора, транспортное SP$_3$ приближение уравнения переноса нейтронов позволяет повысить точность стационарного и нестационарного расчетов по сравнению с диффузионным приближением.
 Кроме того, вычислительные затраты SP$_3$ расчетов намного меньше, чем у других транспортных методов более высокого порядка (S$_N$ или P$_N$).
 Еще одним преимуществом SP$_3$ приближения является аналогичная структура уравнений, которая используется в диффузионном приближении.
-Следовательно, не составит труда реализовать вариант решения с использованием SP$_3$ приближения для многогрупповых диффузионных кодов, которые преимущественно применются для практических расчетов.
+Следовательно, не составит труда реализовать вариант решения с использованием SP$_3$ приближения для многогрупповых диффузионных кодов, которые преимущественно применяются для практических расчетов.
 В данной работе рассматривается применение SP$_3$ методологии, основанной на решении $\lambda$-спектральной задачи. 
-Динамические процессы протестировны на примере бэнчмарка реактора TWIGL-2D.
+Динамические процессы протестированы на примере бенчмарка реактора TWIGL-2D.
 Для достижения геометрической общности применяется метод конечных элементов.
 Результаты рассчитанные диффузионным и SP$_3$ методами сравниваются с результатами эталонных расчетов. 
 \end{abstract}
@@ -128,7 +142,7 @@ The results calculated with the diffusion and SP$_3$ methods are compared with t
 Эти первые два подхода включают методы, которые сводят перенос нейтронов к угловому приближению низкого порядка.
 А третий вывод SP$_N$ начинается с уравнения интегрального баланса и развивает точную связь между нейтронным скалярным потоком и расходимостью нейтронного тока, а не приближенное соотношение, которое является законом Фика.
 Каждый из различных подходов к SP$_N$ приближению дает алгебраически эквивалентную систему уравнений, однако, это приближение ограничено относительно низкими порядками, такими как SP$_2$ или SP$_3$.
-В результате, метод SP$_N$ ограничен теми же ограничениями, но несколько ослабленными, как и теория нодальной диффузии; то есть скалярный поток должен медленно меняться в пространстве, и модель не должна включать в себя сильно поглощающие области. 
+В результате метод SP$_N$ ограничен теми же ограничениями, но несколько ослабленными, как и теория нодальной диффузии; то есть скалярный поток должен медленно меняться в пространстве, и модель не должна включать в себя сильно поглощающие области. 
 В частности было показано, что результаты для SP$_N$ ухудшаются в регионах, где преобладает поток нейтронов.
 Получающиеся уравнения SP$_N$ являются эллиптическими, например, уравнения SP$_3$ состоят из двух уравнений диффузионного типа с двумя неизвестными потоками: скалярным потоком и вторым моментом углового потока.
 Более строгие теоретические основы методологии SP$_3$ были получены Брантли и Ларсеном \cite{brantley2000} на основе вариационных методов.
@@ -143,19 +157,20 @@ The results calculated with the diffusion and SP$_3$ methods are compared with t
 Таким образом, метод SP$_3$ можно рассматривать как улучшенное приближение уравнения переноса нейтронов по сравнению с методом диффузии.
 В связи с этим, будет очень полезно сравнить результаты рассчитанные как диффузионным, так и SP$_3$ методами.
 
-Для характеристики стационарных условий и динамического поведения реактора рассмотривают некоторые спектральные задачи. 
+Для характеристики стационарных условий и динамического поведения реактора рассматривают некоторые спектральные задачи.
 Стационарное состояние реактора обычно описывается решением $\lambda$-спектральной задачи, где фундаментальное собственное значение (наибольшее собственное значение) называется "эффективным коэффициентом размножения"\ для активной зоны реактора \cite{bell1970}. 
-Динамическое поведение реактора естественно описать на основе приближенного решения $\alpha$-спектральной задачи \cite{ginestar2002transient, verdu2014modal}.
-А на больших временах можно говорить об асимптотическом поведении нейтронного потока, амплитуда которого равна exp($\alpha$t) \cite{matmod2018}.  
-Ранее, комплексные собственные значения и собственные функции находились в спектральных задачах для некоторых численных тестов \cite{avvakumov2017spectral}.
+Динамическое поведение реактора естественно описать на основе приближенного решения $\alpha$-спектральной задачи \cite{verdu2010, carreno2017}.
+А на больших временах можно говорить об асимптотическом поведении нейтронного потока, амплитуда которого равна exp($\alpha$t) \cite{avvakumov2017mm}.  
+Ранее, комплексные собственные значения и собственные функции находились в спектральных задачах для некоторых численных тестов \cite{avvakumov2017, avvakumov2018}.
 
 В данной работе рассматривается SP$_3$ приближение для нестационарной задачи многогруппового переноса нейтронов.
 Исследуются и сравниваются численные результаты полученные транспортным SP$_3$ и диффузионными расчетами.
 Для решения спектральных задач с несимметричными матрицами используются хорошо разработанные алгоритмы и соответствующее бесплатное программное обеспечение, включая библиотеку SLEPc (http://slepc.upv.es/).
-Программное обеспечение написано с использованием вычислительной платформы FEniCS \cite{fenics} для решения краевых задач, описываемых дифференциальными уравнениями в частных производных, методом конечных элементов.
+Программное обеспечение написано с использованием вычислительной платформы FEniCS \cite{logg2012} для решения краевых задач, описываемых дифференциальными уравнениями в частных производных, методом конечных элементов.
 
 \paragraph{Постановка задачи}
-Моделируется нестационарный процесс в ядерном реакторе в транспортном SP$_3$ приближении \cite{brantley2000}. Динамика нейтронного потока рассматривается в ограниченной выпуклой двухмерной или трехмерной области  $\Omega$ ($\bm x = \{x_1, ..., x_d\} \in \Omega, \ d = 2,3$) с границей $\partial \Omega$. 
+Моделируется нестационарный процесс в ядерном реакторе в транспортном SP$_3$ приближении \cite{brantley2000}. 
+Динамика нейтронного потока рассматривается в ограниченной выпуклой двухмерной или трехмерной области  $\Omega$ ($\bm x = \{x_1, ..., x_d\} \in \Omega, \ d = 2,3$) с границей $\partial \Omega$. 
 Перенос нейтронов описывается системой уравнений:
 \begin{equation}\label{1}
 \begin{split}
@@ -165,8 +180,6 @@ The results calculated with the diffusion and SP$_3$ methods are compared with t
  =  & -2(1-\beta)\chi_{n,g} S_{n,g} - 2S_{s,g} - 2\chi_{d,g} S_d,
 \end{split}
 \end{equation}
-% \ (1-\beta) \chi_g \sum_{g'=1}^{G} \nu \Sigma_{fg'} \phi_{g'} + \widetilde{\chi}_g \sum_{m=1}^{M} \lambda_m c_m 
-% - \sum_{g\neq g'=1}^{G} \Sigma_{s,g'\rightarrow g} \phi_{g'} 
 где
 \[
 S_{n,g} =  \sum_{g'=1}^{G} \nu \Sigma_{f,g'} \phi_{g'}, 
@@ -202,7 +215,7 @@ $M$ --- число типов запаздывающих нейтронов.
  \frac{\partial c_m}{\partial t} + \lambda_m c_m = \beta_m \sum_{g=1}^{G} \nu \Sigma_{f,g} \phi_g,
  \quad m = 1,2, ..., M, 
 \end{equation}
-где $\beta_m$ --- доля запаздывающих нейтронов  $m$ типа, причем
+где $\beta_m$ --- доля запаздывающих нейтронов $m$ типа, причем
 \[
  \beta = \sum_{m=1}^{M} \beta_m.
 \] 
@@ -326,7 +339,7 @@ V \frac{\partial\bm{u}}{\partial t} -\nabla \cdot D \nabla \bm{u}  + A \bm{u} = 
 $\bm c^0 = \{ c_1^0,  c_2^0, ...,  c_M^0 \}$.
 
 \subparagraph{$\lambda$-спектральная задача}
-Для характеристики динамических процессов в ядерном реакторе, которые описываются задачей Коши (\ref{5})-(\ref{7}), применяются решения некоторых спектральных задач \cite{Bell1970,hetrick1971dynamics,stacey2007}.
+Для характеристики динамических процессов в ядерном реакторе, которые описываются задачей Коши (\ref{5})-(\ref{7}), применяются решения некоторых спектральных задач.
 Обычно рассматривается спектральная задача, которая известна как $\lambda$-спектральная задача.
 Для системы уравнений (\ref{6}), (\ref{7}) без учета запаздывающих нейтронов, имеем
 \begin{equation}\label{8}
@@ -340,9 +353,9 @@ $\bm c^0 = \{ c_1^0,  c_2^0, ...,  c_M^0 \}$.
 Значение $k = \lambda^{(k)}_1 = 1$ связано с критическим состоянием реактора, а соответствующая собственная функция $\bm{\varphi}^{(1)}(\bm x)$ есть стационарное решение уравнения (\ref{5}), (\ref{6}).
 При $k > 1$  говорят о надкритическом состоянии реактора, при $k < 1$  --- о подкритическом состоянии.
 
-В силу несамосопряженности операторов нейтронного переноса будем иметь комплексные собственные значения (например, смотри \cite{annals2017}).
-Свойство действительности и положительности для системы уравнений нейтроники  доказывается на основе принципа максимума при некоторых ограничениях на коэффициенты операторов переноса нейтронов\cite{habetler1961existence}.
-Это касается также и несамосопряженного эллиптического оператора второго порядка\cite{bookEvans}.
+В силу несамосопряженности операторов нейтронного переноса будем иметь комплексные собственные значения.
+Свойство действительности и положительности для системы уравнений нейтроники доказывается на основе принципа максимума при некоторых ограничениях на коэффициенты операторов переноса нейтронов \cite{habetler1961}.
+Это касается также и несамосопряженного эллиптического оператора второго порядка \cite{evans1990}.
 
 \paragraph{Дискретизация}
 \subparagraph{Аппроксимация по времени}
@@ -384,7 +397,7 @@ V \frac{\bm{u}^{n+1} - \bm{u}^n}{\tau} -\nabla \cdot D \nabla \bm{u}^{n+1} + A \
 \end{equation}
 
 \subparagraph{Аппроксимация по пространству}
-Для аппроксимации по пространству будем использовать метод конечных элементов \cite{brenner,quarteroni}. 
+Для аппроксимации по пространству будем использовать метод конечных элементов \cite{quarteroni2008}. 
 Рассмотрим, например, аппроксимацию по пространству для чисто неявной схемы с учетом запаздывающих нейтронов (\ref{10}).
 Пусть $H^1(\Omega)$ --- пространство Соболева, состоящее из скалярных функций $v$ таких, что $v^2$ и  $\vert\nabla v\vert^2$ имеют конечный интеграл в $\Omega$. 
 Для векторных функций $\bm v = \{v_1, v_2, ..., v_d\}$ определим аналогично $V^d = [H^1(\Omega)]^d$, где $d=1,2,...,D$ ($D=G+M$).
@@ -431,7 +444,7 @@ $\bm \zeta  = \{\zeta_1, \zeta_2, ..., \zeta_M\}$.
 \end{center}
 \end{figure}
 
-Рассматривается двумерный транспортный тест \cite{twigl}. 
+Рассматривается двумерный транспортный тест \cite{hageman1969}. 
 Моделирутся 1/4 часть активной зоны реактора, размеры которой составляют 160x160 см.
 На рисунке \ref{ris:twigl} показана геометрическая модель активной зоны, где цифрами показаны материалы различных сортов.
 На внешней границе активной зоны реактора задается условие границы с вакуумом.  
@@ -571,6 +584,7 @@ $t$ & dif ($\gamma=0.5$) & dif ($\gamma=100$) & SP$_3$\\
 0.4 & 2.1319 & 2.1135 & 2.1442 \\
 0.5 & 2.1500 & 2.1311 & 2.1626 \\
 \hline
+calc. time & 1880 & 1880 & 6000 \\
 \end{tabular}
 \end{center}
 \end{table}
@@ -616,13 +630,14 @@ $t$ & dif ($\gamma=0.5$) & dif ($\gamma=100$) & SP$_3$\\
 \hline
 $t$ & Dif ($\gamma=0.5$) & Dif ($\gamma=100$) & SP$_3$\\
 \hline
-0.0 & 1.0000 & 1.0000 & 1.0000\\
-0.1 & 1.3112  & 1.3083 & 1.3134\\
-0.2 & 1.9729 & 1.9595 & 1.9826\\
-0.3 & 2.0921 & 2.0747 & 2.1038\\
-0.4 & 2.1099 & 2.0921 & 2.1219\\
-0.5 & 2.1278 & 2.1096 & 2.1401\\
+0.0 & 1.0000 & 1.0000 & 1.0000 \\
+0.1 & 1.3112 & 1.3083 & 1.3134 \\
+0.2 & 1.9729 & 1.9595 & 1.9826 \\
+0.3 & 2.0921 & 2.0747 & 2.1038 \\
+0.4 & 2.1099 & 2.0921 & 2.1219 \\
+0.5 & 2.1278 & 2.1096 & 2.1401 \\
 \hline
+calc. time & 1880 & 1880 & 6000 \\
 \end{tabular}
 \end{center}
 \end{table}
@@ -675,6 +690,7 @@ $t$ & Dif ($\gamma=0.5$) & Dif ($\gamma=100$) & SP$_3$\\
 0.4 & 0.6452 & 0.6470 & 0.6455\\
 0.5 & 1.0024  & 1.0024 & 1.0051\\
 \hline
+calc. time & 1900 & 1900 & 6050 \\
 \end{tabular}
 \end{center}
 \end{table}
@@ -699,7 +715,7 @@ $t$ & Dif ($\gamma=0.5$) & Dif ($\gamma=100$) & SP$_3$\\
 
 \begin{figure}[ht]
 \begin{center}
-	\includegraphics[width=0.5\linewidth]{sp3_tau_c.png}\\
+	\includegraphics[width=0.4\linewidth]{sp3_tau_c.png}\\
 	\caption{\label{image:canonsummary} Погрешность $\varepsilon_P$ транспортного расчета для тестовой сетки для TWIGL-C.}
 	\label{ris:sp3_tau_c}
 \end{center}
@@ -718,10 +734,21 @@ $t$ & Dif ($\gamma=0.5$) & Dif ($\gamma=100$) & SP$_3$\\
 Матричная спектральная задача решалась с применением свободной библиотеки SLEPc.
 
 Как и ожидалось, точность стационарных и нестационарных SP$_3$ расчетов лучше чем у диффузионных расчетов. 
-С другой стороны, время вычислений для нестационарных SP$_3$ расчетов в N раза больше чем у диффузионных.
+С другой стороны, время вычислений для нестационарных SP$_3$ расчетов в среднем в 1.3 раза больше чем у диффузионных на грубой сетке ($n=2,\ p=1$), в 2.2 раза на средней сетке ($n=8,\ p=2$) и в 3.2 раза на мелкой сетке ($n=32,\ p=3$).
 
 
 \begin{thebibliography}
+
+\bibitem[Аввакумов и др, 2017]{avvakumov2017mm} {\it Аввакумов~А.\,В., Вабищевич~П.\,Н., Васильев~А.\,О., Стрижов~В.\,Ф.,} 
+Численное моделирование нестационарных задач диффузии нейтронов~// Математическое моделирование.~--- 2017.~--- Т.~29, \No~7.~--- С.~44--62.
+\\
+%\bibitem[Avvakumov et al, 2017]{avvakumov2017eng}
+{\footnotesize{\it Avvakumov~A.\,V., Strizhov~V.\,F., Vabishchevich~P.\,N., Vasilev~A.\,O.}
+Numerical modeling of neutron diffusion non-stationary problems ~// Matematicheskoe modelirovanie.~--- 2017.~--- Vol.~29, No.~7.~--- P.~44--62.}
+
+\bibitem[Avvakumov et al, 2017]{avvakumov2017} {\it Avvakumov~A.\,V., Strizhov~V.\,F., Vabishchevich~P.\,N., Vasilev~A.\,O.} Spectral properties of dynamic processes in a nuclear reactor ~// Annals of Nuclear Energy.~--- 2017.~--- Vol.~99.~--- P.~68--79.
+
+\bibitem[Avvakumov et al, 2018]{avvakumov2018} {\it Avvakumov~A.\,V., Strizhov~V.\,F., Vabishchevich~P.\,N., Vasilev~A.\,O.} State change modal method for numerical simulation of dynamic processes in a nuclear reactor ~// Progress in Nuclear Energy.~--- 2018.~--- Vol.~106.~--- P.~240--261.
 
 \bibitem[Azmy, Sartori, 2010]{azmy2010} {\it Azmy~Y, Sartori~E.} Nuclear Computational Science: A Century in Review~--- Springer Science \& Business Media, 2010.~--- 470~p.
 
@@ -733,32 +760,35 @@ $t$ & Dif ($\gamma=0.5$) & Dif ($\gamma=100$) & SP$_3$\\
 
 \bibitem[Brantley, Larsen, 2000]{brantley2000} {\it Brantley~P.\,S., Larsen~E.\,W.} The simplified P3 approximation~// Nuclear science and engineering.~--- 2000.~--- Vol.~134, No.~1.~--- P.~1--21.
 
+\bibitem[Carreno et al, 2017]{carreno2017} {\it Carreno~A., Vidal-Ferrandiz~A., Verdu~G., Ginestar~D.} The eigenvalue problem Alpha, lambda and gamma modes and its applications~// Proceedings of 2017 international congress on advances in nuclear power plants (ICAPP2017).~--- P.~2573.
+
 \bibitem[Downar et al, 2009]{downar2009} {\it Downar~T., Xu~Y., Seker~V., Hudson~N.} Theory manual for the PARCS kinetics core simulator module~--- Department of Nuclear Engineering and Radiological Sciences University of Michigan, 2009.
 
+\bibitem[Evans, 1990]{evans1990} {\it Evans~L.\,C.} Weak convergence methods for nonlinear partial differential equations~---  American Mathematical Soc., 1990.~--- No.~74.
+
 \bibitem[Gelbard, 1961]{gelbard1961} {\it Gelbard~E.\,M.} Simplified spherical harmonics equations and their use in shielding problems~--- Westinghouse Electric Corp. Bettis Atomic Power Lab., 1961.
+
+\bibitem[Habetler, Martino, 1961]{habetler1961} {\it Habetler~G.\,J., Martino~M.\,A.} Existence theorems and spectral theory for the multigroup diffusion model~--- Proc. of the Eleventh Symposium in Applied Mathematics of the American Mathematical Society, 1961.~--- Vol.~11.
+
+\bibitem[Hageman, Yasinsky, 1969]{hageman1969} {\it Hageman~L.\,A., Yasinsky~J.\,B.} Comparison of alternating-direction time-differencing methods with other implicit methods for the solution of the neutron group-diffusion equations~// Nuclear Science and Engineering.~--- 1969.~--- Vol.~38, No.~1.~--- P.~8--32.
 
 \bibitem[Lawrence, 1986]{lawrence1986} {\it Lawrence~R.\,D.} Progress in nodal methods for the solution of the neutron diffusion and transport equations~// Progress in Nuclear Energy.~--- 1986.~--- Vol.~17, No.~3.~--- P.~271--301.
 
 \bibitem[Lewis, Miller, 1984]{lewis1984} {\it Lewis~E.\,E., Miller~W.\,F.} Computational methods of neutron transport~--- John Wiley and Sons, 1984.~--- 401~p.
 
+\bibitem[Logg et al, 2012]{logg2012} {\it Logg~A., Mardal~K.\,E., Wells~G.} Automated solution of differential equations by the finite element method: The FEniCS book~--- Springer Science \& Business Media, 2012.~--- Vol.~84.~--- 401~p.
+
 \bibitem[McClarren, 2010]{mcclarren2010} {\it McClarren~R.\,G.} Theoretical aspects of the simplified Pn equations~// Transport Theory and Statistical Physics.~--- 2010.~--- Vol.~39, No.~2--4.~--- P.~73--109.
+
+\bibitem[Quarteroni, Valli, 2008]{quarteroni2008} {\it Quarteroni~A., Valli~A.} Numerical approximation of partial differential equations~--- Weinheim: Springer Science \& Business Media, 2008.~--- Vol.~23.
 
 \bibitem[Stacey, 2007]{stacey2007} {\it Stacey~W.\,B.} Nuclear Reactor Physics~--- Weinheim: wiley-vch, 2007.~--- 735~p.
 
 \bibitem[Tada et al, 2008]{tada2008} {\it Tada~K., Yamamoto~A., Yamane~Y., Kitamuray~Y.} Applicability of the diffusion and simplified P3 theories for pin-by-pin geometry of BWR~// Journal of nuclear science and technology.~--- 2008.~--- Vol.~45, No.~10.~--- P.~997--1008.
 
-%\bibitem[Шаповалов, 1995]{Shap95} {\it Шаповалов~А.\,В.,
-%    Широков~И.\,В.} Некоммутативное интегрирование линейных
-%    дифференциальных уравнений  // Теоретическая и математическая
-%    физика.~--- 1995.~--- Т.~104, \No~2.~--- С.~195--213.
-%\\
-%%\bibitem[Shapovalov, 9915]{Shap95ENG}
-%{\footnotesize{\it Shapovalov~A.\,V.,
-%    Shirolov~I.\,V.} Nekommutativnoe integrirovanie linejnyh
-%    differencialnyh uravnenij [Noncommutative integration of linear
-%    differential equations]~// Teoreticheskaya i matematicheskaya
-%    fizika.~--- 1995.~--- Vol.~104, No.~2.~--- S.~195--213 (in Russian).\par}
-\end{thebibliography}
+\bibitem[Verdu et al, 2010]{verdu2010} {\it Verdu~G., Ginestar~D., Roman~J., Vidal~V.} 3D alpha modes of a nuclear power reactor~// Journal of nuclear science and technology.~--- 2010.~--- Vol.~47, No.~5.~--- P.~501--514.
 
+
+\end{thebibliography}
 
 \end{document}
