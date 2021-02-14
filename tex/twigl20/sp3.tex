@@ -64,7 +64,7 @@
 % к организациям приводит к неправильным результатам, укажите правильный 
 % вариант в квадраных скобках
 
-\author[2]{\firstname{Петр\,О.}~\surname{Вабищевич}}
+\author[2]{\firstname{Петр\,Н.}~\surname{Вабищевич}}
 \authorfull{Петр Николаевич Вабищевич}
 \authoreng{\firstname{P.\,N.}~\surname{Vabishchevich}}
 \authorfulleng{P.\,N. Vabishchevich}
@@ -80,7 +80,7 @@
 \affiliation[3]{Северо-Восточный федеральный университет им. М.К. Аммосова,\protect\\ Россия, 677000, г. Якутск, ул. Белинского, д. 58}
 \affiliationeng{North-Eastern Federal University,\protect\\ 58, Belinskogo Street, Yakutsk, 677000, Russia}
 
-\author[2]{\firstname{Валерий\,О.}~\surname{Стрижов}}
+\author[2]{\firstname{Валерий\,Ф.}~\surname{Стрижов}}
 \authorfull{Валерий Федорович Стрижов}
 \authoreng{\firstname{V.\,F.}~\surname{Strizhov}}
 \authorfulleng{V.\,F. Strizhov}
@@ -88,29 +88,40 @@
 
 
 \begin{abstract}
-Для анализа активной зоны реактора, транспортное SP$_3$ приближение уравнения переноса нейтронов позволяет повысить точность стационарного и нестационарного расчетов по сравнению с диффузионным приближением.
-Кроме того, вычислительные затраты SP$_3$ расчетов намного меньше, чем у других транспортных методов более высокого порядка (S$_N$ или P$_N$).
+Моделирование динамических процессов в ядерных реакторах осуществляется чаще всего на основе уравнения переноса нейтронов в многогрупповом диффузионном приближении.
+Использование диффузионного приближения позволяет проводить полномасштабные расчеты активной зоны с высоким быстродействием и приемлемой точностью. Однако, для ряда вычислений точность диффузионного приближения оказывается недостаточной.
+Транспортное SP$_3$ приближение уравнения переноса нейтронов позволяет повысить точность расчетов по сравнению с диффузионным приближением.
+Кроме того, вычислительные затраты SP$_3$ расчетов намного меньше, чем у других транспортных методов более высокого порядка (таких как S$_N$ или P$_N$).
 Еще одним преимуществом SP$_3$ приближения является аналогичная структура уравнений, которая используется в диффузионном приближении.
-Следовательно, не составит труда реализовать вариант решения с использованием SP$_3$ приближения для многогрупповых диффузионных кодов, которые преимущественно применяются для практических расчетов.
-В данной работе рассматривается применение SP$_3$ методологии, основанной на решении $\lambda$-спектральной задачи. 
-Динамические процессы протестированы на примере бенчмарка реактора TWIGL-2D.
+Следовательно, не составит особого труда реализовать вариант решения с использованием SP$_3$ приближения для многогрупповых диффузионных кодов, которые преимущественно применяются для практических расчетов.
+В связи с этим, будет очень полезно сравнить результаты рассчитанные как диффузионным, так и транспортным SP$_3$ методами.
+
+В данной работе рассматривается SP$_3$ приближение для нестационарной задачи многогруппового переноса нейтронов.
+Применение SP$_3$ методологии основанно на решении $\lambda$-спектральной задачи. 
+Динамические процессы протестированы на примере двугруппового бенчмарка реактора TWIGL-2D.
 Для достижения геометрической общности применяется метод конечных элементов.
-Результаты рассчитанные диффузионным и SP$_3$ методами сравниваются с результатами эталонных расчетов. 
+Результаты рассчитанные диффузионным и транспортным SP$_3$ методами сравниваются с результатами эталонных расчетов. 
 \end{abstract}
 
 \keyword{уравнение переноса нейтронов}
 \keyword{$\lambda$-спектральная задача}
 \keyword{диффузионное приближение}
 \keyword{SP$_3$ приближение}
+\keyword{twigl}
 
 \begin{abstracteng}
-The SP$_3$ approximation of the neutron transport equation allows improving the accuracy for both static and transient simulations for reactor core analysis compared with the diffusion approximation. 
-Besides, the SP$_3$ calculation costs are much less than higher order transport methods (S$_N$ or P$_N$). 
-Another advantage of the SP$_3$ approximation is a similar structure of equations that is used in the diffusion method. 
-Therefore, there is no difficulty to implement the SP$_3$ solution option to the multi-group neutron diffusion codes, which are mainly used for practical calculations. 
-In this work, the application of the SP$_3$ methodology based on solution of the $\lambda$-spectral problem. 
-Dynamic processes has been tested for the TWIGL-2D reactor benchmark test. 
-The FEM is chosen to achieve the geometrical generality. 
+Modeling of dynamic processes in nuclear reactors is carried out, mainly, on the basis of the multigroup diffusion approximation for the neutron flux.
+The diffusion approximation allows full-scale whole-core calculations with high speed and reasonable accuracy. However for some caculations, the diffusion approximation accuracy is unsufficient. 
+The SP$_3$ approximation of the neutron transport equation allows improving the calculational accuracy compared with the diffusion approximation. 
+Besides, the SP$_3$ calculation are less expensive than high-order transport methods (such as S$_N$ or P$_N$). 
+Another advantage of the SP$_3$ approximation is a similar structure of equations as in the diffusion method. 
+Therefore, it is easy to implement the SP$_3$ solution option to the multi-group neutron diffusion codes, which are mainly used for practical calculations. 
+In this regard, it will be very useful to compare the results, calculated by both the diffusion and transport SP$_3$ methods.
+
+In this paper we consider the SP$_3$ approximation for the steady-state multigroup neutron transport problem.
+Application of the SP$_3$ methodology is based on solution of the $\lambda$-spectral problem. 
+Dynamic behaviour has been tested for the twogroup TWIGL-2D reactor benchmark test. 
+The finite element method is chosen to achieve the geometrical generality. 
 The results calculated with the diffusion and SP$_3$ methods are compared with the reference calculation results. 
 \end{abstracteng}
 
@@ -118,26 +129,33 @@ The results calculated with the diffusion and SP$_3$ methods are compared with t
 \keywordeng{$\lambda$-spectal problem}
 \keywordeng{diffusion approximation}
 \keywordeng{SP$_3$ approximation}
+\keywordeng{TWIGL test}
+
 
 \maketitle
 
 %Раздел обозначается \paragraph, подраздел - \subparagraph (не \section и \subsection)
 \paragraph{Введение}
 
-Диффузионное приближение уравнения переноса нейтронов широко используется в анализе ядерных реакторов, что позволяет проводить расчеты всей активной зоны с приемлемой точностью.
+Физические процессы, происходящие в ядерном реакторе, зависят от распределения нейтронного потока, математическое описание которого основывается на уравнении переноса нейтронов \cite{bell1970, lewis1984}.
+В общем виде это уравнение имеет интегро-дифференциальную форму, а искомое распределение потока нейтронов зависит от времени, энергии, пространственных и угловых переменных. 
+Решение уравнения переноса нейтронов является очень сложной задачей из-за семи независимых переменных: пять для пространственно-углового описания, одна для энергии и одна для времени.
+Однако было замечено, что сложные уравнения, составляющие теорию, можно упростить до хорошо изученных диффузионных уравнений, которые достаточно точно описывают данные процессы и сохраняют приемлимую точность.
+
+Наибольшее распространение для анализа реакторов получило многогрупповое диффузионное приближение (подробнее \cite{marchuk1981, sutton1996}), которое используется в большинстве инженерных расчетных программ. 
+Диффузионное приближение уравнения переноса нейтронов широко используется в анализе ядерных реакторов, что позволяет проводить расчеты всей активной зоны с высоким быстодействием и приемлемой точностью.
 Основная особенность уравнения диффузии нейтронов заключается в следующем: предполагается, что нейтронный ток пропорционален градиенту нейтронного потока (закон Фика) \cite{stacey2007}.
 Для обеспечения обоснованности диффузионной теории в современных диффузионных кодах, как правило, используется грубосеточная покассетная схема расчета с эффективными усредненными сечениями, подготовленные с использованием более точных транспортных приближений.
 Для улучшения ограничений диффузионного кода, связанных с ограничениям на шаг сетки, используются различные подходы, включая нодальные методы и методы конечных элементов \cite{lawrence1986}.
-Для многих ситуаций, представляющих интерес (например, для потвэлных расчетов с учетом сильно поглощающих управляющих стержней), применимость теории диффузии нейтронов ограничена.
-Следовательно, необходимо более строгое приближение для уравнения переноса нейтронов.
+Для многих ситуаций, представляющих интерес (например, для потвэлных расчетов кассеты реактора при наличии сильно поглощающих стержней), применимость теории диффузии нейтронов ограничена.
+Следовательно, необходимо использовать более строгое приближение для уравнения переноса нейтронов.
 
-Решение уравнения переноса нейтронов \cite{lewis1984} является очень сложной задачей из-за семи независимых переменных: пять для пространственно-углового описания, одна для энергии и одна для времени.
 Для упрощения задачи переноса используются различные подходы, например, приближение сферических гармоник (P$_N$) \cite{azmy2010}).
-Уравнение переноса нейтронов в $P_N$ приближении получается путем разложения угловой зависимости потока нейтронов по $N$ сферическим гармоникам.
-В последнее время широкое распространение получила простейшая версия метода $P_N$, а именно упрощенное P$_N$ приближение (SP$_N$) \cite{mcclarren2010}.
+Решение уравнения переноса нейтронов в $P_N$ приближении определяется путем разложения угловой зависимости потока нейтронов по $N$ сферическим гармоникам.
+В последнее время широкое распространение получила упрощенная версия $P_N$ метода, а именно, SP$_N$ приближение \cite{mcclarren2010}.
+Метод SP$_N$ был впервые сформулирован Гелбардом \cite{gelbard1961} в начале 1960-х годов.
 
-Метод SP$_N$ был впервые получен Гелбардом \cite{gelbard1961} в начале 1960-х годов.
-Детальный анализ метода SP$_N$ усложняется тем фактом, что в научной литературе представлены, по крайней мере, четыре различных метода вывода.
+Детальный анализ метода SP$_N$ усложняется тем фактом, что в научной литературе представлены, по крайней мере, четыре различных способа вывода.
 Две из этих формулировок - «традиционная» и «каноническая» --- основаны на наблюдении о связи между плоской геометрией и общей трехмерной геометрией.
 Эти первые два подхода включают методы, которые сводят перенос нейтронов к угловому приближению низкого порядка.
 А третий вывод SP$_N$ начинается с уравнения интегрального баланса и развивает точную связь между нейтронным скалярным потоком и расходимостью нейтронного тока, а не приближенное соотношение, которое является законом Фика.
@@ -151,14 +169,16 @@ The results calculated with the diffusion and SP$_3$ methods are compared with t
 Кроме того, реализация уравнений SP$_3$ приближения в диффузионном коде является несложной задачей из-за схожей структуры SP$_3$ и уравнений диффузии.
 По этой причине метод SP$_3$ был принят в различных кодах расчета ядра, таких как DYN3D \cite{beckert2008}, PARCS \cite{downar2009} и других. 
 В работе \cite{brewster2018} показано сравнение диффузионного и SP$_3$ методов для расчета реактивности регулирующего стержня в легководном реакторе.
-По сравнению с эталонным расчетом Монте-Карло метод SP$_3$ дает вдвое более точный результат по сравнению с методом диффузии. 
+В сравнении с эталонным расчетом методом Монте-Карло, метод SP$_3$ дает вдвое более точный результат по сравнению с методом диффузии. 
 Согласно \cite{tada2008}, применение теории SP$_3$ к потвэлным расчетам для геометрии BWR привело к значительному повышению точности вычислений по сравнению с методом диффузии.
-Кроме того, как выяснилось, время вычислений с использованием метода SP$_3$ всего в 1.5 раза больше, чем с использованием метода диффузии.
+Кроме того, как выяснилось, время вычислений с использованием метода SP$_3$ всего в 1,5 раза больше, чем с использованием метода диффузии.
 Таким образом, метод SP$_3$ можно рассматривать как улучшенное приближение уравнения переноса нейтронов по сравнению с методом диффузии.
 В связи с этим, будет очень полезно сравнить результаты рассчитанные как диффузионным, так и SP$_3$ методами.
 
 Для характеристики стационарных условий и динамического поведения реактора рассматривают некоторые спектральные задачи.
-Стационарное состояние реактора обычно описывается решением $\lambda$-спектральной задачи, где фундаментальное собственное значение (наибольшее собственное значение) называется "эффективным коэффициентом размножения"\ для активной зоны реактора \cite{bell1970}. 
+Стационарное состояние нейтронного потока, которое связано с критическим состянием реактора, характеризуется локальным выравниванием интенсивности поглащения и рождения нейтронов.
+Это пограничное состояние, обычно описывается как решение $\lambda$-спектральной задачи, при условии, что фундаментальное собственное значение (наибольшее собственное значение) которое называется "эффективным коэффициентом размножения"\ равно единице \cite{bell1970}. 
+Стационарное нейтронное поле в этом случае есть соответствующая собственная функция.
 Динамическое поведение реактора естественно описать на основе приближенного решения $\alpha$-спектральной задачи \cite{verdu2010, carreno2017}.
 А на больших временах можно говорить об асимптотическом поведении нейтронного потока, амплитуда которого равна exp($\alpha$t) \cite{avvakumov2017mm}.  
 Ранее, комплексные собственные значения и собственные функции находились в спектральных задачах для некоторых численных тестов \cite{avvakumov2017, avvakumov2018}.
@@ -353,9 +373,9 @@ $\bm c^0 = \{ c_1^0,  c_2^0, ...,  c_M^0 \}$.
 Значение $k = \lambda^{(k)}_1 = 1$ связано с критическим состоянием реактора, а соответствующая собственная функция $\bm{\varphi}^{(1)}(\bm x)$ есть стационарное решение уравнения (\ref{5}), (\ref{6}).
 При $k > 1$  говорят о надкритическом состоянии реактора, при $k < 1$  --- о подкритическом состоянии.
 
-В силу несамосопряженности операторов нейтронного переноса будем иметь комплексные собственные значения.
-Свойство действительности и положительности для системы уравнений нейтроники доказывается на основе принципа максимума при некоторых ограничениях на коэффициенты операторов переноса нейтронов \cite{habetler1961}.
-Это касается также и несамосопряженного эллиптического оператора второго порядка \cite{evans1990}.
+%В силу несамосопряженности операторов нейтронного переноса будем иметь комплексные собственные значения.
+%Свойство действительности и положительности для системы уравнений нейтроники доказывается на основе принципа максимума при некоторых ограничениях на коэффициенты операторов переноса нейтронов \cite{habetler1961}.
+%Это касается также и несамосопряженного эллиптического оператора второго порядка \cite{evans1990}.
 
 \paragraph{Дискретизация}
 \subparagraph{Аппроксимация по времени}
@@ -434,7 +454,7 @@ $\bm \zeta  = \{\zeta_1, \zeta_2, ..., \zeta_M\}$.
 \item $p$ --- порядок конечных элементов;
 \item $\tau$ --- шаг по времени.
 \end{itemize}
-Для диффузионной модели на внешней границе активной зоны рассматривается два вида условий границы с вакуумом: альбедный параметр $\gamma=0.5$ и $\gamma=100$.
+Для диффузионной модели на внешней границе активной зоны рассматривается граничное условие альбедного типа $\gamma=0.5$.
 
 \subparagraph{Описание теста}
 \begin{figure}[ht]
@@ -492,7 +512,7 @@ P(t) = a\int_{\Omega}(\Sigma_{f,1} \phi_1 + \Sigma_{f,2} \phi_1) d\bm x,
 Все возмущения происходят в зоне 1 посредством изменения теплового сечения деления $\Sigma_{a2}$.
 В задаче представлены три сценария развития переходного процесса:
 \begin{itemize}\itemsep1pt \parskip0pt \parsep0pt
-\item Возмущение скачком TWIGL-S: инициируется уменьшением $\Sigma_{a2}$ на $0.0035$ см$^{-1}$ в нулевой момент времени;
+\item Скачкообразное возмущение TWIGL-S: инициируется уменьшением $\Sigma_{a2}$ на $0.0035$ см$^{-1}$ в нулевой момент времени;
 \item Линейное возмущение TWIGL-R: $\Sigma_{a2}$ линейно уменьшается на $0.0035$ см$^{-1}$ с момента времени $0$ секунд до $0.2$ секунд;
 \item Комбинированное возмущение TWIGL-C происходит следующим образом:
 $\Sigma_{a2}$ линейно уменьшается на $0.0035$ см$^{-1}$ в течении $0.2$ секунд; в момент времени $0.2$ секунд происходит скачкообразное увеличение на $0.00525$ см$^{-1}$; линейно увеличивается на $0.00175$ см$^{-1}$  с момента времени $0.2$ секунд до $0.4$ секунд;  скачкообразное уменьшение на $0.0035$ см$^{-1}$ в момент времени $0.4$ секунд.
@@ -504,7 +524,7 @@ $\Sigma_{a2}$ линейно уменьшается на $0.0035$ см$^{-1}$ в
 В качестве эталонного решения для $\lambda$-спектральной задачи выступает результат полученный методом Монте-Карло по коду DeCART равный $0.91605$ (\cite{joo2004}).
 Полученные результаты расчета $\lambda$-спектральной задачи для теста TWIGL-2D приведены в таблице \ref{table:t2-lamda}.
 В таблице приняты следующие обозначения: 
-$k_{dif}(\gamma)$ --- эффективный коэффициент размножения по диффузионной модели для различных значений параметра альбеда; 
+$k_{dif}$ --- эффективный коэффициент размножения по диффузионной модели; 
 $k_{sp_3}$ --- эффективный коэффициент размножения по транспортной SP$_3$ модели;
 $\Delta$ --- абсолютное отклонение от эталонного решения в pcm ($10^{-5}$).
 
@@ -512,46 +532,38 @@ $\Delta$ --- абсолютное отклонение от эталонного
 \caption{Результаты расчета $\lambda$-спектральной задачи.}
 \label{table:t2-lamda}
 \begin{center}
-\begin{tabular}{r r r r r r r r}
+\begin{tabular}{r r r r r r}
 \hline
-$n$ & $p$ & $k_{dif} (\gamma=0.5)$ & $\Delta_{dif}(\gamma=0.5)$ & $k_{dif} (\gamma=100)$ & $\Delta_{dif}(\gamma=100)$ & $k_{sp_3}$ & $\Delta_{sp3}$\\
+$n$ & $p$ & $k_{dif}$ & $\Delta_{dif}$ & $k_{sp_3}$ & $\Delta_{sp3}$\\
 \hline
-	& 1	& 0.915519 & -53.1& 0.913286 & -276.4& 0.916144 & 9.4\\
-2	& 2	& 0.915519 & -53.1& 0.913333 & -271.7& 0.916190 &14.0\\
-	& 3	& 0.915419 & -63.1& 0.913234 & -281.6& 0.916094 & 4.4\\ 
+	& 1	& 0.91552 & -53& 0.91614 & 9 \\
+2	& 2	& 0.91552 & -53& 0.91619 &14 \\
+	& 3	& 0.91542 & -63& 0.91609 & 4 \\ 
 \hline
-	& 1	& 0.915486 & -56.4& 0.913288 & -276.2& 0.916147 & 9.7\\
-8& 2	& 0.915423 & -62.7& 0.913238 & -281.2& 0.916096 & 4.6\\
-	& 3	& 0.915408 & -64.2& 0.913223 & -282.7& 0.916076 & 2.6\\ 
+	& 1	& 0.91549 & -56& 0.91615 & 10\\
+8& 2	& 0.91542 & -63& 0.91610 & 5 \\
+	& 3	& 0.91541 & -64& 0.91608 & 3 \\ 
 \hline
-	& 1	& 0.915434 & -61.6& 0.913245 & -280.5& 0.916102 & 5.2\\
-32& 2	& 0.915409 & -64.1& 0.913223 & -282.7& 0.916076 & 2.6\\
-	& 3	& 0.915408 & -64.2& 0.913222 & -282.8& 0.916073 & 2.3\\
+	& 1	& 0.91543 & -62& 0.91610 & 5 \\
+32& 2	& 0.91541 & -64& 0.91608 & 3 \\
+	& 3	& 0.91541 & -64& 0.91607 & 2 \\
 \hline
-ref.&   & 0.916050 & --   & 0.916050 & -- & 0.916050 & --\\
+ref.&   & 0.91605 & -- & 0.91605 & --\\
 \hline
 \end{tabular}
 \end{center}
 \end{table}
 
 Представленные данные демонстрируют сходимость приближенно вычисляемых собственных значений при сгущении вычислительной сетки $n$ и при увеличении степени полиномов конечных элементов $p$.
-На рисунках \ref{ris:dif_pwr}, \ref{ris:sp3_pwr} показаны расчеты нормированных мощностей (\ref{13}) по нодам 8х8 см для всех трех случаев на мелкой сетке $n=32$ и $p=3$.
+На рисунке \ref{ris:int_pwr} показаны расчеты нормированных мощностей (\ref{13}) по нодам 8х8 см на мелкой сетке $n=32$ и $p=3$.
 Как и ожидалось, точность результатов полученных транспортным SP$_3$ методом по сравнению с диффузионным является более точным. 
 
 \begin{figure}[ht]
 \begin{center}
 	\includegraphics[width=0.4\linewidth]{dif_pwr.eps} \hspace{20pt}
-	\includegraphics[width=0.4\linewidth]{dif_pwr_100.eps}\\
-	\caption{\label{image:canonsummary} Нормированная мощность диффузионных расчетов при $\gamma=0.5$ (справа) и $\gamma=100$ (слева) на мелкой сетке.}
-	\label{ris:dif_pwr}
-\end{center}
-\end{figure}
-
-\begin{figure}[ht]
-\begin{center}
 	\includegraphics[width=0.4\linewidth]{sp3_pwr.eps}\\
-	\caption{\label{image:canonsummary} Нормированная мощность транспортного SP$_3$ расчета на мелкой сетке.}
-	\label{ris:sp3_pwr}
+	\caption{\label{image:canonsummary} Нормированная мощность диффузионного расчета (слева) и транспортного SP$_3$ расчета (справа) на мелкой сетке.}
+	\label{ris:int_pwr}
 \end{center}
 \end{figure}
 
@@ -559,41 +571,42 @@ ref.&   & 0.916050 & --   & 0.916050 & -- & 0.916050 & --\\
 Здесь показаны результаты решений нестационарной задачи для всех трех сценариев.
 Проводится сравнение результатов диффузионного и транспортного расчетов.
 Представлены исследования различных шагов по времени для всех трех сценариев.  
-В качестве тестовой сетки по пространству выбран средний вариант вычислительной сетки при $n=8,\ p=2$.
-Эталонным диффузионным/транспортным решением выступает результат полученный по диффузионной/транспортной модели на мелкой сетке (при $n=32,\ p=3,\ \tau=1$ мс).
-Погрешность оценивается как $\varepsilon_P(t) = | P_{ref} - P |$, где $P_{ref}$ --- эталонное диффузионное/транспортное решение.
+Для исследования сходимости численного решения, в качестве тестовой сетки  по пространству выбран средний вариант вычислительной сетки при $n=8,\ p=2$.
+Эталонными решениями выступают результаты полученные транспортными кодами DORT-TD, MGSNM (метод дискретных ординат) и транспортными кодами DeCART, MPACT (метод характеристик) \cite{kondrushin2014}.
+Погрешность оценивается как $\varepsilon_P(t) = | P_{ref} - P |$, где $P_{ref}$ --- эталонное транспортное решение.
 
-\subparagraph{Сценарий №1}
-В таблице \ref{table:twigl-s} представлены результаты эталонных диффузионных и транспортного расчетов TWIGL-S в различные моменты времени.
+\subparagraph{Сценарий №1: скачкообразное возмущение}
+В таблице \ref{table:twigl-s} представлены результаты диффузионного и транспортного расчетов TWIGL-S в различные моменты времени на мелкой сетке.
 На рисунке \ref{ris:sp3_ref_s} показаны эталонное транспортное решение TWIGL-S и погрешность $\varepsilon_P$ диффузионных эталонных решений относительно транспортного эталонного решения. 
-
-На рисунке \ref{ris:dif_tau_s} представлена погрешность диффузионных расчетов на тестовой сетке при различных шагах по времени, а на рисунке \ref{ris:sp3_tau_s} --- для транспортного расчета. Полученные результаты демонстрируют сходимость решения при уменьшении шага по времени.
 
 \begin{table}[ht]
 \caption{Результаты расчетов TWIGL-S на мелкой сетке в различные моменты времени.}
 \label{table:twigl-s}
 \begin{center}
-\begin{tabular}{r r r r}
+\begin{tabular}{c c c c c}
 \hline
-$t$ & dif ($\gamma=0.5$) & dif ($\gamma=100$) & SP$_3$\\
+$t$ & dif & SP$_3$ & DORT-TD & MGSNM \\
 \hline
-0.0 & 1.0000 & 1.0000 & 1.0000 \\
-0.1 & 2.0783 & 2.0613 & 2.0898 \\
-0.2 & 2.0961 & 2.0786 & 2.1079 \\
-0.3 & 2.1139 & 2.0959 & 2.1260 \\
-0.4 & 2.1319 & 2.1135 & 2.1442 \\
-0.5 & 2.1500 & 2.1311 & 2.1626 \\
+0.0 & 1.000 & 1.000 & 1.000 & 1.000 \\
+0.1 & 2.078 & 2.090 & 2.091 & 2.093 \\
+0.2 & 2.096 & 2.108 & 2.109 & 2.110 \\
+0.3 & 2.114 & 2.126 & 2.127 & 2.128 \\
+0.4 & 2.132 & 2.144 & 2.144 & 2.145 \\
+0.5 & 2.150 & 2.163 & 2.163 & 2.163 \\
 \hline
-calc. time & 1880 & 1880 & 6000 \\
+calc. time & 1880 & 6000  \\
 \end{tabular}
 \end{center}
 \end{table}
+
+На рисунке \ref{ris:tau_s} представлена погрешность $\varepsilon_P$ диффузионных/транспортных расчетов на тестовой сетке при различных шагах по времени. 
+Полученные результаты демонстрируют сходимость решения при уменьшении шага по времени.
 
 \begin{figure}[ht]
 \begin{center}
 	\includegraphics[width=0.4\linewidth]{sp3_ref_s.eps}\hspace{20pt}
 	\includegraphics[width=0.4\linewidth]{odds_s.eps}\\
-	\caption{\label{image:canonsummary} Эталонное решение TWIGL-S (слева) и погрешность $\varepsilon_P$ диффузионных расчетов на мелкой сетке (справа).}
+	\caption{\label{image:canonsummary} Эталонное транспортное решение TWIGL-S (слева) и погрешность $\varepsilon_P$ диффузионных расчетов на мелкой сетке (справа).}
 	\label{ris:sp3_ref_s}
 \end{center}
 \end{figure}
@@ -601,52 +614,52 @@ calc. time & 1880 & 1880 & 6000 \\
 \begin{figure}[ht]
 \begin{center}
 	\includegraphics[width=0.4\linewidth]{dif_tau_s.eps}\hspace{20pt}
-	\includegraphics[width=0.4\linewidth]{dif_tau_s_100.eps}\\
-	\caption{\label{image:canonsummary} Погрешность $\varepsilon_P$ диффузионного расчета для тестовой сетки при $\gamma=0.5$ (справа) и $\gamma=100$ (слева) для TWIGL-S.}
-	\label{ris:dif_tau_s}
-\end{center}
-\end{figure}
-
-\begin{figure}[ht]
-\begin{center}
 	\includegraphics[width=0.4\linewidth]{sp3_tau_s.eps}\\
-	\caption{\label{image:canonsummary} Погрешность $\varepsilon_P$ транспортного расчета для тестовой сетки для TWIGL-S.}
-	\label{ris:sp3_tau_s}
+	\caption{\label{image:canonsummary} Погрешность $\varepsilon_P$ диффузионного расчета при $\gamma=0.5$ (слева) и  транспортного расчета (справа) для тестовой сетки TWIGL-S при различных шагах по времени.}
+	\label{ris:tau_s}
 \end{center}
 \end{figure}
 
-\subparagraph{Cценарий №2}
-В таблице \ref{table:twigl-r} представлены результаты эталонных диффузионных и транспортного расчетов TWIGL-R в различные моменты времени.
+%\begin{figure}[ht]
+%\begin{center}
+%	\includegraphics[width=0.4\linewidth]{sp3_tau_s.eps}\\
+%	\caption{\label{image:canonsummary} Погрешность $\varepsilon_P$ транспортного расчета для тестовой сетки для TWIGL-S.}
+%	\label{ris:sp3_tau_s}
+%\end{center}
+%\end{figure}
+
+\subparagraph{Cценарий №2: линейное возмущение}
+В таблице \ref{table:twigl-r} представлены результаты диффузионного и транспортного расчетов TWIGL-S в различные моменты времени на мелкой сетке.
 На рисунке \ref{ris:sp3_ref_r} показаны эталонное транспортное решение TWIGL-S и погрешность $\varepsilon_P$ диффузионных эталонных решений относительно транспортного эталонного решения. 
-
-На рисунке \ref{ris:dif_tau_r} представлена погрешность диффузионных расчетов на тестовой сетке при различных шагах по времени, а на рисунке \ref{ris:sp3_tau_r} --- для транспортного расчета. Полученные результаты демонстрируют сходимость решения при уменьшении шага по времени.
-
 
 \begin{table}[ht]
 \caption{Результаты расчетов TWIGL-R на мелкой сетке в различные моменты времени.}
 \label{table:twigl-r}
 \begin{center}
-\begin{tabular}{r r r r}
+\begin{tabular}{c c c c c}
 \hline
-$t$ & Dif ($\gamma=0.5$) & Dif ($\gamma=100$) & SP$_3$\\
+$t$ & Dif & SP$_3$ & DORT-TD & MGSNM \\
 \hline
-0.0 & 1.0000 & 1.0000 & 1.0000 \\
-0.1 & 1.3112 & 1.3083 & 1.3134 \\
-0.2 & 1.9729 & 1.9595 & 1.9826 \\
-0.3 & 2.0921 & 2.0747 & 2.1038 \\
-0.4 & 2.1099 & 2.0921 & 2.1219 \\
-0.5 & 2.1278 & 2.1096 & 2.1401 \\
+0.0 & 1.000 & 1.000 & 1.000 & 1.000\\
+0.1 & 1.311 & 1.313 & 1.314 & 1.315\\
+0.2 & 1.973 & 1.983 & 1.984 & 1.984\\
+0.3 & 2.092 & 2.104 & 2.102 & 2.102\\
+0.4 & 2.110 & 2.122 & 2.123 & 2.124\\
+0.5 & 2.128 & 2.140 & 2.140 & 2.141\\
 \hline
-calc. time & 1880 & 1880 & 6000 \\
+calc. time & 1880 & 6000 \\
 \end{tabular}
 \end{center}
 \end{table}
+
+На рисунке \ref{ris:tau_r} представлена погрешность $\varepsilon_P$ диффузионных/транспортных расчетов на тестовой сетке при различных шагах по времени. 
+Полученные результаты демонстрируют сходимость решения при уменьшении шага по времени.
 
 \begin{figure}[ht]
 \begin{center}
 	\includegraphics[width=0.4\linewidth]{sp3_ref_r.eps}\hspace{20pt}
 	\includegraphics[width=0.4\linewidth]{odds_r.eps}\\
-	\caption{\label{image:canonsummary} Эталонное решение TWIGL-R (слева) и погрешность $\varepsilon_P$ диффузионных расчетов на мелкой сетке (справа)}
+	\caption{\label{image:canonsummary} Эталонное транспортное решение TWIGL-R (слева) и погрешность $\varepsilon_P$ диффузионных расчетов на мелкой сетке (справа)}
 	\label{ris:sp3_ref_r}
 \end{center}
 \end{figure}
@@ -654,72 +667,58 @@ calc. time & 1880 & 1880 & 6000 \\
 \begin{figure}[ht]
 \begin{center}
 	\includegraphics[width=0.4\linewidth]{dif_tau_r.eps}\hspace{20pt}
-	\includegraphics[width=0.4\linewidth]{dif_tau_r_100.eps}\\
-	\caption{\label{image:canonsummary} Погрешность $\varepsilon_P$ диффузионного расчета для тестовой сетки при $\gamma=0.5$ (справа) и $\gamma=100$ (слева) для TWIGL-R.}
-	\label{ris:dif_tau_r}
-\end{center}
-\end{figure}
-
-\begin{figure}[ht]
-\begin{center}
+%	\includegraphics[width=0.4\linewidth]{dif_tau_r_100.eps}\\
 	\includegraphics[width=0.4\linewidth]{sp3_tau_r.eps}\\
-	\caption{\label{image:canonsummary} Погрешность $\varepsilon_P$ транспортного расчета для тестовой сетки для TWIGL-S.}
-	\label{ris:sp3_tau_r}
+	\caption{\label{image:canonsummary} Погрешность $\varepsilon_P$ диффузионного расчета при $\gamma=0.5$ (слева) и  транспортного расчета (справа) для тестовой сетки TWIGL-R при различных шагах по времени.}
+	\label{ris:tau_r}
 \end{center}
 \end{figure}
 
-\subparagraph{Cценарий №3}
-В таблице \ref{table:twigl-c} представлены результаты эталонных диффузионных и транспортного расчетов TWIGL-C в различные моменты времени.
-На рисунке \ref{ris:sp3_ref_c} показаны эталонное транспортное решение TWIGL-C и погрешность $\varepsilon_P$ диффузионных эталонных решений относительно транспортного эталонного решения. 
-
-На рисунке \ref{ris:dif_tau_c} представлена погрешность диффузионных расчетов на тестовой сетке при различных шагах по времени, а на рисунке \ref{ris:sp3_tau_c} --- для транспортного расчета. Полученные результаты демонстрируют сходимость решения при уменьшении шага по времени.
-
-
+\subparagraph{Cценарий №3: комбинированное возмущение}
 \begin{table}[htp]
 \caption{Результаты расчетов TWIGL-C на мелкой сетке в различные моменты времени.}
 \label{table:twigl-c}
 \begin{center}
-\begin{tabular}{r r r r}
+\begin{tabular}{c c c c c}
 \hline
-$t$ & Dif ($\gamma=0.5$) & Dif ($\gamma=100$) & SP$_3$\\
+$t$ & Dif & SP$_3$ & DeCART & MPACT\\
 \hline
-0.0 & 1.0000 & 1.0000 & 1.0000\\
-0.1 & 1.3422  & 1.3393 & 1.3402\\
-0.2 & 2.1686  & 2.1580 & 2.1757\\
-0.3 & 0.7103  & 0.7119 & 0.7109\\
-0.4 & 0.6452 & 0.6470 & 0.6455\\
-0.5 & 1.0024  & 1.0024 & 1.0051\\
+0.0 & 1.000 & 1.000 & 1.000 & 1.000 \\
+0.1 & 1.342 & 1.340 & 1.341 & 1.342 \\
+0.2 & 2.167 & 2.176 & 2.183 & 2.189 \\
+0.3 & 0.710 & 0.711 & 0.715 & 0.716 \\
+0.4 & 0.645 & 0.645 & 0.640 & 0.638 \\
+0.5 & 1.002 & 1.005 & 1.002 & 1.003 \\
 \hline
-calc. time & 1900 & 1900 & 6050 \\
+calc. time & 1900 & 6050 \\
 \end{tabular}
 \end{center}
 \end{table}
+В таблице \ref{table:twigl-c} представлены результаты диффузионного и транспортного расчетов TWIGL-S в различные моменты времени на мелкой сетке.
+На рисунке \ref{ris:sp3_ref_c} показаны эталонное транспортное решение TWIGL-C и погрешность $\varepsilon_P$ диффузионных эталонных решений относительно транспортного эталонного решения. 
 
 \begin{figure}[ht]
 \begin{center}
 	\includegraphics[width=0.4\linewidth]{sp3_ref_c.eps}\hspace{20pt}
 	\includegraphics[width=0.4\linewidth]{odds_c.eps}\\
-	\caption{\label{image:canonsummary} Эталонное решение TWIGL-C (слева) и погрешность $\varepsilon_P$ диффузионных расчетов на мелкой сетке (справа)}
+	\caption{\label{image:canonsummary} Эталонное транспортное решение TWIGL-C (слева) и погрешность $\varepsilon_P$ диффузионных расчетов на мелкой сетке (справа)}
 	\label{ris:sp3_ref_c}
 \end{center}
 \end{figure}
 
-\begin{figure}[ht]
-\begin{center}
-	\includegraphics[width=0.4\linewidth]{dif_tau_c.eps}\hspace{20pt}
-	\includegraphics[width=0.4\linewidth]{dif_tau_c_100.eps}\\
-	\caption{\label{image:canonsummary} Погрешность $\varepsilon_P$ диффузионного расчета для тестовой сетки при $\gamma=0.5$ (справа) и $\gamma=100$ (слева) для TWIGL-C.}
-	\label{ris:dif_tau_c}
-\end{center}
-\end{figure}
+На рисунке \ref{ris:tau_c} представлена погрешность $\varepsilon_P$ диффузионных/транспортных расчетов на тестовой сетке при различных шагах по времени. 
+Полученные результаты демонстрируют сходимость решения при уменьшении шага по времени.
 
 \begin{figure}[ht]
 \begin{center}
+	\includegraphics[width=0.4\linewidth]{dif_tau_c.eps}\hspace{20pt}
+%	\includegraphics[width=0.4\linewidth]{dif_tau_c_100.eps}\\
 	\includegraphics[width=0.4\linewidth]{sp3_tau_c.eps}\\
-	\caption{\label{image:canonsummary} Погрешность $\varepsilon_P$ транспортного расчета для тестовой сетки для TWIGL-C.}
-	\label{ris:sp3_tau_c}
+	\caption{\label{image:canonsummary} Погрешность $\varepsilon_P$ диффузионного расчета при $\gamma=0.5$ (слева) и  транспортного расчета (справа) для тестовой сетки TWIGL-C при различных шагах по времени.}
+	\label{ris:tau_c}
 \end{center}
 \end{figure}
+
 %%%%пример оформления списка литературы в соответствии с ГОСТ Р 7.0.5-2008.
 	
 \paragraph{Заключение}
@@ -728,6 +727,7 @@ calc. time & 1900 & 1900 & 6050 \\
 В качестве численного примера рассмотрен двумерный тест реактора TWIGL в трех сценариях динамического процесса.
 Проводено сравнение результатов диффузионного и транспортного SP$_3$ расчетов. 
 Представлены результаты исследования различных шагов по времени.
+Наблюдается хорошая сходимость нестационарной задачи при уменьшении шага по времени для всех случаев.
 
 Вычислительный алгоритм приближенного решения базируется на стандартной конечно-элементной аппроксимации по пространству при использовании лагранжевых конечных элементов.
 Контроль точности решения проводился на последовательности сгущающихся сеток с использованием конечных элементов различной степени.
@@ -739,13 +739,28 @@ calc. time & 1900 & 1900 & 6050 \\
 
 \begin{thebibliography}
 
-\bibitem[Аввакумов и др, 2017]{avvakumov2017mm} {\it Аввакумов~А.\,В., Вабищевич~П.\,Н., Васильев~А.\,О., Стрижов~В.\,Ф.,} 
+\bibitem[Аввакумов и др, 2017]{avvakumov2017mm} {\it Аввакумов~А.\,В., Вабищевич~П.\,Н., Васильев~А.\,О., Стрижов~В.\,Ф.} 
 Численное моделирование нестационарных задач диффузии нейтронов~// Математическое моделирование.~--- 2017.~--- Т.~29, \No~7.~--- С.~44--62.
 \\
 %\bibitem[Avvakumov et al, 2017]{avvakumov2017eng}
 {\footnotesize{\it Avvakumov~A.\,V., Strizhov~V.\,F., Vabishchevich~P.\,N., Vasilev~A.\,O.}
 Numerical modeling of neutron diffusion non-stationary problems ~// Matematicheskoe modelirovanie.~--- 2017.~--- Vol.~29, No.~7.~--- P.~44--62.}
 
+\bibitem[Кондрушин, 2014]{kondrushin2014} {\it Кондрушин~А.\,E.} 
+Развитие метода поверхностных гармоник для решения задач нейтронной пространственной кинетики в ядерных реакторах: Диссертация кандидата физико-математических наук: 05.13.18.~--- 2014.~--- 171~с.
+\\
+%\bibitem[Kondrushin, 2014]{kondrushin2014eng}
+{\footnotesize{\it Kondrushin~A.\,E.}
+Razvitie metoda poverhnostnyh garmonik dlja reshenija zadach nejtronnoj prostranstvennoj kinetiki v jadernyh reaktorah: Dissertacija kandidata fiziko-matematicheskih nauk [Development of the method of surface harmonics for solving problems of neutron spatial kinetics in nuclear reactors: PhD thesis].~--- 2014.~--- 171~p. (in Russian).\par}
+
+
+\bibitem[Марчук, Лебедев, 1981]{marchuk1981} {\it Марчук~Г.\,И., Лебедев~В.\,И.} 
+Численные методы в теории переноса нейтронов.~--- M.: Атомиздат.~--- 1981.~--- 455~с.
+\\
+%\bibitem[Marchuk, Lebedev, 1981]{marchuk1981eng}
+{\footnotesize{\it Marchuk~G.\,I., Lebedev~V.\,I.}
+Chislennye metody v teorii perenosa nejtronov [Numerical methods in the theory of neutron transport].~--- M.: Atomizdat.~--- 1981.~--- 455~p. (in Russian).\par}
+    
 \bibitem[Avvakumov et al, 2017]{avvakumov2017} {\it Avvakumov~A.\,V., Strizhov~V.\,F., Vabishchevich~P.\,N., Vasilev~A.\,O.} Spectral properties of dynamic processes in a nuclear reactor ~// Annals of Nuclear Energy.~--- 2017.~--- Vol.~99.~--- P.~68--79.
 
 \bibitem[Avvakumov et al, 2018]{avvakumov2018} {\it Avvakumov~A.\,V., Strizhov~V.\,F., Vabishchevich~P.\,N., Vasilev~A.\,O.} State change modal method for numerical simulation of dynamic processes in a nuclear reactor ~// Progress in Nuclear Energy.~--- 2018.~--- Vol.~106.~--- P.~240--261.
@@ -766,11 +781,11 @@ Numerical modeling of neutron diffusion non-stationary problems ~// Matematiches
 
 \bibitem[Downar et al, 2009]{downar2009} {\it Downar~T., Xu~Y., Seker~V., Hudson~N.} Theory manual for the PARCS kinetics core simulator module~--- Department of Nuclear Engineering and Radiological Sciences University of Michigan, 2009.
 
-\bibitem[Evans, 1990]{evans1990} {\it Evans~L.\,C.} Weak convergence methods for nonlinear partial differential equations~---  American Mathematical Soc., 1990.~--- No.~74.
+%\bibitem[Evans, 1990]{evans1990} {\it Evans~L.\,C.} Weak convergence methods for nonlinear partial differential equations~---  American Mathematical Soc., 1990.~--- No.~74.
 
 \bibitem[Gelbard, 1961]{gelbard1961} {\it Gelbard~E.\,M.} Simplified spherical harmonics equations and their use in shielding problems~--- Westinghouse Electric Corp. Bettis Atomic Power Lab., 1961.
 
-\bibitem[Habetler, Martino, 1961]{habetler1961} {\it Habetler~G.\,J., Martino~M.\,A.} Existence theorems and spectral theory for the multigroup diffusion model~--- Proc. of the Eleventh Symposium in Applied Mathematics of the American Mathematical Society, 1961.~--- Vol.~11.
+%\bibitem[Habetler, Martino, 1961]{habetler1961} {\it Habetler~G.\,J., Martino~M.\,A.} Existence theorems and spectral theory for the multigroup diffusion model~--- Proc. of the Eleventh Symposium in Applied Mathematics of the American Mathematical Society, 1961.~--- Vol.~11.
 
 \bibitem[Hageman, Yasinsky, 1969]{hageman1969} {\it Hageman~L.\,A., Yasinsky~J.\,B.} Comparison of alternating-direction time-differencing methods with other implicit methods for the solution of the neutron group-diffusion equations~// Nuclear Science and Engineering.~--- 1969.~--- Vol.~38, No.~1.~--- P.~8--32.
 
@@ -783,6 +798,8 @@ Numerical modeling of neutron diffusion non-stationary problems ~// Matematiches
 \bibitem[McClarren, 2010]{mcclarren2010} {\it McClarren~R.\,G.} Theoretical aspects of the simplified Pn equations~// Transport Theory and Statistical Physics.~--- 2010.~--- Vol.~39, No.~2--4.~--- P.~73--109.
 
 \bibitem[Quarteroni, Valli, 2008]{quarteroni2008} {\it Quarteroni~A., Valli~A.} Numerical approximation of partial differential equations~--- Weinheim: Springer Science \& Business Media, 2008.~--- Vol.~23.
+
+\bibitem[Sutton, Aviles, 1996]{sutton1996} {\it Sutton~T.\,M., Aviles~B.\,N.} Diffusion theory methods for spatial kinetics calculations~// /Progress in nuclear energy.~--- 1996.~--- Vol.~30, No.~2.~--- P.~119--182.
 
 \bibitem[Stacey, 2007]{stacey2007} {\it Stacey~W.\,B.} Nuclear Reactor Physics~--- Weinheim: wiley-vch, 2007.~--- 735~p.
 
