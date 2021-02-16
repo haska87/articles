@@ -100,6 +100,7 @@
 Применение SP$_3$ методологии основанно на решении $\lambda$-спектральной задачи. 
 Динамические процессы протестированы на примере двугруппового бенчмарка реактора TWIGL-2D.
 Для достижения геометрической общности применяется метод конечных элементов.
+Контроль точности решения проводился на последовательности сгущающихся сеток с использованием конечных элементов различной степени.
 Результаты рассчитанные диффузионным и транспортным SP$_3$ методами сравниваются с результатами эталонных расчетов. 
 \end{abstract}
 
@@ -122,6 +123,7 @@ In this paper we consider the SP$_3$ approximation for the steady-state multigro
 Application of the SP$_3$ methodology is based on solution of the $\lambda$-spectral problem. 
 Dynamic behaviour has been tested for the twogroup TWIGL-2D reactor benchmark test. 
 The finite element method is chosen to achieve the geometrical generality. 
+The control of the solution accuracy was carried out on a sequence of refining grids using finite elements of varying degrees.
 The results calculated with the diffusion and SP$_3$ methods are compared with the reference calculation results. 
 \end{abstracteng}
 
@@ -567,10 +569,12 @@ ref.&   & 0.91605 & -- & 0.91605 & --\\
 
 \subparagraph{Решение нестационарной задачи}
 Здесь показаны результаты решений нестационарной задачи для всех трех сценариев.
+Шаг по времени $\tau=1$ мс.
 Проводится сравнение результатов диффузионного и транспортного расчетов.
+Эталонными решениями выступают результаты полученные транспортными кодами DORT-TD, MGSNM (метод дискретных ординат) и транспортными кодами DeCART, MPACT (метод характеристик) \cite{kondrushin2014}.
+
 Представлены исследования различных шагов по времени для всех трех сценариев.  
 Для исследования сходимости численного решения, в качестве тестовой сетки  по пространству выбран средний вариант вычислительной сетки при $n=8,\ p=2$.
-Эталонными решениями выступают результаты полученные транспортными кодами DORT-TD, MGSNM (метод дискретных ординат) и транспортными кодами DeCART, MPACT (метод характеристик) \cite{kondrushin2014}.
 Погрешность оценивается как $\varepsilon_P(t) = | P_{ref} - P |$, где $P_{ref}$ --- эталонное транспортное решение.
 
 \subparagraph{Сценарий №1: скачкообразное возмущение}
@@ -711,14 +715,14 @@ calc. time & 2000 & 6500 \\
 \begin{center}
 	\includegraphics[width=0.7\linewidth]{calc_time.eps}
 	\caption{\label{image:canonsummary} Среднее время счета динамического процесса.}
-	\label{ris:tau_c}
+	\label{ris:calc_time}
 \end{center}
 \end{figure}
 
-На рисунке \ref{ris:tau_c} показано среднее время счета диффузионных/транспортных нестационарных расчетов относительно вычислительной сетки.
-Полученные данные демонстируют, что отношение времени счета между диффузионным и траспортным SP$_3$ расчетами растет при сгущении сетки.
+На рисунке \ref{ris:calc_time} показано среднее время счета диффузионных/транспортных нестационарных расчетов относительно вычислительной сетки.
+Полученные данные демонстируют, что отношение времени счета между диффузионным и траспортным SP$_3$ расчетами растет при сгущении вычислительной сетки.
 Например, время вычислений для SP$_3$ расчетов в среднем в 1.3 раза больше чем у диффузионных на грубой сетке ($n=2,\ p=1$), в 1.9 раза на средней сетке ($n=8,\ p=2$) и в 3.3 раза на мелкой сетке ($n=32,\ p=3$). 
-В связи с этим, оптимальным вариантом сетки для траспортной SP$_3$ модели отностительно диффузионной в соотношении времени счета и точности решения для данного бэнчмарка является средняя сетка($n=8,\ p=2$).
+В связи с этим, оптимальным вариантом сетки для траспортной SP$_3$ модели отностительно диффузионной в соотношении времени счета и точности решения для данного бэнчмарка является средняя сетка ($n=8,\ p=2$).
 	
 \paragraph{Заключение}
 
@@ -751,7 +755,6 @@ Numerical modeling of neutron diffusion non-stationary problems ~// Matematiches
 %\bibitem[Kondrushin, 2014]{kondrushin2014eng}
 {\footnotesize{\it Kondrushin~A.\,E.}
 Razvitie metoda poverhnostnyh garmonik dlja reshenija zadach nejtronnoj prostranstvennoj kinetiki v jadernyh reaktorah: Dissertacija kandidata fiziko-matematicheskih nauk [Development of the method of surface harmonics for solving problems of neutron spatial kinetics in nuclear reactors: PhD thesis].~--- 2014.~--- 171~p. (in Russian).\par}
-
 
 \bibitem[Марчук, Лебедев, 1981]{marchuk1981} {\it Марчук~Г.\,И., Лебедев~В.\,И.} 
 Численные методы в теории переноса нейтронов.~--- M.: Атомиздат.~--- 1981.~--- 455~с.
