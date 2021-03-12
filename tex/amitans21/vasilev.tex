@@ -1,0 +1,82 @@
+\documentclass{aip-cp}
+
+\usepackage[numbers]{natbib}
+\usepackage{rotating}
+\usepackage{graphicx}
+
+\usepackage{bm}
+
+%\makeatletter
+%\def\@fnsymbol#1{\ensuremath{\ifcase#1\or *\or \dagger\or **\or
+%   \ddagger\or \mathsection\or \mathparagraph\or \|\or \dagger\dagger
+%   \or \ddagger\ddagger \or\mathsection\mathsection
+%   \or \mathparagraph\mathparagraph \or *{*}*\or
+%   \dagger{\dagger}\dagger \or\ddagger{\ddagger}\ddagger\or
+%   \mathsection{\mathsection}\mathsection
+%   \or \mathparagraph{\mathparagraph}\mathparagraph \else\@ctrerr\fi}}
+%\makeatother
+
+% Document starts
+\begin{document}
+
+% Title portion
+\title{Multiscale model reduction for neutron transport problems in SP3 approximation}
+
+%\author[aff1]{Author's Name\corref{cor1}\noteref{note1,note2}}
+%\eaddress[url]{http://www.aip.org}
+%\author[aff2,aff3]{Author's Name\noteref{note2}}
+%\eaddress{anotherauthor@thisaddress.yyy}
+
+\author[aff1]{A.O. Vasilev\corref{cor1}}
+\author[aff1]{D.A. Spiridonov}
+\author[aff2]{A.V. Avvakumov}
+
+\affil[aff1]{North-Eastern Federal University, Yakutsk, Russia}
+\affil[aff2]{National Research Center "Kurchatov Institute", Moscow, Russia}
+\corresp[cor1]{Corresponding author: haska87@gmail.com}
+
+\maketitle
+
+
+\begin{abstract}
+The SP$_3$ approximation of the neutron transport equation allows improving the accuracy for both static and transient simulations for reactor core analysis compared with the neutron diffusion theory. 
+Besides, the SP$_3$ calculation costs are much less than higher order transport methods (S$_N$ or P$_N$).
+Another advantage of the SP$_3$ approximation is a similar structure of equations that is used in the diffusion method. 
+Therefore, there is no difficulty to implement the SP$_3$ solution option to the multi-group neutron diffusion codes. 
+We attempt to employ a model reduction technique based on the multiscale method for neutron transport equation in SP$_3$ approximation. 
+The proposed method is based on the use of a generalized multiscale finite element method (GMsFEM).
+The main idea is to create multiscale basis functions that can be used to effectively solve on a coarse grid.
+From calculation results, we obtain that multiscale basis functions can properly take into account the small-scale characteristics of the medium and provide accurate solutions. 
+The application of the SP$_3$ methodology based on solution of the $\lambda$-spectral problems has been tested for the some reactor benchmarks.
+The results calculated with the GMsFEM are compared with the reference transport calculation results.
+\end{abstract}
+
+
+\section{template}
+In this paper, we consider unsaturated filtration in heterogeneous porous media with rough surface topography. The surface topography plays an important role in determining the flow process and includes multiscale features. 
+The mathematical model is based on the Richards’ equation with three different types of boundary conditions on the surface: Dirichlet, Neumann, and Robin boundary conditions. 
+For coarse-grid discretization, the Generalized Multiscale Finite Element Method (GMsFEM) is used. Multiscale basis functions that incorporate small scale heterogeneities into the basis functions are constructed. 
+To treat rough boundaries, we construct additional basis functions to take into account the influence of boundary conditions on rough surfaces. 
+We present numerical results for two-dimensional and three-dimensional model problems. 
+To verify the obtained results, we calculate relative errors between the multiscale and reference (fine-grid) solutions for different numbers of multiscale basis functions. We obtain a good agreement between fine-grid and coarse-grid solutions.
+
+In this work, we develop a multiscale method for elliptic problems in perforated media with Robin boundary conditions. 
+Perforated media are encountered in many applications, e.g., in material science applications, where the material properties are prescribed outside perforation. 
+Such a perforated structure can significantly affect the solution. 
+For the numerical solution of the equation, it is necessary to construct a computational grid with elements resolving the perforations.
+The computational grid calculated in this way is fine-scale grid and this can lead to a large number of unknowns. For the numerical solution of our problem, we construct an approximation of the equation on a coarse grid using the Generalized Multiscale Finite Element Method (GMsFEM). 
+The main idea of the GMsFEM is to construct multiscale basis functions on a coarse grid, which can reduce the computational cost. 
+The multiscale basis function construction requires snapshots and local spectral problems, which were developed in the paper. 
+In the paper, we study Robin boundary conditions, which arise in many applications. 
+Previous works \cite{b8} considered Dirichlet and Neumann boundary conditions. 
+The construction of multiscale basis functions differ from those in \cite{b8,b9} as we need to impose non-homogeneous Robin boundary conditions. We present several numerical examples. 
+In these examples, perforated domains with many inclusions are considered. Our numerical results show a good agreement between the coarse and the fine-grid simulations.
+
+In this paper, we consider a class of multiscale methods for the solution of nonlinear problem in perforated domains. These problems are of multiscale nature and their discretizations lead to large nonlinear systems. To discretize these problems, we construct a fine grid approximation using the finite element method with implicit time approximation and the Newton’s method. In order to solve these large systems efficiently, we will develop a model reduction procedure. To perform the model reduction, we construct a coarse grid approximation based on the Generalized Multiscale Finite Element Method (GMsFEM). The GMsFEM consists of an offline and online stages. In the offline stage, we construct multiscale basis functions based on the solution of some local spectral problems defined in the snapshot space. Then, we enrich the offline multiscale space by additional multiscale basis that handle non-homogeneous boundary condition. For the accurate solution of the nonlinear problem, we use two techniques on the online stage: (1) residual based multiscale basis functions and (2) residual based local correction. We will present numerical results for two-dimensional Allen–Cahn problems in perforated domains.
+
+In this paper, we consider a poroelasticity problem in heterogeneous multicontinuum media that is widely used in simulations of the unconventional hydrocarbon reservoirs and geothermal fields. Mathematical model contains a coupled system of equations for pressures in each continuum and effective equation for displacement with volume force sources that are proportional to the sum of the pressure gradients for each continuum. To illustrate the idea of our approach, we consider a dual continuum background model with discrete fracture networks that can be generalized to a multicontinuum model for poroelasticity problem in complex heterogeneous media. We present a fine grid approximation based on the finite element method and Discrete Fracture Model (DFM) approach for two and three-dimensional formulations. The coarse grid approximation is constructed using the Generalized Multiscale Finite Element Method (GMsFEM), where we solve local spectral problems for construction of the multiscale basis functions for displacement and pressures in multicontinuum media. We present numerical results for the two and three dimensional model problems in heterogeneous fractured porous media. We investigate relative errors between reference fine grid solution and presented coarse grid approximation using GMsFEM with different numbers of multiscale basis functions. Our results indicate that the proposed method is able to give accurate solutions with few degrees of freedoms.
+
+
+
+
+\end{document}
