@@ -93,6 +93,8 @@ neutron transport equation, SP3 approximation, eigenvalues, multiscale simulatio
 %In particular, when we use few functions, the result is not accurate, therefore it necessary to select more basis functions. 
 %The errors of the method are shown in $L_2$ and $H_1$ norms. 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Problem statement}
 Let’s consider the symmetric form of the $\mathrm{SP_3}$ equation for the neutron flux \citep{ryu2013fem}.
 The neutron dynamics is considered in the limited convex two-dimensional or three-dimensional area  $\Omega$ ($\bm x = \{x_1, ..., x_d\} \in \Omega, \ d = 2,3$) with boundary $\partial \Omega$. 
@@ -174,39 +176,63 @@ System of equations (\ref{1}) and (\ref{2}) is supplemented with boundary condit
  \quad c_m(\bm x,0) = c_m^0(\bm x), 
  \quad m = 1,2, ..., M.
 \end{equation}
-Let's propose that at the initial time t = 0, the reactor is in steady-state critical condition.
+We assume that at the initial time t = 0, the reactor is in steady-state critical condition.
 
-To solve the problem within the domain $\Omega$, we approximate the system of equations (\ref{1})-(\ref{4}) using the finite element method \cite{Brenner2007}.
-We discretize the time derivatives using finite-difference scheme, and then bring each stationary problem to a variational formulation. 
-For approximation in time, we use a fully implicit scheme with time step $\tau$. 
-To specify the variational formulation, we multiply equations by the test function $q$ and integrate over the domain $\Omega$. 
-Using the integration by parts, we obtain the following variational formulation: let's find $\phi^{n+1} \in V$ such that
-\begin{equation} \label{4}
+\textbf{Discretization.}
+Define a uniform grid
+\[
+\omega = \{ t^n=n \tau, \quad n = 0,1,...,N, \quad \tau N = T \}
+\]
+and use the next notations $\phi^n_g = \phi_g(\bm{x}, t^n)$, $c^n_m = c_m(\bm{x}, t^n)$. 
+We discretize the time derivatives of equation (\ref{1}) using finite-difference scheme. 
+For approximation in time, we use a fully implicit scheme with time step $\tau$.
+For delayed neutron source equation we use numerical-analytical method for the construction of approximations
+in time. 
+The equation (\ref{2}) in the equivalent form
+\[
+  \frac{\partial e^{\lambda_m t}  c_m}{\partial t} = \beta_m  e^{\lambda_m t} \sum_{g=1}^{G} \nu \Sigma_{fg} \phi_g,
+ \quad m = 1,2, ..., M .
+\]
+After integration on time interval $[t^n, t^{n+1}]$ one can obtained
+\begin{equation}\label{5}
+c_m^{n+1} = e^{-\lambda_m\tau} c_m^n + \beta_m \int_{t_n}^{t_{n+1}}e^{\lambda_m (t-t^{n+1})} \sum_{g=1}^{G} \nu \Sigma_{fg} \phi_g d t,
+ \quad m = 1,2, ..., M.
+\end{equation}
+
+For spatial approximation we use the finite element method \cite{quarteroni}.
+Let $H^1(\Omega)$ -- Sobolev space, $q \in H^1$: $q^2$ and $\vert\nabla q\vert^2$ have a finite integral in $\Omega$. 
+%For $\bm v = \{v_1, v_2, ..., v_d\}$ define $V^d = [H^1(\Omega)]^d$. 
+%For test functions use notations $\bm \xi  = \{\xi_1, \xi_2, ..., \xi_G\}$, $\bm \zeta  = \{\zeta_1, \zeta_2, ..., \zeta_M\}$.
+%To specify the variational formulation, we multiply equations by the test function $q$ and integrate over the domain $\Omega$. 
+Using the integration by parts, we obtain the following variational formulation: let's find $\phi^{n+1}_g \in V^G$ such that
+\begin{equation}\label{6}
 \begin{split}
-\int_\Omega \frac{1}{v} \frac{\phi^{n+1}}{\tau} q d\bm x +
-\int_\Omega D^{n+1} \nabla\phi^{n+1} \cdot \nabla q d\bm x &+ 
-\int_\Omega \Sigma_r^{n+1} \phi^{n+1} q d\bm x - \\
-\int_\Omega \frac{1+\lambda\tau-\beta}{K_{eff}(1+\lambda\tau)} \nu \Sigma_f^{n+1} \phi^{n+1} q d\bm x &+
-\int_{\partial \Omega} \gamma \phi^{n+1} q d\bm s = \\
-\int_\Omega \frac{1}{v} \frac{\phi^{n}}{\tau} q d\bm x +
-\int_\Omega \frac{\lambda c^n}{1+\lambda\tau} q d\bm x &, \quad \forall q \in V,
+\int_{\Omega} \left( \frac{\phi^{n+1}_{0,g} - \phi^{n}_{0,g}}{v_g \tau} - 
+			  \frac{2(\phi^{n+1}_{2,g} - \phi^{n}_{2,g})}{v_g \tau}\right) q_g d\bm{x} - 
+\int_{\Omega} D_{0,g}\nabla \phi^{n+1}_{0,g} \nabla q_g d\bm{x} + 
+\int_{\partial\Omega} J_{0,g} q_g d\bm{s} + \\
+\int_{\Omega} \left( \Sigma_{r,g} \phi^{n+1}_{0,g} - 2\Sigma_{r,g} \phi^{n+1}_{2,g} \right) q_g d\bm{x} = 
+\int_{\Omega} \left( (1-\beta)\chi_{n,g} S_{n} + S_{s,g} + \chi_{d,g} S_d \right) q_g d\bm{x}, \\
+\int_{\Omega} \left( -\frac{2(\phi^{n+1}_{0,g} - \phi^{n}_{0,g})}{v_g \tau} + 
+			  \frac{9(\phi^{n+1}_{2,g} - \phi^{n}_{2,g})}{v_g \tau} \right) q_g d\bm{x} - 
+\int_{\Omega} D_{2,g}\nabla \phi^{n+1}_{2,g} \nabla  q_g d\bm{x} + 
+\int_{\partial\Omega} J_{2,g} q_g d\bm{s} + \\
+\int_{\Omega} \left( (5\Sigma_{t,g} + 4\Sigma_{r,g}) \phi^{n+1}_{2,g} - 2\Sigma_{r,g} \phi^{n+1}_{0,g} \right) q_g d\bm{x} =  
+\int_{\Omega} \left( -2(1-\beta)\chi_{n,g} S_{n} - 2S_{s,g} - 2\chi_{d,g} S_d \right) q_g d\bm{x},
 \end{split}
 \end{equation}
-where $V=H^1(\Omega)$ is the Sobolev space consisting of scalar functions $\upsilon$ such that $\upsilon^2$ and $|\nabla \upsilon^2|$ have a finite integral in $\Omega$.
+where $V^G=[H^1(\Omega)]^G$.
 
-Further, it's necessary to pass from the continuous variational problem (\ref{4}) to the discrete problem. 
-We introduce finite-dimensional space of finite elements $V_h \subset V$ and formulate a discrete variational problem. 
-We use standard linear basis functions as basis functions to solve the problem on the fine grid and
-\[
-\phi = \sum_{i = 1}^{N_f} \phi_i y_i,
-\] 
-where $N_f$ is the number of vertices on the fine grid.
-
+Further, it's necessary to pass from the continuous variational problem (\ref{6}) to the discrete problem. 
+We introduce finite-dimensional space of finite elements $V^G_h \subset V^G$ and formulate a discrete variational problem. 
+We use standard linear basis functions as basis functions to solve the problem on the fine grid.
 The problem is solving a system of linear algebraic equations
-\begin{equation}\label{5}
+\begin{equation}\label{7}
 A_f \phi = b_f,
 \end{equation}
-where the operator $A_f$ corresponds to the left side of equation (\ref{4}), and the vector $b_f$ corresponds to the right side of equation (\ref{4}).
+where the operator $A_f$ corresponds to the left side of equation, and the vector $b_f$ corresponds to the right side of equation (\ref{6}).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Multiscale method}
 For the discretization on the coarse grid we use GMsFEM.
@@ -240,11 +266,11 @@ Important multiscale features of the solution are incorporated into localized ba
 The computation of basis functions use local spectral problems to reduce the dimension of the local problem. 
 In order to construct conforming basis functions, we multiply eigenvectors related to dominant eigenvalues to the partition of unity functions.
 We use following spectral problem in $\omega_i$
-\begin{equation} \label{6}
+\begin{equation} \label{8}
 A \varphi^i = \lambda S \varphi^i,
 \end{equation} 
 where the elements of the matrices $A= \{ a_{ij} \}$ and $S = \{ s_{ij} \}$ are defined as follow{
-\begin{equation} \label{7}
+\begin{equation} \label{9}
 \begin{split}
 a_{ij} = 
 \int_{\omega_i} D \nabla\phi \cdot \nabla q d\bm x &+ 
@@ -287,7 +313,7 @@ R = [ R^1, R^2, ..., R^{N_v} ],
 where $N_v$ is the number of local domains $\omega_i$.
 
 Then using the transition matrix $R$ and fine grid system (\ref{5}), we construct the coarse grid approximation
-\begin{equation}\label{9}
+\begin{equation}\label{10}
 A_c \phi_c = b_c, \quad 
 A_c = R A_f R^T 
 \quad \text{ and } \quad 
