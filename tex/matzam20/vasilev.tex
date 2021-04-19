@@ -95,42 +95,61 @@ In particular, when we use few functions, the result is not accurate, therefore 
 The errors of the method are shown in $L_2$ and $H_1$ norms. 
 
 \section{Problem statement}
-Let's consider a one-group diffusion approximation for the neutron transport modelling. 
+Let's consider a one-group diffusion approximation \cite{Stacey2007} for the neutron transport modelling. 
 We consider a bounded 2D domain  $\Omega$ ($\bm x = \{x_1, x_2\} \in \Omega$) with a convex boundary $\partial \Omega$. 
-The one-group transport equation in the diffusion approximation with one-group delayed neutron source can be written as follows:
+The one-group transport equation in the diffusion approximation can be written as follows:
 \begin{equation}\label{1}
-\begin{split}
- \frac{1}{v} \frac{\partial \phi}{\partial t} - \nabla \cdot D \nabla \phi + \Sigma_r \phi &= \frac{1 - \beta}{K_{eff}} \nu \Sigma_f \phi + \lambda c, \\
-\frac{\partial c}{\partial t} + \lambda c &= \frac{\beta}{K_{eff}} \nu \Sigma_f \phi.
-\end{split}
+	\frac{1}{v} \frac{\partial \phi}{\partial t} - \nabla \cdot D \nabla \phi + \Sigma_r \phi 
+	= \frac{1 - \beta}{K_{eff}} \nu \Sigma_f \phi + \lambda c.
 \end{equation} 
-Here $\phi(\bm x,t)$ is the neutron flux  at point $\bm x$ and time $t$,
-$c(\bm x,t)$ is density of sources of delayed neutrons,
-$v$ is the effective neutron velocity,
-$D(\bm x, t)$ is the diffusion coefficient, 
-$\Sigma_r(\bm x,t)$ is the removal cross-section,
-$\Sigma_f(\bm x,t)$ is the fission cross-section,
-$\beta$ is the effective fraction of delayed neutrons, 
-$\lambda$ is the decay constant of the delayed neutron source.
-
-Let's determine the boundary and initial conditions for Equation (\ref{1}).
-The albedo-type conditions are set at the boundary  $\partial \Omega$:
+Here $\phi(\bm x,t)$ --- neutron flux  at point $\bm x$ and time $t$,
+$c(\bm x,t)$ --- density of source of delayed neutrons,
+$v$ --- effective neutron velocity,
+$D(\bm x, t)$ --- diffusion coefficient, 
+$\Sigma_r(\bm x,t)$ --- removal cross-section,
+$\Sigma_f(\bm x,t)$ --- fission cross-section,
+$\beta$ --- effective fraction of delayed neutrons, 
+$\lambda$ --- decay constant of the delayed neutron source.
+The density of sources of delayed neutrons is described by the equation
 \begin{equation}\label{2}
- D\frac{\partial \phi}{\partial n} + \gamma \phi = 0,
-\end{equation} 
-where $n$ is an outer normal to the boundary $\partial \Omega$, $\gamma$ is the albedo constant.
+	\frac{\partial c}{\partial t} + \lambda c = \frac{\beta}{K_{eff}} \nu \Sigma_f \phi.
+\end{equation}
 
-Let's propose that at the initial time t = 0, the reactor is in steady-state critical condition
+The albedo-type conditions are set at the boundary  $\partial \Omega$:
 \begin{equation}\label{3}
- \phi(\bm x,0) = \phi^0(\bm x).
+	D \frac{\partial \phi}{\partial n} + \gamma \phi = 0,
 \end{equation} 
-%Let's consider problem (\ref{1}) with boundary conditions (\ref{2}) and initial conditions (\ref{3}).
-To solve the problem within the domain $\Omega$, we approximate the system of equations (\ref1)-(\ref{3}) using the finite element method \cite{Brenner2007}.
-We discretize the time derivatives using finite-difference scheme, and then bring each stationary problem to a variational formulation. 
-For approximation in time, we use a fully implicit scheme with time step $\tau$. 
+where $n$ --- outer normal to the boundary $\partial \Omega$, $\gamma$ --- albedo constant.
+System of equations (\ref{1}) and (\ref{2}) is supplemented with boundary conditions (\ref{3}) and corresponding initial conditions
+\begin{equation}\label{4}
+ \phi(\bm x, 0) = \phi^0(\bm x), \quad c(\bm x, 0) = c^0(\bm x).
+\end{equation} 
+Let's propose that at the initial time t = 0, the reactor is in steady-state critical condition.
+
+\textbf{Discretization.}
+Define a uniform grid
+\[
+	\omega = \{ t^n=n \tau, \quad n = 0,1,...,N, \quad \tau N = T \}
+\]
+and use the next notations $\phi^n = \phi(\bm{x}, t^n)$, $c^n = c(\bm{x}, t^n)$. 
+We discretize the time derivatives of equation (\ref{1}) using finite-difference scheme. 
+For approximation in time, we use a fully implicit scheme with time step $\tau$.
+For delayed neutrons source equation we use numerical-analytical method for the construction of approximations in time.
+The equation (\ref{2}) in the equivalent form
+\[
+	\frac{\partial e^{\lambda t} c}{\partial t} = 
+	\beta e^{\lambda t} \nu \Sigma_{fg} \phi_g.
+\]
+After integration on time interval $[t^n, t^{n+1}]$ one can obtained
+\begin{equation}\label{5}
+	c^{n+1} = e^{-\lambda \tau} c^n + 
+	\beta \int_{t_n}^{t_{n+1}} e^{\lambda (t - t^{n+1})} \nu \Sigma_{fg} \phi_g d t.
+\end{equation}
+
+For spatial approximation we use the finite element method \cite{quarteroni}.
 To specify the variational formulation, we multiply equations by the test function $q$ and integrate over the domain $\Omega$. 
 Using the integration by parts, we obtain the following variational formulation: let's find $\phi^{n+1} \in V$ such that
-\begin{equation} \label{4}
+\begin{equation} \label{6}
 \begin{split}
 \int_\Omega \frac{1}{v} \frac{\phi^{n+1}}{\tau} q d\bm x +
 \int_\Omega D^{n+1} \nabla\phi^{n+1} \cdot \nabla q d\bm x &+ 
@@ -152,13 +171,13 @@ We use standard linear basis functions as basis functions to solve the problem o
 where $N_f$ is the number of vertices on the fine grid.
 
 The problem is solving a system of linear algebraic equations
-\begin{equation}\label{5}
+\begin{equation}\label{7}
 A_f \phi = b_f,
 \end{equation}
 where the operator $A_f$ corresponds to the left side of equation (\ref{4}), and the vector $b_f$ corresponds to the right side of equation (\ref{4}).
 
 \section{Multiscale method}
-For the discretization on the coarse grid we use GMsFEM.
+For the discretization on the coarse grid we use GMsFEM \cite{Efendiev2013}.
 We construct two grids: fine grid ($\mathcal{T}_h$) and coarse grid ($\mathcal{T}_H$) (see Figure \ref{p1}). 
 For multiscale basis construction, we define local domains $\omega_i$, where $i = 1,...,N_v$ and $N_v$ is the number of coarse grid nodes.
 We assume that $\mathcal{T}_h$ is a refinement of $\mathcal{T}_H$, where $h$ and $H$ represent the fine and coarse grid sizes, respectively. 
@@ -189,11 +208,11 @@ Important multiscale features of the solution are incorporated into localized ba
 The computation of basis functions use local spectral problems to reduce the dimension of the local problem. 
 In order to construct conforming basis functions, we multiply eigenvectors related to dominant eigenvalues to the partition of unity functions.
 We use following spectral problem in $\omega_i$
-\begin{equation} \label{6}
+\begin{equation} \label{8}
 A \varphi^i = \lambda S \varphi^i,
 \end{equation} 
 where the elements of the matrices $A= \{ a_{ij} \}$ and $S = \{ s_{ij} \}$ are defined as follow{
-\begin{equation} \label{7}
+\begin{equation} \label{9}
 \begin{split}
 a_{ij} = 
 \int_{\omega_i} D \nabla\phi \cdot \nabla q d\bm x &+ 
@@ -202,11 +221,10 @@ a_{ij} =
 s_{ij} &= \int_{\omega _i} D u q d\bm x.
 \end{split}
 \end{equation}}
-
 Then, we choose eigenvectors corresponding to dominant $M_{i}$ eigenvalues from \eqref{6} and use them to construct the multiscale basis functions.
 
 % POU
-\textbf{Partition of unity functions. } As  partition of unity functions, we use linear functions in each domain $\omega_i$.
+As  partition of unity functions, we use linear functions in each domain $\omega_i$.
 Partitions of unity are calculated in the domain $ K_j $ as a linear function from $\Gamma$ to the vertex $ A $, and $ 0 $ is assigned to the entire segment $\Gamma$, and at point $ A $ is assigned the value $1$. 
 Thus, we obtain a linear function from $ 0 $ to $ 1 $ over the entire domain $ K_j $. 
 Partitions of unity are shown in Figure \ref{p2}. 
@@ -236,7 +254,7 @@ R = [ R^1, R^2, ..., R^{N_v} ],
 where $N_v$ is the number of local domains $\omega_i$.
 
 Then using the transition matrix $R$ and fine grid system (\ref{5}), we construct the coarse grid approximation
-\begin{equation}\label{9}
+\begin{equation}\label{10}
 A_c \phi_c = b_c, \quad 
 A_c = R A_f R^T 
 \quad \text{ and } \quad 
@@ -248,7 +266,7 @@ and using the coarse-scale solution $\phi_c$, we can  reconstruct the fine grid 
 \]
 
 \section{Numerical results}
-Let's consider the 2D test problem for small PWR reactor ($\Omega$ --- reactor core area). 
+Let's consider the 2D test problem for small PWR reactor \cite{smallPWR} ($\Omega$ --- reactor core area). 
 The geometrical model of the small PWR reactor core is presented in Fig.\ref{p3}. 
 The diameter of the fuel rods is 0.82 cm, the cell width is 1.26 cm.
 Diffusion neutronics constants in the common notations are given in Table \ref{t1}. 
