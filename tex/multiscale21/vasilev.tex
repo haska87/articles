@@ -48,7 +48,7 @@ The results calculated with the GMsFEM are compared with the reference transport
 \end{abstract}
 
 \begin{keyword}
-neutron transport equation, SP3 approximation, eigenvalues, multiscale simulation, generalized multiscale finite element method (GMsFEM)
+neutron transport equation, SP3 approximation, eigenvalues, multiscale simulation, generalized multiscale finite element method, GMsFEM
 \end{keyword}
 
 \end{frontmatter}
@@ -96,7 +96,7 @@ neutron transport equation, SP3 approximation, eigenvalues, multiscale simulatio
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Problem statement}
-Let’s consider the symmetric form of the $\mathrm{SP_3}$ equation for the neutron flux \citep{ryu2013fem}.
+Let us consider the symmetric form of the SP$_3$ equation for the neutron flux \citep{ryu2013fem}.
 The neutron dynamics is considered in the limited convex two-dimensional or three-dimensional area $\Omega$ ($\bm x = \{x_1, ..., x_d\} \in \Omega, \, d = 2,3$) with boundary $\partial \Omega$.
 The neutron transport is described by the system of equations
 \begin{equation}\label{1}
@@ -124,7 +124,8 @@ where
 \[
 	\phi_{0,g} = \phi_g + 2\phi_{2,g}, \quad
 	D_{0,g} = \cfrac{1}{3 \Sigma_{tr,g}}, \quad
-	D_{2,g} = \cfrac{9}{7 \Sigma_{t,g}}, \quad g = 1,2,...,G.
+	D_{2,g} = \cfrac{9}{7 \Sigma_{t,g}}, \quad 
+	g = 1,2,...,G.
 \]
 Here $G$ --- number of energy groups,
 $\phi_g(\bm x, t)$ --- scalar flux,
@@ -163,15 +164,17 @@ The Marshak-type conditions are set at the boundary of the area $\partial \Omega
 	\begin{bmatrix}
 		\phi_{0,g}(\bm x) \\
 		\phi_{2,g}(\bm x) \\
-	\end{bmatrix}, \quad
+	\end{bmatrix}, \\
 	J_{i,g}(\bm x) = - D_{i,g} \nabla \phi_{i,g}(\bm x), \quad i = 0, 2.
 \end{split}
 \end{equation}
 
-System of equations (\ref{1}) and (\ref{2}) is supplemented with boundary conditions (\ref{3}) and corresponding initial conditions
+System of equations \eqref{1} and \eqref{2} is supplemented with boundary conditions \eqref{3} and corresponding initial conditions
 \begin{equation}\label{4}
-	\phi_g(\bm x,0) = \phi_g^0(\bm x), \quad g = 1,2, ..., G, 
-	\quad c_m(\bm x,0) = c_m^0(\bm x), \quad m = 1,2, ..., M.
+\begin{split}
+	\phi_g(\bm x,0) & = \phi_g^0(\bm x), \quad g = 1,2, ..., G, \\ 
+	\quad c_m(\bm x,0) & = c_m^0(\bm x), \quad m = 1,2, ..., M.
+\end{split}
 \end{equation}
 We assume that at the initial time t = 0, the reactor is in steady-state critical condition.
 
@@ -203,11 +206,11 @@ Using the integration by parts, we obtain the following variational formulation:
 \begin{split}
 	\int_{\Omega} 
 		\left( 
-			\frac{\phi^{n+1}_{0,g} - \phi^{n}_{0,g}}{v_g \tau} - 
+			\frac{\phi^{n+1}_{0,g} - \phi^{n}_{0,g}}{v_g \tau} -
 			\frac{2(\phi^{n+1}_{2,g} - \phi^{n}_{2,g})}{v_g \tau} 
 		\right) q_g d\bm{x} - & %centering
 	\int_{\Omega} D_{0,g} \nabla \phi^{n+1}_{0,g} \nabla q_g d\bm{x} \\
-	+ \int_{\partial\Omega} J_{0,g} q_g d\bm{s} + 
+	+ \int_{\partial\Omega} J^{n+1}_{0,g} q_g d\bm{s} +
 	\int_{\Omega}
 		(
 			\Sigma_{r,g} \phi^{n+1}_{0,g} - & %centering
@@ -215,9 +218,9 @@ Using the integration by parts, we obtain the following variational formulation:
 		) q_g d\bm{x} \\
 	= \int_{\Omega} 
 		(
-			(1 - \beta) \chi_{n,g} S_{n} + 
-			 S_{s,g} + & %centering
-			 \chi_{d,g} S_d 
+			(1 - \beta) \chi_{n,g} S^{n+1}_{n} + 
+			 S^{n+1}_{s,g} + & %centering
+			 \chi_{d,g} S^{n+1}_d 
 		) q_g d\bm{x}, \\
 	\int_{\Omega} 
 		\left( 
@@ -225,7 +228,7 @@ Using the integration by parts, we obtain the following variational formulation:
 			\frac{9(\phi^{n+1}_{2,g} - \phi^{n}_{2,g})}{v_g \tau} 
 		\right) q_g d\bm{x} - & %centering
 	\int_{\Omega} D_{2,g} \nabla \phi^{n+1}_{2,g} \nabla  q_g d\bm{x} \\
-	+ \int_{\partial\Omega} J_{2,g} q_g d\bm{s} + 
+	+ \int_{\partial\Omega} J^{n+1}_{2,g} q_g d\bm{s} + 
 	\int_{\Omega} 
 		( 
 			(5 \Sigma_{t,g} + 
@@ -234,9 +237,9 @@ Using the integration by parts, we obtain the following variational formulation:
 		) q_g d\bm{x} \\
 	= \int_{\Omega}
 		( 
-			- 2(1 - \beta) \chi_{n,g} S_{n} - 
-			2S_{s,g} - & %centering
-			2\chi_{d,g} S_d 
+			- 2(1 - \beta) \chi_{n,g} S^{n+1}_{n} - 
+			2S^{n+1}_{s,g} - & %centering
+			2\chi_{d,g} S^{n+1}_d 
 		) q_g d\bm{x},
 \end{split}
 \end{equation}
@@ -249,7 +252,7 @@ The problem is solving a system of linear algebraic equations
 \begin{equation}\label{7}
 	A_f \phi = b_f,
 \end{equation}
-where the operator $A_f$ corresponds to the left side of equation, and the vector $b_f$ corresponds to the right side of equation (\ref{6}).
+where the operator $A_f$ corresponds to the bilinear form of equation, and the vector $b_f$ corresponds to the linear form of equation (\ref{6}).
 
 \section{Multiscale method}
 For the discretization on the coarse grid we use GMsFEM.
@@ -341,6 +344,22 @@ and using the coarse-scale solution $\phi_c$, we can  reconstruct the fine grid 
 \]
 
 \section{Numerical results}
+%Проводится численное моделирование нестационарного двухгруппового теста реактора TWIGL-2D.
+%Исследуются и сравниваются численные результаты полученные транспортным SP$_3$ и диффузионными расчетами.
+%В качестве начального условия задачи берется решения $\lambda$-спектральной задачи. 
+%Рассматривается три сценария динамического процесса.
+%
+%Программное обеспечение написано с использованием вычислительной платформы FEniCS. 
+%Для решения спектральных задач с несимметричными матрицами применяется библиотека SLEPc. 
+%В расчетах варьируются следующие параметры:
+%\begin{itemize}\itemsep1pt \parskip0pt \parsep0pt
+%\item $n$ --- число расчетных ячеек (конечных элементов) на ноду 8х8 см; 
+%\item $p$ --- порядок конечных элементов;
+%\item $\tau$ --- шаг по времени.
+%\end{itemize}
+%Для диффузионной модели на внешней границе активной зоны рассматривается граничное условие альбедного типа $\gamma=0.5$.
+
+\subsection{One group heterogeneous test}
 Let's consider the 2D test problem for small PWR reactor ($\Omega$ --- reactor core area). 
 The geometrical model of the small PWR reactor core is presented in Fig.\ref{p3}. 
 The diameter of the fuel rods is 0.82 cm, the cell width is 1.26 cm.
@@ -367,12 +386,12 @@ At each time the integrated power is calculated as
 where $a$ is the normalization coefficient, which corresponds to a given value of the integrated power.
 
 \begin{table}[h]
-\caption{Diffusion neutronics constants for the small PWR-2D reactor core}
+\caption{Neutronics constants for small PWR-2D.}
 \label{t1}
 \begin{center}
-\begin{tabular}{|c|c|c|c|c|c|}
+\begin{tabular}{c c c c c c}
 \hline
-\multirow{2}{*}{Zone} & \multicolumn{2}{c|}{1} & \multicolumn{2}{c|}{2} \\
+\multirow{2}{*}{} & \multicolumn{2}{c|}{1} & \multicolumn{2}{c}{2} \\
 \cline{2-5}
 & coolant & fuel & coolant & fuel \\
 \hline
@@ -392,6 +411,47 @@ The time step for both grids is $\tau = 0.001$.
 As an exact solution, we take the fine-grid solution.
 The initial value of $K_{eff}$ is 1.xxxxxx. 
 
+\subsection{two group test}
+%Рассматривается двумерный транспортный тест \cite{hageman1969}. 
+%Моделируется 1/4 часть активной зоны реактора, размеры которой составляют 160x160 см.
+%На рисунке \ref{ris:twigl} показана геометрическая модель активной зоны, где цифрами показаны материалы различных сортов.
+%На внешней границе активной зоны реактора задается условие границы с вакуумом.  
+%
+%Нейтронно-физические константы теста в общепринятых единицах представлены в таблице \ref{table:coeff}. 
+%Среднегрупповые скорости нейтронов в тесте одинаковы для всей среды и составляют $v_1 = 10^7$ см/с и $v_2 = 2 \cdot 10^5$ см/с. 
+%Спектр деления для мгновенных и запаздывающих нейтронов также одинаков для всей среды и равен $\chi_1 = 1$ и $\chi_2 = 0$.
+%В тесте представлена одна эффективная группа запаздывающих нейтронов. 
+%Эффективная доля запаздывающих нейтронов составляет $\beta = 0.0075$, а постоянная распада предшественников запаздывающих нейтронов $\lambda = 0.08$ с$^{-1}$. 
+
+\begin{figure}[ht]
+\begin{center}
+	\includegraphics[width=0.5\linewidth]{twigl.png} \\
+	\caption{\label{image:canonsummary}Geometrical model of 1/4 reactor core TWIGL-2D.}
+	\label{ris:twigl}
+\end{center}
+\end{figure}
+
+\begin{table}[h]
+\caption{\label{table:coeff}Neutronics constants for TWIGL-2D.}
+	\label{t2}
+	\begin{center}
+	\begin{tabular}{r r r r}
+		\hline
+		Material & 1 & 2 & 3\\
+		\hline 
+		$\Sigma_{t,1}$				& 0.2481 & 0.2481 & 0.2644 \\
+		$\Sigma_{t,2}$				& 0.9833 & 0.9833 & 0.7167 \\
+		$\Sigma_{r,1}$				& 0.01   & 0.01   & 0.008  \\
+		$\Sigma_{r,2}$				& 0.15   & 0.15   & 0.05   \\
+		$\Sigma_{s,1\rightarrow2}$ 	& 0.01   & 0.01   & 0.01   \\
+		$\Sigma_{s,1\rightarrow1}$	& 0.2281 & 0.2281 & 0.2464 \\
+		$\Sigma_{s,2\rightarrow2}$	& 0.8333 & 0.8333 & 0.6667 \\
+		$\nu_1\Sigma_{f,1}$			& 0.007  & 0.007  & 0.003  \\
+		$\nu_2\Sigma_{f,2}$			& 0.2    & 0.2    & 0.06   \\
+		\hline
+	\end{tabular}
+	\end{center}
+\end{table}
 
 \section{Conclusions}
 A Generalized Multiscale Finite Element method was developed successfully for modelling neutron transport in one-group SP$_3$ approximation.  
