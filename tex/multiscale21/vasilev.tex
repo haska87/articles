@@ -96,7 +96,7 @@ neutron transport equation, SP3 approximation, eigenvalues, multiscale simulatio
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Problem statement}
-Let us consider the symmetric form of the SP$_3$ equation for the neutron flux \citep{ryu2013fem}.
+Let us consider the symmetric form of the SP$_3$ equation for the neutron flux.
 The neutron dynamics is considered in the limited convex two-dimensional or three-dimensional area $\Omega$ ($\bm x = \{x_1, ..., x_d\} \in \Omega, \, d = 2,3$) with boundary $\partial \Omega$.
 The neutron transport is described by the system of equations
 \begin{equation}\label{1}
@@ -125,7 +125,7 @@ where
 	\phi_{0,g} = \phi_g + 2\phi_{2,g}, \quad
 	D_{0,g} = \cfrac{1}{3 \Sigma_{tr,g}}, \quad
 	D_{2,g} = \cfrac{9}{7 \Sigma_{t,g}}, \quad 
-	g = 1,2,...,G.
+	g = 1,2,\dots,G.
 \]
 Here $G$ --- number of energy groups,
 $\phi_g(\bm x, t)$ --- scalar flux,
@@ -143,7 +143,7 @@ $M$ --- number of types of delayed neutrons.
 
 The density of sources of delayed neutrons is described by the equations
 \begin{equation}\label{2}
-	\frac{\partial c_m}{\partial t} + \lambda_m c_m = \beta_m S_{n}, \quad m = 1,2, ..., M,
+	\frac{\partial c_m}{\partial t} + \lambda_m c_m = \beta_m S_{n}, \quad m = 1,2,\dots,M,
 \end{equation}
 where $\beta_m$ is the fraction of delayed neutrons of m-type, and
 \[
@@ -172,34 +172,36 @@ The Marshak-type conditions are set at the boundary of the area $\partial \Omega
 System of equations \eqref{1} and \eqref{2} is supplemented with boundary conditions \eqref{3} and corresponding initial conditions
 \begin{equation}\label{4}
 \begin{split}
-	\phi_g(\bm x,0) & = \phi_g^0(\bm x), \quad g = 1,2, ..., G, \\ 
-	\quad c_m(\bm x,0) & = c_m^0(\bm x), \quad m = 1,2, ..., M.
+	\phi_g(\bm x,0) & = \phi_g^0(\bm x), \quad g = 1,2,\dots,G, \\ 
+	\quad c_m(\bm x,0) & = c_m^0(\bm x), \quad m = 1,2,\dots,M.
 \end{split}
 \end{equation}
 We assume that at the initial time t = 0, the reactor is in steady-state critical condition.
 
 \textbf{Discretization.}
+Let's discretize the boundary problem \eqref{1}-\eqref{4}.
 Define a uniform grid
 \[
-	\omega = \{ t^n=n \tau, \quad n = 0,1,...,N, \quad \tau N = T \}
+	\omega = \{ t^n=n \tau, \quad n = 0,1,\dots,N, \quad \tau N = T \}
 \]
 and use the next notations $\phi^n_g = \phi_g(\bm{x}, t^n)$, $c^n_m = c_m(\bm{x}, t^n)$. 
-We discretize the time derivatives of equation (\ref{1}) using finite-difference scheme. 
+We discretize the time derivatives of equation \eqref{1} using finite-difference scheme. 
 For approximation in time, we use a fully implicit scheme with time step $\tau$.
 For delayed neutron source equation we use numerical-analytical method for the construction of approximations in time.
-The equation (\ref{2}) in the equivalent form
+The equation \eqref{2} in the equivalent form
 \[
 	\frac{\partial e^{\lambda_m t} c_m}{\partial t} = 
-	\beta_m e^{\lambda_m t} \sum_{g=1}^{G} \nu \Sigma_{fg} \phi_g, \quad m = 1,2, ..., M.
+	\beta_m e^{\lambda_m t} \sum_{g=1}^{G} \nu \Sigma_{fg} \phi_g, \quad m = 1,2,\dots,M.
 \]
 After integration on time interval $[t^n, t^{n+1}]$ one can obtained
 \begin{equation}\label{5}
 	c_m^{n+1} = e^{-\lambda_m\tau} c_m^n + 
 	\beta_m \int_{t_n}^{t_{n+1}} e^{\lambda_m (t - t^{n+1})} \sum_{g=1}^{G} \nu \Sigma_{fg} \phi_g d t,
-	\quad m = 1,2, ..., M.
+	\quad m = 1,2,\dots,M.
 \end{equation}
+When using the fully implicit scheme, we take the integrand on the right-hand side of \eqref{5} at $t = t^{n + 1}$.
 
-For spatial approximation we use the finite element method \cite{quarteroni}.
+For spatial approximation we use the finite element method.
 Let $H^1(\Omega)$ -- Sobolev space, $q \in H^1$: $q^2$ and $\vert\nabla q\vert^2$ have a finite integral in $\Omega$. 
 Using the integration by parts, we obtain the following variational formulation: let's find $\phi^{n+1}_g \in V^G$ such that
 \begin{equation}\label{6}
@@ -245,14 +247,14 @@ Using the integration by parts, we obtain the following variational formulation:
 \end{equation}
 where $V^G=[H^1(\Omega)]^G$.
 
-Further, it's necessary to pass from the continuous variational problem (\ref{6}) to the discrete problem. 
+Further, it's necessary to pass from the continuous variational problem \eqref{6} to the discrete problem. 
 We introduce finite-dimensional space of finite elements $V^G_h \subset V^G$ and formulate a discrete variational problem. 
 We use standard linear basis functions as basis functions to solve the problem on the fine grid.
 The problem is solving a system of linear algebraic equations
 \begin{equation}\label{7}
 	A_f \phi = b_f,
 \end{equation}
-where the operator $A_f$ corresponds to the bilinear form of equation, and the vector $b_f$ corresponds to the linear form of equation (\ref{6}).
+where the operator $A_f$ corresponds to the bilinear form of equation, and the vector $b_f$ corresponds to the linear form of equation \eqref{6}.
 
 \section{Multiscale method}
 For the discretization on the coarse grid we use GMsFEM.
@@ -262,7 +264,7 @@ We assume that $\mathcal{T}_h$ is a refinement of $\mathcal{T}_H$, where $h$ and
 We assume that the fine-scale grid $\mathcal{T}_h$ is sufficiently fine to fully resolve the small-scale information of the domain  while $\mathcal{T}_H$ is a coarse grid containing many fine-scale features.
 A local domain $\omega_i$ is obtained by the combining all the coarse cells around one vertex of the coarse grid. 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
 		\includegraphics[width=0.3\linewidth]{coarse_grid.png} \hspace{2em}
 		\includegraphics[width=0.57\linewidth]{omega.png} 
@@ -279,8 +281,6 @@ Each $y_j$ is supported in local domain $w_i$.
 
 Basis functions are designed to capture the multiscale features of the solution. 
 Important multiscale features of the solution are incorporated into localized basis functions which contain information about the scales that are smaller (as well as larger) than the local numerical scale defined by the basis functions. 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  
 % spectral
 \textbf{Multiscale space.}
@@ -290,25 +290,24 @@ We use following spectral problem in $\omega_i$
 \begin{equation}\label{8}
 	A \varphi^i = \lambda S \varphi^i,
 \end{equation} 
-where the elements of the matrices $A= \{ a_{ij} \}$ and $S = \{ s_{ij} \}$ are defined as follow{
+where the elements of the matrices $A = \{a_{ij}\}$ and $S = \{s_{ij}\}$ are defined as follow{
 \begin{equation}\label{9}
 \begin{split}
 	a_{ij} = 
-	\int_{\omega_i}  \\
+	\int_{\omega_i} \\
 	s_{ij} & = \int_{\omega _i}
 \end{split}
 \end{equation}}
-Then, we choose eigenvectors corresponding to dominant $M_{i}$ eigenvalues from \eqref{6} and use them to construct the multiscale basis functions.
+Then, we choose eigenvectors corresponding to dominant $M_{i}$ eigenvalues from \eqref{8} and use them to construct the multiscale basis functions.
 
 % POU
-%\textbf{Partition of unity functions. } 
-As  partition of unity functions, we use linear functions in each domain $\omega_i$.
-Partitions of unity are calculated in the domain $ K_j $ as a linear function from $\Gamma$ to the vertex $ A $, and $ 0 $ is assigned to the entire segment $\Gamma$, and at point $ A $ is assigned the value $1$. 
-Thus, we obtain a linear function from $ 0 $ to $ 1 $ over the entire domain $ K_j $. 
+As partition of unity functions, we use linear functions in each domain $\omega_i$.
+Partitions of unity are calculated in the domain $K_j$ as a linear function from $\Gamma$ to the vertex $A$, and $0$ is assigned to the entire segment $\Gamma$, and at point $A$ is assigned the value $1$. 
+Thus, we obtain a linear function from $0$ to $1$ over the entire domain $K_j$. 
 Partitions of unity are shown in Figure \ref{p2}. 
-Domain $K_j$  is one element from a coarse grid. 
+Domain $K_j$ is one element from a coarse grid. 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
 		\includegraphics[width=0.45\linewidth]{pofs.png} \hspace{2em}
 		\includegraphics[width=0.45\linewidth]{pouK.png} 
@@ -319,56 +318,53 @@ Domain $K_j$  is one element from a coarse grid.
 The multiscale space is defined as the span of $y_i = \chi_i \varphi^i_k$, where $\chi_i$ is the usual nodal basis function for the node $i$ (linear partition of unity functions). 
 The number of bases can be different, the accuracy of the solution can be improved when we increase the number of bases.
 
-%\subsection{Assembling a matrix in a multiscale space}
-\textbf{Coarse-scale approximation. }
-Next, we create the following  matrix for each $\omega_i$
+% Assembling a matrix in a multiscale space
+\textbf{Coarse-scale approximation.}
+Next, we create the following matrix for each $\omega_i$
 \[
-R^i = \left[ y_1, \ldots, y_{M_i-1},  y_{M_i} \right].
+	R^i = \left[ y_1, \dots, y_{M_i-1},  y_{M_i} \right].
 \]
-and define the transition matrix $R$ (transition from a fine grid to a coarse grid) to reduce the dimension of the problem
+and define the transition matrix from a fine grid to a coarse grid $R$ to reduce the dimension of the problem
 \[
-R = [ R^1, R^2, ..., R^{N_v} ],
+	R = [R^1, R^2, \dots, R^{N_v}],
 \]
 where $N_v$ is the number of local domains $\omega_i$.
 
-Then using the transition matrix $R$ and fine grid system (\ref{5}), we construct the coarse grid approximation
-\begin{equation}\label{10}
-A_c \phi_c = b_c, \quad 
-A_c = R A_f R^T 
-\quad \text{ and } \quad 
-b_c = R b_f,
-\end{equation}  
-and using the coarse-scale solution $\phi_c$, we can  reconstruct the fine grid solution 
+Then using the transition matrix $R$ and fine grid system \eqref{7}, we construct the coarse grid approximation
 \[
-\phi_{ms} = R^T \phi_c.
+	A_c \phi_c = b_c, \quad 
+	A_c = R A_f R^T \quad 
+	\text{and} \quad 
+	b_c = R b_f,
+\]
+and using the coarse-scale solution $\phi_c$, we can reconstruct the fine grid solution 
+\[
+	\phi_{ms} = R^T \phi_c.
 \]
 
 \section{Numerical results}
-%Проводится численное моделирование нестационарного двухгруппового теста реактора TWIGL-2D.
-%Исследуются и сравниваются численные результаты полученные транспортным SP$_3$ и диффузионными расчетами.
-%В качестве начального условия задачи берется решения $\lambda$-спектральной задачи. 
-%Рассматривается три сценария динамического процесса.
-%
+%Проводится численное моделирование нестационарных тестов в транспортном SP_$3$ приближении.
+%Исследуются и сравниваются численные результаты полученные методом конечных элементов и обобщенным многомасштабным методом конечных элементов.
 %Программное обеспечение написано с использованием вычислительной платформы FEniCS. 
 %Для решения спектральных задач с несимметричными матрицами применяется библиотека SLEPc. 
-%В расчетах варьируются следующие параметры:
-%\begin{itemize}\itemsep1pt \parskip0pt \parsep0pt
-%\item $n$ --- число расчетных ячеек (конечных элементов) на ноду 8х8 см; 
-%\item $p$ --- порядок конечных элементов;
-%\item $\tau$ --- шаг по времени.
-%\end{itemize}
-%Для диффузионной модели на внешней границе активной зоны рассматривается граничное условие альбедного типа $\gamma=0.5$.
+Numerical modeling of non-stationary tests is carried out in the transport SP$_3$ approximation.
+Numerical results obtained by the finite element method and the generalized multiscale finite element method are analyzed and compared.
+The software has been written using the library FEniCS.
+SLEPc library has been used to solve spectral problems with asymmetric matrices.
+
+At each time the integrated power is calculated as
+	\[P(t) = a \int_{\Omega} \sum_{g=1}^{G} \Sigma_{f,g} \phi_g d \bm x,\]
+where $a$ is the normalization coefficient, which corresponds to a given value of the integrated power.
 
 \subsection{One group heterogeneous test}
 Let's consider the 2D test problem for small PWR reactor ($\Omega$ --- reactor core area). 
 The geometrical model of the small PWR reactor core is presented in Fig.\ref{p3}. 
 The diameter of the fuel rods is 0.82 cm, the cell width is 1.26 cm.
-Diffusion neutronics constants in the common notations are given in Table \ref{t1}. 
+Neutronics constants in the common notations are given in Table \ref{t1}. 
 There are two types of cassettes, with fuel 1\% $UO_2$ and 2\% $UO_2$.
-The reflective boundary conditions (\ref{2}) are used ($\gamma = 0$).
 The following delayed neutrons parameters are used: $\beta = 6.5 \cdot 10^{-3}$, $\lambda = 0.08$ s$^{-1}$ and $v = 5 \cdot 10^5$ cm/s.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
 	    \includegraphics[width=0.5\linewidth] {smallpwr.png}
 	\caption{Geometrical model of the small PWR-2D reactor core}
@@ -381,25 +377,22 @@ We define the next scenario of the process:
 \item Calculation for the non-stationary model at the time range from 0 to 0.4 sec;
 \item At $t=0.1$ sec and $t=0.3$ sec $\Sigma_a$ for fuel in the zone 1 changes to +2\% and -3\%, respectively (simulation of insertion or withdrawal of control rods).
 \end{itemize}
-At each time the integrated power is calculated as
-\[P(t) = a\int_{\Omega}\Sigma_f \phi d\bm x,\]
-where $a$ is the normalization coefficient, which corresponds to a given value of the integrated power.
 
-\begin{table}[h]
+\begin{table}[ht]
 \caption{Neutronics constants for small PWR-2D.}
 \label{t1}
 \begin{center}
-\begin{tabular}{c c c c c c}
+\begin{tabular}{l l l l l l}
 \hline
-\multirow{2}{*}{} & \multicolumn{2}{c|}{1} & \multicolumn{2}{c}{2} \\
+\multirow{2}{*}{} & \multicolumn{2}{c}{1} & \multicolumn{2}{c}{2} \\
 \cline{2-5}
 & coolant & fuel & coolant & fuel \\
 \hline
-$D$          & 0.34473872    & 0.77002585    & 0.31679441    & 0.80236505    \\
-$\Sigma_t$   & 0.96691584    & 0.4328859     & 1.05220709    & 0.4154385    \\
-$\Sigma_r$   & 5.3858400E-03 & 8.9337900E-02 & 6.0670900E-03 & 6.6279500E-02 \\
-$\Sigma_{f}$ & 0.0           & 5.4731800E-02 & 0.0           & 3.3377700E-02 \\
-$\nu$        & 0.0           & 2.44844862    & 0.0           & 2.45482762    \\
+	$D$          & 3.4473872E-01 & 7.7002585E-01 & 3.1679441E-01 & 8.0236505E-01    \\
+	$\Sigma_t$   & 9.6691584E-01 & 4.3288590E-01 & 1.0522071E+00 & 4.1543850E-01    \\
+	$\Sigma_r$   & 5.3858400E-03 & 8.9337900E-02 & 6.0670900E-03 & 6.6279500E-02 \\
+	$\Sigma_{f}$ & 0.0           & 5.4731800E-02 & 0.0           & 3.3377700E-02 \\
+	$\nu$        & 0.0           & 2.44844862    & 0.0           & 2.45482762    \\
 \hline
 \end{tabular}
 \end{center}
@@ -410,6 +403,68 @@ The fine grid contains 115891 vertices.
 The time step for both grids is $\tau = 0.001$.
 As an exact solution, we take the fine-grid solution.
 The initial value of $K_{eff}$ is 1.xxxxxx. 
+
+\begin{figure}[ht]
+	\centering
+		\includegraphics[width=0.45\linewidth]{power_fine.png} \hspace{2em}
+		\includegraphics[width=0.45\linewidth]{power.png}
+	\caption{Integral power (fine grid) and relative errors ($\%$) of the multiscale solution power.}
+	\label{p4}
+\end{figure}
+ 
+The integral power for the fine grid and relative errors of integral powers are shown in Figure~\ref{p4}.
+When using single basis, the error does not exceed 1\%, and for using 4 or more bases it does not exceed 0.01\%.
+
+In Figure~\ref{p5}, we present relative $L_2$ and $H_1$ errors of the multiscale solution vs. time for different number of multiscale basis functions.
+The numerical results show good convergence behaviour, provided that we take sufficient number of the multiscale basis functions.
+
+\begin{figure}[ht]
+	\centering
+		\includegraphics[width=0.45\linewidth]{L2_log.png} \hspace{2em}
+		\includegraphics[width=0.45\linewidth]{H1.png}
+	\caption{Relative $L_2$ and $H_1$ errors ($\%$) of the multiscale solution.}
+	\label{p5}
+\end{figure}
+
+In Table~\ref{t2}, we present relative $L_2$ and $H_1$ errors at final time for different number of the multiscale basis functions.
+For example, when we use 8 spectral basis functions, we obtain $0.34\%$ for $L_2$ error and $7.18\%$ for $H_1$ error.
+Our calculations show that it is necessary to use 4 or more basis functions.
+In Figure~\ref{p7}, we present first four (of 16) multiscale basis functions in local domain $\omega_i$.
+The fine-grid solution and the multiscale solution (16 basis functions on each local domain) $\omega_i$ are shown in Figure \ref{p6}. Relative errors are 0.13\% for $L_2$ and 4.43\% for $H_1$.
+
+\begin{table}[ht]
+	\caption{Relative $L_2$ and $H_1$ errors ($\%$) of the solution at final time.}
+	\label{t2}
+	\begin{center}
+		\begin{tabular}{ c c r r r }
+			\hline
+			Number of bases & Number of DOF & $L_2$ error & $H_1$ error & Calc time\\
+			\hline
+			1 & 49 & 8.09 & 34.36 & 0.015 \\
+			2 & 98 & 4.32 & 26.73 & 0.018 \\
+			4 & 196 & 0.56 & 9.24 & 0.026 \\
+			8 & 392 & 0.34 & 7.18 & 0.056 \\
+			12 & 588 & 0.17 & 5.17 & 0.102 \\
+			16 & 784 & 0.13 & 4.43 & 0.239 \\
+			fine & 115891 & -- & -- & 6.816 \\
+			\hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+\begin{figure}[h!]
+	\centering
+		\includegraphics[width=0.95\linewidth]{basis.png}
+	\caption{The first four multiscale basis functions.}
+	\label{p7}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+		\includegraphics[width=0.75\linewidth]{flux.png}
+	\caption{Fine grid and multiscale solution with 16 basis functions at final time.}
+	\label{p6}
+\end{figure}
 
 \subsection{two group test}
 %Рассматривается двумерный транспортный тест \cite{hageman1969}. 
@@ -431,11 +486,11 @@ The initial value of $K_{eff}$ is 1.xxxxxx.
 \end{center}
 \end{figure}
 
-\begin{table}[h]
+\begin{table}[ht]
 \caption{\label{table:coeff}Neutronics constants for TWIGL-2D.}
 	\label{t2}
 	\begin{center}
-	\begin{tabular}{r r r r}
+	\begin{tabular}{l l l l}
 		\hline
 		Material & 1 & 2 & 3\\
 		\hline 
@@ -466,7 +521,7 @@ In the future, we will consider more complex models of neutron transport, such a
 %\section*{Acknowledgements}
 %This work was supported by the grant of the Russian Science Foundation (\#19-71-00008).
 
-%\begin{thebibliography}{8}
+% \begin{thebibliography}{16}
 %\bibitem{Duderstadt1976}
 %Duderstadt J. J. Nuclear reactor analysis. – Wiley, 1976.
 %
@@ -512,5 +567,9 @@ In the future, we will consider more complex models of neutron transport, such a
 %\bibitem{Brenner2007}
 %Brenner S., Scott R. The mathematical theory of finite element methods. – Springer Science \& Business Media, 2007. – V. 15.
 %
-%\end{thebibliography}
+% \bibitem{Forget2005}
+% Forget B., Rahnema F. 3-D heterogeneous coarse-mesh transport method. France: N. p., 2005
+
+% \end{thebibliography}
+
 \end{document}
