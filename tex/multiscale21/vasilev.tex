@@ -1,4 +1,4 @@
-\documentclass[authoryear]{elsarticle}
+\documentclass[preprint]{elsarticle}
 
 \usepackage{amsmath}
 \usepackage{bm}
@@ -258,7 +258,7 @@ where the operator $A_f$ corresponds to the bilinear form of equation, and the v
 
 \section{Multiscale method}
 For the discretization on the coarse grid we use GMsFEM.
-We construct two grids: fine grid ($\mathcal{T}_h$) and coarse grid ($\mathcal{T}_H$) (see Figure \ref{p1}).
+We construct two grids: fine grid ($\mathcal{T}_h$) and coarse grid ($\mathcal{T}_H$) (see Figure \ref{grid}).
 For multiscale basis construction, we define local domains $\omega_i$, where $i = 1,..., N_v$ and $N_v$ is the number of coarse grid nodes.
 We assume that $\mathcal{T}_h$ is a refinement of $\mathcal{T}_H$, where $h$ and $H$ represent the fine and coarse grid sizes, respectively. 
 We assume that the fine-scale grid $\mathcal{T}_h$ is sufficiently fine to fully resolve the small-scale information of the domain  while $\mathcal{T}_H$ is a coarse grid containing many fine-scale features.
@@ -269,7 +269,7 @@ A local domain $\omega_i$ is obtained by the combining all the coarse cells arou
 		\includegraphics[width=0.3\linewidth]{coarse_grid.png} \hspace{2em}
 		\includegraphics[width=0.57\linewidth]{omega.png} 
 	\caption{Coarse grid and local domain $\omega_i$ with $K_j$}
-	\label{p1}
+	\label{grid}
 \end{figure} 
 
 We construct the multiscale function spaces
@@ -304,7 +304,7 @@ Then, we choose eigenvectors corresponding to dominant $M_{i}$ eigenvalues from 
 As partition of unity functions, we use linear functions in each domain $\omega_i$.
 Partitions of unity are calculated in the domain $K_j$ as a linear function from $\Gamma$ to the vertex $A$, and $0$ is assigned to the entire segment $\Gamma$, and at point $A$ is assigned the value $1$. 
 Thus, we obtain a linear function from $0$ to $1$ over the entire domain $K_j$. 
-Partitions of unity are shown in Figure \ref{p2}. 
+Partitions of unity are shown in Figure \ref{pou}. 
 Domain $K_j$ is one element from a coarse grid. 
 
 \begin{figure}[ht]
@@ -312,7 +312,7 @@ Domain $K_j$ is one element from a coarse grid.
 		\includegraphics[width=0.45\linewidth]{pofs.png} \hspace{2em}
 		\includegraphics[width=0.45\linewidth]{pouK.png} 
 	\caption{Partition of unity functions on the $\omega_i$ (right) and $K_j$ (left)}
-	\label{p2}
+	\label{pou}
 \end{figure} 
  
 The multiscale space is defined as the span of $y_i = \chi_i \varphi^i_k$, where $\chi_i$ is the usual nodal basis function for the node $i$ (linear partition of unity functions). 
@@ -354,21 +354,21 @@ SLEPc library has been used to solve spectral problems with asymmetric matrices.
 
 At each time the integrated power is calculated as
 	\[P(t) = a \int_{\Omega} \sum_{g=1}^{G} \Sigma_{f,g} \phi_g d \bm x,\]
-where $a$ is the normalization coefficient, which corresponds to a given value of the integrated power.
+where $a$ is the normalization coefficient, that corresponds to a given value of the integrated power.
 
-\subsection{One group heterogeneous test}
+\subsection{One group test} %heterogeneous
 Let's consider the 2D test problem for small PWR reactor ($\Omega$ --- reactor core area). 
-The geometrical model of the small PWR reactor core is presented in Fig.\ref{p3}. 
+The geometrical model of the small PWR reactor core is presented in Fig.\ref{smallpwr}. 
 The diameter of the fuel rods is 0.82 cm, the cell width is 1.26 cm.
-Neutronics constants in the common notations are given in Table \ref{t1}. 
+Neutronics constants in the common notations are given in Table \ref{small_const}. 
 There are two types of cassettes, with fuel 1\% $UO_2$ and 2\% $UO_2$.
 The following delayed neutrons parameters are used: $\beta = 6.5 \cdot 10^{-3}$, $\lambda = 0.08$ s$^{-1}$ and $v = 5 \cdot 10^5$ cm/s.
 
 \begin{figure}[ht]
 	\centering
-	    \includegraphics[width=0.5\linewidth] {smallpwr.png}
+	    \includegraphics[width=0.45\linewidth] {small/smallpwr_geo.png}
 	\caption{Geometrical model of the small PWR-2D reactor core}
-	\label{p3}
+	\label{smallpwr}
 \end{figure} 
 
 We define the next scenario of the process:
@@ -380,16 +380,16 @@ We define the next scenario of the process:
 
 \begin{table}[ht]
 \caption{Neutronics constants for small PWR-2D.}
-\label{t1}
+\label{small_const}
 \begin{center}
-\begin{tabular}{l l l l l l}
+\begin{tabular}{| c | l | l | l | l | l |}
 \hline
-\multirow{2}{*}{} & \multicolumn{2}{c}{1} & \multicolumn{2}{c}{2} \\
+\multirow{2}{*}{Material} & \multicolumn{2}{c |}{1} & \multicolumn{2}{c |}{2} \\
 \cline{2-5}
 & coolant & fuel & coolant & fuel \\
 \hline
-	$D$          & 3.4473872E-01 & 7.7002585E-01 & 3.1679441E-01 & 8.0236505E-01    \\
-	$\Sigma_t$   & 9.6691584E-01 & 4.3288590E-01 & 1.0522071E+00 & 4.1543850E-01    \\
+	$D$          & 3.4473872E-01 & 7.7002585E-01 & 3.1679441E-01 & 8.0236505E-01 \\
+	$\Sigma_t$   & 9.6691584E-01 & 4.3288590E-01 & 1.0522071E+00 & 4.1543850E-01 \\
 	$\Sigma_r$   & 5.3858400E-03 & 8.9337900E-02 & 6.0670900E-03 & 6.6279500E-02 \\
 	$\Sigma_{f}$ & 0.0           & 5.4731800E-02 & 0.0           & 3.3377700E-02 \\
 	$\nu$        & 0.0           & 2.44844862    & 0.0           & 2.45482762    \\
@@ -402,68 +402,78 @@ The coarse grid contains $49$ vertices.
 The fine grid contains 115891 vertices. 
 The time step for both grids is $\tau = 0.001$.
 As an exact solution, we take the fine-grid solution.
-The initial value of $K_{eff}$ is 1.xxxxxx. 
+The initial value of $K_{eff}$ is 1.18398. 
 
 \begin{figure}[ht]
 	\centering
-		\includegraphics[width=0.45\linewidth]{power_fine.png} \hspace{2em}
-		\includegraphics[width=0.45\linewidth]{power.png}
+		\includegraphics[width=0.45\linewidth]{small/power_fine.png} \hspace{2em}
+		\includegraphics[width=0.45\linewidth]{small/power_error.png}
 	\caption{Integral power (fine grid) and relative errors ($\%$) of the multiscale solution power.}
-	\label{p4}
+	\label{small_power}
 \end{figure}
  
-The integral power for the fine grid and relative errors of integral powers are shown in Figure~\ref{p4}.
-When using single basis, the error does not exceed 1\%, and for using 4 or more bases it does not exceed 0.01\%.
+The integral power for the fine grid and relative errors ($\%$) of integral powers are shown in Figure~\ref{small_power}.
+When using 4 or less multiscale basis functions, the error is more than 10\% and for using 16 or more multiscale basis functions, the error it does not exceed 1\%.
 
-In Figure~\ref{p5}, we present relative $L_2$ and $H_1$ errors of the multiscale solution vs. time for different number of multiscale basis functions.
+In Figures~\ref{small_L2},~\ref{small_H1}, we present relative $L_2$ and $H_1$ errors of the multiscale solution vs. time for different number of multiscale basis functions.
 The numerical results show good convergence behaviour, provided that we take sufficient number of the multiscale basis functions.
 
 \begin{figure}[ht]
 	\centering
-		\includegraphics[width=0.45\linewidth]{L2_log.png} \hspace{2em}
-		\includegraphics[width=0.45\linewidth]{H1.png}
-	\caption{Relative $L_2$ and $H_1$ errors ($\%$) of the multiscale solution.}
-	\label{p5}
+		\includegraphics[width=0.45\linewidth]{small/H1_u1_log.png} \hspace{2em}
+		\includegraphics[width=0.45\linewidth]{small/H1_u2_log.png}
+	\caption{Relative $L_2$ errors ($\%$) of the multiscale solution for pseudo 0th moment of angular flux (left) and second moment of angular flux (right).}
+	\label{small_L2}
 \end{figure}
 
-In Table~\ref{t2}, we present relative $L_2$ and $H_1$ errors at final time for different number of the multiscale basis functions.
-For example, when we use 8 spectral basis functions, we obtain $0.34\%$ for $L_2$ error and $7.18\%$ for $H_1$ error.
-Our calculations show that it is necessary to use 4 or more basis functions.
-In Figure~\ref{p7}, we present first four (of 16) multiscale basis functions in local domain $\omega_i$.
-The fine-grid solution and the multiscale solution (16 basis functions on each local domain) $\omega_i$ are shown in Figure \ref{p6}. Relative errors are 0.13\% for $L_2$ and 4.43\% for $H_1$.
+\begin{figure}[ht]
+	\centering
+		\includegraphics[width=0.45\linewidth]{small/L2_u1.png} \hspace{2em}
+		\includegraphics[width=0.45\linewidth]{small/L2_u2.png}
+	\caption{Relative $H_1$ errors ($\%$) of the multiscale solution for pseudo 0th moment of angular flux (left) and second moment of angular flux (right).}
+	\label{small_H1}
+\end{figure}
+
+In Table~\ref{small_errors}, we present relative $L_2$ and $H_1$ errors at final time for different number of the multiscale basis functions.
+For example, when we use 16 spectral basis functions, we obtain $0.71\%$ for $L_2$ error and $4.34\%$ for $H_1$ error for pseudo 0th moment of angular flux.
+Relative errors are 0.81\% for $L_2$ and 2.56\% for $H_1$ for second moment of angular flux.
+Calculations indicate that it is necessary to make use of 16 or more basis functions.
+The fine-grid solution and the multiscale solutions for a different number of bases (on each local domain $\omega_i$) for pseudo 0th moment of angular flux at the final time are shown in Figure \ref{small_solutions}.
 
 \begin{table}[ht]
 	\caption{Relative $L_2$ and $H_1$ errors ($\%$) of the solution at final time.}
-	\label{t2}
+	\label{small_errors}
 	\begin{center}
-		\begin{tabular}{ c c r r r }
+		\begin{tabular}{| c | c | r | r | r | r | r |}
 			\hline
-			Number of bases & Number of DOF & $L_2$ error & $H_1$ error & Calc time\\
+			\multirow{2}{*}{Bases}{} & \multirow{2}{*}{DOF}{}  & \multicolumn{2}{c |}{Pseudo 0th moment} & \multicolumn{2}{c |}{Second moment} & \multirow{2}{*}{Calc time} \\
+			\cline{3-6}
+			 &  & $L_2$ error & $H_1$ error & $L_2$ error & $H_1$ error & \\
 			\hline
-			1 & 49 & 8.09 & 34.36 & 0.015 \\
-			2 & 98 & 4.32 & 26.73 & 0.018 \\
-			4 & 196 & 0.56 & 9.24 & 0.026 \\
-			8 & 392 & 0.34 & 7.18 & 0.056 \\
-			12 & 588 & 0.17 & 5.17 & 0.102 \\
-			16 & 784 & 0.13 & 4.43 & 0.239 \\
-			fine & 115891 & -- & -- & 6.816 \\
+			1    & 49     & 99.97 & 99.99 & 99.97 & 99.99 & 0.03 \\
+			2    & 98     & 99.83 & 99.90 & 99.84 & 99.90 & 0.05 \\
+			4    & 196    & 25.61 & 34.38 & 26.65 & 27.64 & 0.10 \\
+			8    & 392    & 2.64  & 8.99  & 2.80  & 4.65  & 0.35 \\
+			16   & 784    & 0.71  & 4.34  & 0.81  & 2.56  & 1.15 \\
+			32   & 1568   & 0.07  & 1.28  & 0.14  & 1.17  & 6.66 \\
+			\hline
+			fine & 115891 & --    & --    & --    & --    & 815.00 \\
 			\hline
 		\end{tabular}
 	\end{center}
 \end{table}
 
-\begin{figure}[h!]
+\begin{figure}[ht]
 	\centering
-		\includegraphics[width=0.95\linewidth]{basis.png}
-	\caption{The first four multiscale basis functions.}
-	\label{p7}
-\end{figure}
-
-\begin{figure}[h!]
-	\centering
-		\includegraphics[width=0.75\linewidth]{flux.png}
-	\caption{Fine grid and multiscale solution with 16 basis functions at final time.}
-	\label{p6}
+		a)\includegraphics[width=0.3\linewidth]{small/u1-1_ms.png}
+		b)\includegraphics[width=0.3\linewidth]{small/u1-2_ms.png}
+		c)\includegraphics[width=0.3\linewidth]{small/u1-4_ms.png}
+		d)\includegraphics[width=0.3\linewidth]{small/u1-8_ms.png}
+		e)\includegraphics[width=0.3\linewidth]{small/u1-16_ms.png}
+		f)\includegraphics[width=0.3\linewidth]{small/u1-32_ms.png}
+		g)\includegraphics[width=0.3\linewidth]{small/u1_f.png}
+	\caption{Fine-grid (g) and multiscale solutions at final time for pseudo 0th moment of angular flux: a) 1 basis b) 2 bases c) 4 bases d) 8 bases e) 16 bases f) 32 bases.}
+	\label{small_solutions}
 \end{figure}
 
 \subsection{two group test}
@@ -478,26 +488,35 @@ The fine-grid solution and the multiscale solution (16 basis functions on each l
 %В тесте представлена одна эффективная группа запаздывающих нейтронов. 
 %Эффективная доля запаздывающих нейтронов составляет $\beta = 0.0075$, а постоянная распада предшественников запаздывающих нейтронов $\lambda = 0.08$ с$^{-1}$. 
 
+The two-dimensional transport test TWIGL is considered.
+One fourth of the reactor core is modeled, the dimensions of that are 160x160 cm.
+Figure \ref{twigl} shows the geometrical model of the core, where fuel assemblies of various types are shown.
+% The condition of the boundary with vacuum at the outer boundary of the reactor core is set.
+Neutronics constants in the common notations are given in Table \ref{twigl_const}.
+The fission spectrum for prompt and delayed neutrons is the same for the entire medium and $\chi_1 = 1$, $\chi_2 = 0$.
+The following delayed neutrons parameters are used: one group of delayed neutrons with eﬀective fraction $\beta = 0.0075$ and decay constant $\lambda = 0.08$ s$^{-1}$. 
+Neutron velocity $v_1 = 10^7$ cm/s and $v_2 = 2 \cdot 10^5$ cm/s.
+
 \begin{figure}[ht]
 \begin{center}
-	\includegraphics[width=0.5\linewidth]{twigl.png} \\
+	\includegraphics[width=0.5\linewidth]{twigl/twigl_geo.png} \\
 	\caption{\label{image:canonsummary}Geometrical model of 1/4 reactor core TWIGL-2D.}
-	\label{ris:twigl}
+	\label{twigl}
 \end{center}
 \end{figure}
 
 \begin{table}[ht]
 \caption{\label{table:coeff}Neutronics constants for TWIGL-2D.}
-	\label{t2}
+	\label{twigl_const}
 	\begin{center}
-	\begin{tabular}{l l l l}
+	\begin{tabular}{| c | l | l | l |}
 		\hline
 		Material & 1 & 2 & 3\\
 		\hline 
 		$\Sigma_{t,1}$				& 0.2481 & 0.2481 & 0.2644 \\
 		$\Sigma_{t,2}$				& 0.9833 & 0.9833 & 0.7167 \\
 		$\Sigma_{r,1}$				& 0.01   & 0.01   & 0.008  \\
-		$\Sigma_{r,2}$				& 0.15   & 0.15   & 0.05   \\
+		$\Sigma_{r,2}$				& 0.15   & 0.15   & 0.05   \\	
 		$\Sigma_{s,1\rightarrow2}$ 	& 0.01   & 0.01   & 0.01   \\
 		$\Sigma_{s,1\rightarrow1}$	& 0.2281 & 0.2281 & 0.2464 \\
 		$\Sigma_{s,2\rightarrow2}$	& 0.8333 & 0.8333 & 0.6667 \\
@@ -507,6 +526,121 @@ The fine-grid solution and the multiscale solution (16 basis functions on each l
 	\end{tabular}
 	\end{center}
 \end{table}
+% Скачкообразное возмущение происходит в зоне 1 посредством изменения теплового сечения деления $\Sigma_{a2}$ на $0.0035$ см$^{-1}$ в нулевой момент времени;
+
+We define the next scenario of the process:
+\begin{itemize}
+	\item The $\lambda$-spectral problem is solved and the solution is taken as the initial condition;
+	\item Calculation for the non-stationary model at the time range from 0 to 0.5 sec;
+	\item An abrupt perturbation occurs in region 1 by changing the removal cross-section $\Sigma_{r,2}$ by $0.0035$ cm$^{-1}$ at the zero moment of time.
+\end{itemize}
+
+The coarse grid contains $121$ vertices.
+The fine grid contains 25921 vertices. 
+The time step for both grids is $\tau = 0.0001$.
+As an exact solution, we take the fine-grid solution.
+The initial value of $K_{eff}$ is 0.916075. 
+
+\begin{figure}[ht]
+	\centering
+		\includegraphics[width=0.45\linewidth]{twigl/power_fine.png} \hspace{2em}
+		\includegraphics[width=0.45\linewidth]{twigl/power_error.png}
+	\caption{Integral power (fine grid) and relative errors ($\%$) of the multiscale solution power.}
+	\label{twigl_power}
+\end{figure}
+
+The integral power for the fine grid and relative errors ($\%$) of integral powers are shown in Figure~\ref{twigl_power}.
+When using using 4 or more multiscale basis functions, the error it does not exceed 3\%.
+
+In Figures~\ref{twigl_L2},~\ref{small_H1}, we present relative $L_2$ and $H_1$ errors of the multiscale solution vs. time for different number of multiscale basis functions. Hereinafter, we use the following notation for multiscale solution: $\phi_{ms_{0, 1}}$ --- pseudo 0th moment of angular flux of fast (group 1) energy group;  $\phi_{ms_{2, 1}}$ --- second moment of angular flux of fast energy group; $\phi_{ms_{0, 2}}$ --- pseudo 0th moment of angular flux of thermal (group 2) energy group;  $\phi_{ms_{2, 2}}$ --- second moment of angular flux of thermal energy group.
+The numerical results show good convergence behaviour, provided that we take sufficient number of the multiscale basis functions.
+
+\begin{figure}[ht]
+	\centering
+		a)\includegraphics[width=0.45\linewidth]{twigl/L2_u1.png} 
+		b)\includegraphics[width=0.45\linewidth]{twigl/L2_u2.png} 
+		c)\includegraphics[width=0.45\linewidth]{twigl/L2_u3.png} 
+		d)\includegraphics[width=0.45\linewidth]{twigl/L2_u4.png} 
+	\caption{Relative $L_2$ errors ($\%$) of the multiscale solution: a) $\phi_{ms_{0, 1}}$ b) $\phi_{ms_{2, 1}}$ c) $\phi_{ms_{0, 2}}$ d) $\phi_{ms_{2, 2}}$.}
+	\label{twigl_L2}
+\end{figure}
+
+\begin{figure}[ht]
+	\centering
+		a)\includegraphics[width=0.45\linewidth]{twigl/H1_u1.png} 
+		b)\includegraphics[width=0.45\linewidth]{twigl/H1_u2.png} 
+		c)\includegraphics[width=0.45\linewidth]{twigl/H1_u3.png} 
+		d)\includegraphics[width=0.45\linewidth]{twigl/H1_u4.png} 
+	\caption{Relative $H_1$ errors ($\%$) of the multiscale solution: a) $\phi_{ms_{0, 1}}$ b) $\phi_{ms_{2, 1}}$ c) $\phi_{ms_{0, 2}}$ d) $\phi_{ms_{2, 2}}$.}
+	\label{twigl_H1}
+\end{figure}
+
+% \begin{figure}[ht]
+% 	\centering
+% 		\includegraphics[width=0.45\linewidth]{twigl/L2_32.png} \hspace{2em}
+% 		\includegraphics[width=0.45\linewidth]{twigl/H1_32.png} 
+% 	\caption{Relative $H_1$ errors ($\%$) of the multiscale solution for pseudo 0th moment of angular flux (left) and second moment of angular flux (right).}
+% 	\label{twigl_b32}
+% \end{figure}
+
+\begin{table}[ht]
+	\caption{Relative $L_2$ errors ($\%$) of the solution at final time.}
+	\label{twigl_l2_errors}
+	\begin{center}
+		\begin{tabular}{| c | c | r | r | r | r | r |}
+			\hline
+			\multirow{2}{*}{Bases}{} & \multirow{2}{*}{DOF}{}  & \multicolumn{4}{c |}{$L_2$ error} & \multirow{2}{*}{Calc time} \\
+			\cline{3-6}
+			 &  & $\phi_{ms_{0, 1}}$ & $\phi_{ms_{2, 1}}$ & $\phi_{ms_{0, 2}}$ & $\phi_{ms_{2, 2}}$ & \\
+			\hline
+			1    & 49     & 99.97 & 99.99 & 99.97 & 99.99 & 0.03 \\
+			2    & 98     & 99.83 & 99.90 & 99.84 & 99.90 & 0.05 \\
+			4    & 196    & 25.61 & 34.38 & 26.65 & 27.64 & 0.10 \\
+			8    & 392    & 2.64  & 8.99  & 2.80  & 4.65  & 0.35 \\
+			16   & 784    & 0.71  & 4.34  & 0.81  & 2.56  & 1.15 \\
+			32   & 1568   & 0.07  & 1.28  & 0.14  & 1.17  & 6.66 \\
+			\hline
+			fine & 115891 & --    & --    & --    & --    & 815.00 \\
+			\hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+\begin{table}[ht]
+	\caption{Relative $H_1$ errors ($\%$) of the solution at final time.}
+	\label{twigl_l2_errors}
+	\begin{center}
+		\begin{tabular}{| c | c | r | r | r | r | r |}
+			\hline
+			\multirow{2}{*}{Bases}{} & \multirow{2}{*}{DOF}{}  & \multicolumn{4}{c |}{$H_1$ error} & \multirow{2}{*}{Calc time} \\
+			\cline{3-6}
+			 &  & $\phi_{ms_{0, 1}}$ & $\phi_{ms_{2, 1}}$ & $\phi_{ms_{0, 2}}$ & $\phi_{ms_{2, 2}}$ & \\
+			\hline
+			1    & 49     & 99.97 & 99.99 & 99.97 & 99.99 & 0.03 \\
+			2    & 98     & 99.83 & 99.90 & 99.84 & 99.90 & 0.05 \\
+			4    & 196    & 25.61 & 34.38 & 26.65 & 27.64 & 0.10 \\
+			8    & 392    & 2.64  & 8.99  & 2.80  & 4.65  & 0.35 \\
+			16   & 784    & 0.71  & 4.34  & 0.81  & 2.56  & 1.15 \\
+			32   & 1568   & 0.07  & 1.28  & 0.14  & 1.17  & 6.66 \\
+			\hline
+			fine & 115891 & --    & --    & --    & --    & 815.00 \\
+			\hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+\begin{figure}[ht]
+	\centering
+		a)\includegraphics[width=0.3\linewidth]{twigl/u1-1_ms.png}
+		b)\includegraphics[width=0.3\linewidth]{twigl/u1-2_ms.png}
+		c)\includegraphics[width=0.3\linewidth]{twigl/u1-4_ms.png}
+		d)\includegraphics[width=0.3\linewidth]{twigl/u1-8_ms.png}
+		e)\includegraphics[width=0.3\linewidth]{twigl/u1-16_ms.png}
+		f)\includegraphics[width=0.3\linewidth]{twigl/u1-32_ms.png}
+		g)\includegraphics[width=0.3\linewidth]{twigl/u1_f.png}
+	\caption{Fine-grid (g) and multiscale solutions at final time for pseudo 0th moment of angular flux: a) 1 basis b) 2 bases c) 4 bases d) 8 bases e) 16 bases f) 32 bases.}
+	\label{twigl_solutions}
+\end{figure}
 
 \section{Conclusions}
 A Generalized Multiscale Finite Element method was developed successfully for modelling neutron transport in one-group SP$_3$ approximation.  
@@ -518,8 +652,8 @@ In the current work, we considered a popular and simple model of neutron transpo
 Computational expenses are always an issue even for modern computers.
 In the future, we will consider more complex models of neutron transport, such as P$_N$ approximation. 
 
-%\section*{Acknowledgements}
-%This work was supported by the grant of the Russian Science Foundation (\#19-71-00008).
+% \section*{Acknowledgements}
+% This work was supported by the grant of the Russian Science Foundation (\#19-71-00008).
 
 % \begin{thebibliography}{16}
 %\bibitem{Duderstadt1976}
