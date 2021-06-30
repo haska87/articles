@@ -188,14 +188,14 @@ Define a uniform grid
 \]
 and use the next notations $\phi^n_g = \phi_g(\bm{x}, t^n)$, $c^n_m = c_m(\bm{x}, t^n)$. 
 We discretize the time derivatives of equation \eqref{1} using finite-difference scheme. 
-For approximation in time, we use a fully implicit scheme with time step $\tau$.
-For delayed neutron source equation we use numerical-analytical method for the construction of approximations in time.
+We use a fully implicit scheme with time step $\tau$ for the time approximation.
+For delayed neutron source equation, we use numerical-analytical method for the construction of approximations in time.
 The equation \eqref{2} in the equivalent form
 \[
 	\frac{\partial e^{\lambda_m t} c_m}{\partial t} = 
 	\beta_m e^{\lambda_m t} \sum_{g=1}^{G} \nu \Sigma_{fg} \phi_g, \quad m = 1,2,\dots,M.
 \]
-After integration on time interval $[t^n, t^{n+1}]$ one can obtained
+After integration over time interval $[t^n, t^{n+1}]$ one can obtained
 \begin{equation}\label{5}
 	c_m^{n+1} = e^{-\lambda_m\tau} c_m^n + 
 	\beta_m \int_{t_n}^{t_{n+1}} e^{\lambda_m (t - t^{n+1})} \sum_{g=1}^{G} \nu \Sigma_{fg} \phi_g d t,
@@ -203,7 +203,7 @@ After integration on time interval $[t^n, t^{n+1}]$ one can obtained
 \end{equation}
 When using the fully implicit scheme, we take the integrand on the right-hand side of \eqref{5} at $t = t^{n + 1}$.
 
-For spatial approximation we use the finite element method.
+We use finite element method for the spatial approximation.
 Let $H^1(\Omega)$ -- Sobolev space, $q \in H^1$: $q^2$ and $\vert\nabla q\vert^2$ have a finite integral in $\Omega$. 
 Using the integration by parts, we obtain the following variational formulation: let's find $\phi^{n+1}_g \in V^G$ such that
 \begin{equation}\label{6}
@@ -351,10 +351,10 @@ and using the coarse-scale solution $\phi_c$, we can reconstruct the fine grid s
 %Для решения спектральных задач с несимметричными матрицами применяется библиотека SLEPc. 
 Numerical modeling of non-stationary tests is carried out in the transport SP$_3$ approximation.
 Numerical results obtained by the finite element method and the generalized multiscale finite element method are analyzed and compared.
-The software has been written using the library FEniCS.
-SLEPc library has been used to solve spectral problems with asymmetric matrices.
+The software has been written using the science library FEniCS.
+The SLEPc library has been used to solve spectral problems with asymmetric matrices.
 
-At each time step the integrated power is calculated as
+At each time step, we calculate the integrated power as
 	\[P(t) = a \int_{\Omega} \sum_{g=1}^{G} \Sigma_{f,g} \phi_g d \bm x,\]
 where $a$ is the normalization coefficient, that corresponds to a given value of the integrated power.
 
@@ -375,18 +375,18 @@ The reflective boundary condition is set at the boundary of the domain.
 \end{figure} 
 
 The coarse grid contains $49$ vertices.
-The fine grid contains 115891 vertices. 
-The model is calculated until time $T = 0.4$ sec.
+The fine grid contains $115891$ vertices.
+The calculation goes up to time $T = 0.4$ sec.
 The time step for both grids is $\tau = 0.001$.
-As an exact solution, we take the fine-grid solution.
-The initial value of $K_{eff}$ is 1.18398. 
+We take a fine-grid solution as an exact solution.
+The initial value of $K_{eff}$ is 1.18398.
 
-We define the next scenario of the process:
+Let's define the next scenario of the process:
 \begin{itemize}
-\item The $\lambda$-spectral problem is solved; 
-\item The solution of the $\lambda$-spectral is taken as the initial condition;
-\item At time $t=0.1$ sec the removal cross-section $\Sigma_r$ for fuel in the zone 1 changes to +2\% (simulation of immersion of control rods);
-\item At time $t=0.3$ sec the removal cross-section $\Sigma_r$ for fuel in the zone 1 changes to -3\% (simulation of withdrawal of control rods).
+	\item Solve the $\lambda$-spectral problem;
+	\item As the initial condition, take the solution of the $\lambda$-spectral problem;
+	\item At time $t = 0.1$ sec, change the removal cross-section $\Sigma_r$ for fuel in zone 1 by +2\% (simulation of immersion of control rods);
+	\item At time $t = 0.3$ sec, change the removal cross-section $\Sigma_r$ for fuel in zone 1 by -3\% (simulation of withdrawal of control rods).
 \end{itemize}
 
 \begin{table}[ht]
@@ -417,11 +417,11 @@ We define the next scenario of the process:
 	\label{small_power}
 \end{figure}
  
-The integral power for the fine grid and relative errors ($\%$) of integral powers are shown in Figure~\ref{small_power}.
+The integral power for the fine grid and the relative errors ($\%$) of the integral powers are shown in Figure~\ref{small_power}.
 When using 4 or less multiscale basis functions, the error is more than 10\% and for using 16 or more multiscale basis functions, the error it does not exceed 1\%.
 
-In Figures~\ref{small_L2},~\ref{small_H1}, we present relative $L_2$ and $H_1$ errors of the multiscale solution vs. time for different number of multiscale basis functions.
-The numerical results show good convergence behaviour, provided that we take sufficient number of the multiscale basis functions.
+Figures~\ref{small_L2},~\ref{small_H1} show the relative $L_2$ and $H_1$ errors of the multiscale solution vs. time for a different number of multiscale basis functions.
+The numerical results show good convergence provided that we take a sufficient number of the multiscale basis functions.
 
 \begin{figure}[ht]
 	\centering
@@ -445,9 +445,9 @@ The numerical results show good convergence behaviour, provided that we take suf
 	\label{small_H1}
 \end{figure}
 
-In Table~\ref{small_errors}, we present relative $L_2$ and $H_1$ errors at final time for different number of the multiscale basis functions.
+Table~\ref{small_errors} shows the relative $L_2$ and $H_1$ errors at final time for a different number of the multiscale basis functions.
 For example, when we use 16 multiscale basis functions, we obtain $0.71\%$ for $L_2$ error and $4.34\%$ for $H_1$ error for pseudo 0th moment of angular flux.
-Relative errors are 0.81\% for $L_2$ and 2.56\% for $H_1$ for second moment of angular flux.
+And the relative errors for second moment of angular flux are $0.81\%$ for $L_2$ and $2.56\%$ for $H_1$.
 Calculations indicate that it is necessary to make use of 16 or more multiscale basis functions.
 The fine-grid solution and the multiscale solutions for a different number of bases (on each local domain $\omega_i$) for pseudo 0th moment of angular flux at the final time are shown in Figure \ref{small_solutions}.
 
