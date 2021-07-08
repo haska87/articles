@@ -1,0 +1,18 @@
+\babel@toc {english}{}
+\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Introduction}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{Equations}{4}{0}{1}
+\beamer@sectionintoc {2}{Problem statement}{5}{0}{2}
+\beamer@subsectionintoc {2}{1}{Diffusion approximation}{5}{0}{2}
+\beamer@subsectionintoc {2}{2}{Boundary and initial conditons}{6}{0}{2}
+\beamer@subsectionintoc {2}{3}{Discretization}{7}{0}{2}
+\beamer@sectionintoc {3}{Multiscale method}{10}{0}{3}
+\beamer@subsectionintoc {3}{1}{GMsFEM}{10}{0}{3}
+\beamer@subsectionintoc {3}{2}{Calculation grid}{11}{0}{3}
+\beamer@subsectionintoc {3}{3}{Spectral problems}{12}{0}{3}
+\beamer@subsectionintoc {3}{4}{Partition of unity functions}{13}{0}{3}
+\beamer@subsectionintoc {3}{5}{Coarse-scale approximation}{14}{0}{3}
+\beamer@sectionintoc {4}{Numerical results}{15}{0}{4}
+\beamer@subsectionintoc {4}{1}{Benchmark}{15}{0}{4}
+\beamer@subsectionintoc {4}{2}{Software}{17}{0}{4}
+\beamer@subsectionintoc {4}{3}{Computational results}{18}{0}{4}
