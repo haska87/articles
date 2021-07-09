@@ -13,6 +13,6 @@
 \beamer@subsectionintoc {3}{4}{Partition of unity functions}{13}{0}{3}
 \beamer@subsectionintoc {3}{5}{Coarse-scale approximation}{14}{0}{3}
 \beamer@sectionintoc {4}{Numerical results}{15}{0}{4}
-\beamer@subsectionintoc {4}{1}{Benchmark}{15}{0}{4}
-\beamer@subsectionintoc {4}{2}{Software}{17}{0}{4}
-\beamer@subsectionintoc {4}{3}{Computational results}{18}{0}{4}
+\beamer@subsectionintoc {4}{1}{Software}{15}{0}{4}
+\beamer@subsectionintoc {4}{2}{One-group}{16}{0}{4}
+\beamer@subsectionintoc {4}{3}{Two-group}{24}{0}{4}
